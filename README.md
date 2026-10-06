@@ -75,7 +75,7 @@ Cấu hình lưu vào `localStorage` khóa **`dtrmart.config`**, `index.html` t�
 | Mô tả giới thiệu | Mô tả trong mục giới thiệu (9 ngôn ngữ) |
 | Mô tả chân trang | Đoạn mô tả dưới logo chân trang (9 ngôn ngữ) |
 
-## Tương tác địa cầu 3D
+## Tương tác địa cầu 3D:
 
 - **Máy tính**: kéo chuột xoay mọi hướng (ngang 360°, dọc nghiêng ±90°), hover marker hiện tên quốc gia.
 - **Điện thoại**: chạm **trên quả cầu** → xoay tự do 2 chiều; chạm **vùng trống** xung quanh → cuộn trang.
