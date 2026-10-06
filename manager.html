@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DTR-Mart · Quản lý nội dung</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%230b1220%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2223%22%20font-family%3D%22Segoe%20UI%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23d4af37%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%23f4f4ef%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2223%22%20font-family%3D%22Segoe%20UI%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%230b1220%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%23f4f4ef%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2223%22%20font-family%3D%22Segoe%20UI%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%230b1220%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080c14;
+      --panel: #0d1322;
+      --border: #1c2740;
+      --text: #e8edf7;
+      --text-2: #8a94ad;
+      --gold: #d4af37;
+      --gold-soft: rgba(212, 175, 55, 0.14);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      background:
+        radial-gradient(1200px 620px at 72% -12%, #16203a 0%, transparent 60%),
+        radial-gradient(820px 520px at 6% 110%, #10182b 0%, transparent 52%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #26334f; border-radius: 6px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+    .splash {
+      position: fixed; inset: 0; z-index: 100;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: #05070d;
+      transition: opacity 0.65s ease 0.25s, visibility 0.65s ease 0.25s;
+    }
+    .splash::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(700px 320px at 50% 38%, rgba(212, 175, 55, 0.10) 0%, transparent 70%);
+    }
+    .splash.done { opacity: 0; visibility: hidden; }
+    .m-big {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(72px, 17vw, 200px);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      color: transparent;
+      background: linear-gradient(180deg, #ffffff 20%, #e9cf7a 55%, #d4af37 85%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      filter: drop-shadow(0 14px 70px rgba(212, 175, 55, 0.28));
+      opacity: 0; transform: translateY(24px);
+      animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+    }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+    .typed-line {
+      margin-top: 18px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(12px, 1.7vw, 17px);
+      font-weight: 500;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      color: var(--text-2);
+      min-height: 1.4em;
+      opacity: 0; animation: fadein 0.5s ease 0.9s forwards;
+    }
+    @keyframes fadein { to { opacity: 1; } }
+    .typed-line .cursor {
+      display: inline-block; width: 8px; height: 1.05em;
+      background: var(--gold); margin-left: 5px; vertical-align: -2px;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    main { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    main.loaded { opacity: 1; transform: translateY(0); }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 22px 0; border-bottom: 1px solid var(--border);
+    }
+    .h-left { display: flex; align-items: center; gap: 14px; }
+    .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
+    .brand b { color: var(--gold); }
+    .brand span { color: var(--text-2); font-weight: 500; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; }
+    .status { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--text-2); }
+    .status i { width: 9px; height: 9px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 12px rgba(61, 220, 132, 0.7); }
+
+    .head { padding: 56px 0 26px; }
+    .tag {
+      display: inline-block; padding: 6px 14px; border: 1px solid var(--gold);
+      border-radius: 999px; color: var(--gold); font-size: 12px; font-weight: 600;
+      letter-spacing: 3px; text-transform: uppercase; background: var(--gold-soft);
+      margin-bottom: 20px;
+    }
+    .head h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(30px, 5vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; }
+    .head h1 em { font-style: normal; color: var(--gold); }
+    .head p { margin-top: 16px; color: var(--text-2); max-width: 640px; line-height: 1.7; }
+
+    .editor { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px; margin: 26px 0 40px; align-items: start; }
+    .form { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 26px; }
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-2); margin-bottom: 8px; }
+    .field input, .field textarea {
+      width: 100%; background: #0a101d; border: 1px solid var(--border); border-radius: 10px;
+      color: var(--text); padding: 12px 14px; font-family: inherit; font-size: 14px; outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.12); }
+    .field textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
+    .dim { color: var(--text-2); font-size: 12px; margin-top: 6px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+    button {
+      font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+      padding: 13px 22px; border-radius: 11px; border: none; transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .save { background: linear-gradient(160deg, #e3c25f, #d4af37); color: #201a05; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25); }
+    .save:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(212, 175, 55, 0.35); }
+    .reset { background: transparent; border: 1px solid var(--border); color: var(--text-2); }
+    .reset:hover { border-color: #e06c6c; color: #e06c6c; }
+    .open { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
+    .open:hover { background: var(--gold-soft); }
+    #msg { margin-top: 14px; font-size: 13px; color: #3ddc84; min-height: 18px; }
+
+    .preview { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 22px; position: sticky; top: 20px; }
+    .preview h4 { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--text-2); margin-bottom: 16px; }
+    .pv-nav { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+    .pv-nav #pvLogo { height: 34px; width: auto; border-radius: 8px; }
+    .pv-nav span { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--text); }
+    .pv-intro { text-align: center; }
+    .pv-intro img { max-width: 100%; max-height: 150px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 12px; object-fit: cover; }
+    .pv-typed { font-family: 'Space Grotesk', sans-serif; letter-spacing: 4px; text-transform: uppercase; font-size: 12px; color: var(--text-2); }
+    .pv-txt { font-size: 13px; color: var(--text-2); line-height: 1.7; margin-top: 14px; border-top: 1px dashed var(--border); padding-top: 14px; }
+
+    footer { padding: 24px 0 34px; border-top: 1px solid var(--border); text-align: center; color: var(--text-2); font-size: 13px; }
+    footer b { color: var(--gold); font-weight: 600; }
+
+    @media (max-width: 880px) {
+      .editor { grid-template-columns: 1fr; }
+      .preview { position: static; }
+      .typed-line { letter-spacing: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="splash" id="splash">
+    <div class="m-big">Mart</div>
+    <div class="typed-line"><span id="splashTyped"></span><span class="cursor"></span></div>
+  </div>
+
+  <main id="main">
+    <div class="wrap">
+      <header>
+        <div class="h-left">
+          <div class="brand">DTR-<b>Mart</b><span>Quản lý nội dung</span></div>
+        </div>
+        <div class="status"><i></i> Lưu trong trình duyệt · localStorage</div>
+      </header>
+
+      <section class="head">
+        <div class="tag">Trình quản lý nội dung</div>
+        <h1>Đổi hình ảnh &amp; chữ cho <em>index.html</em></h1>
+        <p>Nhập nội dung bên trái rồi bấm <b>Lưu cấu hình</b>. Sau đó mở lại <code>index.html</code> trong <b>cùng trình duyệt này</b> để thấy thay đổi. Muốn trở về mặc định thì bấm <b>Khôi phục</b>. Cấu hình ảnh/bộ nhớ này thuộc về từng trình duyệt.</p>
+      </section>
+
+      <div class="editor">
+        <div class="form">
+          <div class="field">
+            <label>Logo thương hiệu — góc trái màn hình</label>
+            <input id="logo" type="url" placeholder="https://.../logo.png">
+            <div class="dim">Dán địa chỉ ảnh logo. Khi có logo, index chỉ hiện ảnh này (bỏ ô vuông M và chữ DTR-Mart) ở góc trái.</div>
+          </div>
+          <div class="field">
+            <label>Favicon — icon nhỏ trên tab trình duyệt</label>
+            <input id="favicon" type="url" placeholder="https://.../favicon.png">
+            <div class="dim">Cho phép đổi icon tab của index. Để trống thì index dùng icon M sáng/tối mặc định.</div>
+          </div>
+          <div class="field">
+            <label>Ảnh giới thiệu doanh nghiệp</label>
+            <input id="introImage" type="url" placeholder="https://.../gioi-thieu.jpg">
+            <div class="dim">Ảnh hiển thị trong phần &quot;Giới thiệu doanh nghiệp&quot; của index.</div>
+          </div>
+          <div class="field">
+            <label>Chữ "Mart" trên màn hình chào & góc trái</label>
+            <input id="mart" type="text" placeholder="Mart">
+            <div class="dim">Đổi tên thương hiệu hiển thị: chữ to màn hình chào và "DTR-... " trên thanh điều hướng của index.</div>
+          </div>
+          <div class="field">
+            <label>Tiêu đề tab trình duyệt</label>
+            <input id="title" type="text" placeholder="DTR-Mart - Digital Tech Resolution">
+          </div>
+          <div class="field">
+            <label>Dòng gõ màn hình chào</label>
+            <input id="typed" type="text" placeholder="digital tech resolution">
+          </div>
+          <div class="field">
+            <label>Mô tả giới thiệu doanh nghiệp</label>
+            <textarea id="introDesc" placeholder="DTR-Mart là nền tảng thương mại số thế hệ mới…"></textarea>
+            <div class="dim">Đoạn chữ hiển thị ngay dưới ảnh giới thiệu.</div>
+          </div>
+          <div class="field">
+            <label>Mô tả chân trang</label>
+            <textarea id="footerDesc" placeholder="Nền tảng thương mại số kết nối 50+ quốc gia…"></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="save" id="btnSave">Lưu cấu hình</button>
+            <button class="open" id="btnOpen">Mở index.html</button>
+            <button class="reset" id="btnReset">Khôi phục mặc định</button>
+          </div>
+          <div id="msg"></div>
+        </div>
+
+        <div class="preview">
+          <h4>Xem trước</h4>
+          <div class="pv-nav">
+            <img id="pvLogo" alt="" style="display:none">
+            <span id="pvBrand">DTR-Mart</span>
+            <img id="pvFav" alt="" style="display:none; height:18px; margin-left:auto; border-radius:5px;">
+          </div>
+          <div class="pv-intro">
+            <img id="pvIntro" alt="">
+            <div class="pv-typed" id="pvTyped">digital tech resolution</div>
+            <div class="pv-txt" id="pvDesc">DTR-Mart là nền tảng thương mại số thế hệ mới…</div>
+          </div>
+        </div>
+      </div>
+
+      <footer>© 2026 DTR-<b>Mart</b> · Digital Tech Resolution · Trình quản lý nội dung</footer>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var PHRASE = 'digital tech resolution';
+      var el = document.getElementById('splashTyped');
+      var i = 0;
+      var timer = setInterval(function () {
+        if (i <= PHRASE.length) {
+          el.textContent = PHRASE.slice(0, i++);
+        } else {
+          clearInterval(timer);
+          setTimeout(function () {
+            document.getElementById('splash').classList.add('done');
+            document.getElementById('main').classList.add('loaded');
+          }, 600);
+        }
+      }, 55);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var KEY = 'dtrmart.config';
+      var DEFAULTS = {
+        logo: '',
+        favicon: '',
+        mart: '',
+        introImage: '',
+        title: '',
+        typed: '',
+        introDesc: '',
+        footerDesc: ''
+      };
+
+      function $(id) { return document.getElementById(id); }
+      var fields = ['logo', 'favicon', 'mart', 'introImage', 'title', 'typed', 'introDesc', 'footerDesc'];
+      var store = null;
+      try { store = localStorage; } catch (e) { }
+
+      function load() {
+        var cfg = {};
+        if (store) {
+          try { cfg = JSON.parse(store.getItem(KEY)) || {}; } catch (e) { cfg = {}; }
+        }
+        fields.forEach(function (f) { $(f).value = cfg[f] || ''; });
+        refresh();
+      }
+
+      function collect() {
+        var cfg = {};
+        fields.forEach(function (f) { cfg[f] = $(f).value.trim(); });
+        return cfg;
+      }
+
+      function refresh() {
+        var cfg = collect();
+        var pl = $('pvLogo'), pb = $('pvBrand');
+        if (cfg.logo) { pl.src = cfg.logo; pl.style.display = 'block'; pb.style.display = 'none'; }
+        else { pl.style.display = 'none'; pb.style.display = ''; pb.textContent = 'DTR-' + (cfg.mart || 'Mart'); }
+        var pf = $('pvFav');
+        if (/^https?:\/\//.test(cfg.favicon)) { pf.src = cfg.favicon; pf.style.display = 'inline-block'; }
+        else { pf.style.display = 'none'; }
+        $('pvIntro').src = cfg.introImage || 'data:image/svg+xml,' + encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='#0d1322'/><rect x='18' y='18' width='364' height='264' rx='14' fill='none' stroke='#1c2740' stroke-width='2'/><text x='200' y='158' font-family='Arial' font-size='18' text-anchor='middle' fill='#8a94ad'>Ảnh giới thiệu doanh nghiệp</text></svg>");
+        $('pvTyped').textContent = cfg.typed || 'digital tech resolution';
+        $('pvDesc').textContent = cfg.introDesc || 'DTR-Mart là nền tảng thương mại số thế hệ mới…';
+      }
+
+      $('logo').addEventListener('input', refresh);
+      $('favicon').addEventListener('input', refresh);
+      $('mart').addEventListener('input', refresh);
+      $('introImage').addEventListener('input', refresh);
+      $('typed').addEventListener('input', refresh);
+      $('introDesc').addEventListener('input', refresh);
+
+      $('btnSave').addEventListener('click', function () {
+        var cfg = collect();
+        if (!store) { $('msg').textContent = 'Trình duyệt không hỗ trợ lưu cục bộ.'; return; }
+        try {
+          store.setItem(KEY, JSON.stringify(cfg));
+          $('msg').textContent = 'Đã lưu. Mở lại index.html (cùng trình duyệt) để xem thay đổi.';
+        } catch (e) { $('msg').textContent = 'Lưu thất bại: ' + e.message; }
+      });
+
+      $('btnReset').addEventListener('click', function () {
+        if (store) { try { store.removeItem(KEY); } catch (e) { } }
+        fields.forEach(function (f) { $(f).value = ''; });
+        refresh();
+        $('msg').textContent = 'Đã xoá cấu hình — index.html trở về nội dung mặc định.';
+      });
+
+      $('btnOpen').addEventListener('click', function () {
+        try {
+          store.setItem(KEY, JSON.stringify(collect()));
+          window.location.href = 'index.html';
+        } catch (e) { }
+      });
+
+      load();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DTR-Mart — Digital Tech Resolution</title>
+<meta name="description" content="Nền tảng thương mại số kết nối 50+ quốc gia với hơn 38.000 sản phẩm kỹ thuật số. Digital Tech Resolution — thương mại không biên giới.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%230b1220%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2223%22%20font-family%3D%22Segoe%20UI%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23d4af37%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%23f4f4ef%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2223%22%20font-family%3D%22Segoe%20UI%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%2316295e%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%23f4f4ef%22%2F%3E%3Ctext%20x%3D%2216%22%20y%3D%2223%22%20font-family%3D%22Segoe%20UI%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2218%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%2316295e%22%3EM%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/01-nen.css">
+<link rel="stylesheet" href="css/02-thanh-dieu-huong.css">
+<link rel="stylesheet" href="css/03-menu-troi.css">
+<link rel="stylesheet" href="css/04-man-hinh-chao.css">
+<link rel="stylesheet" href="css/05-gioi-thieu.css">
+<link rel="stylesheet" href="css/06-dia-cau.css">
+<link rel="stylesheet" href="css/07-hanh-trinh.css">
+<link rel="stylesheet" href="css/08-su-menh.css">
+<link rel="stylesheet" href="css/09-ho-tro-khach-hang.css">
+<link rel="stylesheet" href="css/10-chan-trang.css">
+<link rel="stylesheet" href="css/11-thich-nghi.css">
+
+</head>
+<body>
+
+<canvas id="scene"></canvas>
+<div class="globe-tooltip" id="globeTooltip"></div>
+
+<nav class="nav" id="nav">
+  <div class="nav-left">
+    <a href="#" class="logo" aria-label="DTR-Mart">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.5 5 L6.5 19" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+          <path d="M6.5 5 L11 5 Q17.5 5 17.5 12 Q17.5 19 11 19 L6.5 19"
+                stroke="#ffffff" stroke-width="2.4" fill="none"
+                stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="18.6" cy="18.6" r="1.5" fill="#d4af37"/>
+        </svg>
+      </div>
+      <img id="navLogo" class="nav-logo" alt="DTR-Mart">
+      <div class="logo-text">
+        <span class="dtr">DTR</span><span class="market">-Mart</span>
+      </div>
+    </a>
+
+    <ul class="nav-menu">
+      <li><a href="#" data-i18n="nav.home.text">Trang chủ</a></li>
+      <li class="nav-dropdown">
+        <a href="#" data-i18n="nav.products.text">Sản phẩm</a>
+        <div class="dropdown-menu">
+          <a href="#" data-i18n="nav.products.game.text">Trò chơi trên các nền tảng</a>
+          <a href="#" data-i18n="nav.products.movie.text">Phim trên các nền tảng</a>
+          <a href="#" data-i18n="nav.products.digital.text">Sản phẩm kỹ thuật số</a>
+          <a href="#" data-i18n="nav.products.electronics.text">Điện tử &amp; công nghiệp</a>
+        </div>
+      </li>
+      <li><a href="#" data-i18n="nav.partners.text">Đối tác &amp; nhà cung cấp</a></li>
+      <li><a href="#customer-service" data-i18n="nav.support.text">Dịch vụ khách hàng</a></li>
+      <li><a href="#" class="gold" data-i18n="nav.offers.text">Ưu đãi hôm nay</a></li>
+      <li><a href="#" data-i18n="nav.sell.text">Đăng ký bán hàng</a></li>
+    </ul>
+  </div>
+
+  <div class="nav-right">
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="icon-btn lang-btn" id="langBtn" aria-label="Language">
+        <span class="lang-flag" id="langFlag">🇻🇳</span>
+      </button>
+      <div class="lang-menu" id="langMenu" role="menu">
+        <a href="#" data-lang="vi" data-flag="🇻🇳" class="active">
+          <span class="flag">🇻🇳</span> Tiếng Việt <span class="lang-code">VI</span>
+        </a>
+        <a href="#" data-lang="en-US" data-flag="🇺🇸">
+          <span class="flag">🇺🇸</span> English (US) <span class="lang-code">EN</span>
+        </a>
+        <a href="#" data-lang="en-GB" data-flag="🇬🇧">
+          <span class="flag">🇬🇧</span> English (UK) <span class="lang-code">EN</span>
+        </a>
+        <a href="#" data-lang="zh" data-flag="🇨🇳">
+          <span class="flag">🇨🇳</span> 中文 <span class="lang-code">ZH</span>
+        </a>
+        <a href="#" data-lang="ko" data-flag="🇰🇷">
+          <span class="flag">🇰🇷</span> 한국어 <span class="lang-code">KO</span>
+        </a>
+        <a href="#" data-lang="ja" data-flag="🇯🇵">
+          <span class="flag">🇯🇵</span> 日本語 <span class="lang-code">JA</span>
+        </a>
+        <a href="#" data-lang="fr" data-flag="🇫🇷">
+          <span class="flag">🇫🇷</span> Français <span class="lang-code">FR</span>
+        </a>
+        <a href="#" data-lang="de" data-flag="🇩🇪">
+          <span class="flag">🇩🇪</span> Deutsch <span class="lang-code">DE</span>
+        </a>
+        <a href="#" data-lang="es" data-flag="🇪🇸">
+          <span class="flag">🇪🇸</span> Español <span class="lang-code">ES</span>
+        </a>
+      </div>
+    </div>
+
+    <button class="icon-btn" aria-label="Cart">
+      <svg viewBox="0 0 24 24">
+        <circle cx="9" cy="21" r="1"/>
+        <circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      <span class="cart-badge">3</span>
+    </button>
+  </div>
+</nav>
+
+<div class="all-btn" id="allBtn" aria-label="Menu">
+  <img src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='white'%3E%3Ccircle cx='5' cy='5' r='2'/%3E%3Ccircle cx='12' cy='5' r='2'/%3E%3Ccircle cx='19' cy='5' r='2'/%3E%3Ccircle cx='5' cy='12' r='2'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3Ccircle cx='19' cy='12' r='2'/%3E%3Ccircle cx='5' cy='19' r='2'/%3E%3Ccircle cx='12' cy='19' r='2'/%3E%3Ccircle cx='19' cy='19' r='2'/%3E%3C/g%3E%3C/svg%3E" alt="Menu" draggable="false">
+</div>
+
+<div class="all-panel-overlay" id="allPanelOverlay"></div>
+<div class="all-panel" id="allPanel">
+  <h3 data-i18n="panel.navigation">Điều hướng</h3>
+  <a href="#" data-i18n="nav.home.text">Trang chủ</a>
+  <a href="#" data-i18n="nav.products.text">Sản phẩm</a>
+  <a href="#" data-i18n="nav.partners.text">Đối tác &amp; nhà cung cấp</a>
+  <a href="#customer-service" data-i18n="nav.support.text">Dịch vụ khách hàng</a>
+  <a href="#" data-i18n="nav.offers.text">Ưu đãi hôm nay</a>
+  <a href="#" data-i18n="nav.sell.text">Đăng ký bán hàng</a>
+
+  <div class="divider"></div>
+
+  <h3 data-i18n="panel.products">Sản phẩm</h3>
+  <a href="#" data-i18n="nav.products.game.text">Trò chơi trên các nền tảng</a>
+  <a href="#" data-i18n="nav.products.movie.text">Phim trên các nền tảng</a>
+  <a href="#" data-i18n="nav.products.digital.text">Sản phẩm kỹ thuật số</a>
+  <a href="#" data-i18n="nav.products.electronics.text">Điện tử &amp; công nghiệp</a>
+
+  <div class="divider"></div>
+
+  <h3 data-i18n="panel.support">Hỗ trợ</h3>
+  <a href="#customer-service" data-i18n="cs.help.title">Trung tâm hỗ trợ</a>
+  <a href="#customer-service" data-i18n="cs.faq.title">Câu hỏi thường gặp</a>
+  <a href="#customer-service" data-i18n="cs.contact.title">Liên hệ hỗ trợ</a>
+
+  <div class="divider"></div>
+
+  <h3 data-i18n="panel.utilities">Tiện ích</h3>
+  <a href="#" data-i18n="panel.language">Ngôn ngữ</a>
+  <a href="#" data-i18n="panel.cart">Giỏ hàng</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="splash-content" id="splashContent">
+    <div class="w-mart">Mart</div>
+    <div class="typed-wrap">
+      <span id="typedText"></span><span class="cursor">|</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="intro" id="intro">
+  <div class="intro-inner">
+    <img class="intro-logo" src="https://tse1.mm.bing.net/th/id/OIP.btYe3jCYhDNdADNZtpF0_QHaF7?r=0&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="DTR-Mart" loading="lazy">
+    <div class="intro-divider"></div>
+    <p class="intro-desc" data-i18n-html="intro.desc">DTR-Mart là nền tảng <span>thương mại số thế hệ mới</span>, được xây dựng để kết nối doanh nghiệp, nhà cung cấp và khách hàng trên khắp thế giới trong cùng một hệ sinh thái liền mạch. Tại đây, công nghệ phục vụ thương mại, dữ liệu nâng tầm trải nghiệm và mọi giao dịch đều đặt <span>niềm tin</span> làm nền tảng — để <span>mỗi đối tác cùng phát triển, cùng bứt phá</span> và chia sẻ giá trị bền vững trên hành trình chuyển đổi số.</p>
+  </div>
+</section>
+
+<div class="scroll-hint" id="scrollHint" data-i18n="scroll.hint">Scroll to explore</div>
+
+<!-- ============ GLOBE STICKY ============ -->
+<section class="globe-sticky-section" id="globeStickySection">
+  <div class="globe-sticky-inner">
+    <div class="globe-bottom-content">
+      <div class="globe-title" id="globeTitle">
+        <h2 data-i18n-html="globe.title">Kết nối <span>thương mại toàn cầu</span></h2>
+      </div>
+      <div class="globe-stats" id="globeStats">
+        <div class="globe-stat"><div class="val">50+</div><div class="lbl" data-i18n="globe.stat.countries">Quốc gia</div></div>
+        <div class="globe-stat"><div class="val">38K+</div><div class="lbl" data-i18n="globe.stat.products">Sản phẩm</div></div>
+        <div class="globe-stat"><div class="val">12K+</div><div class="lbl" data-i18n="globe.stat.partners">Đối tác</div></div>
+        <div class="globe-stat"><div class="val">24/7</div><div class="lbl" data-i18n="globe.stat.support">Hỗ trợ</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOURNEY ============ -->
+<section class="journey">
+  <div class="journey-header">
+    <h2 data-i18n-html="journey.title">Hành trình <span>DTR-Mart</span></h2>
+    <p data-i18n="journey.subtitle">Digital Tech Resolution · Từ 2019 đến nay</p>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year" data-i18n="journey.y2019.year">2019 — Khởi nguồn</div>
+      <div class="timeline-title" data-i18n="journey.y2019.title">Thành lập DTR Group</div>
+      <div class="timeline-desc" data-i18n="journey.y2019.desc">DTR được thành lập với tầm nhìn trở thành cầu nối thương mại số giữa Việt Nam và thị trường công nghệ toàn cầu.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year" data-i18n="journey.y2021.year">2021 — Mở rộng</div>
+      <div class="timeline-title" data-i18n="journey.y2021.title">Ra mắt nền tảng DTR-Mart</div>
+      <div class="timeline-desc" data-i18n="journey.y2021.desc">Nền tảng DTR-Mart chính thức hoạt động, cung cấp game, phim và sản phẩm số từ hơn 20 quốc gia. Đối tác vượt mốc 1.000 nhà cung cấp.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year" data-i18n="journey.y2023.year">2023 — Đột phá</div>
+      <div class="timeline-title" data-i18n="journey.y2023.title">Mở rộng ra thị trường quốc tế</div>
+      <div class="timeline-desc" data-i18n="journey.y2023.desc">DTR-Mart phục vụ khách hàng tại 30+ quốc gia Đông Nam Á và châu Á - Thái Bình Dương. Ra mắt dịch vụ điện tử &amp; công nghiệp B2B.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year" data-i18n="journey.y2025.year">2025 — Bứt phá</div>
+      <div class="timeline-title" data-i18n="journey.y2025.title">50+ quốc gia, 38K+ sản phẩm</div>
+      <div class="timeline-desc" data-i18n="journey.y2025.desc">Mạng lưới thương mại toàn cầu đạt 50+ quốc gia với hơn 38.000 sản phẩm số và 12.000 đối tác. Logistics thông minh kết nối real-time.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year" data-i18n="journey.y2026.year">2026 — Tương lai</div>
+      <div class="timeline-title" data-i18n="journey.y2026.title">Kỷ nguyên AI &amp; thương mại thông minh</div>
+      <div class="timeline-desc" data-i18n="journey.y2026.desc">DTR-Mart tích hợp AI vào toàn bộ chuỗi cung ứng, cá nhân hóa trải nghiệm mua sắm và tối ưu vận hành cho đối tác toàn cầu.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISSION ============ -->
+<section class="mission">
+  <div class="mission-header">
+    <h2 data-i18n-html="mission.title">Sứ mệnh &amp; <span>Tầm nhìn</span></h2>
+    <p data-i18n="mission.subtitle">Giá trị chúng tôi theo đuổi</p>
+  </div>
+  <div class="mission-grid">
+    <div class="mission-card">
+      <div class="mission-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="12" cy="12" r="1" fill="currentColor"/>
+        </svg>
+      </div>
+      <h3 data-i18n="mission.mission.title">Sứ mệnh</h3>
+      <p data-i18n="mission.mission.desc">Kết nối người mua và nhà cung cấp toàn cầu bằng nền tảng thương mại số minh bạch, nhanh chóng và đáng tin cậy — giúp mọi doanh nghiệp, dù nhỏ nhất, đều có thể vươn ra thế giới.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </div>
+      <h3 data-i18n="mission.vision.title">Tầm nhìn</h3>
+      <p data-i18n="mission.vision.desc">Trở thành nền tảng thương mại số hàng đầu Đông Nam Á vào năm 2030, với hệ sinh thái kết nối hơn 100 quốc gia và 1 triệu đối tác kinh doanh trên toàn cầu.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2l2.6 6.3 6.8.6-5.2 4.5 1.6 6.7L12 16.6 6.2 20l1.6-6.7L2.6 8.9l6.8-.6z"/>
+        </svg>
+      </div>
+      <h3 data-i18n="mission.values.title">Giá trị cốt lõi</h3>
+      <p data-i18n="mission.values.desc">Minh bạch — Đổi mới — Khách hàng là trung tâm — Bền vững — Tôn trọng đối tác. Chúng tôi xây dựng niềm tin qua từng giao dịch và không ngừng đổi mới để phục vụ tốt hơn.</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <h3 data-i18n="mission.commitment.title">Cam kết</h3>
+      <p data-i18n="mission.commitment.desc">Chúng tôi cam kết bảo vệ quyền lợi của khách hàng và đối tác bằng chính sách minh bạch, dịch vụ tận tâm và trách nhiệm giải trình trong mọi giao dịch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CUSTOMER SERVICE ============ -->
+<section class="customer-service" id="customer-service">
+  <div class="cs-header">
+    <h2 data-i18n-html="cs.title">Dịch vụ <span>khách hàng</span></h2>
+    <p data-i18n="cs.subtitle">Hỗ trợ bạn mọi lúc, mọi nơi</p>
+  </div>
+  <div class="cs-grid">
+    <a href="#" class="cs-card">
+      <div class="cs-card-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+      <div class="cs-card-content">
+        <h4 data-i18n="cs.help.title">Trung tâm hỗ trợ</h4>
+        <p data-i18n="cs.help.desc">Tài liệu hướng dẫn, video tutorial và cẩm nang sử dụng dịch vụ.</p>
+      </div>
+    </a>
+
+    <a href="#" class="cs-card">
+      <div class="cs-card-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      <div class="cs-card-content">
+        <h4 data-i18n="cs.faq.title">Câu hỏi thường gặp</h4>
+        <p data-i18n="cs.faq.desc">Giải đáp nhanh các thắc mắc phổ biến về thanh toán, đơn hàng, bảo hành.</p>
+      </div>
+    </a>
+
+    <a href="#" class="cs-card">
+      <div class="cs-card-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </div>
+      <div class="cs-card-content">
+        <h4 data-i18n="cs.contact.title">Liên hệ hỗ trợ</h4>
+        <p data-i18n="cs.contact.desc">Gọi hotline 1900 xxxx hoặc gửi email — đội ngũ phản hồi trong 30 phút.</p>
+      </div>
+    </a>
+
+    <a href="#" class="cs-card">
+      <div class="cs-card-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+      </div>
+      <div class="cs-card-content">
+        <h4 data-i18n="cs.chat.title">Live Chat 24/7</h4>
+        <p data-i18n="cs.chat.desc">Trò chuyện trực tuyến với nhân viên hỗ trợ bất cứ lúc nào bạn cần.</p>
+      </div>
+    </a>
+
+    <a href="#" class="cs-card">
+      <div class="cs-card-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+          <line x1="12" y1="22.08" x2="12" y2="12"/>
+        </svg>
+      </div>
+      <div class="cs-card-content">
+        <h4 data-i18n="cs.track.title">Tra cứu đơn hàng</h4>
+        <p data-i18n="cs.track.desc">Theo dõi trạng thái đơn hàng theo mã vận đơn hoặc mã đơn hàng.</p>
+      </div>
+    </a>
+
+    <a href="#" class="cs-card">
+      <div class="cs-card-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 12l2 2 4-4"/>
+          <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.66 0 3.22.45 4.56 1.24"/>
+        </svg>
+      </div>
+      <div class="cs-card-content">
+        <h4 data-i18n="cs.warranty.title">Bảo hành &amp; đổi trả</h4>
+        <p data-i18n="cs.warranty.desc">Chính sách bảo hành 1 đổi 1 trong 30 ngày cho sản phẩm lỗi.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo" aria-label="DTR-Mart">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.5 5 L6.5 19" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+              <path d="M6.5 5 L11 5 Q17.5 5 17.5 12 Q17.5 19 11 19 L6.5 19"
+                    stroke="#ffffff" stroke-width="2.4" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="18.6" cy="18.6" r="1.5" fill="#d4af37"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <span class="dtr">DTR</span><span class="market">-Mart</span>
+          </div>
+        </a>
+        <p data-i18n="footer.brand.desc">Nền tảng thương mại số kết nối 50+ quốc gia với hơn 38.000 sản phẩm kỹ thuật số. Digital Tech Resolution — thương mại không biên giới.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#000"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.products.title">Sản phẩm</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.products.games">Trò chơi</a></li>
+          <li><a href="#" data-i18n="footer.products.movies">Phim ảnh</a></li>
+          <li><a href="#" data-i18n="footer.products.digital">Sản phẩm kỹ thuật số</a></li>
+          <li><a href="#" data-i18n="footer.products.electronics">Điện tử &amp; công nghiệp</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.company.title">Công ty</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.company.about">Về DTR-Mart</a></li>
+          <li><a href="#" data-i18n="footer.company.partners">Đối tác &amp; nhà cung cấp</a></li>
+          <li><a href="#" data-i18n="footer.company.sell">Đăng ký bán hàng</a></li>
+          <li><a href="#" data-i18n="footer.company.careers">Tuyển dụng</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.support.title">Hỗ trợ</h4>
+        <ul>
+          <li><a href="#customer-service" data-i18n="cs.help.title">Trung tâm hỗ trợ</a></li>
+          <li><a href="#customer-service" data-i18n="cs.faq.title">Câu hỏi thường gặp</a></li>
+          <li><a href="#customer-service" data-i18n="cs.contact.title">Liên hệ hỗ trợ</a></li>
+          <li><a href="#" data-i18n="footer.support.privacy">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-subscribe">
+        <h4 data-i18n="footer.subscribe.title">Nhận tin mới</h4>
+        <p data-i18n="footer.subscribe.desc">Cập nhật ưu đãi, sản phẩm mới và tin tức công nghệ từ DTR-Mart.</p>
+        <div class="footer-subscribe-form">
+          <input type="email" data-i18n-placeholder="footer.subscribe.placeholder" placeholder="Email của bạn" aria-label="Email">
+          <button data-i18n="footer.subscribe.button">Đăng ký</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 DTR-Mart · Digital Tech Resolution ·
+        <a href="#" data-i18n="footer.privacy">Chính sách bảo mật</a> ·
+        <a href="#" data-i18n="footer.terms">Điều khoản sử dụng</a>
+      </div>
+      <div class="footer-bottom-right">
+        <a href="#" data-i18n="footer.status">Trạng thái hệ thống</a>
+        <a href="#" data-i18n="footer.cookie">Cookie</a>
+        <a href="#" data-i18n="footer.sitemap">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
+
+
+<!-- ===== TỪ ĐIỂN & DỊCH NGÔN NGỮ ===== -->
+<script src="js/ngon-ngu/tu-dien.js"></script>
+<script src="js/apply-config.js"></script>
+<script src="js/ngon-ngu/dich-thuat.js"></script>
+
+<!-- ===== GIAO DIỆN 2D ===== -->
+<script src="js/man-hinh-chao.js"></script>
+<script src="js/hien-khi-cuon.js"></script>
+<script src="js/chon-ngon-ngu.js"></script>
+<script src="js/menu-troi.js"></script>
+
+<!-- ===== CẢNH 3D (three.js qua importmap; file cổ điển, chạy cả trên file://) ===== -->
+<script src="js/canh-3d/vu-tru.js"></script>
+<script src="js/canh-3d/dia-cau.js"></script>
+<script src="js/canh-3d/tuong-tac.js"></script>
+<script src="js/canh-3d/dieu-phoi.js"></script>
+
+
+</body>
+</html>

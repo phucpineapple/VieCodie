@@ -1,0 +1,51 @@
+/* ==========================================================================
+   11-thich-nghi THÍCH NGHI (RESPONSIVE)
+   Tách từ index.html: <style> dòng 872–917 (giữ nguyên 100% nội dung).
+   @media 1200/900/600px.
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .nav { padding: 0 24px; }
+  .nav-left { gap: 20px; }
+  .nav-menu a { font-size: 12.5px; padding: 8px 10px; }
+  .footer-top { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 36px; }
+  .footer-subscribe { grid-column: 1 / -1; max-width: 100%; }
+  .mission-grid { grid-template-columns: repeat(2, 1fr); }
+  .cs-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .nav { padding: 0 16px; height: 58px; }
+  .nav-menu { display: none; }
+  .nav-left { gap: 12px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-subscribe { grid-column: 1 / -1; }
+  .all-panel { width: calc(100vw - 32px); max-width: 320px; }
+  .mission-grid, .cs-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .globe-bottom-content { gap: 20px; bottom: 7vh; }
+  .globe-stats { gap: 22px; flex-wrap: wrap; justify-content: center; }
+  .globe-stat .val { font-size: 16px; }
+  .globe-stat .lbl { font-size: 9px; }
+  .typed-wrap { letter-spacing: 4px; font-size: 10px; }
+  .icon-btn { width: 34px; height: 34px; }
+  .lang-btn { font-size: 15px; }
+  .lang-btn .lang-flag { font-size: 16px; }
+  .lang-menu { right: -8px; min-width: 190px; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  .footer { padding: 56px 20px 32px; }
+  .journey, .mission, .customer-service { padding: 90px 20px 70px; }
+  .journey-header, .mission-header, .cs-header { margin-bottom: 56px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-bottom-right { justify-content: center; }
+  .all-btn { width: 44px; height: 44px; }
+  .all-btn img { width: 16px; height: 16px; }
+  .logo-mark { width: 30px; height: 30px; border-radius: 7px; }
+  .logo-mark svg { width: 20px; height: 20px; }
+  .logo-text { font-size: 15px; }
+  .intro { padding: 100px 24px; min-height: 88vh; }
+  .intro-eyebrow { letter-spacing: 2.5px; margin-bottom: 24px; }
+  .intro-sub { letter-spacing: 3.5px; }
+  .intro-divider { margin: 32px auto; }
+  .intro-desc { font-size: 14px; }
+}

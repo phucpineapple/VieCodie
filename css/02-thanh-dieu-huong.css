@@ -1,0 +1,208 @@
+/* ==========================================================================
+   02-thanh-dieu-huong THANH ĐIỀU HƯỚNG
+   Tách từ index.html: <style> dòng 58–253 (giữ nguyên 100% nội dung).
+   NAV, LOGO, NAV MENU (logo gold, menu, dropdown ngôn ngữ).
+   ========================================================================== */
+/* ============ NAV ============ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  height: 64px;
+  background: rgba(10, 10, 10, 0.72);
+  border-bottom: 1px solid transparent;
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  opacity: 0; transition: opacity 0.8s ease, border-color 0.3s ease;
+  pointer-events: none;
+}
+.nav.active { opacity: 1; pointer-events: auto; }
+.nav.scrolled { border-bottom-color: var(--border); }
+
+.nav-left { display: flex; align-items: center; gap: 32px; flex-shrink: 0; }
+
+/* ============ LOGO ============ */
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; flex-shrink: 0;
+}
+.logo-mark {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(160deg, #1e3a8a 0%, #16295e 100%);
+  display: grid; place-items: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 2px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+.logo-mark::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), transparent);
+  pointer-events: none;
+}
+.logo-mark svg {
+  width: 22px; height: 22px;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.logo-text {
+  display: flex;
+  align-items: baseline;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.logo-text .dtr { color: var(--navy-text); }
+.logo-text .market { color: var(--gold); }
+
+/* ============ NAV MENU ============ */
+.nav-menu { display: flex; list-style: none; gap: 2px; align-items: center; }
+.nav-menu > li { position: relative; }
+.nav-menu a {
+  font-size: 13px; font-weight: 500; color: var(--text-2);
+  text-decoration: none; transition: color 0.15s ease;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  display: block; white-space: nowrap;
+  letter-spacing: -0.005em;
+}
+.nav-menu a:hover { color: var(--text); }
+.nav-menu a.gold { color: var(--gold); }
+.nav-menu a.gold:hover { color: var(--gold-bright); }
+
+.nav-dropdown { position: relative; }
+.nav-dropdown > a::after {
+  content: '';
+  display: inline-block;
+  width: 4px; height: 4px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  margin-left: 6px;
+  opacity: 0.5;
+  transition: transform 0.2s ease;
+}
+.nav-dropdown:hover > a::after { transform: rotate(45deg) translateY(0); }
+.dropdown-menu {
+  position: absolute; top: calc(100% + 6px); left: 0;
+  min-width: 240px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 6px;
+  opacity: 0; visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+  z-index: 200;
+}
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown.open .dropdown-menu {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.dropdown-menu a {
+  font-size: 13px; padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-2); white-space: nowrap;
+  letter-spacing: -0.005em;
+}
+.dropdown-menu a:hover { color: var(--text); background: #1a1a1a; }
+
+.nav-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; margin-left: auto; }
+
+.icon-btn {
+  position: relative;
+  width: 36px; height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-2);
+  display: grid; place-items: center;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.icon-btn:hover {
+  color: var(--text);
+  background: #1a1a1a;
+  border-color: var(--border);
+}
+.icon-btn svg {
+  width: 16px; height: 16px;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.cart-badge {
+  position: absolute; top: 2px; right: 2px;
+  min-width: 14px; height: 14px; padding: 0 4px;
+  border-radius: 7px;
+  background: var(--gold);
+  color: #000; font-size: 9px; font-weight: 700;
+  display: grid; place-items: center;
+  border: 2px solid var(--bg);
+  letter-spacing: 0;
+}
+
+.lang-dropdown { position: relative; }
+.lang-btn { padding: 0; font-size: 16px; line-height: 1; }
+.lang-btn .lang-flag { display: block; font-size: 17px; line-height: 1; }
+.lang-dropdown.open .lang-btn {
+  color: var(--text);
+  background: #1a1a1a;
+  border-color: var(--border);
+}
+.lang-menu {
+  position: absolute; top: calc(100% + 6px); right: 0;
+  min-width: 210px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 6px;
+  opacity: 0; visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+  z-index: 250;
+  max-height: 380px; overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.lang-menu::-webkit-scrollbar { width: 4px; }
+.lang-menu::-webkit-scrollbar-track { background: transparent; }
+.lang-menu::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+.lang-dropdown.open .lang-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.lang-menu a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: var(--radius-sm);
+  color: var(--text-2); text-decoration: none;
+  font-size: 13px; font-weight: 500;
+  transition: all 0.15s ease;
+  letter-spacing: -0.005em;
+}
+.lang-menu a:hover { background: #1a1a1a; color: var(--text); }
+.lang-menu a.active { background: #1a1a1a; color: var(--text); }
+.lang-menu a.active .lang-code { color: var(--gold); }
+.lang-menu a .flag { font-size: 16px; width: 20px; text-align: center; line-height: 1; }
+.lang-menu a .lang-code {
+  margin-left: auto;
+  font-size: 10px; letter-spacing: 1px;
+  color: var(--text-4);
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  padding-left: 8px;
+}
+/* ============ LOGO DOANH NGHIEP (tu manager.html / config) ============ */
+.nav-logo {
+  display: none;
+  height: 34px;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
