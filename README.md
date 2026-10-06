@@ -14,10 +14,9 @@ Mở trực tiếp bằng trình duyệt là chạy.
 ## Sơ đồ cấu trúc
 
 ```
-Default Project\
 └── Khung Sản Project\          ← dự án chạy thật
     ├── index.html              ← trang chính (26 KB)
-    ├── index.html.bak          ← bản single-file gốc (127 KB) — chỉ lưu tham khảo
+    ├── LandingPageCode         ← bản single-file gốc — chỉ lưu tham khảo
     ├── manager.html            ← bảng cấu hình: logo, favicon, ảnh intro, chữ...
     ├── README.md               ← file này
     ├── css\                    ← 11 file CSS, tách theo khu vực
