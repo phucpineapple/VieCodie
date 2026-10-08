@@ -1,381 +1,128 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DTR-Mart · Whiteboard CMS</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg: #080c14;
-      --grid-dot: rgba(255, 255, 255, 0.12);
-      --panel: #0d1322;
-      --border: #1c2740;
-      --text: #e8edf7;
-      --text-mute: #8a94ad;
-      --gold: #d4af37;
-      --gold-soft: rgba(212, 175, 55, 0.15);
-    }
+window.APP_CONFIG = {
+  brand: { name: "WhiteBoard", tag: "Infinite Creative Canvas" },
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'Be Vietnam Pro', sans-serif; background: var(--bg); color: var(--text); }
+  hero: {
+    meta: [
+      { text: "CANVAS 2.0", live: true },
+      { text: "100K+ Người dùng" },
+      { text: "Real-time Sync" }
+    ],
+    title: [
+      { text: "Ý tưởng", cls: "" },
+      { text: "không giới hạn,", cls: "it" },
+      { text: "sáng tạo", cls: "outline" },
+      { text: "trên bảng trắng.", cls: "accent" }
+    ],
+    desc: "Không gian làm việc nhóm trực quan kết nối **ý tưởng, quy trình và tư duy sáng tạo** trên một mặt phẳng không giới hạn.",
+    btn1: "Khám phá Canvas",
+    btn2: "Xem demo trực tiếp"
+  },
 
-    /* ==========================================
-       WHITEBOARD VIEWPORT & CANVAS
-       ========================================== */
-    .viewport {
-      width: 100vw; height: 100vh;
-      position: relative;
-      overflow: hidden;
-      cursor: grab;
-      user-select: none;
-    }
-    .viewport:active { cursor: grabbing; }
+  marquee: [
+    { b: "Infinite", t: "Space" },
+    { b: "Real-time", t: "Collaboration" },
+    { b: "Smart", t: "Drawing Tools" },
+    { b: "99.9%", t: "Uptime" },
+    { b: "AI", t: "Handwriting Recognition" }
+  ],
 
-    /* Lưới chấm bi đặc trưng của Whiteboard */
-    .canvas-world {
-      position: absolute;
-      top: 0; left: 0;
-      width: 5000px; height: 5000px;
-      background-image: radial-gradient(var(--grid-dot) 1.2px, transparent 1.2px);
-      background-size: 28px 28px;
-      transform-origin: 0 0;
-      will-change: transform;
-    }
+  intro: {
+    label: "WHITEBOARD MANIFESTO",
+    title: "Giải phóng <span class='it'>tư duy sáng tạo</span> của đội ngũ bạn.",
+    text: "Mỗi nét vẽ là một tư duy. Mỗi ghi chú là một giải pháp. WhiteBoard biến mọi phác thảo hỗn loạn thành quy trình tinh gọn, liền mạch và trực quan nhất."
+  },
 
-    /* ==========================================
-       WHITEBOARD NODES (CÁC KHỐI NỘI DUNG)
-       ========================================== */
-    .board-node {
-      position: absolute;
-      width: 320px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
-      cursor: default;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .board-node:focus-within, .board-node.selected {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 2px var(--gold-soft), 0 16px 40px rgba(0,0,0,0.6);
-    }
+  globe: {
+    label: "GLOBAL WORKSPACE",
+    title: "Kết nối <span class='it'>nhóm làm việc toàn cầu</span>.",
+    stats: [
+      { idx: "I",   value: 120, suffix: "K+", label: "Bảng vẽ đã tạo", prog: 85 },
+      { idx: "II",  value: 50,  suffix: "M+", label: "Ghi chú & Sticky Notes", prog: 95 },
+      { idx: "III", value: 300, suffix: "K+", label: "Thành viên hoạt động", prog: 70 },
+      { idx: "IV",  value: 99,  suffix: "%",  label: "Đồng bộ tức thì", prog: 99 }
+    ],
+    markers: [
+      { lat: 16, lng: 108, name: "Việt Nam Hub" },
+      { lat: 37, lng: 128, name: "Seoul Studio" },
+      { lat: 51, lng: 10,  name: "Berlin Lab" },
+      { lat: 36, lng: 138, name: "Tokyo Base" }
+    ]
+  },
 
-    /* Thanh cầm nắm để kéo Node */
-    .node-header {
-      padding: 12px 16px;
-      background: rgba(255,255,255,0.02);
-      border-bottom: 1px solid var(--border);
-      border-radius: 16px 16px 0 0;
-      display: flex; align-items: center; justify-content: space-between;
-      cursor: move;
-    }
-    .node-title { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
-    .node-tag { font-size: 10px; padding: 2px 8px; border-radius: 100px; background: var(--gold-soft); color: var(--gold); font-weight: 600; }
+  journey: {
+    label: "EVOLUTION",
+    title: "Phát triển <span class='it'>công cụ sáng tạo</span>.",
+    items: [
+      { year: "2023", title: "Khởi tạo Ý tưởng", desc: "Xây dựng lõi Render Canvas siêu nhẹ hỗ trợ 10,000 nét vẽ cùng lúc." },
+      { year: "2024", title: "Tính năng Real-time", desc: "Tích hợp WebSockets giúp hàng trăm người đồng thời tương tác trên 1 bảng." },
+      { year: "2025", title: "Trợ lý AI Vẽ tay", desc: "Tự động biến nét phác thảo thô thành biểu đồ, mindmap chuẩn xác." },
+      { year: "2026", title: "Hệ sinh thái WhiteBoard", desc: "Kết nối với các công cụ quản lý dự án hàng đầu thế giới." }
+    ]
+  },
 
-    .node-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-    .field label { display: block; font-size: 11px; font-weight: 600; color: var(--text-mute); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-    .field input, .field textarea {
-      width: 100%; background: #050810; border: 1px solid var(--border); border-radius: 8px;
-      color: var(--text); padding: 10px; font-family: inherit; font-size: 13px; outline: none;
-      transition: border-color 0.2s;
-    }
-    .field input:focus, .field textarea:focus { border-color: var(--gold); }
-    .field textarea { resize: vertical; min-height: 64px; }
-
-    /* ==========================================
-       FLOATING TOOLBAR & HEADER
-       ========================================== */
-    .header-bar {
-      position: fixed; top: 20px; left: 20px; z-index: 10;
-      background: rgba(13, 19, 34, 0.85); backdrop-filter: blur(12px);
-      border: 1px solid var(--border); border-radius: 14px;
-      padding: 12px 20px; display: flex; align-items: center; gap: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    }
-    .brand-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; }
-    .brand-title b { color: var(--gold); }
-    .status-badge { font-size: 12px; color: var(--text-mute); display: flex; align-items: center; gap: 6px; }
-    .status-badge i { width: 8px; height: 8px; background: #3ddc84; border-radius: 50%; box-shadow: 0 0 8px #3ddc84; }
-
-    .toolbar {
-      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 10;
-      background: rgba(13, 19, 34, 0.9); backdrop-filter: blur(12px);
-      border: 1px solid var(--border); border-radius: 100px;
-      padding: 8px 16px; display: flex; align-items: center; gap: 12px;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.6);
-    }
-    .btn {
-      background: transparent; border: 1px solid var(--border); color: var(--text);
-      padding: 10px 18px; border-radius: 100px; font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px;
-    }
-    .btn:hover { border-color: var(--gold); color: var(--gold); }
-    .btn-primary { background: linear-gradient(135deg, #e3c25f, #d4af37); color: #100c02; border: none; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); color: #100c02; }
-
-    #toast { position: fixed; top: 20px; right: 20px; z-index: 20; background: #3ddc84; color: #05140b; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 13px; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
-    #toast.show { opacity: 1; }
-  </style>
-</head>
-<body>
-
-  <!-- Floating Header -->
-  <div class="header-bar">
-    <div class="brand-title">DTR-<b>Mart</b> CMS</div>
-    <div class="status-badge"><i></i> Whiteboard Mode</div>
-  </div>
-
-  <!-- Toast Notification -->
-  <div id="toast">Đã lưu cấu hình Whiteboard thành công!</div>
-
-  <!-- Main Whiteboard Viewport -->
-  <div class="viewport" id="viewport">
-    <div class="canvas-world" id="world">
-
-      <!-- NODE 1: BRAND & LOGO -->
-      <div class="board-node" id="node-brand" style="top: 200px; left: 300px;">
-        <div class="node-header" data-drag>
-          <span class="node-title">1. Thương hiệu & Logo</span>
-          <span class="node-tag">Header</span>
-        </div>
-        <div class="node-body">
-          <div class="field">
-            <label>Tên Thương Hiệu (Mart)</label>
-            <input type="text" id="mart" placeholder="Mart">
-          </div>
-          <div class="field">
-            <label>Đường dẫn Logo (URL)</label>
-            <input type="url" id="logo" placeholder="https://.../logo.png">
-          </div>
-          <div class="field">
-            <label>Favicon (URL)</label>
-            <input type="url" id="favicon" placeholder="https://.../favicon.png">
-          </div>
-        </div>
-      </div>
-
-      <!-- NODE 2: HERO & SPLASH -->
-      <div class="board-node" id="node-hero" style="top: 200px; left: 680px;">
-        <div class="node-header" data-drag>
-          <span class="node-title">2. Hero & Màn Chào</span>
-          <span class="node-tag">Splash</span>
-        </div>
-        <div class="node-body">
-          <div class="field">
-            <label>Tiêu đề Tab (Title)</label>
-            <input type="text" id="title" placeholder="DTR-Mart - Digital Tech Resolution">
-          </div>
-          <div class="field">
-            <label>Chữ gõ màn hình chào</label>
-            <input type="text" id="typed" placeholder="digital tech resolution">
-          </div>
-        </div>
-      </div>
-
-      <!-- NODE 3: INTRO & GENERAL -->
-      <div class="board-node" id="node-intro" style="top: 200px; left: 1060px;">
-        <div class="node-header" data-drag>
-          <span class="node-title">3. Giới thiệu Doanh nghiệp</span>
-          <span class="node-tag">Section</span>
-        </div>
-        <div class="node-body">
-          <div class="field">
-            <label>Ảnh Giới Thiệu (URL)</label>
-            <input type="url" id="introImage" placeholder="https://.../gioi-thieu.jpg">
-          </div>
-          <div class="field">
-            <label>Mô tả Doanh nghiệp</label>
-            <textarea id="introDesc" placeholder="DTR-Mart là nền tảng thương mại số thế hệ mới..."></textarea>
-          </div>
-        </div>
-      </div>
-
-      <!-- NODE 4: FOOTER -->
-      <div class="board-node" id="node-footer" style="top: 560px; left: 680px;">
-        <div class="node-header" data-drag>
-          <span class="node-title">4. Chân Trang (Footer)</span>
-          <span class="node-tag">Footer</span>
-        </div>
-        <div class="node-body">
-          <div class="field">
-            <label>Mô tả Footer</label>
-            <textarea id="footerDesc" placeholder="Nền tảng thương mại số kết nối 50+ quốc gia..."></textarea>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Floating Toolbar Bottom -->
-  <div class="toolbar">
-    <button class="btn" id="btnResetPos">Reset Vị Trí</button>
-    <button class="btn btn-primary" id="btnSave">Lưu Whiteboard</button>
-    <button class="btn" id="btnOpenIndex">Mở index.html ↗</button>
-  </div>
-
-  <script>
-    (function () {
-      const KEY_CONFIG = 'dtrmart.config';
-      const KEY_POS = 'dtrmart.whiteboard.positions';
-
-      const viewport = document.getElementById('viewport');
-      const world = document.getElementById('world');
-      const toast = document.getElementById('toast');
-
-      const fields = ['logo', 'favicon', 'mart', 'introImage', 'title', 'typed', 'introDesc', 'footerDesc'];
-
-      // State Pan / Zoom
-      let scale = 1;
-      let panX = 0, panY = 0;
-      let isPanning = false;
-      let startX = 0, startY = 0;
-
-      // ----------------------------------------------------
-      // 1. CHỨC NĂNG PAN (KÉO RÊ BAN) & ZOOM
-      // ----------------------------------------------------
-      viewport.addEventListener('mousedown', (e) => {
-        // Chỉ kéo nền nếu không nhấp vào thẻ/input
-        if (e.target === viewport || e.target === world) {
-          isPanning = true;
-          startX = e.clientX - panX;
-          startY = e.clientY - panY;
-        }
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        if (!isPanning) return;
-        panX = e.clientX - startX;
-        panY = e.clientY - startY;
-        updateTransform();
-      });
-
-      window.addEventListener('mouseup', () => { isPanning = false; });
-
-      // Zoom bằng cuộn chuột
-      viewport.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        const delta = e.deltaY < 0 ? 1.08 : 0.92;
-        scale = Math.min(Math.max(0.4, scale * delta), 2);
-        updateTransform();
-      }, { passive: false });
-
-      function updateTransform() {
-        world.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+  mission: {
+    label: "FEATURES",
+    title: "Tính năng <span class='it'>vượt trội</span>.",
+    cards: {
+      big1: {
+        label: "Sync Speed",
+        h: "Đồng bộ nét vẽ <span class='it'>thời gian thực</span>.",
+        p: "Độ trễ truyền tải dữ liệu giữa các máy trạm cực thấp (<16ms).",
+        num: "16", unit: "ms"
+      },
+      countries: {
+        label: "Tools",
+        h: "Bộ công cụ <span class='it'>vẽ linh hoạt</span>",
+        rows: [
+          { idx: "01", name: "Bút vẽ & Cọ màu", status: "READY", hub: true },
+          { idx: "02", name: "Sticky Notes", status: "READY", hub: true },
+          { idx: "03", name: "Mindmap / Biểu đồ", status: "PRO", hub: false },
+          { idx: "04", name: "Nhận diện chữ viết", status: "AI", hub: false }
+        ]
+      },
+      latency: {
+        label: "Infinite Canvas",
+        h: "Khung vẽ không giới hạn",
+        num: "∞", unit: "px",
+        p: "Tự do phóng to/thu nhỏ mà không lo hết diện tích."
+      },
+      uptime:   { label: "Độ ổn định", num: "99.99", unit: "%" },
+      txn:      { label: "Bảng vẽ/Tháng", num: "1.2", unit: "M" },
+      tags: {
+        label: "Ứng dụng",
+        tags: ["Brainstorming", "Design Sprint", "Agile Roadmap", "Education", "Mindmapping"]
       }
+    }
+  },
 
-      // ----------------------------------------------------
-      // 2. CHỨC NĂNG DRAG DROP CÁC NODE
-      // ----------------------------------------------------
-      let activeNode = null;
-      let nodeStartX = 0, nodeStartY = 0;
+  support: {
+    label: "SUPPORT",
+    title: "Hướng dẫn & <span class='it'>Trợ giúp</span>.",
+    items: [
+      { icon: "help",  h: "Trung tâm trợ giúp", p: "Video ngắn và tài liệu làm quen trong 5 phút." },
+      { icon: "chat",  h: "Hỗ trợ 24/7",        p: "Cộng đồng Whiteboard sẵn sàng giải đáp thắc mắc." },
+      { icon: "box",   h: "Mẫu Bảng vẽ (Templates)", p: "Hơn 500+ mẫu dựng sẵn cho Agile, Design, Brainstorming." },
+      { icon: "check", h: "Bảo mật dữ liệu",   p: "Mã hóa end-to-end cho mọi dự án doanh nghiệp." }
+    ]
+  },
 
-      document.querySelectorAll('[data-drag]').forEach(header => {
-        header.addEventListener('mousedown', (e) => {
-          e.stopPropagation(); // Ngăn pan nền
-          activeNode = header.closest('.board-node');
-          
-          // Đưa node được chọn lên đầu (z-index)
-          document.querySelectorAll('.board-node').forEach(n => n.style.zIndex = 1);
-          activeNode.style.zIndex = 10;
+  cta: {
+    eyebrow: "BẮT ĐẦU SÁNG TẠO",
+    title: "Tạo không gian <span class='it'>mới</span> cho đội ngũ.",
+    btn: "Tạo bảng vẽ miễn phí"
+  },
 
-          const rect = activeNode.getBoundingClientRect();
-          nodeStartX = (e.clientX - rect.left) / scale;
-          nodeStartY = (e.clientY - rect.top) / scale;
-
-          window.addEventListener('mousemove', onNodeMove);
-          window.addEventListener('mouseup', onNodeUp);
-        });
-      });
-
-      function onNodeMove(e) {
-        if (!activeNode) return;
-        const worldRect = world.getBoundingClientRect();
-        const x = (e.clientX - worldRect.left) / scale - nodeStartX;
-        const y = (e.clientY - worldRect.top) / scale - nodeStartY;
-
-        activeNode.style.left = `${x}px`;
-        activeNode.style.top = `${y}px`;
-      }
-
-      function onNodeUp() {
-        activeNode = null;
-        window.removeEventListener('mousemove', onNodeMove);
-        window.removeEventListener('mouseup', onNodeUp);
-      }
-
-      // ----------------------------------------------------
-      // 3. LƯU & TẢI DỮ LIỆU LOCALSTORAGE
-      // ----------------------------------------------------
-      function saveData() {
-        // Lưu nội dung CMS
-        const config = {};
-        fields.forEach(f => {
-          const el = document.getElementById(f);
-          if (el) config[f] = el.value.trim();
-        });
-        localStorage.setItem(KEY_CONFIG, JSON.stringify(config));
-
-        // Lưu vị trí Tọa độ các Node trên Whiteboard
-        const positions = {};
-        document.querySelectorAll('.board-node').forEach(node => {
-          positions[node.id] = {
-            left: node.style.left,
-            top: node.style.top
-          };
-        });
-        localStorage.setItem(KEY_POS, JSON.stringify(positions));
-
-        // Hiện thông báo thành công
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
-      }
-
-      function loadData() {
-        // Tải nội dung text
-        try {
-          const config = JSON.parse(localStorage.getItem(KEY_CONFIG)) || {};
-          fields.forEach(f => {
-            const el = document.getElementById(f);
-            if (el && config[f] !== undefined) el.value = config[f];
-          });
-        } catch (e) {}
-
-        // Tải vị trí tọa độ các Node
-        try {
-          const positions = JSON.parse(localStorage.getItem(KEY_POS)) || {};
-          Object.keys(positions).forEach(id => {
-            const node = document.getElementById(id);
-            if (node && positions[id]) {
-              node.style.left = positions[id].left;
-              node.style.top = positions[id].top;
-            }
-          });
-        } catch (e) {}
-      }
-
-      // ----------------------------------------------------
-      // 4. SỰ KIỆN NÚT BẤM
-      // ----------------------------------------------------
-      document.getElementById('btnSave').addEventListener('click', saveData);
-
-      document.getElementById('btnOpenIndex').addEventListener('click', () => {
-        saveData();
-        window.location.href = 'index.html';
-      });
-
-      document.getElementById('btnResetPos').addEventListener('click', () => {
-        localStorage.removeItem(KEY_POS);
-        location.reload();
-      });
-
-      // Tải dữ liệu khi mở trang
-      loadData();
-    })();
-  </script>
-</body>
-</html>
+  footer: {
+    brand: "White<span class='accent'>Board</span>",
+    tagline: "Biến ý tưởng thành hiện thực trên mặt phẳng không giới hạn.",
+    cols: [
+      { title: "Sản phẩm", links: ["Tính năng", "Templates", "Bảng giá", "Cập nhật"] },
+      { title: "Giải pháp", links: ["Cho Designer", "Cho Giáo dục", "Cho Doanh nghiệp"] },
+      { title: "Hỗ trợ", links: ["Tài liệu", "Cộng đồng", "Liên hệ", "Bảo mật"] }
+    ],
+    bottom: {
+      left: "© 2026 WhiteBoard Inc. All rights reserved.",
+      right: "Designed for Creators"
+    }
+  }
+};
