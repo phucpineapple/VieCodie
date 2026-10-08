@@ -1,0 +1,34 @@
+{
+  "name": "DTR—Mart",
+  "shortName": "DTR",
+  "logo": {
+    "text": "DTR—Mart",
+    "accent": "Mart",
+    "icon": "◈"
+  },
+  "colors": {
+    "primary": "#c5ff3d",
+    "secondary": "#d4af37",
+    "bgDark": "#0a0a0f",
+    "bgCard": "#101018",
+    "textMain": "#e8e8e8",
+    "textDim": "#5a5a6a"
+  },
+  "fonts": {
+    "heading": "Space Grotesk, sans-serif",
+    "body": "Inter, sans-serif",
+    "mono": "JetBrains Mono, monospace"
+  },
+  "contact": {
+    "email": "contact@dtr-mart.example",
+    "phone": "+84 1900 xxxx",
+    "address": "Ho Chi Minh City, Vietnam"
+  },
+  "tagline": {
+    "vi": "Digital Tech Resolution. Thương mại không biên giới — từ Việt Nam ra thế giới.",
+    "en": "Digital Tech Resolution. Commerce without borders — from Vietnam to the world.",
+    "ja": "Digital Tech Resolution。国境なき商取引 — ベトナムから世界へ。",
+    "zh": "Digital Tech Resolution。无国界商业 — 从越南到世界。",
+    "ko": "Digital Tech Resolution. 국경 없는 상거래 — 베트남에서 세계로."
+  }
+}
