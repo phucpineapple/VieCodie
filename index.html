@@ -1,59 +1,434 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whiteboard Landing Page · Creative Workspace</title>
-  
-  <!-- FONTS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="DTR—Mart — Digital commerce platform connecting 50+ countries with 38,000+ digital products. Commerce without borders, powered by data.">
+  <title>DTR—Mart | Commerce Without Borders</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- MAIN STYLES -->
-  <link rel="stylesheet" href="./css/main.css">
+  <!-- Fonts: Clash Display + Satoshi (Fontshare) + Fraunces (Google) -->
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Import Maps cho Three.js -->
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Three.js Import Map -->
   <script type="importmap">
-  { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+    }
+  }
   </script>
-</head>
-<body>
 
-  <!-- LOADER -->
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◈</text></svg>">
+</head>
+<body class="no-cursor">
+
+  <!-- ===== LOADER ===== -->
   <div class="loader" id="loader">
-    <div class="loader-mark"><span>W</span></div>
+    <div class="loader-mark"><span>D</span></div>
     <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
-    <div class="loader-text">Đang chuẩn bị bảng vẽ... <span class="pct" id="loaderPct">0%</span></div>
+    <div class="loader-text">Đang tải · <span class="pct" id="loaderPct">0%</span></div>
   </div>
 
-  <!-- CURSOR -->
+  <!-- ===== CURSOR ===== -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-dot" id="cursorDot"></div>
 
-  <!-- BACKGROUND EFFECTS -->
+  <!-- ===== BG ===== -->
   <canvas id="particles"></canvas>
   <div class="bg-glow" id="bgGlow"></div>
-  <div class="bg-grid"></div>
+  <div class="bg-vignette"></div>
+  <div class="bg-noise"></div>
 
-  <!-- NAVIGATION -->
+  <!-- ===== GLOBE CANVAS (fixed fullscreen, behind content) ===== -->
+  <canvas id="scene"></canvas>
+  <div class="globe-tooltip" id="globeTooltip"></div>
+
+  <!-- ===== NAV ===== -->
   <nav class="nav" id="nav">
-    <a href="#" class="brand"><span class="logo">W</span>WhiteBoard</a>
-    <div class="links">
-      <a href="#platform">Tính năng</a>
-      <a href="#globe">Mạng lưới</a>
-      <a href="#journey">Lộ trình</a>
-      <a href="#mission">Sứ mệnh</a>
-      <a href="#support">Hỗ trợ</a>
+    <a href="#" class="nav-brand" data-brand-logo="text">DTR—<span class="accent">Mart</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#platform" data-i18n="nav.platform">Platform</a></li>
+      <li><a href="#network" data-i18n="nav.network">Network</a></li>
+      <li><a href="#journey" data-i18n="nav.journey">Journey</a></li>
+      <li><a href="#mission" data-i18n="nav.mission">Mission</a></li>
+      <li><a href="#skywatch" data-i18n="nav.support">Support</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <!-- Language Switcher -->
+      <div class="lang-switch">
+        <button class="lang-btn" aria-label="Language">
+          <span class="flag">🌐</span>
+          <span class="lang-code">EN</span>
+        </button>
+        <ul class="lang-menu">
+          <li><a href="?lang=vi" data-lang="vi">🇻🇳 Tiếng Việt</a></li>
+          <li><a href="?lang=en" data-lang="en">🇺🇸 English</a></li>
+          <li><a href="?lang=ja" data-lang="ja">🇯🇵 日本語</a></li>
+          <li><a href="?lang=zh" data-lang="zh">🇨🇳 简体中文</a></li>
+          <li><a href="?lang=ko" data-lang="ko">🇰🇷 한국어</a></li>
+        </ul>
+      </div>
+
+      <!-- Theme Toggle -->
+      <button class="theme-btn" aria-label="Toggle theme" data-i18n-aria="theme.toggle">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+
+      <button class="nav-btn nav-btn-cart" aria-label="Giỏ hàng" data-i18n-aria="nav.cart">
+        <svg class="nav-cart-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.5L21 8H6"/>
+          <circle cx="9" cy="20" r="1.5"/>
+          <circle cx="17" cy="20" r="1.5"/>
+        </svg>
+        <span class="nav-cart-text" data-i18n="nav.cart">Giỏ hàng</span>
+        <span class="nav-cart-badge" id="cartBadge">0</span>
+      </button>
     </div>
-    <a href="#cta" class="cta" data-magnetic>Dùng thử miễn phí →</a>
   </nav>
 
-  <!-- APP CONTAINER -->
-  <main id="app"></main>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="platform">
+    <div class="hero-bg-layer" id="heroBg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-meta">
+        <span class="chip"><span class="dot"></span> <span data-i18n="hero.meta.live">LIVE</span></span>
+        <span class="chip" data-i18n="hero.meta.countries">50+ Countries</span>
+        <span class="chip" data-i18n="hero.meta.partners">12K+ Partners</span>
+      </div>
+      <h1 class="hero-title">
+        <span data-i18n="hero.title.l1">Commerce</span>
+        <span class="it" data-i18n="hero.title.l2">without borders,</span>
+        <span class="outline" data-i18n="hero.title.l3">powered</span>
+        <span class="accent" data-i18n="hero.title.l4">by data.</span>
+      </h1>
+      <div class="hero-bottom">
+        <p class="hero-desc" data-i18n-html="hero.desc">
+          A digital commerce platform connecting <strong>50+ countries</strong> with over <strong>38,000 digital products</strong> in one seamless ecosystem. Transparent. Fast. Reliable.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" data-magnetic data-i18n="hero.btn1">Explore Platform <span class="arrow">→</span></button>
+          <button class="btn-secondary" data-i18n="hero.btn2">View Journey</button>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">SCROLL</div>
+  </section>
 
-  <!-- CONFIG & SCRIPTS -->
-  <script src="./js/config.js"></script>
-  <script type="module" src="./js/app.js"></script>
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span><strong>50</strong> <span data-i18n="marquee.countries">Countries</span></span>
+      <span class="sep">/</span>
+      <span><strong>38,000</strong> <span data-i18n="marquee.products">Digital Products</span></span>
+      <span class="sep">/</span>
+      <span><strong>12,000</strong> <span data-i18n="marquee.partners">Partners</span></span>
+      <span class="sep">/</span>
+      <span><strong>99.9%</strong> <span data-i18n="marquee.uptime">Uptime</span></span>
+      <span class="sep">/</span>
+      <span><strong>24/7</strong> <span data-i18n="marquee.support">Support</span></span>
+      <span class="sep">/</span>
+      <span><strong>8</strong> <span data-i18n="marquee.offices">Global Offices</span></span>
+      <span class="sep">/</span>
+    </div>
+  </div>
+
+  <!-- ===== INTRO ===== -->
+  <section class="intro-section reveal" id="manifesto">
+    <div class="section-header">
+      <div class="eyebrow"><span class="num">[ 01 ]</span><span data-i18n="intro.label">MANIFESTO</span></div>
+    </div>
+    <h2 data-i18n-html="intro.title" style="margin-bottom:32px">We build the <span class="it">infrastructure</span> for global commerce.</h2>
+    <p class="intro" data-split data-i18n-html="intro.text">Every transaction is a data point. Every partner is a <em>node</em>. DTR—Mart doesn't sell products — we build <em>infrastructure</em> for global commerce to flow seamlessly. Transparent. Fast. Borderless.</p>
+  </section>
+
+  <!-- ===== GLOBE STICKY (bố cục lấy từ source.html — canh giữa, đơn giản) ===== -->
+  <section class="globe-sticky-section" id="network">
+    <div class="globe-sticky-inner">
+      <div class="globe-bottom-content">
+        <div class="globe-title" id="globeTitle">
+          <h2 data-i18n-html="globe.title">Connecting <span class="it">global trade</span>.</h2>
+        </div>
+        <div class="globe-stats" id="globeStats">
+          <div class="globe-stat">
+            <div class="val" data-count="50" data-suffix="+">0<span class="u">+</span></div>
+            <div class="lbl" data-i18n="globe.stat1.label">Active Countries</div>
+          </div>
+          <div class="globe-stat">
+            <div class="val" data-count="38" data-suffix="K">0<span class="u">K</span></div>
+            <div class="lbl" data-i18n="globe.stat2.label">Digital Products</div>
+          </div>
+          <div class="globe-stat">
+            <div class="val" data-count="12" data-suffix="K">0<span class="u">K</span></div>
+            <div class="lbl" data-i18n="globe.stat3.label">Global Partners</div>
+          </div>
+          <div class="globe-stat">
+            <div class="val" data-count="99" data-suffix="%">0<span class="u">%</span></div>
+            <div class="lbl" data-i18n="globe.stat4.label">System Uptime</div>
+          </div>
+        </div>
+        <!-- Live user traffic pill -->
+        <div class="globe-live-traffic" id="liveTraffic">
+          <div class="live-dot"></div>
+          <span class="live-text"><strong id="liveUsers">12,847</strong> <span data-i18n="globe.live.users">users online</span> · <strong id="liveTxn">2,431</strong> <span data-i18n="globe.live.txn">txn/sec</span> · <strong id="liveCountries">47</strong> <span data-i18n="globe.live.countries">countries active</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JOURNEY ===== -->
+  <section class="journey-section reveal" id="journey">
+    <div class="journey-header">
+      <div class="eyebrow" data-i18n="journey.label">JOURNEY</div>
+      <h2 data-i18n-html="journey.title">
+        From <span class="it">2019</span> to now.
+      </h2>
+      <p class="journey-sub" data-i18n="journey.subtitle">Digital Tech Resolution · Since 2019</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-content">
+          <h3 data-i18n="journey.2019.title">Origin in Vietnam</h3>
+          <p data-i18n="journey.2019.desc">DTR Group was founded to bridge digital commerce between Vietnam and the global tech market. First office in Ho Chi Minh City.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2021</div>
+        <div class="timeline-content">
+          <h3 data-i18n="journey.2021.title">DTR—Mart Platform Launch</h3>
+          <p data-i18n="journey.2021.desc">Platform officially launched, offering games, movies and digital products from 20+ countries. Reached 1,000 suppliers.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-content">
+          <h3 data-i18n="journey.2023.title">Southeast Asia Expansion</h3>
+          <p data-i18n="journey.2023.desc">Serving customers in 30+ countries. Launched B2B electronics & industrial services. Singapore and Tokyo offices opened.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-content">
+          <h3 data-i18n="journey.2025.title">Global Breakthrough</h3>
+          <p data-i18n="journey.2025.desc">Network reached 50+ countries with 38,000 digital products and 12,000 partners. Smart logistics connected in real-time.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2026</div>
+        <div class="timeline-content">
+          <h3 data-i18n="journey.2026.title">The AI Era</h3>
+          <p data-i18n="journey.2026.desc">AI integrated into the entire supply chain. Personalized shopping experience and optimized operations for global partners.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MISSION ===== -->
+  <section class="mission-section reveal" id="mission">
+    <div class="section-header">
+      <div class="eyebrow"><span class="num">[ 04 ]</span><span data-i18n="mission.label">MISSION & VISION</span></div>
+    </div>
+    <h2 data-i18n-html="mission.title" style="margin-bottom:32px">The values <span class="it">we pursue</span>.</h2>
+
+    <div class="mission-grid">
+      <div class="mission-card big reveal tilt">
+        <div>
+          <div class="card-label" data-i18n="mission.big1.label">Live metrics</div>
+          <h3 data-i18n-html="mission.big1.h">Network <span class="it">operating</span> in real-time.</h3>
+          <p data-i18n="mission.big1.p">System tracks 12,847 transactions per second globally. Each transaction is a data point processed in &lt;200ms.</p>
+        </div>
+        <div>
+          <svg class="spark" viewBox="0 0 400 64" preserveAspectRatio="none">
+            <path d="M0 54 L40 44 L80 48 L120 32 L160 40 L200 22 L240 28 L280 14 L320 22 L360 8 L400 6"/>
+          </svg>
+          <div class="big-num">12,847<span class="u">/s</span></div>
+        </div>
+      </div>
+
+      <div class="mission-card mid reveal">
+        <div class="card-label" data-i18n="mission.countries.label">Active hubs</div>
+        <h3 data-i18n-html="mission.countries.h">5 distribution <span class="it">centers</span></h3>
+        <div class="mini-list">
+          <div class="mini-row"><span class="m-idx">01</span><span class="m-name" data-i18n="mission.countries.c1">Vietnam</span><span class="m-status hub">HUB</span></div>
+          <div class="mini-row"><span class="m-idx">02</span><span class="m-name" data-i18n="mission.countries.c2">Singapore</span><span class="m-status hub">HUB</span></div>
+          <div class="mini-row"><span class="m-idx">03</span><span class="m-name" data-i18n="mission.countries.c3">Tokyo</span><span class="m-status">ONLINE</span></div>
+          <div class="mini-row"><span class="m-idx">04</span><span class="m-name" data-i18n="mission.countries.c4">London</span><span class="m-status">ONLINE</span></div>
+          <div class="mini-row"><span class="m-idx">05</span><span class="m-name" data-i18n="mission.countries.c5">Berlin</span><span class="m-status">ONLINE</span></div>
+        </div>
+      </div>
+
+      <div class="mission-card mid reveal">
+        <div class="card-label" data-i18n="mission.latency.label">Global latency</div>
+        <h3 data-i18n="mission.latency.h">Average response</h3>
+        <div class="big-num" style="margin-top:24px">186<span class="u">ms</span></div>
+        <p style="margin-top:20px" data-i18n="mission.latency.p">North America · Europe · Asia</p>
+      </div>
+
+      <div class="mission-card small reveal">
+        <div class="card-label" data-i18n="mission.uptime.label">Uptime 90 days</div>
+        <div class="big-num">99.98<span class="u">%</span></div>
+      </div>
+
+      <div class="mission-card small reveal">
+        <div class="card-label" data-i18n="mission.txn.label">Transactions / month</div>
+        <div class="big-num">2.4<span class="u">M</span></div>
+      </div>
+
+      <div class="mission-card small reveal">
+        <div class="card-label" data-i18n="mission.tags.label">Categories</div>
+        <div class="tags">
+          <span class="tag">Gaming</span>
+          <span class="tag">Movies</span>
+          <span class="tag">Digital</span>
+          <span class="tag">B2B</span>
+          <span class="tag">Electronics</span>
+          <span class="tag">AI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKYWATCH LOGISTICS ===== -->
+  <section class="skywatch-section reveal" id="skywatch">
+    <div class="section-header">
+      <div class="eyebrow">SKYWATCH</div>
+      <h2 data-i18n-html="skywatch.title">Track <span class="it">your order</span>.</h2>
+      <p data-i18n="skywatch.subtitle">Enter your tracking ID to see real-time status. Your shipment data is protected — only you can see the details.</p>
+    </div>
+
+    <!-- Quick track CTA for returning customers -->
+    <a href="#trackInput" class="skywatch-quick" data-i18n="skywatch.track.quick">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3"/><circle cx="11" cy="11" r="7"/></svg>
+      <span>Tra cứu đơn hàng</span>
+      <span class="arrow">→</span>
+    </a>
+
+    <!-- Tracking Search -->
+    <div class="track-search">
+      <input type="text" id="trackInput" placeholder="Enter your tracking ID (e.g., DTR-TRK-9821-VN)" data-i18n-placeholder="skywatch.track.placeholder">
+      <button id="trackBtn" data-i18n="skywatch.track.btn">Track My Order</button>
+    </div>
+
+    <!-- Shipment status render here (only after user actively tracks their own ID) -->
+    <div id="skywatch-container"></div>
+
+    <!-- Privacy notice (no sandbox / no sample data exposed) -->
+    <div class="demo-notice">
+      <div class="demo-notice-icon">◈</div>
+      <p data-i18n="skywatch.privacy.note">Tracking details belong to the customer who holds the ID. We never display other shipments here. Need a live demo? <a href="demo.html">View the demo for judges →</a></p>
+    </div>
+  </section>
+
+  <!-- ===== SUPPORT ===== -->
+  <section class="support-section reveal">
+    <div class="section-header">
+      <div class="eyebrow" data-i18n="support.label">SUPPORT</div>
+      <h2 data-i18n-html="support.title">Support <span class="it">anytime, anywhere</span>.</h2>
+    </div>
+    <div class="support-grid">
+      <div class="support-card">
+        <h3 data-i18n="support.help.h">Help Center</h3>
+        <p data-i18n="support.help.p">Documentation, video tutorials and service guides.</p>
+      </div>
+      <div class="support-card">
+        <h3 data-i18n="support.chat.h">Live Chat 24/7</h3>
+        <p data-i18n="support.chat.p">Chat online with support staff anytime.</p>
+      </div>
+      <div class="support-card">
+        <h3 data-i18n="support.phone.h">Hotline</h3>
+        <p data-i18n="support.phone.p">Call 1900 xxxx — response team replies within 30 minutes.</p>
+      </div>
+      <div class="support-card">
+        <h3 data-i18n="support.track.h">Order Tracking</h3>
+        <p data-i18n="support.track.p">Track order status by tracking number.</p>
+      </div>
+      <div class="support-card">
+        <h3 data-i18n="support.warranty.h">1-for-1 Warranty</h3>
+        <p data-i18n="support.warranty.p">1-for-1 replacement warranty within 30 days for defective products.</p>
+      </div>
+      <div class="support-card">
+        <h3 data-i18n="support.faq.h">FAQ</h3>
+        <p data-i18n="support.faq.p">Answers about payments, orders and warranty.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section reveal">
+    <div class="cta-eyebrow" data-i18n="cta.eyebrow">Ready to join?</div>
+    <h2 data-i18n-html="cta.title">Start your <span class="it">journey</span>.</h2>
+    <a href="#" class="cta-big-btn" data-magnetic>
+      <span data-i18n="cta.btn">Sign Up Now</span>
+      <span class="arrow">→</span>
+    </a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand" data-brand-logo="text">DTR—<span class="accent">Mart</span></div>
+        <p class="footer-tagline" data-i18n="footer.tagline">Digital Tech Resolution. Commerce without borders — from Vietnam to the world.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.col1.title">Products</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.col1.l1">Games</a></li>
+          <li><a href="#" data-i18n="footer.col1.l2">Movies</a></li>
+          <li><a href="#" data-i18n="footer.col1.l3">Digital Products</a></li>
+          <li><a href="#" data-i18n="footer.col1.l4">Electronics & Industrial</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.col2.title">Company</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.col2.l1">About Us</a></li>
+          <li><a href="#" data-i18n="footer.col2.l2">Partners</a></li>
+          <li><a href="#" data-i18n="footer.col2.l3">Careers</a></li>
+          <li><a href="#" data-i18n="footer.col2.l4">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.col3.title">Support</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.col3.l1">Help Center</a></li>
+          <li><a href="#" data-i18n="footer.col3.l2">FAQ</a></li>
+          <li><a href="#" data-i18n="footer.col3.l3">Contact</a></li>
+          <li><a href="#" data-i18n="footer.col3.l4">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.bottom.left">© 2026 DTR—Mart · All rights reserved</span>
+      <span data-i18n="footer.bottom.right">Made in Vietnam · Since 2019</span>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script type="module" src="js/globe3d.js"></script>
+  <script src="js/assets-registry.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/extras.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/logistics.js"></script>
 </body>
 </html>
