@@ -1,0 +1,200 @@
+DTR WHITE LABEL — QA PREP (ôn vấn đáp)
+Web Design 2026 | White Label for Enterprises
+
+=== PHẦN 1: GIỚI THIỆU DỰ ÁN (30 giây) ===
+
+Đội [tên đội] — DTR White Label: một file index.html phục vụ 3 thương hiệu
+(DTR—Mart thương mại số toàn cầu, NovaCargo vận tải hàng không, Sakura Trade
+cầu nối Việt–Nhật) × 4 ngôn ngữ (VI/JA/KO/ZH), toàn bộ nội dung nằm trong
+JSON, không backend. Tagline: "Một landing, mọi thương hiệu — đổi brand bằng
+URL, không sửa code."
+
+=== PHẦN 2: DEMO FLOW 5 PHÚT ===
+
+0:00-0:30 — Mở index.html?brand=brand-1: giới thiệu DTR—Mart, chỉ hero + globe 3D.
+0:30-1:00 — Đổi URL ?brand=brand-2: toàn trang đổi màu cyan, chữ NovaCargo,
+  section Journey biến mất (meta.sections.journey=false). Nhấn mạnh: không sửa code.
+1:00-1:30 — Đổi ?lang=ja: cả trang sang tiếng Nhật, giải thích fallback vi.json.
+1:30-3:00 — Mở manager.html: sửa hero.title.1 tiếng Việt → Lưu → refresh landing
+  thấy chữ mới. Chỉ nút Khôi phục đọc từ data/_defaults/.
+3:00-4:00 — Mở docs/ALGORITHMS.md: chỉ vào thuật toán fallback merge + live-traffic
+  multiplier, gõ mã tracking DTR-TRL-9821-VN demo tra cứu.
+4:00-5:00 — Tóm tắt: 25 điểm white-label (JSON-driven), 20 điểm landing (giữ
+  nguyên visual), honesty (live-stats là mô phỏng, khai báo rõ).
+
+=== PHẦN 3: 25 CÂU HỎI BGK + TRẢ LỜI (≤100 từ/câu) ===
+
+1. White Label hoạt động thế nào?
+Dạ core.js đọc ?brand=&lang=, tải meta.json (màu, sections, media, links) rồi
+vi.json + <lang>.json (merge đè). applyMeta đổi CSS variables/ẩn section/gán
+ảnh, applyDict thay toàn bộ chữ. Cùng một index.html ra 3 brand × 4 ngôn ngữ.
+
+2. Đổi brand không sửa code — chứng minh?
+Dạ em đổi ?brand=brand-1 sang ?brand=brand-2 trên URL, trang đổi màu cyan,
+tên NovaCargo, mất section Journey. File duy nhất đọc là data/brand-2/meta.json
+và vi.json — code HTML/JS giữ nguyên, em mở Network tab cho BGK xem.
+
+3. Tại sao không dùng React/Vue?
+Dạ luật cấm framework, và bài này không cần: nội dung là JSON tĩnh, tương tác
+là patch DOM. Vanilla giữ trang nhẹ, deploy mọi host tĩnh, BGK đọc code là hiểu
+ngay, không cần toolchain.
+
+4. Tại sao không có backend?
+Dạ luật cấm backend/DB, và nhu cầu chỉ là phục vụ nội dung tĩnh theo brand.
+JSON qua fetch + localStorage (live counters) đủ. Không server nghĩa là không
+cold start, không chi phí, uptime bằng host tĩnh.
+
+5. Số liệu users online lấy từ đâu?
+Dạ mô phỏng phía client, em khai báo rõ: live-stats.json cho số gốc, nhân hệ số
+giờ hành chính theo giờ UTC, cộng nhiễu ngẫu nhiên và lưu localStorage theo ngày
+để refresh không reset. Cơ chế là thật, số liệu là minh họa.
+
+6. Tại sao không dùng Google Translate API?
+Dạ luật cấm API dịch, và API dịch làm vỡ layout (độ dài chữ) lại tốn quota.
+Mọi chuỗi nằm sẵn trong JSON do người viết, fallback vi.json khi thiếu key nên
+giao diện không bao giờ trắng chữ.
+
+7. AI làm gì trong dự án?
+Dạ AI viết code theo đặc tả của nhóm (core.js, tracker, manager, bản dịch
+nháp JA/KO/ZH), mọi phần gắn thẻ [AI-ASSISTED]. Ý tưởng, kiến trúc, nội dung
+tiếng Việt và quyết định rubric đều của người. Chi tiết trong AI_DECLARATION.md.
+
+8. Em tự làm gì?
+Dạ em thiết kế schema JSON, quy ước ?brand=&lang=, cơ chế fallback, visual gốc,
+nội dung tiếng Việt 3 brand, test 12 combo brand×lang, và duyệt/sửa mọi code AI
+viết. Phần nào em duyệt rồi em đổi thẻ thành [HUMAN].
+
+9. Files nào là files chính?
+Dạ core.js (lõi), index.html (vỏ), data/<brand>/meta.json (cấu hình),
+data/<brand>/<lang>.json (nội dung), manager.html (CMS), docs/ALGORITHMS.md
+(thuật toán). Sáu nhóm này là toàn bộ dự án.
+
+10. Nếu BGK chỉ vào 1 dòng code bất kỳ — em giải thích?
+Dạ em xin phép mở file đó và giải thích trực tiếp: mỗi khối đều có chú thích
+[HUMAN]/[AI-ASSISTED] nói rõ mục đích. Nếu là code AI mà em đã duyệt, em trình
+bày lại logic; nếu chưa nắm chắc, em nói rõ và mở docs liên quan.
+
+11. Tại sao dùng 4 ngôn ngữ không phải 5?
+Dạ thị trường mục tiêu là Việt–Nhật–Hàn–Trung theo 3 brand. Bỏ tiếng Anh giảm
+~150 key cần duy trì, vừa sức dịch của nhóm, và fallback vi.json vẫn đảm bảo
+không lỗi hiển thị.
+
+12. Tại sao bỏ tiếng Anh?
+Dạ quyết định của nhóm: tập trung vào thị trường châu Á nơi 3 brand hoạt động.
+Bỏ EN giảm gánh nặng dịch thuật mà vẫn giữ đủ điểm đa ngôn ngữ. Cấu trúc LANGS
+thêm EN lại chỉ cần 1 file en.json mỗi brand.
+
+13. Manager hoạt động ở đâu?
+Dạ chỉ chạy cục bộ qua Live Server, không deploy. Dùng File System Access API
+(Chromium) để ghi trực tiếp, trình duyệt khác thì tải file JSON về chép đè.
+BGK chấm tại máy demo nên không ảnh hưởng.
+
+14. Vercel deploy thế nào?
+Dạ đây là site tĩnh nên chỉ cần đẩy repo, Vercel tự phục vụ. Không biến môi
+trường, không build command. Lưu ý duy nhất: phải serve qua http(s) vì fetch
+JSON cấm file:// — Vercel mặc định đã là https.
+
+15. Fallback i18n là gì?
+Dạ dict = {...vi}, rồi chỉ đè key nào có giá trị thật trong file ngôn ngữ.
+Thiếu file thì dùng nguyên vi. Kết quả: không bao giờ có chuỗi rỗng, key chưa
+dịch hiện tiếng Việt để dễ phát hiện và bổ sung.
+
+16. Nếu thiếu 1 key trong ja.json thì sao?
+Dạ key đó hiện tiếng Việt, còn lại vẫn tiếng Nhật. Không lỗi, không trắng chữ.
+Manager hiển thị "TODO: ..." ở ô thiếu để người dịch tìm nhanh.
+
+17. _defaults/ dùng để làm gì?
+Dạ bản gốc pristine của mọi JSON. Nút Khôi phục trong manager đọc từ đó ghi đè
+lên data/, nên mọi thử nghiệm đều hoàn tác được. Thư mục này không sửa tay.
+
+18. Nút "Khôi phục" trong manager làm gì?
+Dạ có 2 nút: khôi phục brand đang sửa, và khôi phục tất cả brand — cả hai đều
+chép từ data/_defaults/ về data/. Hộp thoại confirm cảnh báo mất chỉnh sửa
+trước khi chạy.
+
+19. Em học được gì từ cuộc thi?
+Dạ ba điều: giấu độ phức tạp sau quy ước đơn giản (data-attributes + JSON),
+trung thực về giới hạn (mô phỏng thì ghi là mô phỏng), và tài liệu là tính năng
+(BGK chấm những gì đọc được trong docs/).
+
+20. Điểm mạnh/yếu của dự án?
+Dạ mạnh: white-label thật (25đ), visual giữ nguyên, honesty về AI/mô phỏng.
+Yếu: bản dịch JA/KO/ZH chưa qua người bản ngữ, số liệu demo chưa thật, manager
+chỉ ghi trực tiếp trên Chromium. Cả ba đều có trong roadmap.
+
+21. Nếu có thêm 1 tuần, em làm gì?
+Dạ nhờ người bản ngữ duyệt dịch, thay số liệu demo brand-2/3 bằng dữ liệu thật,
+thêm test tự động cho 12 combo brand×lang, và viết en.json để mở rộng thị trường.
+
+22. Tại sao dùng JSON không dùng database?
+Dạ luật cấm database, và dữ liệu là nội dung tĩnh đọc-nhiều-ghi-ít. JSON fetch
+qua CDN/host tĩnh là đủ nhanh, version bằng git, sửa bằng manager. DB sẽ thêm
+server, chi phí và điểm lỗi mà không thêm giá trị.
+
+23. Section toggle hoạt động thế nào?
+Dạ meta.sections.X=false thì core.js ẩn [data-section=X] và mọi link trỏ tới nó
+(nav, FAB, mobile nav) cùng lúc — một boolean, không còn link chết. Demo: NovaCargo
+tắt Journey, Sakura Trade tắt thêm Marquee.
+
+24. Tại sao tách tracking thành 2 tầng?
+Dạ landing cần nhẹ (điểm UX): tra cứu đơn giản input + card SVG tải ngay. Demo
+3D SkyWatch nặng để trang riêng mở tab mới. Trước đây nhúng iframe làm landing
+chậm và trùng state — tách ra mỗi tầng làm tốt một việc.
+
+25. Code này khác gì AI-generated?
+Dạ AI viết nháp nhưng kiến trúc, schema, quy ước và nội dung là của người; mọi
+khối gắn thẻ nguồn gốc; người duyệt và chịu trách nhiệm từng dòng (checklist
+trong AI_DECLARATION.md). BGK cứ chỉ dòng bất kỳ, em giải thích được.
+
+26. Why monolithic HTML vs Web Components?
+Dạ một file giữ mọi CSS selector/HTML structure nguyên vẹn theo luật "không đổi
+visual", BGK đọc một file là thấy hết. Web Components thêm shadow-DOM mà lợi ích
+tái sử dụng không cần vì chỉ có một landing. Đơn giản thắng.
+
+27. What is 2-tier i18n fallback?
+Dạ tầng 1: key thiếu/trống trong ja/ko/zh thì lấy từ vi.json. Tầng 2: thiếu cả
+file ngôn ngữ thì dùng nguyên vi.json. Hai tầng đảm bảo không bao giờ trắng chữ,
+được cài trong loadDict của core.js.
+
+28. How does manager work?
+Dạ manager.html đọc brands.json rồi tải meta + 4 file lang của brand đang chọn
+vào form 13 tab. Lưu chỉ bằng nút "Lưu thay đổi" qua File System Access API
+(Chromium) hoặc tải file về (trình duyệt khác). Có cờ isLoading chặn lưu khi
+đang tải, cảnh báo beforeunload khi chưa lưu, và khôi phục từ data/_defaults/.
+
+29. Are gradients AI slop?
+Dạ không — em đã audit toàn bộ: mọi gradient dùng biến thương hiệu --lime-rgb
+(glow, sheen, vignette) và đều có chú thích [HUMAN] ghi lý do giữ lại. Không có
+gradient tím-xanh template kiểu AI slop, không framework, không build tool.
+
+30. Why no Three.js for tracker?
+Dạ tracker landing chỉ cần tra cứu mã + hiện card — Three.js là thừa, nặng và
+làm chậm điểm UX. Three.js đã dùng đúng chỗ là globe 3D và demo SkyWatch riêng.
+Mỗi công nghệ làm việc nó giỏi nhất.
+
+=== PHẦN 4: ĐIỀU KHÔNG NÊN NÓI ===
+
+- "Em copy trên mạng" (nói: ý tưởng nhóm tự thiết kế, chi tiết trong DECISIONS.md)
+- "AI viết hết" (nói: AI viết theo đặc tả, người quyết định và duyệt — xem AI_DECLARATION.md)
+- "Em không hiểu đoạn này" (nói: "Dạ em xin phép mở docs để giải thích chi tiết")
+- "Em không test được" (nói kết quả test 12 combo cụ thể, hoặc nhận thiếu sót + roadmap)
+- "Em quên rồi" (nói: "Dạ em mở file để trả lời chính xác")
+
+=== PHẦN 5: ĐIỀU NÊN NÓI ===
+
+- "Dạ em xin phép mở docs để giải thích chi tiết"
+- "Ý tưởng này em tự nghĩ, AI chỉ hỗ trợ code" (+ chỉ thẻ [HUMAN]/[AI-ASSISTED])
+- "Em biết dự án còn X điểm yếu — đó là roadmap" (chủ động, trung thực)
+- "Đây là thuật toán em tâm đắc nhất — em xin demo" (dẫn BGK vào điểm mạnh)
+- "Dạ em hiểu rõ đoạn code này, BGK hỏi thêm không ạ?" (tự tin, mời hỏi sâu)
+
+=== PHẦN 6: FILES QUAN TRỌNG CẦN NHỚ ===
+
+- core.js — lõi white label (boot, fallback merge, applyMeta/applyDict)
+- data/<brand>/<lang>.json — toàn bộ nội dung 4 ngôn ngữ
+- data/<brand>/meta.json — theme + sections + media + links
+- data/<brand>/shipments.json + live-stats.json — dữ liệu tracker/counters
+- manager.html — CMS cục bộ (13 tab, restore từ _defaults/)
+- docs/ALGORITHMS.md — 4 thuật toán (fallback, live-sim, lookup, section-hide)
+- docs/DECISIONS.md — lý do từng quyết định thiết kế
+- docs/ARCHITECTURE.md — sơ đồ data flow
