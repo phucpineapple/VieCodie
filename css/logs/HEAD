@@ -1,6 +1,0 @@
-0000000000000000000000000000000000000000 99f82e9a332ad5ca5b3ae0dae5bbb571ce9f525c dev <dev@example.com> 1791614773 +0000	commit (initial): docs: thêm README và AI_DECLARATION
-99f82e9a332ad5ca5b3ae0dae5bbb571ce9f525c 0dbe8c041d9a3580e09dc6e3f9147299751e5c6f dev <dev@example.com> 1791614773 +0000	commit: feat(data): thêm 3 brand đủ 4 ngôn ngữ vi/ja/ko/zh
-0dbe8c041d9a3580e09dc6e3f9147299751e5c6f dcb8ace4d184cbff34982022db6bec41b3648114 dev <dev@example.com> 1791614773 +0000	commit: feat(core): đọc ?lang, fallback vi.json, theme/section/media/SEO
-dcb8ace4d184cbff34982022db6bec41b3648114 ba0f17230d894bfba54dadde8ae3971d8076abe6 dev <dev@example.com> 1791614773 +0000	commit: feat(skywatch): tích hợp SkyWatch thay tra cứu đơn hàng, đồng bộ style hệ thống
-ba0f17230d894bfba54dadde8ae3971d8076abe6 5d0932e0e9158ab945ca12c88175ee9cd9a41681 dev <dev@example.com> 1791614773 +0000	commit: feat(manager): liệt kê, hoán đổi, khôi phục mặc định, sửa JSON
-5d0932e0e9158ab945ca12c88175ee9cd9a41681 eedfaf8cd01c2e4426765f5b2806f7b092bb4966 dev <dev@example.com> 1791643478 +0700	commit: feat: complete Phase 1 white label - 3 brands, manager, tracker
