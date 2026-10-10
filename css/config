@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[user]
+	name = dev
+	email = dev@example.com
+[remote "origin"]
+	url = https://github.com/phucpineapple/VieCodie.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
