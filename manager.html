@@ -1,0 +1,1256 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Manager — DTR White Label</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0b0d12;--bg-2:#0e1118;--panel:#121620;--panel-2:#161b28;
+  --fg:#e8e6e0;--fg-soft:#a8a8b3;--fg-mute:#6b7280;
+  --lime:#c5ff3d;--red:#ff5f6d;--amber:#ffb03a;--green:#3ecf8e;--blue:#4fd1ff;
+  --line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);
+  --radius:10px;--radius-lg:14px;
+  --sans:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:13.5px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+input,textarea,select{font:inherit;color:inherit}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.2)}
+
+.app{display:grid;grid-template-columns:260px 1fr;height:100vh}
+
+/* SIDEBAR */
+.sidebar{background:var(--bg-2);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
+.sb-head{padding:16px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.sb-brand{display:flex;align-items:center;gap:10px}
+.sb-brand img{width:36px;height:36px;border-radius:8px;object-fit:cover;background:var(--panel);border:1px solid var(--line-2)}
+.sb-brand-txt{min-width:0;flex:1}
+.sb-brand-name{font-weight:600;font-size:13px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-brand-tag{font-family:var(--mono);font-size:9px;color:var(--fg-mute);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-picker{width:100%;padding:8px 10px;background:var(--panel);border:1px solid var(--line-2);border-radius:8px;font-size:12px}
+.brand-picker:focus{outline:none;border-color:var(--lime)}
+.sb-nav{flex:1;overflow-y:auto;padding:8px}
+.sb-group{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--fg-mute);padding:14px 12px 6px}
+.sb-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:var(--fg-soft);font-size:13px;cursor:pointer;margin-bottom:2px;transition:background .15s,color .15s}
+.sb-item:hover{background:rgba(255,255,255,.04);color:var(--fg)}
+.sb-item.active{background:rgba(197,255,61,.1);color:var(--lime)}
+.sb-item.active .sb-icon{color:var(--lime)}
+.sb-item.soon{cursor:not-allowed;opacity:.55}
+.sb-item.soon:hover{background:transparent;color:var(--fg-soft)}
+.sb-icon{width:16px;height:16px;display:grid;place-items:center;flex-shrink:0;font-size:11px;color:var(--fg-mute)}
+.sb-label{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge-soon{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:100px;background:rgba(255,176,58,.12);color:var(--amber);border:1px solid rgba(255,176,58,.3)}
+.sb-foot{padding:12px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.file-status{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-mute);padding:6px 10px;border-radius:6px;background:var(--panel);border:1px solid var(--line);text-align:center}
+.file-status.ok{color:var(--green);border-color:rgba(62,207,142,.3);background:rgba(62,207,142,.06)}
+.file-status.warn{color:var(--amber);border-color:rgba(255,176,58,.3);background:rgba(255,176,58,.06)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 14px;border-radius:8px;font-size:12.5px;font-weight:500;background:var(--panel);border:1px solid var(--line-2);color:var(--fg-soft);transition:background .15s,border-color .15s,color .15s;white-space:nowrap}
+.btn:hover{background:var(--panel-2);color:var(--fg);border-color:rgba(255,255,255,.2)}
+.btn-primary{background:var(--lime);color:#0b0d12;border-color:var(--lime);font-weight:600}
+.btn-primary:hover{background:#d4ff5c;border-color:#d4ff5c;color:#0b0d12}
+.btn-block{width:100%}
+.btn-sm{padding:5px 10px;font-size:11.5px}
+.btn-danger{border-color:rgba(255,95,109,.35);color:#ffb4b4}
+.btn-danger:hover{background:rgba(255,95,109,.1);color:#ffb4b4;border-color:#ff5f6d}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+.main{display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
+.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:16px 24px;border-bottom:1px solid var(--line);background:var(--bg-2)}
+.topbar h1{font-size:17px;font-weight:600;color:#fff;letter-spacing:-.01em;margin-bottom:2px}
+.topbar .sub{font-size:12px;color:var(--fg-mute)}
+.topbar-actions{display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+
+.tabs{display:flex;gap:2px;padding:0 24px;border-bottom:1px solid var(--line);background:var(--bg-2);overflow-x:auto}
+.tab{padding:10px 14px;font-size:12.5px;color:var(--fg-mute);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;display:flex;align-items:center;gap:6px;transition:color .15s,border-color .15s}
+.tab:hover{color:var(--fg)}
+.tab.active{color:var(--lime);border-bottom-color:var(--lime)}
+.tab .t-icon{font-size:11px;opacity:.7}
+
+.editor{flex:1;overflow-y:auto;padding:24px}
+.editor-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);padding:20px}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.card-title{font-size:14px;font-weight:600;color:#fff;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.card-title .num{font-family:var(--mono);font-size:10px;color:var(--fg-mute);letter-spacing:.14em}
+.card-sub{font-size:12px;color:var(--fg-mute);margin-top:2px}
+
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.field:last-child{margin-bottom:0}
+.field-label{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.field-label > span:first-child{font-size:12.5px;font-weight:500;color:var(--fg)}
+.field-label .hint{font-size:11px;color:var(--fg-mute);font-family:var(--mono);letter-spacing:.04em}
+
+.i18n-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:1100px){.i18n-grid{grid-template-columns:repeat(4,1fr)}}
+.i18n-cell{display:flex;flex-direction:column;gap:4px}
+.i18n-cell .flag{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-mute)}
+.i18n-cell .flag .f{font-size:12px;line-height:1}
+
+.inp,.ta{width:100%;padding:9px 11px;background:var(--bg-2);border:1px solid var(--line-2);border-radius:8px;color:var(--fg);font-size:12.5px;font-family:var(--sans);transition:border-color .15s,background .15s}
+.inp:focus,.ta:focus{outline:none;border-color:var(--lime);background:rgba(197,255,61,.03)}
+.inp::placeholder,.ta::placeholder{color:var(--fg-mute)}
+.ta{resize:vertical;min-height:60px;line-height:1.5}
+.inp.mono,.ta.mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em}
+
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.media-item{background:var(--bg-2);border:1px solid var(--line-2);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:10px}
+.media-item.hidden-item{opacity:.5}
+.media-thumb{width:100%;aspect-ratio:16/9;background:rgba(0,0,0,.4);border-radius:6px;display:grid;place-items:center;overflow:hidden;border:1px solid var(--line);position:relative}
+.media-thumb img{max-width:100%;max-height:100%;object-fit:contain}
+.media-thumb .placeholder{font-family:var(--mono);font-size:10px;color:var(--fg-mute);letter-spacing:.1em}
+.media-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.media-name{font-size:12px;font-weight:500;color:var(--fg)}
+.media-url{font-family:var(--mono);font-size:10.5px}
+
+.switch{position:relative;display:inline-block;width:34px;height:20px;flex-shrink:0}
+.switch input{opacity:0;width:0;height:0}
+.switch .slider{position:absolute;cursor:pointer;inset:0;background:rgba(255,255,255,.1);border-radius:20px;transition:.2s}
+.switch .slider::before{content:'';position:absolute;height:14px;width:14px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.2s}
+.switch input:checked + .slider{background:var(--lime)}
+.switch input:checked + .slider::before{transform:translateX(14px);background:#0b0d12}
+
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;background:var(--bg-2);border:1px solid var(--line);border-radius:8px;margin-bottom:8px}
+.toggle-row:last-child{margin-bottom:0}
+.toggle-row-txt{flex:1;min-width:0}
+.toggle-row-name{font-size:12.5px;font-weight:500;color:var(--fg)}
+.toggle-row-desc{font-size:11px;color:var(--fg-mute);margin-top:2px}
+
+.link-field{display:flex;gap:8px}
+.link-field .inp{flex:1}
+
+.coming-soon{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;gap:14px;color:var(--fg-soft)}
+.cs-icon{font-size:48px;opacity:.6}
+.coming-soon h2{font-size:20px;color:#fff;font-weight:600}
+.coming-soon p{font-size:13px;color:var(--fg-mute);max-width:420px;line-height:1.6}
+
+.toast-wrap{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{padding:10px 16px;background:var(--panel-2);border:1px solid var(--line-2);border-radius:8px;font-size:12.5px;color:var(--fg);min-width:200px;box-shadow:0 10px 30px rgba(0,0,0,.5);pointer-events:auto;animation:toastIn .25s cubic-bezier(.2,.8,.2,1)}
+.toast.ok{border-color:rgba(62,207,142,.4);color:#c4f5dd}
+.toast.warn{border-color:rgba(255,176,58,.4);color:#ffd998}
+.toast.err{border-color:rgba(255,95,109,.4);color:#ffc4c8}
+@keyframes toastIn{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;gap:14px;color:var(--fg-mute)}
+.empty-state .ico{font-size:44px;opacity:.5}
+.empty-state h2{font-size:16px;color:var(--fg);font-weight:500}
+
+@media(max-width:860px){
+  .app{grid-template-columns:1fr}
+  .sidebar{display:none}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sb-head">
+      <div class="sb-brand">
+        <img id="sbLogo" src="data:," alt="">
+        <div class="sb-brand-txt">
+          <div class="sb-brand-name" id="sbName">White Label</div>
+          <div class="sb-brand-tag" id="sbTag">Manager</div>
+        </div>
+      </div>
+      <select class="brand-picker" id="brandPicker"></select>
+    </div>
+
+    <nav class="sb-nav" id="sbNav">
+      <div class="sb-group">Cửa hàng</div>
+      <a class="sb-item soon" data-view="shop"><span class="sb-icon">◫</span><span class="sb-label">Nền tảng mua sắm</span><span class="badge-soon">Soon</span></a>
+      <a class="sb-item soon" data-view="products"><span class="sb-icon">▤</span><span class="sb-label">Sản phẩm</span><span class="badge-soon">Soon</span></a>
+      <a class="sb-item soon" data-view="orders"><span class="sb-icon">▦</span><span class="sb-label">Đơn hàng</span><span class="badge-soon">Soon</span></a>
+      <a class="sb-item soon" data-view="customers"><span class="sb-icon">◐</span><span class="sb-label">Khách hàng</span><span class="badge-soon">Soon</span></a>
+
+      <div class="sb-group">Giao diện</div>
+      <a class="sb-item active" data-view="landing"><span class="sb-icon">◆</span><span class="sb-label">Landing Page</span></a>
+      <a class="sb-item soon" data-view="theme"><span class="sb-icon">◑</span><span class="sb-label">Theme & Màu sắc</span><span class="badge-soon">Soon</span></a>
+      <a class="sb-item soon" data-view="pages"><span class="sb-icon">▣</span><span class="sb-label">Trang phụ</span><span class="badge-soon">Soon</span></a>
+
+      <div class="sb-group">Hệ thống</div>
+      <a class="sb-item soon" data-view="analytics"><span class="sb-icon">◈</span><span class="sb-label">Phân tích</span><span class="badge-soon">Soon</span></a>
+      <a class="sb-item soon" data-view="settings"><span class="sb-icon">⚙</span><span class="sb-label">Cài đặt</span><span class="badge-soon">Soon</span></a>
+    </nav>
+
+    <div class="sb-foot">
+      <div class="file-status" id="fileStatus">Chưa kết nối thư mục</div>
+      <button class="btn btn-block" id="btnPick">📂 Chọn thư mục dự án</button>
+      <button class="btn btn-block btn-sm" id="btnSwapBrands" disabled>⇄ Hoán đổi 2 brand</button>
+      <button class="btn btn-block btn-sm btn-danger" id="btnRestoreAll" disabled>↺ Khôi phục nguyên bản</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1 id="viewTitle">Landing Page</h1>
+        <p class="sub" id="viewSub">Chỉnh sửa nội dung, media, sections và liên kết</p>
+      </div>
+      <div class="topbar-actions">
+        <a href="#" target="_blank" rel="noopener" class="btn" id="previewLink">↗ Xem trước</a>
+        <button class="btn" id="btnReload">↻ Tải lại</button>
+        <button class="btn btn-danger" id="btnRestoreOne" disabled>↺ Khôi phục brand này</button>
+        <button class="btn btn-primary" id="btnSave">💾 Lưu thay đổi</button>
+      </div>
+    </header>
+
+    <div class="tabs" id="tabs"></div>
+    <div class="editor" id="editor"></div>
+  </main>
+</div>
+
+<div class="toast-wrap" id="toasts"></div>
+
+<script>
+/* ============================================================
+   Manager — DTR White Label
+   [HUMAN] Sidebar + tabs; 4 ô i18n VI/KO/JA/ZH; media URL;
+           toggle sections; link fields; hoán đổi 2 brand;
+           khôi phục nguyên bản.
+   [AI-ASSISTED: Claude] Toàn bộ cài đặt bên dưới.
+   ============================================================ */
+(() => {
+'use strict';
+
+const LANGS = ['vi', 'ko', 'ja', 'zh'];
+const LANG_META = {
+  vi: { flag: '🇻🇳', name: 'Tiếng Việt' },
+  ko: { flag: '🇰🇷', name: '한국어' },
+  ja: { flag: '🇯🇵', name: '日本語' },
+  zh: { flag: '🇨🇳', name: '中文' },
+};
+
+const $ = (id) => document.getElementById(id);
+const el = (tag, attrs = {}, ...children) => {
+  const e = document.createElement(tag);
+  for (const k in attrs) {
+    if (k === 'class') e.className = attrs[k];
+    else if (k === 'html') e.innerHTML = attrs[k];
+    else if (k.startsWith('on') && typeof attrs[k] === 'function') e.addEventListener(k.slice(2), attrs[k]);
+    else if (attrs[k] !== undefined && attrs[k] !== null) e.setAttribute(k, attrs[k]);
+  }
+  children.flat().forEach(c => c != null && e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c));
+  return e;
+};
+
+const state = {
+  root: null,
+  brands: [],
+  current: null,
+  vi: {}, ko: {}, ja: {}, zh: {},
+  meta: {},
+  dirty: false,
+  currentView: 'landing',
+  currentTab: 'general',
+  // [AI-ASSISTED: Claude] Phase 2A: loading guard — blocks save during fetch,
+  // _loadSeq lets a newer loadBrand() supersede a stale in-flight one.
+  isLoading: false,
+  _loadSeq: 0,
+};
+
+const FSA_OK = 'showDirectoryPicker' in window;
+
+/* ============ FILE I/O ============ */
+async function readText(path) {
+  if (state.root) {
+    const parts = path.split('/');
+    let dir = state.root;
+    for (let i = 0; i < parts.length - 1; i++) dir = await dir.getDirectoryHandle(parts[i]);
+    const fh = await dir.getFileHandle(parts[parts.length - 1]);
+    return (await fh.getFile()).text();
+  }
+  const r = await fetch(path, { cache: 'no-cache' });
+  if (!r.ok) throw new Error(path + ' → HTTP ' + r.status);
+  return r.text();
+}
+const readJSON = async (p) => JSON.parse(await readText(p));
+
+async function writeText(path, text) {
+  if (state.root) {
+    const parts = path.split('/');
+    let dir = state.root;
+    for (let i = 0; i < parts.length - 1; i++) dir = await dir.getDirectoryHandle(parts[i], { create: true });
+    const fh = await dir.getFileHandle(parts[parts.length - 1], { create: true });
+    const w = await fh.createWritable();
+    await w.write(text);
+    await w.close();
+    return;
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
+  a.download = path.replace(/\//g, '__');
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+const pretty = (o) => JSON.stringify(o, null, 2) + '\n';
+
+/* ============ TOAST ============ */
+function toast(msg, kind = '') {
+  const t = el('div', { class: 'toast ' + kind }, msg);
+  $('toasts').appendChild(t);
+  setTimeout(() => {
+    t.style.transition = 'opacity .3s,transform .3s';
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(20px)';
+    setTimeout(() => t.remove(), 300);
+  }, 2600);
+}
+
+/* ============ SCHEMA ============ */
+const SCHEMA = [
+  {
+    id: 'general', label: 'Chung', icon: '◈',
+    desc: 'Nhận diện thương hiệu, navigation, loader, SEO',
+    groups: [
+      {
+        label: 'Nhận diện',
+        type: 'i18n',
+        fields: [
+          { key: 'brand.name', label: 'Tên thương hiệu', placeholder: 'DTR—Mart' },
+          { key: 'brand.tag', label: 'Tagline / mô tả ngắn', placeholder: 'Digital Tech Resolution' },
+          { key: 'seo.title', label: 'Tiêu đề SEO (tab trình duyệt)' },
+          { key: 'seo.description', label: 'Mô tả SEO', rows: 2 },
+        ]
+      },
+      {
+        label: 'Loader',
+        type: 'i18n',
+        fields: [
+          { key: 'loader.text', label: 'Chữ "Đang tải"' },
+        ]
+      },
+      {
+        label: 'Navigation — Desktop',
+        type: 'i18n',
+        fields: [
+          { key: 'nav.platform', label: 'Nền tảng' },
+          { key: 'nav.journey', label: 'Hành trình' },
+          { key: 'nav.features', label: 'Dịch vụ' },
+          { key: 'nav.network', label: 'Mạng lưới' },
+          { key: 'nav.support', label: 'Hỗ trợ' },
+        ]
+      },
+      {
+        label: 'Navigation — Mobile',
+        type: 'i18n',
+        fields: [
+          { key: 'mnav.home', label: 'Home' },
+          { key: 'mnav.services', label: 'Dịch vụ' },
+          { key: 'mnav.network', label: 'Mạng' },
+          { key: 'mnav.track', label: 'Đơn hàng' },
+          { key: 'mnav.cart', label: 'Giỏ' },
+        ]
+      },
+      {
+        label: 'FAB Menu',
+        type: 'i18n',
+        fields: [
+          { key: 'fab.tag', label: 'Tag nhỏ' },
+          { key: 'fab.title', label: 'Tiêu đề' },
+          { key: 'fab.lang', label: 'Nhãn ngôn ngữ' },
+          { key: 'fab.nav.platform', label: 'Nền tảng' },
+          { key: 'fab.nav.journey', label: 'Hành trình' },
+          { key: 'fab.nav.features', label: 'Dịch vụ' },
+          { key: 'fab.nav.network', label: 'Mạng lưới' },
+          { key: 'fab.nav.support', label: 'Hỗ trợ' },
+          { key: 'fab.nav.partner', label: 'Đại lý' },
+          { key: 'fab.nav.partner.desc', label: 'Đại lý (mô tả)' },
+        ]
+      }
+    ]
+  },
+  {
+    id: 'media', label: 'Media', icon: '◫',
+    desc: 'Favicon, logo, ảnh loader, dashboard, 6 ảnh sản phẩm — nhập URL ảnh online',
+    groups: [
+      {
+        label: 'Logo & nhận diện',
+        type: 'media',
+        fields: [
+          { key: 'favicon', label: 'Favicon', desc: 'Hiển thị trên tab trình duyệt' },
+          { key: 'logo', label: 'Logo chính', desc: 'Dùng cho nav, footer, nút CTA' },
+          { key: 'loader', label: 'Ảnh Loader', desc: 'Logo xoay khi tải trang' },
+        ]
+      },
+      {
+        label: 'Màn hình chính (Hero)',
+        type: 'media-toggle',
+        fields: [
+          { key: 'dashboard', label: 'Dashboard chính', desc: 'Ảnh lớn căn giữa hero' },
+        ]
+      },
+      {
+        label: 'Sản phẩm quanh dashboard',
+        type: 'media-toggle',
+        fields: [
+          { key: 'product1', label: 'Sản phẩm 1' },
+          { key: 'product2', label: 'Sản phẩm 2' },
+          { key: 'product3', label: 'Sản phẩm 3' },
+          { key: 'product4', label: 'Sản phẩm 4' },
+          { key: 'product5', label: 'Sản phẩm 5' },
+          { key: 'product6', label: 'Sản phẩm 6' },
+        ]
+      }
+    ]
+  },
+  {
+    id: 'hero', label: 'Hero', icon: '◆',
+    desc: 'Phần mở đầu — tiêu đề, mô tả, CTA',
+    groups: [
+      {
+        type: 'i18n',
+        fields: [
+          { key: 'hero.live', label: 'Badge "Live"' },
+          { key: 'hero.countries', label: 'Badge "Countries"' },
+          { key: 'hero.partners', label: 'Badge "Partners"' },
+          { key: 'hero.title.1', label: 'Tiêu đề — dòng 1 (trắng)' },
+          { key: 'hero.title.2', label: 'Tiêu đề — dòng 2 (italic cream)' },
+          { key: 'hero.title.3', label: 'Tiêu đề — dòng 3 (outline)' },
+          { key: 'hero.title.4', label: 'Tiêu đề — dòng 4 (accent lime)' },
+          { key: 'hero.desc', label: 'Mô tả (cho phép HTML)', rows: 2 },
+          { key: 'hero.cta', label: 'Nhãn nút CTA chính' },
+        ]
+      }
+    ]
+  },
+  {
+    id: 'marquee', label: 'Marquee', icon: '▤',
+    desc: 'Dải chữ chạy ngang',
+    groups: [
+      {
+        type: 'i18n',
+        fields: [
+          { key: 'marquee.1', label: 'Mục 1' },
+          { key: 'marquee.2', label: 'Mục 2 (HTML)' },
+          { key: 'marquee.3', label: 'Mục 3 (HTML)' },
+          { key: 'marquee.4', label: 'Mục 4 (HTML)' },
+          { key: 'marquee.5', label: 'Mục 5 (HTML)' },
+          { key: 'marquee.6', label: 'Mục 6' },
+        ]
+      }
+    ]
+  },
+  {
+    id: 'brand', label: 'Brand Meaning', icon: '◉',
+    desc: 'Giải nghĩa chữ DTR',
+    groups: [
+      {
+        type: 'i18n',
+        fields: [
+          { key: 'brand.01.word', label: '01 — Tiêu đề (HTML)' },
+          { key: 'brand.01.desc', label: '01 — Mô tả', rows: 2 },
+          { key: 'brand.02.word', label: '02 — Tiêu đề' },
+          { key: 'brand.02.desc', label: '02 — Mô tả', rows: 2 },
+          { key: 'brand.03.word', label: '03 — Tiêu đề' },
+          { key: 'brand.03.desc', label: '03 — Mô tả', rows: 2 },
+        ]
+      }
+    ]
+  },
+  {
+    id: 'journey', label: 'Hành trình', icon: '◐',
+    desc: 'Timeline cột mốc doanh nghiệp',
+    groups: [
+      { label: 'Tiêu đề section', type: 'i18n', fields: [
+        { key: 'journey.tag', label: 'Tag' },
+        { key: 'journey.title', label: 'Tiêu đề (HTML)' },
+        { key: 'journey.sub', label: 'Mô tả', rows: 2 },
+      ]},
+      { label: 'Mốc 2018', type: 'i18n', fields: [
+        { key: 'tl.2018.tag', label: 'Tag' },
+        { key: 'tl.2018.title', label: 'Tiêu đề (HTML)' },
+        { key: 'tl.2018.desc', label: 'Mô tả', rows: 2 },
+      ]},
+      { label: 'Mốc 2020', type: 'i18n', fields: [
+        { key: 'tl.2020.tag', label: 'Tag' },
+        { key: 'tl.2020.title', label: 'Tiêu đề' },
+        { key: 'tl.2020.desc', label: 'Mô tả', rows: 2 },
+      ]},
+      { label: 'Mốc 2022', type: 'i18n', fields: [
+        { key: 'tl.2022.tag', label: 'Tag' },
+        { key: 'tl.2022.title', label: 'Tiêu đề' },
+        { key: 'tl.2022.desc', label: 'Mô tả', rows: 2 },
+      ]},
+      { label: 'Mốc 2024', type: 'i18n', fields: [
+        { key: 'tl.2024.tag', label: 'Tag' },
+        { key: 'tl.2024.title', label: 'Tiêu đề' },
+        { key: 'tl.2024.desc', label: 'Mô tả', rows: 2 },
+      ]},
+      { label: 'Mốc 2026', type: 'i18n', fields: [
+        { key: 'tl.2026.tag', label: 'Tag' },
+        { key: 'tl.2026.title', label: 'Tiêu đề' },
+        { key: 'tl.2026.desc', label: 'Mô tả', rows: 2 },
+      ]},
+    ]
+  },
+  {
+    id: 'features', label: 'Dịch vụ', icon: '▦',
+    desc: '6 dịch vụ nổi bật',
+    groups: [
+      { label: 'Tiêu đề section', type: 'i18n', fields: [
+        { key: 'features.tag', label: 'Tag' },
+        { key: 'features.title', label: 'Tiêu đề (HTML)' },
+        { key: 'features.sub', label: 'Mô tả', rows: 2 },
+      ]},
+      ...Array.from({ length: 6 }, (_, i) => ({
+        label: `Dịch vụ ${i + 1}`,
+        type: 'i18n',
+        fields: [
+          { key: `features.f${i + 1}.title`, label: `Tiêu đề ${i + 1}` },
+          { key: `features.f${i + 1}.desc`, label: `Mô tả ${i + 1}`, rows: 2 },
+        ]
+      }))
+    ]
+  },
+  {
+    id: 'cta', label: 'CTA', icon: '◇',
+    desc: 'Dải kêu gọi hành động',
+    groups: [
+      { type: 'i18n', fields: [
+        { key: 'cta.title', label: 'Tiêu đề (HTML)' },
+        { key: 'cta.sub', label: 'Mô tả', rows: 2 },
+        { key: 'cta.btn1', label: 'Nút 1' },
+        { key: 'cta.btn2', label: 'Nút 2' },
+      ]}
+    ]
+  },
+  {
+    id: 'globe', label: 'Địa cầu', icon: '◍',
+    desc: 'Globe 3D — bật/tắt và chỉnh nội dung',
+    groups: [
+      { label: 'Nội dung', type: 'i18n', fields: [
+        { key: 'globe.title', label: 'Tiêu đề (HTML)' },
+        { key: 'globe.stat.countries', label: 'Stat — Quốc gia' },
+        { key: 'globe.stat.products', label: 'Stat — Sản phẩm' },
+        { key: 'globe.stat.partners', label: 'Stat — Đối tác' },
+        { key: 'globe.stat.uptime', label: 'Stat — Uptime' },
+        { key: 'live.users', label: 'Live — users' },
+        { key: 'live.txn', label: 'Live — transactions' },
+        { key: 'live.countries', label: 'Live — countries' },
+      ]},
+      { label: 'Liên kết', type: 'link', fields: [
+        { key: 'globeLearnMore', label: 'Link nút "Tìm hiểu thêm"', placeholder: 'https://…' },
+      ]}
+    ]
+  },
+  {
+    id: 'skywatch', label: 'Tra cứu', icon: '◒',
+    desc: 'Phần tra cứu đơn hàng',
+    groups: [
+      { type: 'i18n', fields: [
+        { key: 'skywatch.title', label: 'Tiêu đề (HTML)' },
+        { key: 'skywatch.subtitle', label: 'Mô tả', rows: 2 },
+        { key: 'skywatch.placeholder', label: 'Placeholder ô nhập' },
+        { key: 'skywatch.btn', label: 'Nhãn nút tra cứu' },
+        { key: 'skywatch.empty', label: 'Thông báo rỗng', rows: 2 },
+        { key: 'skywatch.noresult', label: 'Không tìm thấy', rows: 2 },
+        { key: 'skywatch.hint', label: 'Gợi ý định dạng', rows: 2 },
+        { key: 'track.liveBtn', label: 'CTA live — tiêu đề nút' },
+        { key: 'track.liveDesc', label: 'CTA live — mô tả' },
+        { key: 'ship.departed', label: 'Trạng thái: Khởi hành' },
+        { key: 'ship.in_transit', label: 'Trạng thái: Đang vận chuyển' },
+        { key: 'ship.customs', label: 'Trạng thái: Hải quan' },
+        { key: 'ship.eco_corridor', label: 'Trạng thái: Hành lang sinh thái' },
+        { key: 'ship.arrived', label: 'Trạng thái: Đã đến' },
+        { key: 'ship.delivered', label: 'Trạng thái: Đã giao' },
+        { key: 'ship.fleet.skyfreight', label: 'Đội bay: SkyFreight' },
+        { key: 'ship.cargo.electronics', label: 'Hàng: Điện tử' },
+        { key: 'ship.cargo.pharma', label: 'Hàng: Dược phẩm' },
+        { key: 'ship.airport.HAN', label: 'Sân bay: HAN' },
+        { key: 'ship.airport.SIN', label: 'Sân bay: SIN' },
+        { key: 'ship.airport.NRT', label: 'Sân bay: NRT' },
+        { key: 'ship.region.SCS', label: 'Vùng: Biển Đông' },
+        { key: 'ship.region.SEA_ECO', label: 'Vùng: Hành lang ĐNA' },
+        { key: 'ship.region.GOT', label: 'Vùng: Vịnh Thái Lan' },
+        { key: 'ship.region.PAC_ECO', label: 'Vùng: Hành lang TBD' },
+        { key: 'ship.note.loaded_ontime', label: 'Ghi chú: bốc hàng', rows: 2 },
+        { key: 'ship.note.fl380_normal', label: 'Ghi chú: FL380', rows: 2 },
+        { key: 'ship.note.eco_route_42', label: 'Ghi chú: eco −42%', rows: 2 },
+        { key: 'ship.note.approach_sin', label: 'Ghi chú: tới SIN', rows: 2 },
+        { key: 'ship.note.temp_verified', label: 'Ghi chú: nhiệt độ', rows: 2 },
+        { key: 'ship.note.eco_route_pac', label: 'Ghi chú: eco TBD', rows: 2 },
+        { key: 'ship.note.docs_verified', label: 'Ghi chú: chứng từ', rows: 2 },
+      ]}
+    ]
+  },
+  {
+    id: 'faq', label: 'FAQ', icon: '❔',
+    desc: 'Câu hỏi thường gặp — 8 mục accordion',
+    groups: [
+      { label: 'Tiêu đề section', type: 'i18n', fields: [
+        { key: 'faq.title', label: 'Tiêu đề (HTML)' },
+        { key: 'faq.sub', label: 'Mô tả', rows: 2 },
+      ]},
+      { label: 'Câu 1 — Giá cả', type: 'i18n', fields: [
+        { key: 'faq.q1', label: 'Câu hỏi' },
+        { key: 'faq.a1', label: 'Trả lời', rows: 2 },
+      ]},
+      { label: 'Câu 2 — Thời gian triển khai', type: 'i18n', fields: [
+        { key: 'faq.q2', label: 'Câu hỏi' },
+        { key: 'faq.a2', label: 'Trả lời', rows: 2 },
+      ]},
+      { label: 'Câu 3 — Bảo mật', type: 'i18n', fields: [
+        { key: 'faq.q3', label: 'Câu hỏi' },
+        { key: 'faq.a3', label: 'Trả lời', rows: 2 },
+      ]},
+      { label: 'Câu 4 — API', type: 'i18n', fields: [
+        { key: 'faq.q4', label: 'Câu hỏi' },
+        { key: 'faq.a4', label: 'Trả lời', rows: 2 },
+      ]},
+      { label: 'Câu 5 — Hỗ trợ', type: 'i18n', fields: [
+        { key: 'faq.q5', label: 'Câu hỏi' },
+        { key: 'faq.a5', label: 'Trả lời', rows: 2 },
+      ]},
+      { label: 'Câu 6 — Huỷ dịch vụ', type: 'i18n', fields: [
+        { key: 'faq.q6', label: 'Câu hỏi' },
+        { key: 'faq.a6', label: 'Trả lời', rows: 2 },
+      ]},
+      { label: 'Câu 7 — Tích hợp', type: 'i18n', fields: [
+        { key: 'faq.q7', label: 'Câu hỏi' },
+        { key: 'faq.a7', label: 'Trả lời', rows: 2 },
+      ]},
+      { label: 'Câu 8 — Sở hữu dữ liệu', type: 'i18n', fields: [
+        { key: 'faq.q8', label: 'Câu hỏi' },
+        { key: 'faq.a8', label: 'Trả lời', rows: 2 },
+      ]},
+    ]
+  },
+  {
+    id: 'partner', label: 'Đại lý', icon: '◓',
+    desc: 'Card "Trở thành đại lý" — bật/tắt + nội dung + link',
+    groups: [
+      { label: 'Nội dung', type: 'i18n', fields: [
+        { key: 'partner.eyebrow', label: 'Eyebrow' },
+        { key: 'partner.title', label: 'Tiêu đề (HTML)', rows: 2 },
+        { key: 'partner.desc', label: 'Mô tả', rows: 3 },
+        { key: 'partner.btn', label: 'Nút chính' },
+        { key: 'partner.btn2', label: 'Nút phụ "Tìm hiểu thêm"' },
+        { key: 'partner.note', label: 'Dòng chú thích nhỏ' },
+      ]},
+      { label: 'Liên kết', type: 'link', fields: [
+        { key: 'partnerLearnMore', label: 'Link nút "Tìm hiểu thêm"', placeholder: 'https://…' },
+      ]}
+    ]
+  },
+  {
+    id: 'footer', label: 'Footer', icon: '▣',
+    desc: 'Chân trang, cột link, bản tin',
+    groups: [
+      { type: 'i18n', fields: [
+        { key: 'footer.desc', label: 'Mô tả thương hiệu', rows: 2 },
+        { key: 'footer.col.platform', label: 'Cột: Platform' },
+        { key: 'footer.col.company', label: 'Cột: Company' },
+        { key: 'footer.col.support', label: 'Cột: Support' },
+        { key: 'footer.col.newsletter', label: 'Cột: Newsletter' },
+        { key: 'footer.link.features', label: 'Link — Features' },
+        { key: 'footer.link.network', label: 'Link — Network' },
+        { key: 'footer.link.track', label: 'Link — Track' },
+        { key: 'footer.link.api', label: 'Link — API' },
+        { key: 'footer.link.pricing', label: 'Link — Pricing' },
+        { key: 'footer.link.about', label: 'Link — About' },
+        { key: 'footer.link.journey', label: 'Link — Journey' },
+        { key: 'footer.link.partner', label: 'Link — Partner' },
+        { key: 'footer.link.careers', label: 'Link — Careers' },
+        { key: 'footer.link.contact', label: 'Link — Contact' },
+        { key: 'footer.link.help', label: 'Link — Help' },
+        { key: 'footer.link.docs', label: 'Link — Docs' },
+        { key: 'footer.link.status', label: 'Link — Status' },
+        { key: 'footer.link.security', label: 'Link — Security' },
+        { key: 'footer.link.privacy', label: 'Link — Privacy' },
+        { key: 'footer.news.desc', label: 'Bản tin — Mô tả', rows: 2 },
+        { key: 'footer.news.placeholder', label: 'Bản tin — Placeholder' },
+        { key: 'footer.news.btn', label: 'Bản tin — Nhãn nút' },
+        { key: 'footer.copy', label: 'Dòng copyright' },
+        { key: 'footer.legal.terms', label: 'Legal — Terms' },
+        { key: 'footer.legal.privacy', label: 'Legal — Privacy' },
+        { key: 'footer.legal.cookies', label: 'Legal — Cookies' },
+        { key: 'footer.legal.sitemap', label: 'Legal — Sitemap' },
+        { key: 'footer.status.badge', label: 'Badge trạng thái' },
+      ]}
+    ]
+  },
+  {
+    id: 'sections', label: 'Sections', icon: '⊞',
+    desc: 'Bật/tắt từng section trên landing page',
+    groups: [
+      { label: 'Hiển thị sections', type: 'sections', fields: [
+        { key: 'hero', label: 'Hero — phần mở đầu' },
+        { key: 'marquee', label: 'Marquee — dải chữ chạy' },
+        { key: 'brand', label: 'Brand Meaning — giải nghĩa DTR' },
+        { key: 'journey', label: 'Hành trình — timeline' },
+        { key: 'features', label: 'Dịch vụ nổi bật' },
+        { key: 'cta', label: 'CTA strip' },
+        { key: 'globe', label: 'Địa cầu 3D' },
+        { key: 'skywatch', label: 'Tra cứu đơn hàng' },
+        { key: 'faq', label: 'FAQ — câu hỏi thường gặp' },
+        { key: 'partner', label: 'Trở thành đại lý' },
+      ]}
+    ]
+  }
+];
+
+/* ============ HELPERS ============ */
+function setDeep(obj, path, value) {
+  // [AI-ASSISTED: Claude] Hotfix: lang files use FLAT keys ("brand.name").
+  // Keep flat shape when present (or obj fresh/empty); nested only for
+  // genuinely nested targets. Old code always nested -> corrupted files on save.
+  if (!obj || typeof obj !== 'object') return;
+  if (Object.prototype.hasOwnProperty.call(obj, path) ||
+      Object.keys(obj).length === 0 ||
+      Object.keys(obj).some(k => k.indexOf('.') !== -1)) {
+    obj[path] = value;
+    return;
+  }
+  const keys = path.split('.');
+  let cur = obj;
+  for (let i = 0; i < keys.length - 1; i++) {
+    if (!cur[keys[i]] || typeof cur[keys[i]] !== 'object') cur[keys[i]] = {};
+    cur = cur[keys[i]];
+  }
+  cur[keys[keys.length - 1]] = value;
+}
+function getDeep(obj, path) {
+  // [AI-ASSISTED: Claude] Hotfix: try the flat key first ("brand.name" exists
+  // literally in JSON); nested traversal only as fallback. Old code split on
+  // '.' unconditionally -> undefined for every key -> inputs never repainted.
+  if (obj == null || typeof obj !== 'object') return undefined;
+  if (Object.prototype.hasOwnProperty.call(obj, path)) return obj[path];
+  const keys = path.split('.');
+  let cur = obj;
+  for (const k of keys) {
+    if (cur == null || typeof cur !== 'object') return undefined;
+    cur = cur[k];
+  }
+  return cur;
+}
+
+/* ============ RENDER ============ */
+function renderSidebar() {
+  const picker = $('brandPicker');
+  picker.innerHTML = '';
+  state.brands.forEach(b => {
+    const opt = el('option', { value: b.id }, `${b.label || b.id} · ${b.id}`);
+    if (state.current && state.current.id === b.id) opt.selected = true;
+    picker.appendChild(opt);
+  });
+  picker.disabled = !state.brands.length;
+}
+
+function renderTabs() {
+  const tabs = $('tabs');
+  tabs.innerHTML = '';
+  SCHEMA.forEach(s => {
+    // [AI-ASSISTED: Claude] Phase 2A: tabs ONLY switch panels — never auto-save.
+    // Save happens exclusively via the "Lưu thay đổi" button (saveAll).
+    const t = el('div', {
+      class: 'tab' + (state.currentTab === s.id ? ' active' : ''),
+      onclick: () => { state.currentTab = s.id; renderTabs(); renderEditor(); }
+    }, el('span', { class: 't-icon' }, s.icon), s.label);
+    tabs.appendChild(t);
+  });
+}
+
+function renderEditor() {
+  const editor = $('editor');
+  if (!state.current) {
+    editor.innerHTML = `<div class="empty-state">
+      <div class="ico">📂</div>
+      <h2>Chưa chọn thương hiệu</h2>
+      <p>Bấm "Chọn thư mục dự án" ở sidebar để bắt đầu.</p>
+    </div>`;
+    return;
+  }
+  const section = SCHEMA.find(s => s.id === state.currentTab);
+  if (!section) return;
+
+  editor.innerHTML = '';
+  const inner = el('div', { class: 'editor-inner' });
+
+  if (section.desc) {
+    inner.appendChild(el('div', { class: 'card-sub', style: 'padding:0 4px' }, section.desc));
+  }
+
+  section.groups.forEach((g, gi) => {
+    const card = el('div', { class: 'card' });
+    const head = el('div', { class: 'card-head' });
+    head.appendChild(el('div', { class: 'card-title' },
+      el('span', { class: 'num' }, String(gi + 1).padStart(2, '0')),
+      g.label || 'Nội dung'
+    ));
+    card.appendChild(head);
+
+    if (g.type === 'i18n') {
+      g.fields.forEach(f => card.appendChild(renderI18nField(f)));
+    } else if (g.type === 'media') {
+      const grid = el('div', { class: 'media-grid' });
+      g.fields.forEach(f => grid.appendChild(renderMediaField(f, false)));
+      card.appendChild(grid);
+    } else if (g.type === 'media-toggle') {
+      const grid = el('div', { class: 'media-grid' });
+      g.fields.forEach(f => grid.appendChild(renderMediaField(f, true)));
+      card.appendChild(grid);
+    } else if (g.type === 'link') {
+      g.fields.forEach(f => card.appendChild(renderLinkField(f)));
+    } else if (g.type === 'sections') {
+      g.fields.forEach(f => card.appendChild(renderSectionToggle(f)));
+    }
+
+    inner.appendChild(card);
+  });
+
+  editor.appendChild(inner);
+}
+
+function renderI18nField(f) {
+  const wrap = el('div', { class: 'field' });
+  wrap.appendChild(el('div', { class: 'field-label' },
+    el('span', null, f.label),
+    f.key.startsWith('seo.') ? el('span', { class: 'hint' }, 'SEO') : null
+  ));
+
+  const grid = el('div', { class: 'i18n-grid' });
+  LANGS.forEach(lang => {
+    const cell = el('div', { class: 'i18n-cell' });
+    cell.appendChild(el('div', { class: 'flag' },
+      el('span', { class: 'f' }, LANG_META[lang].flag),
+      LANG_META[lang].name
+    ));
+    const val = getDeep(state[lang], f.key);
+    const isTextarea = f.rows && f.rows > 1;
+    if (isTextarea) {
+      const ta = el('textarea', {
+        class: 'ta', rows: f.rows,
+        placeholder: f.placeholder || '',
+        'data-key': f.key, 'data-lang': lang
+      });
+      ta.value = val != null ? String(val) : '';
+      cell.appendChild(ta);
+    } else {
+      const inp = el('input', {
+        class: 'inp', type: 'text',
+        placeholder: f.placeholder || '',
+        'data-key': f.key, 'data-lang': lang
+      });
+      inp.value = val != null ? String(val) : '';
+      cell.appendChild(inp);
+    }
+    grid.appendChild(cell);
+  });
+  wrap.appendChild(grid);
+  return wrap;
+}
+
+function renderMediaField(f, withToggle) {
+  const url = (state.meta.media || {})[f.key] || '';
+  const hiddenList = state.meta.hiddenMedia || [];
+  const hidden = hiddenList.includes(f.key);
+
+  const item = el('div', { class: 'media-item' + (hidden ? ' hidden-item' : '') });
+
+  const thumb = el('div', { class: 'media-thumb' });
+  if (url) thumb.innerHTML = `<img src="${url.replace(/"/g, '&quot;')}" alt="" onerror="this.parentElement.innerHTML='<span class=placeholder>LOAD ERROR</span>'">`;
+  else thumb.innerHTML = `<span class="placeholder">NO IMAGE</span>`;
+  item.appendChild(thumb);
+
+  const head = el('div', { class: 'media-head' });
+  head.appendChild(el('span', { class: 'media-name' }, f.label));
+  if (withToggle) {
+    const sw = el('label', { class: 'switch' });
+    const chk = el('input', { type: 'checkbox', 'data-media-toggle': f.key });
+    chk.checked = !hidden;
+    chk.addEventListener('change', () => {
+      const list = state.meta.hiddenMedia || [];
+      if (chk.checked) {
+        state.meta.hiddenMedia = list.filter(x => x !== f.key);
+      } else {
+        if (!list.includes(f.key)) list.push(f.key);
+        state.meta.hiddenMedia = list;
+      }
+      state.dirty = true;
+    });
+    sw.appendChild(chk);
+    sw.appendChild(el('span', { class: 'slider' }));
+    head.appendChild(sw);
+  }
+  item.appendChild(head);
+
+  if (f.desc) item.appendChild(el('div', { class: 'card-sub', style: 'font-size:11px;color:var(--fg-mute)' }, f.desc));
+
+  const inp = el('input', {
+    class: 'inp media-url', type: 'url',
+    placeholder: 'https://…', 'data-media-key': f.key
+  });
+  inp.value = url;
+  inp.addEventListener('input', () => {
+    state.meta.media = state.meta.media || {};
+    state.meta.media[f.key] = inp.value;
+    state.dirty = true;
+    const img = thumb.querySelector('img');
+    if (inp.value) {
+      if (img) img.src = inp.value;
+      else thumb.innerHTML = `<img src="${inp.value.replace(/"/g, '&quot;')}" alt="" onerror="this.parentElement.innerHTML='<span class=placeholder>LOAD ERROR</span>'">`;
+    } else thumb.innerHTML = `<span class="placeholder">NO IMAGE</span>`;
+  });
+  item.appendChild(inp);
+  return item;
+}
+
+function renderLinkField(f) {
+  const wrap = el('div', { class: 'field' });
+  wrap.appendChild(el('div', { class: 'field-label' }, el('span', null, f.label)));
+  const row = el('div', { class: 'link-field' });
+  const inp = el('input', {
+    class: 'inp mono', type: 'url',
+    placeholder: f.placeholder || 'https://…',
+    'data-link-key': f.key
+  });
+  inp.value = (state.meta.links || {})[f.key] || '';
+  inp.addEventListener('input', () => {
+    state.meta.links = state.meta.links || {};
+    state.meta.links[f.key] = inp.value;
+    state.dirty = true;
+  });
+  row.appendChild(inp);
+  wrap.appendChild(row);
+  return wrap;
+}
+
+function renderSectionToggle(f) {
+  const enabled = (state.meta.sections || {})[f.key] !== false;
+  const row = el('div', { class: 'toggle-row' });
+  const txt = el('div', { class: 'toggle-row-txt' });
+  txt.appendChild(el('div', { class: 'toggle-row-name' }, f.label));
+  txt.appendChild(el('div', { class: 'toggle-row-desc' }, enabled ? 'Đang hiển thị' : 'Đã ẩn'));
+  row.appendChild(txt);
+  const sw = el('label', { class: 'switch' });
+  const chk = el('input', { type: 'checkbox', 'data-section-toggle': f.key });
+  chk.checked = enabled;
+  chk.addEventListener('change', () => {
+    state.meta.sections = state.meta.sections || {};
+    state.meta.sections[f.key] = chk.checked;
+    txt.querySelector('.toggle-row-desc').textContent = chk.checked ? 'Đang hiển thị' : 'Đã ẩn';
+    state.dirty = true;
+  });
+  sw.appendChild(chk);
+  sw.appendChild(el('span', { class: 'slider' }));
+  row.appendChild(sw);
+  return row;
+}
+
+/* ============ COLLECT ============ */
+function collectFormIntoState() {
+  document.querySelectorAll('[data-key][data-lang]').forEach(inp => {
+    const lang = inp.dataset.lang;
+    const key = inp.dataset.key;
+    if (!LANGS.includes(lang)) return;
+    setDeep(state[lang], key, inp.value);
+  });
+  document.querySelectorAll('[data-media-key]').forEach(inp => {
+    state.meta.media = state.meta.media || {};
+    state.meta.media[inp.dataset.mediaKey] = inp.value;
+  });
+  document.querySelectorAll('[data-link-key]').forEach(inp => {
+    state.meta.links = state.meta.links || {};
+    state.meta.links[inp.dataset.linkKey] = inp.value;
+  });
+  document.querySelectorAll('[data-section-toggle]').forEach(inp => {
+    state.meta.sections = state.meta.sections || {};
+    state.meta.sections[inp.dataset.sectionToggle] = inp.checked;
+  });
+  document.querySelectorAll('[data-media-toggle]').forEach(inp => {
+    const list = state.meta.hiddenMedia || [];
+    if (inp.checked) {
+      state.meta.hiddenMedia = list.filter(x => x !== inp.dataset.mediaToggle);
+    } else {
+      if (!list.includes(inp.dataset.mediaToggle)) list.push(inp.dataset.mediaToggle);
+      state.meta.hiddenMedia = list;
+    }
+  });
+}
+
+/* ============ LOAD / SAVE ============ */
+async function loadBrands() {
+  try {
+    const idx = await readJSON('data/brands.json');
+    state.brands = idx.brands || [];
+    renderSidebar();
+    $('btnSwapBrands').disabled = state.brands.length < 2;
+    toast(`Đã nạp ${state.brands.length} thương hiệu`, 'ok');
+  } catch (e) {
+    toast('Không đọc được data/brands.json — hãy chọn thư mục dự án', 'err');
+    state.brands = [];
+    renderSidebar();
+  }
+}
+
+async function loadBrand(id) {
+  // [AI-ASSISTED: Claude] Phase 2A fix: guard flag + stale-state wipe + seq check.
+  // Old bug: tab click auto-saved, and a slow fetch let stale data overwrite
+  // the wrong brand folder. Now: wipe state first, await ALL fetches, update
+  // sidebar header only on completion, and ignore superseded loads.
+  const brand = state.brands.find(b => b.id === id);
+  // [AI-ASSISTED: Claude] Phase 2A-hotfix: never fail silently — a silent
+  // return leaves the picker showing the new brand while inputs show stale
+  // data. Toast + resync picker to the actually-loaded brand.
+  if (!brand) {
+    toast(`Không tìm thấy brand "${id}" trong brands.json`, 'err');
+    $('brandPicker').value = state.current ? state.current.id : '';
+    return;
+  }
+  const seq = ++state._loadSeq;
+  state.isLoading = true;
+  state.current = brand;
+  state.vi = {}; state.ko = {}; state.ja = {}; state.zh = {};
+  state.meta = {};
+  state.dirty = false;
+  renderEditor();
+  try {
+    const meta = await readJSON(brand.path + '/meta.json');
+    if (seq !== state._loadSeq) return;
+    state.meta = meta;
+    for (const l of LANGS) {
+      // [AI-ASSISTED: Claude] Phase 2A-hotfix: a missing lang file must not
+      // leave state[l] undefined — renderI18nField reads getDeep(state[l])
+      // and inputs would keep showing the previous brand's text.
+      try { state[l] = await readJSON(brand.path + '/' + l + '.json'); }
+      catch (e) { state[l] = {}; toast(`Thiếu ${l}.json của "${id}"`, 'warn'); }
+      if (seq !== state._loadSeq) return;
+    }
+    const name = (state.vi && state.vi['brand.name']) || brand.label || brand.id;
+    const tag = (state.vi && state.vi['brand.tag']) || '';
+    $('sbName').textContent = name;
+    $('sbTag').textContent = tag;
+    const logoUrl = (state.meta.media && state.meta.media.logo) || '';
+    const img = $('sbLogo');
+    img.src = logoUrl || 'data:,';
+    img.onerror = () => { img.src = 'data:,'; };
+    $('previewLink').href = `index.html?brand=${id}`;
+    $('btnRestoreOne').disabled = false;
+    renderTabs();
+    renderEditor();
+    state.dirty = false;
+    // [AI-ASSISTED: Claude] Phase 2A-hotfix: remember last successfully
+    // loaded brand so a later failed load can roll the picker back to it.
+    state.lastGood = brand;
+    toast(`Đã nạp "${name}"`, 'ok');
+  } catch (e) {
+    if (seq !== state._loadSeq) return;
+    // [AI-ASSISTED: Claude] Phase 2A-hotfix: on fetch failure the editor was
+    // wiped at the top of loadBrand() but never repainted, and the picker
+    // still showed the failed brand. Resync picker to the last good brand.
+    state.current = state.lastGood || state.current;
+    $('brandPicker').value = state.current ? state.current.id : '';
+    renderEditor();
+    toast('Lỗi nạp brand: ' + e.message, 'err');
+  } finally {
+    if (seq === state._loadSeq) state.isLoading = false;
+  }
+}
+
+async function saveAll() {
+  // [AI-ASSISTED: Claude] Phase 2A: save ONLY from the button, blocked while loading.
+  if (!state.current) return;
+  if (state.isLoading) { toast('Đang tải dữ liệu brand — vui lòng đợi…', 'warn'); return; }
+  collectFormIntoState();
+  const brand = state.current;
+  try {
+    await writeText(brand.path + '/meta.json', pretty(state.meta));
+    for (const l of LANGS) {
+      await writeText(brand.path + '/' + l + '.json', pretty(state[l]));
+    }
+    state.dirty = false;
+    toast(state.root ? '✓ Đã ghi tất cả file' : 'Đã tải file xuống — chép đè vào data/', 'ok');
+    const logoUrl = (state.meta.media && state.meta.media.logo) || '';
+    const img = $('sbLogo');
+    if (logoUrl) { img.src = logoUrl; img.onerror = () => { img.src = 'data:,'; }; }
+  } catch (e) {
+    toast('Lỗi ghi file: ' + e.message, 'err');
+  }
+}
+
+/* ============ RESTORE ============ */
+async function restoreBrand(id) {
+  if (!confirm(`Khôi phục "${id}" về bản gốc trong data/_defaults/?\nMọi chỉnh sửa hiện tại sẽ mất.`)) return;
+  try {
+    let found = false;
+    for (const f of ['meta.json', ...LANGS.map(l => l + '.json')]) {
+      try {
+        const src = await readText('data/_defaults/' + id + '/' + f);
+        await writeText('data/' + id + '/' + f, src);
+        found = true;
+      } catch (e) { /* skip */ }
+    }
+    if (!found) throw new Error('Không tìm thấy file trong _defaults/' + id);
+    toast(`Đã khôi phục "${id}"`, 'ok');
+    await loadBrand(id);
+  } catch (e) {
+    toast('Lỗi khôi phục: ' + e.message, 'err');
+  }
+}
+
+async function restoreAll() {
+  if (!confirm('Khôi phục TẤT CẢ brand về bản gốc trong data/_defaults/?\nMọi chỉnh sửa sẽ mất.')) return;
+  let ok = 0, fail = 0;
+  for (const b of state.brands) {
+    try {
+      for (const f of ['meta.json', ...LANGS.map(l => l + '.json')]) {
+        try {
+          const src = await readText('data/_defaults/' + b.id + '/' + f);
+          await writeText('data/' + b.id + '/' + f, src);
+        } catch (e) { /* skip */ }
+      }
+      ok++;
+    } catch (e) { fail++; }
+  }
+  toast(`Đã khôi phục ${ok} brand${fail ? ' (' + fail + ' lỗi)' : ''}`, 'ok');
+  if (state.current) await loadBrand(state.current.id);
+}
+
+/* ============ SWAP BRANDS ============ */
+async function swapBrands() {
+  if (state.brands.length < 2) {
+    toast('Cần ít nhất 2 brand để hoán đổi', 'warn');
+    return;
+  }
+  const choice = prompt(
+    `Chọn cặp brand để hoán đổi:\n` +
+    state.brands.map((x, i) => `${i + 1}. ${x.id} (${x.label})`).join('\n') +
+    `\n\nNhập "1 2" để hoán đổi brand-1 ↔ brand-2, hoặc "1 3", "2 3"…`,
+    `1 2`
+  );
+  if (!choice) return;
+  const m = choice.trim().split(/\s+/).map(Number);
+  if (m.length !== 2 || m.some(n => !n || n < 1 || n > state.brands.length)) {
+    toast('Cú pháp không hợp lệ', 'err');
+    return;
+  }
+  const A = state.brands[m[0] - 1];
+  const B = state.brands[m[1] - 1];
+  if (A.id === B.id) {
+    toast('Cần 2 brand khác nhau', 'err');
+    return;
+  }
+  if (!confirm(`Hoán đổi nội dung:\n"${A.id}" ⇄ "${B.id}"?\n\nFile JSON của cả 2 brand sẽ bị ghi đè.`)) return;
+
+  try {
+    const dictsA = {}, dictsB = {};
+    for (const l of LANGS) {
+      dictsA[l] = await readJSON(A.path + '/' + l + '.json');
+      dictsB[l] = await readJSON(B.path + '/' + l + '.json');
+    }
+    for (const l of LANGS) {
+      await writeText(A.path + '/' + l + '.json', pretty(dictsB[l]));
+      await writeText(B.path + '/' + l + '.json', pretty(dictsA[l]));
+    }
+    try {
+      const metaA = await readJSON(A.path + '/meta.json');
+      const metaB = await readJSON(B.path + '/meta.json');
+      await writeText(A.path + '/meta.json', pretty(metaB));
+      await writeText(B.path + '/meta.json', pretty(metaA));
+    } catch (e) { /* meta optional */ }
+
+    toast(`Đã hoán đổi ${A.id} ⇄ ${B.id}`, 'ok');
+    await loadBrand(state.current.id);
+  } catch (e) {
+    toast('Lỗi hoán đổi: ' + e.message, 'err');
+  }
+}
+
+/* ============ NAV ============ */
+function initNav() {
+  document.querySelectorAll('.sb-item').forEach(item => {
+    item.addEventListener('click', () => {
+      if (item.classList.contains('soon')) {
+        $('viewTitle').textContent = item.querySelector('.sb-label').textContent;
+        $('viewSub').textContent = 'Module đang phát triển';
+        const editor = $('editor');
+        editor.innerHTML = `<div class="coming-soon">
+          <div class="cs-icon">🚧</div>
+          <h2>Tính năng đang phát triển</h2>
+          <p>Module "${item.querySelector('.sb-label').textContent}" sẽ có trong phiên bản tiếp theo.</p>
+        </div>`;
+        $('tabs').style.display = 'none';
+        document.querySelectorAll('.sb-item').forEach(x => x.classList.remove('active'));
+        item.classList.add('active');
+        return;
+      }
+      const view = item.dataset.view;
+      document.querySelectorAll('.sb-item').forEach(x => x.classList.remove('active'));
+      item.classList.add('active');
+      if (view === 'landing') {
+        $('tabs').style.display = 'flex';
+        $('viewTitle').textContent = 'Landing Page';
+        $('viewSub').textContent = 'Chỉnh sửa nội dung, media, sections và liên kết';
+        renderTabs();
+        renderEditor();
+      }
+    });
+  });
+}
+
+/* ============ PICK ROOT ============ */
+async function pickRoot() {
+  if (!FSA_OK) {
+    $('fileStatus').textContent = 'Chỉ đọc (tải xuống)';
+    $('fileStatus').className = 'file-status warn';
+    toast('Trình duyệt không hỗ trợ ghi thư mục', 'warn');
+    return;
+  }
+  try {
+    state.root = await window.showDirectoryPicker({ mode: 'readwrite' });
+    $('fileStatus').textContent = '📁 ' + state.root.name;
+    $('fileStatus').className = 'file-status ok';
+    await loadBrands();
+    if (state.brands[0]) {
+      $('brandPicker').value = state.brands[0].id;
+      await loadBrand(state.brands[0].id);
+      $('btnRestoreAll').disabled = false;
+    }
+  } catch (e) {
+    if (e.name !== 'AbortError') toast('Lỗi: ' + e.message, 'err');
+  }
+}
+
+/* ============ BOOT ============ */
+async function boot() {
+  initNav();
+  $('btnPick').addEventListener('click', pickRoot);
+  $('btnSave').addEventListener('click', saveAll);
+  $('btnReload').addEventListener('click', () => state.current && loadBrand(state.current.id));
+  $('btnSwapBrands').addEventListener('click', swapBrands);
+  $('btnRestoreAll').addEventListener('click', restoreAll);
+  $('btnRestoreOne').addEventListener('click', () => state.current && restoreBrand(state.current.id));
+  $('brandPicker').addEventListener('change', (e) => loadBrand(e.target.value));
+  $('brandPicker').disabled = true;
+
+  window.addEventListener('beforeunload', (e) => {
+    if (state.dirty) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  if (location.protocol.startsWith('http')) {
+    $('fileStatus').textContent = 'Chưa cấp quyền ghi — bấm Chọn thư mục';
+    $('fileStatus').className = 'file-status warn';
+    await loadBrands();
+    if (state.brands[0]) {
+      $('brandPicker').value = state.brands[0].id;
+      await loadBrand(state.brands[0].id);
+      $('btnRestoreAll').disabled = false;
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', boot);
+})();
+</script>
+</body>
+</html>
