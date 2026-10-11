@@ -1,93 +1,268 @@
 <!doctype html>
 <html lang="vi"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SkyWatch Earth</title>
+<title>SkyWatch Earth · DTR—Mart</title>
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark;--bg:#0d1014;--card:#141920;--ink:#e8ecf1;--mute:#8a95a3;--line:#232a33;--acc:#f0b03a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-*{box-sizing:border-box}html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI","Noto Sans CJK SC","Noto Sans JP","Noto Sans KR",Roboto,sans-serif;font-size:14px;line-height:1.4}
-header{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--line);background:#10141a}
-.logo{font-weight:700;font-size:1rem}.live{color:#e5484d;font-weight:600;font-size:.8rem}.live i{color:var(--mute);font-style:normal;font-weight:400}.sp{flex:1}
-button,select{font:inherit;color:var(--ink);background:#1b222b;border:1px solid #2c3641;border-radius:8px;padding:6px 11px;cursor:pointer}
-button:hover{background:#232c37}button:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.tg.on{background:var(--acc);color:#16110a;border-color:var(--acc);font-weight:600}
-.seg{display:inline-flex;border:1px solid #2c3641;border-radius:8px;overflow:hidden}.seg button{border:0;border-radius:0;padding:6px 10px}.seg button.on{background:#34404e;color:#fff;font-weight:600}
-.main{display:grid;grid-template-columns:1fr 360px;gap:12px;padding:12px;max-width:1560px;margin:0 auto}
-@media(max-width:920px){.main{grid-template-columns:1fr}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden}
-.sec{padding:7px 12px;font-size:.8rem;font-weight:600;color:var(--mute);border-bottom:1px solid var(--line)}
-.gl{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#05070a}
-#g{display:block;width:100%;height:auto;aspect-ratio:2/1;min-height:320px;touch-action:none;cursor:grab}
-#nb{position:absolute;left:0;right:0;top:0;height:30px;display:flex;align-items:center;gap:10px;background:rgba(10,12,16,.92);border-bottom:1px solid #2c3641;z-index:4;overflow:hidden}
-.bn{background:#1f6fd1;color:#fff;font-weight:800;font-size:.74rem;letter-spacing:.06em;padding:0 12px;height:100%;display:flex;align-items:center;flex:none}
-.tk{flex:1;overflow:hidden;height:100%;display:flex;align-items:center}#tr{display:flex;white-space:nowrap;will-change:transform}.ti{font-size:.8rem;font-weight:500;padding-right:56px;flex:none}
-#nu{flex:none;color:var(--mute);font-style:normal;font-size:.75rem;padding-right:12px}
-#tip{position:absolute;right:10px;bottom:12px;background:rgba(14,17,22,.95);border:1px solid #333f4d;padding:5px 10px;border-radius:8px;font-size:.84rem;display:none}
-.zb{position:absolute;right:10px;top:40px;display:flex;flex-direction:column;gap:4px}.zb button{min-width:38px;padding:4px 6px}
-.ph{padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--line)}.ph b{font-size:1.05rem}.ph span{color:var(--mute);font-size:.85rem;flex:1;text-align:right}
-#liv svg{display:block;width:100%;height:auto}
-.rt{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;gap:6px}.rt div{text-align:center;flex:1}.rt strong{font-size:1.7rem;display:block;line-height:1}.rt small{display:block;color:var(--mute)}.rt i{font-style:normal;font-size:1.3rem;color:var(--acc)}
-.pb{height:4px;background:var(--line);margin:0 12px 10px;border-radius:3px;overflow:hidden}.pb i{display:block;height:100%;background:var(--acc);width:0}
-.kv{padding:8px 12px}.kv div{display:flex;justify-content:space-between;gap:10px;padding:3px 0;align-items:center}.kv small{color:var(--mute)}.kv span{font-weight:600;text-align:right}
-.badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.78rem;font-weight:600;color:#11151a}
-.ai{padding:0 12px 10px;color:var(--mute);font-size:.8rem}.ai b{color:#9fc4e8}
-.mini{padding:2px 8px;font-size:.78rem}
-.fg{width:18px;height:12px;vertical-align:-1px;margin-right:4px;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
-.pk{padding:10px 12px}.pk p{margin:0 0 8px;color:#cfd6df}.pk button{display:block;width:100%;text-align:left;margin-bottom:8px;padding:9px 11px}.pk small{display:block;color:var(--mute);font-weight:400}
-.note{color:var(--mute);font-size:.78rem;padding:2px 4px 10px}
-#pkc{position:absolute;left:10px;bottom:10px;width:min(330px,calc(100% - 20px));z-index:5;margin:0;box-shadow:0 6px 24px rgba(0,0,0,.5)}
-#tm{font:inherit;color:var(--ink);background:#1b222b;border:1px solid #2c3641;border-radius:8px;padding:5px 8px;color-scheme:dark}
-.main.np{grid-template-columns:1fr}.main.np aside{display:none}
+:root{
+  color-scheme: dark;
+  --lime-rgb: 197,255,61;
+  --lime: #c5ff3d; --lime-2: #a5e633;
+  --bg-2: #0b0d12;
+  --card: rgba(255,255,255,.035);
+  --ink: #e8e6e0; --mute: #a8a8b3; --mute-2: #6b7280;
+  --line: rgba(255,255,255,.12); --line-soft: rgba(255,255,255,.06);
+  --r: 16px; --r-lg: 24px;
+  --sans: Satoshi, Inter, system-ui, -apple-system, "Segoe UI", "Noto Sans CJK SC", "Noto Sans JP", "Noto Sans KR", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --display: "Clash Display", var(--sans);
+  --ease: cubic-bezier(0.645,0.045,0.355,1);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:transparent!important}
+body{color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;overflow:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(700px circle at 15% 10%, rgba(var(--lime-rgb),.06) 0%, transparent 55%),radial-gradient(900px circle at 85% 90%, rgba(80,180,255,.05) 0%, transparent 55%)}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/></svg>");opacity:.15;mix-blend-mode:overlay}
 
-/* ===== [AI-ASSISTED: Claude] Skin đồng bộ nền hệ thống DTR (biến màu được trang chủ ghi đè qua postMessage) ===== */
-:root{--bg:transparent;--card:rgba(255,255,255,.035);--ink:#e8e6e0;--mute:#a8a8b3;--line:rgba(255,255,255,.12);--acc:#c5ff3d;--r:16px;
- --sans:Satoshi,Inter,system-ui,-apple-system,"Segoe UI","Noto Sans CJK SC","Noto Sans JP","Noto Sans KR",sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
-html,body{background:transparent!important}
-body{font-family:var(--sans);overflow:hidden}
-header{background:rgba(255,255,255,.03);border-bottom:1px solid var(--line)}
-.logo{font-family:"Clash Display",var(--sans);font-weight:600;letter-spacing:-.02em}
-.live{font-family:var(--mono);letter-spacing:.06em}
-button,select,#tm{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:100px;color:var(--ink)}
-button:hover{background:rgba(255,255,255,.1)}
-.tg.on{background:var(--acc);border-color:var(--acc);color:#0b0d12}
-.seg{border-color:var(--line);border-radius:100px}.seg button{border-radius:0}.seg button.on{background:rgba(255,255,255,.14)}
-.card,.gl{border:1px solid var(--line);border-radius:var(--r)}
-.gl{background:rgba(5,7,10,.7)}
-.sec{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
-#nb{background:rgba(11,13,18,.88);border-bottom:1px solid var(--line)}
-.bn{background:var(--acc);color:#0b0d12}
-#tip,#pkc{background:rgba(11,13,18,.94);border-color:var(--line)}
-.pb{background:rgba(255,255,255,.1)}
-.kv small{font-family:var(--mono);font-size:.72rem}
-.zb button{border-radius:12px}
-#lg{display:none} /* ngôn ngữ do trang chủ điều khiển */
+/* LOADER */
+:root{--loader-logo-size:72px;--loader-ring-size:100px}
+.loader{position:fixed;inset:0;z-index:99999;background:var(--bg-2);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s var(--ease),visibility .8s var(--ease)}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader-mark{position:relative;width:var(--loader-ring-size);height:var(--loader-ring-size);display:grid;place-items:center;margin-bottom:32px}
+.loader-mark::before{content:'';position:absolute;inset:-8px;border:1px solid var(--line);border-radius:50%;animation:loaderRing 2.4s linear infinite}
+.loader-mark::after{content:'';position:absolute;inset:-8px;border:1px solid transparent;border-top-color:var(--lime);border-radius:50%;animation:loaderRing 1.2s linear infinite}
+@keyframes loaderRing{to{transform:rotate(360deg)}}
+.loader-logo{width:var(--loader-logo-size);height:var(--loader-logo-size);object-fit:contain;border-radius:50%;filter:drop-shadow(0 6px 20px rgba(var(--lime-rgb),.4));animation:loaderPulse 2s ease-in-out infinite;position:relative;z-index:2}
+@keyframes loaderPulse{0%,100%{transform:scale(1);opacity:.95}50%{transform:scale(1.04);opacity:1}}
+.loader-bar{width:200px;height:2px;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:16px}
+.loader-fill{height:100%;width:0;background:linear-gradient(90deg,var(--lime) 0%,#a5e633 100%);border-radius:2px;box-shadow:0 0 12px rgba(var(--lime-rgb),.6);transition:width .15s linear}
+.loader-text{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute-2)}
+.loader-text .pct{color:var(--lime);margin-left:8px}
+
+/* HEADER */
+header{position:relative;z-index:10;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 18px;background:rgba(17,20,27,.72);border-bottom:1px solid var(--line);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.back-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px 7px 10px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:100px;color:var(--ink);font-family:var(--sans);font-size:.82rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;flex:none}
+.back-btn:hover{background:rgba(var(--lime-rgb),.1);border-color:rgba(var(--lime-rgb),.5);color:var(--lime);transform:translateX(-2px);box-shadow:0 0 18px rgba(var(--lime-rgb),.25)}
+.back-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex:none}
+.logo-mark{width:34px;height:34px;border-radius:10px;flex:none;background:linear-gradient(135deg,var(--lime) 0%,var(--lime-2) 100%);display:grid;place-items:center;box-shadow:0 4px 14px rgba(var(--lime-rgb),.4),0 0 0 1px rgba(var(--lime-rgb),.25)}
+.logo-mark svg{width:19px;height:19px;stroke:#0b0d12;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.logo-text{display:flex;flex-direction:column;line-height:1.05}
+.logo-text .name{font-family:var(--display);font-weight:600;font-size:13.5px;color:#fff;letter-spacing:-.01em}
+.logo-text .tag{font-family:var(--mono);font-size:8px;color:var(--mute-2);letter-spacing:.18em;text-transform:uppercase;margin-top:1px}
+.live{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.72rem;font-weight:600;color:#ff5c5c;letter-spacing:.06em;padding:5px 10px;border-radius:100px;background:rgba(255,92,92,.08);border:1px solid rgba(255,92,92,.25)}
+.live i{color:var(--mute-2);font-style:normal;font-weight:400;margin-left:2px}
+.sp{flex:1}
+button,select,#tm{font:inherit;color:var(--ink);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:100px;padding:7px 14px;cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .2s;font-size:.82rem}
+button:hover,select:hover,#tm:hover{background:rgba(255,255,255,.1);border-color:rgba(var(--lime-rgb),.35)}
+button:focus-visible,select:focus-visible,#tm:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+button:active{transform:scale(.96)}
+.tg.on{background:var(--lime);border-color:var(--lime);color:#0b0d12;font-weight:700;box-shadow:0 0 20px rgba(var(--lime-rgb),.45)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:100px;overflow:hidden;background:rgba(255,255,255,.03)}
+.seg button{border:0;border-radius:0;padding:6px 11px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;background:transparent}
+.seg button.on{background:var(--lime);color:#0b0d12;font-weight:700}
+#lg{display:none}
+
+/* MAIN */
+.main{position:relative;z-index:5;display:grid;grid-template-columns:1fr 380px;gap:14px;padding:14px;max-width:1600px;margin:0 auto;height:calc(100vh - 61px)}
+@media(max-width:1020px){.main{grid-template-columns:1fr;height:auto;overflow-y:auto}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:border-color .25s,background .25s}
+.card:hover{border-color:rgba(var(--lime-rgb),.2)}
+.sec{padding:10px 16px;font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+.sec::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+
+.gl{position:relative;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:rgba(5,7,10,.7);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(var(--lime-rgb),.06) inset}
+.gl::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:1;border-radius:inherit;background:radial-gradient(600px circle at 20% 0%,rgba(var(--lime-rgb),.06),transparent 60%)}
+#g{display:block;width:100%;height:auto;aspect-ratio:2/1;min-height:420px;touch-action:none;cursor:grab}
+#g:active{cursor:grabbing}
+#nb{position:absolute;left:0;right:0;top:0;height:32px;display:flex;align-items:center;background:rgba(11,13,18,.88);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:4;overflow:hidden}
+.bn{background:var(--lime);color:#0b0d12;font-family:var(--display);font-weight:700;font-size:.72rem;letter-spacing:.08em;padding:0 14px;height:100%;display:flex;align-items:center;flex:none;box-shadow:0 0 24px rgba(var(--lime-rgb),.4)}
+.tk{flex:1;overflow:hidden;height:100%;display:flex;align-items:center}
+#tr{display:flex;white-space:nowrap;will-change:transform}
+.ti{font-size:.78rem;font-weight:500;padding-right:56px;flex:none}
+#nu{flex:none;color:var(--mute-2);font-style:normal;font-family:var(--mono);font-size:.7rem;padding-right:14px}
+#tip{position:absolute;right:12px;bottom:14px;background:rgba(11,13,18,.94);border:1px solid rgba(var(--lime-rgb),.35);padding:6px 12px;border-radius:100px;font-size:.8rem;font-family:var(--mono);display:none;box-shadow:0 8px 24px rgba(0,0,0,.5),0 0 20px rgba(var(--lime-rgb),.15);backdrop-filter:blur(8px)}
+.zb{position:absolute;right:12px;top:44px;display:flex;flex-direction:column;gap:6px;z-index:3}
+.zb button{min-width:40px;padding:6px 8px;border-radius:12px;background:rgba(11,13,18,.85);border:1px solid var(--line);backdrop-filter:blur(12px);font-family:var(--mono);font-size:.78rem;font-weight:600}
+.zb button:hover{background:rgba(var(--lime-rgb),.15);border-color:rgba(var(--lime-rgb),.5);color:var(--lime)}
+aside{overflow-y:auto;padding-right:4px}
+aside::-webkit-scrollbar{width:6px}
+aside::-webkit-scrollbar-thumb{background:rgba(var(--lime-rgb),.2);border-radius:3px}
+.ph{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
+.ph b{font-family:var(--display);font-size:1.05rem;font-weight:600;color:#fff}
+.ph span{color:var(--mute);font-size:.85rem;flex:1;text-align:right}
+#liv{padding:8px 12px}
+#liv svg{display:block;width:100%;height:auto}
+.rt{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;gap:8px;border-bottom:1px solid var(--line)}
+.rt div{text-align:center;flex:1}
+.rt strong{font-family:var(--display);font-size:1.55rem;font-weight:600;display:block;line-height:1;color:#fff;letter-spacing:-.02em}
+.rt small{display:block;color:var(--mute-2);font-size:.72rem;margin-top:4px}
+.rt i{font-style:normal;font-size:1.3rem;color:var(--lime);text-shadow:0 0 12px rgba(var(--lime-rgb),.5)}
+.pb{height:5px;background:rgba(255,255,255,.1);margin:0 16px 14px;border-radius:3px;overflow:hidden}
+.pb i{display:block;height:100%;background:linear-gradient(90deg,var(--lime),var(--lime-2));width:0;border-radius:3px;box-shadow:0 0 12px rgba(var(--lime-rgb),.6)}
+.kv{padding:10px 16px}
+.kv>div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line-soft)}
+.kv>div:last-child{border-bottom:0}
+.kv small{color:var(--mute-2);font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase}
+.kv span{font-weight:600;text-align:right;color:var(--ink)}
+.badge{display:inline-block;border-radius:100px;padding:3px 12px;font-size:.74rem;font-weight:700;color:#0b0d12;font-family:var(--sans);letter-spacing:.02em}
+.ai{padding:10px 16px 14px;color:var(--mute);font-size:.78rem;line-height:1.55}
+.ai b{color:var(--lime);font-weight:600}
+.mini{padding:3px 10px;font-size:.72rem;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.mini:hover{background:rgba(var(--lime-rgb),.12);border-color:rgba(var(--lime-rgb),.4);color:var(--lime)}
+.fg{width:20px;height:13px;vertical-align:-1px;margin-right:6px;border-radius:3px;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
+.pk{padding:12px 16px}
+.pk p{margin:0 0 12px;color:var(--mute);font-size:.82rem;line-height:1.55}
+.pk button{display:block;width:100%;text-align:left;margin-bottom:8px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-weight:500;transition:all .2s}
+.pk button:hover{background:rgba(var(--lime-rgb),.08);border-color:rgba(var(--lime-rgb),.45);transform:translateX(2px)}
+.pk button b{font-family:var(--display);font-weight:600;color:#fff;display:block;margin-bottom:2px}
+.pk small{display:block;color:var(--mute-2);font-weight:400;font-size:.74rem}
+#pkc{position:absolute;left:14px;bottom:14px;width:min(360px,calc(100% - 28px));z-index:5;margin:0;background:rgba(11,13,18,.96);border:1px solid rgba(var(--lime-rgb),.35);border-radius:var(--r);box-shadow:0 20px 60px rgba(0,0,0,.7),0 0 40px rgba(var(--lime-rgb),.15);backdrop-filter:blur(16px)}
+#tm{font-family:var(--mono);font-size:.74rem;padding:6px 10px;color-scheme:dark}
+.main.np{grid-template-columns:1fr}
+.main.np aside{display:none}
+
+/* DEMO + OFFICIAL PANELS */
+.demo-note{margin:0 0 14px;font-size:.78rem;line-height:1.5;color:var(--mute)}
+.demo-note b{color:var(--lime);font-weight:600}
+.demo-row{margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed var(--line-soft)}
+.demo-row label{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-2);margin-bottom:8px}
+.demo-pick{display:block;width:100%;padding:9px 12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--line);color:var(--ink);font-family:var(--sans);font-size:.8rem;text-align:left;cursor:pointer;transition:all .2s}
+.demo-pick:hover{background:rgba(var(--lime-rgb),.08);border-color:rgba(var(--lime-rgb),.45);color:var(--lime)}
+.demo-pick.active{background:rgba(var(--lime-rgb),.15);border-color:var(--lime);color:var(--lime);box-shadow:0 0 12px rgba(var(--lime-rgb),.3)}
+.demo-coord{margin-top:6px;font-family:var(--mono);font-size:.7rem;color:var(--lime);padding-left:4px;min-height:1em}
+.demo-fly{display:block;width:100%;margin-top:12px;padding:12px 16px;border-radius:100px;background:var(--lime);border:none;color:#0b0d12;font-family:var(--display);font-weight:700;font-size:.88rem;cursor:pointer;transition:all .25s;box-shadow:0 4px 16px rgba(var(--lime-rgb),.3)}
+.demo-fly:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 24px rgba(var(--lime-rgb),.5)}
+.demo-fly:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+.demo-reset{display:block;width:100%;margin-top:8px;padding:8px 14px;border-radius:100px;background:transparent;border:1px solid var(--line);color:var(--mute);font-family:var(--sans);font-size:.74rem;cursor:pointer;transition:all .2s}
+.demo-reset:hover{border-color:rgba(var(--lime-rgb),.35);color:var(--lime)}
+.official-flight{display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;background:rgba(var(--lime-rgb),.06);border:1px solid rgba(var(--lime-rgb),.25);margin-bottom:12px}
+.off-icon{width:42px;height:42px;flex:none;border-radius:12px;background:linear-gradient(135deg,var(--lime) 0%,var(--lime-2) 100%);display:grid;place-items:center;box-shadow:0 4px 14px rgba(var(--lime-rgb),.35)}
+.off-icon svg{width:22px;height:22px;stroke:#0b0d12}
+.off-info{flex:1;min-width:0}
+.off-code{font-family:var(--mono);font-size:.88rem;font-weight:700;color:var(--lime);letter-spacing:.04em;margin-bottom:2px}
+.off-status{font-size:.76rem;color:var(--mute)}
+
+@media(max-width:1020px){#g{aspect-ratio:auto;height:60vh;min-height:380px}.zb{top:42px;right:8px}.zb button{min-width:34px;padding:5px 6px;font-size:.72rem}}
+@media(max-width:640px){header{padding:10px 12px;gap:6px}.logo-text .tag{display:none}.logo-text .name{font-size:13px}.live{font-size:.66rem;padding:4px 8px}.back-btn span{display:none}.back-btn{padding:6px 10px}button,select{padding:6px 11px;font-size:.76rem}}
 </style></head><body>
-<header><b class="logo">SkyWatch Earth</b><span class="live">● <span data-i="live"></span> <i id="utc"></i></span><span class="sp"></span>
-<select id="sel" aria-label="flight"></select><button id="bnew" type="button" data-i="newOrder"></button>
-<div class="seg" id="lg" role="group" aria-label="language"><button type="button" data-l="zh">中文</button><button type="button" data-l="ja">日本語</button><button type="button" data-l="ko">한국어</button><button type="button" data-l="vi">Tiếng Việt</button></div>
-<button class="tg" id="bw" type="button"></button><button id="bs" type="button"></button><input id="tm" type="datetime-local" step="60"><button id="tn" type="button" data-i="tNow"></button></header>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-mark"><img class="loader-logo" data-media="loader" alt="DTR—Mart logo"></div>
+  <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+  <div class="loader-text"><span data-i="loaderText">Đang tải</span> · <span class="pct" id="loaderPct">0%</span></div>
+</div>
+
+<header>
+  <a href="../index.html" class="back-btn" aria-label="Quay lại trang chủ">
+    <svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    <span data-i="back">Quay lại</span>
+  </a>
+  <div class="logo-wrap">
+    <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/><circle cx="12" cy="12" r="9"/></svg></div>
+    <div class="logo-text"><span class="name">SkyWatch Earth</span><span class="tag">DTR—Mart</span></div>
+  </div>
+  <span class="live">● <span data-i="live"></span> <i id="utc"></i></span>
+  <span class="sp"></span>
+  <select id="sel" aria-label="flight"></select>
+  <button id="bnew" type="button" data-i="newOrder"></button>
+  <div class="seg" id="lg" role="group" aria-label="language">
+    <button type="button" data-l="zh">中文</button><button type="button" data-l="ja">日本語</button><button type="button" data-l="ko">한국어</button><button type="button" data-l="vi">Tiếng Việt</button>
+  </div>
+  <button class="tg" id="bw" type="button"></button>
+  <button id="bs" type="button"></button>
+  <input id="tm" type="datetime-local" step="60">
+  <button id="tn" type="button" data-i="tNow"></button>
+</header>
+
 <div class="main">
-<div><div class="gl"><canvas id="g"></canvas>
-<div id="nb"><b class="bn" data-i="bn"></b><div class="tk" id="tkw"><div id="tr"></div></div><i id="nu"></i></div>
-<div id="tip"></div>
-<div class="zb"><button id="zi" type="button" aria-label="+">+</button><button id="zo" type="button" aria-label="-">−</button><button id="zf" type="button" data-i="follow"></button><button id="zg" type="button" data-i="world"></button><button id="bsp" type="button">1×</button></div>
-</div></div>
-<aside>
-<div class="card"><div class="ph"><b id="pc"></b><span id="pa"></span></div><div id="liv"></div>
-<div class="rt"><div><strong id="of"></strong><small id="oc"></small></div><i>✈</i><div><strong id="df"></strong><small id="dc"></small></div></div>
-<div class="pb"><i id="prg"></i></div>
-<div class="kv"><div><small data-i="l_status"></small><span class="badge" id="pst"></span></div></div>
-<div class="ai" id="ai"></div>
-<div class="kv"><div><small data-i="l_rem"></small><span id="rem"></span></div><div><small data-i="l_data"></small><span id="fdt"></span></div><div><small data-i="l_ac"></small><span id="pty"></span></div></div></div>
-<div class="card"><div class="sec" data-i="l_order"></div><div class="kv">
-<div><small data-i="l_code"></small><span><span id="ord"></span> <button class="mini" id="bo" type="button"></button></span></div>
-<div><small data-i="l_cargo"></small><span><span id="cg"></span> <button class="mini" id="bc" type="button"></button></span></div></div></div>
-<div class="card" id="pkc" style="display:none"><div class="sec" data-i="pickTitle"></div><div class="pk" id="pkb"><p data-i="pickHint"></p>
-<button type="button" id="pkh"><b data-i="pickHome"></b></button><button type="button" id="pkc2"><b data-i="pickCenter"></b></button></div>
-<div class="pk" id="pkr" style="display:none"><p id="pkt"></p><button type="button" id="bnew2" data-i="newOrder"></button></div></div>
-</aside></div>
+  <div>
+    <div class="gl">
+      <canvas id="g"></canvas>
+      <div id="nb"><b class="bn" data-i="bn"></b><div class="tk" id="tkw"><div id="tr"></div></div><i id="nu"></i></div>
+      <div id="tip"></div>
+      <div class="zb">
+        <button id="zi" type="button" aria-label="+">+</button>
+        <button id="zo" type="button" aria-label="-">−</button>
+        <button id="zf" type="button" data-i="follow"></button>
+        <button id="zg" type="button" data-i="world"></button>
+        <button id="bsp" type="button">1×</button>
+      </div>
+    </div>
+  </div>
+  <aside>
+    <div class="card">
+      <div class="ph"><b id="pc"></b><span id="pa"></span></div>
+      <div id="liv"></div>
+      <div class="rt"><div><strong id="of"></strong><small id="oc"></small></div><i>✈</i><div><strong id="df"></strong><small id="dc"></small></div></div>
+      <div class="pb"><i id="prg"></i></div>
+      <div class="kv"><div><small data-i="l_status"></small><span class="badge" id="pst"></span></div></div>
+      <div class="ai" id="ai"></div>
+      <div class="kv">
+        <div><small data-i="l_rem"></small><span id="rem"></span></div>
+        <div><small data-i="l_data"></small><span id="fdt"></span></div>
+        <div><small data-i="l_ac"></small><span id="pty"></span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec" data-i="l_order"></div>
+      <div class="kv">
+        <div><small data-i="l_code"></small><span><span id="ord"></span> <button class="mini" id="bo" type="button"></button></span></div>
+        <div><small data-i="l_cargo"></small><span><span id="cg"></span> <button class="mini" id="bc" type="button"></button></span></div>
+      </div>
+    </div>
+
+    <!-- DEMO TOOL -->
+    <div class="card" id="demoPanel">
+      <div class="sec" data-i="demo.title">Công cụ Demo</div>
+      <div class="pk">
+        <p class="demo-note" data-i="demo.note">Công cụ này dùng để <b>giải thích</b> cách hệ thống vận chuyển hoạt động. Chọn điểm bắt đầu và điểm kết thúc để xem mô phỏng đường bay.</p>
+        <div class="demo-row">
+          <label data-i="demo.from">Điểm bắt đầu (Demo)</label>
+          <button type="button" class="demo-pick" id="demoPickFrom"><span data-i="demo.pick">Chọn trên bản đồ</span></button>
+          <div class="demo-coord" id="demoFromCoord">—</div>
+        </div>
+        <div class="demo-row">
+          <label data-i="demo.to">Điểm kết thúc (Demo)</label>
+          <button type="button" class="demo-pick" id="demoPickTo"><span data-i="demo.pick">Chọn trên bản đồ</span></button>
+          <div class="demo-coord" id="demoToCoord">—</div>
+        </div>
+        <button type="button" id="demoPreview" class="demo-fly" disabled><span data-i="demo.preview">👁 Xem demo đường bay</span></button>
+        <button type="button" id="demoReset" class="demo-reset"><span data-i="demo.reset">Xoá lựa chọn</span></button>
+      </div>
+    </div>
+
+    <!-- OFFICIAL TRACK -->
+    <div class="card" id="officialPanel">
+      <div class="sec" data-i="official.title">Theo dõi đơn hàng</div>
+      <div class="pk">
+        <p class="demo-note" data-i="official.note">Đây là <b>góc nhìn chính thức</b> dành cho khách hàng — chỉ hiển thị máy bay đang chở đơn hàng của bạn.</p>
+        <div class="official-flight">
+          <div class="off-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5c1.5 1.5 1.5 4 0 5.5L17.8 19.2ZM2 12l9.6-9.6c1.5-1.5 4-1.5 5.5 0l-9 9H2Z"/><path d="m2 12 6 6 4-4"/></svg></div>
+          <div class="off-info"><div class="off-code" id="officialCode">DTR-TRL-9821-VN</div><div class="off-status" id="officialStatus">Đang bay</div></div>
+        </div>
+        <button type="button" id="officialFollow" class="demo-fly"><span data-i="official.follow">🎯 Theo dõi chuyến bay của tôi</span></button>
+      </div>
+    </div>
+
+    <!-- PICKUP -->
+    <div class="card" id="pkc" style="display:none">
+      <div class="sec" data-i="pickTitle"></div>
+      <div class="pk" id="pkb"><p data-i="pickHint"></p>
+        <button type="button" id="pkh"><b data-i="pickHome"></b></button>
+        <button type="button" id="pkc2"><b data-i="pickCenter"></b></button>
+      </div>
+      <div class="pk" id="pkr" style="display:none"><p id="pkt"></p><button type="button" id="bnew2" data-i="newOrder"></button></div>
+    </div>
+  </aside>
+</div>
+
 <script>
 "use strict";
 const $=id=>document.getElementById(id),rad=x=>x*Math.PI/180,deg=x=>x*180/Math.PI,cl=(x,a,b)=>Math.min(b,Math.max(a,x));
@@ -95,65 +270,80 @@ let picked=false,BG=false,tOff=0;const nowD=()=>new Date(Date.now()+tOff);
 const LAND=["-168,66 -162,70 -141,70 -125,70 -110,73 -95,72 -85,70 -82,63 -93,60 -95,57 -88,56 -80,52 -79,58 -77,62 -70,60 -62,57 -56,52 -60,47 -66,45 -70,43 -74,40 -76,35 -81,31 -80,26 -83,29 -90,30 -97,27 -97,22 -95,18 -90,21 -87,21 -88,16 -83,15 -83,10 -78,8 -80,7 -85,10 -92,14 -100,17 -105,20 -109,25 -113,31 -117,33 -121,35 -124,40 -124,47 -128,51 -135,58 -146,60 -153,58 -165,55 -158,59 -165,62","-55,60 -45,60 -20,70 -20,80 -45,83 -65,80 -70,76 -55,68","-78,8 -72,12 -62,10 -52,5 -50,0 -35,-5 -39,-15 -48,-26 -58,-35 -65,-42 -68,-52 -72,-54 -75,-46 -73,-37 -71,-20 -76,-14 -81,-5 -80,0 -77,4","-9,37 -9,43 -2,44 -4,48 2,51 8,54 10,57 8,58 5,59 5,62 14,67 20,70 28,71 40,67 44,68 60,69 70,73 80,73 100,77 112,74 130,71 142,72 160,70 180,68 180,66 170,60 163,58 156,51 155,58 143,59 135,55 141,48 135,43 129,41 129,35 126,35 126,38 121,40 122,37 119,35 121,31 122,29 117,23 110,21 106,21 108,16 109,12 105,8.5 103,10 100,13 99,9 101,3 103,1.4 100,4 98,8 98,16 94,17 92,21 88,22 86,20 80,15 78,9 76,9 73,17 72,21 67,24 62,25 57,26 56,27 50,30 48,30 51,25 56,26 56,23 59,22 53,17 45,13 43,13 39,21 35,28 34,31 35,34 36,36 30,36 27,37 26,40 23,40 22,37 20,40 13,45 16,41 18,40 16,38 12,42 9,44 3,43 -1,38 -5,36","-17,21 -10,30 -6,36 10,37 11,33 20,31 32,31 34,28 38,20 43,12 51,12 46,3 40,-4 40,-15 35,-24 32,-29 26,-34 18,-34 14,-22 12,-6 9,4 -5,5 -13,8 -17,15","114,-22 122,-18 130,-12 136,-12 142,-11 146,-19 153,-26 150,-37 141,-38 135,-34 130,-32 115,-34","-5,50 1,51 2,53 -2,56 -3,59 -6,58 -5,55 -3,54 -5,52","-10,52 -6,52 -6,55 -10,54","130,32 135,34 140,35 142,39 142,43 140,41 136,37 131,34","95,5 104,-5 106,-6 98,2","109,1 117,7 119,1 116,-4 110,-3","105,-6 114,-8 106,-7.5","120,18 122,14 126,7 122,8","172,-35 178,-38 175,-41 173,-41","167,-46 174,-41 172,-44","44,-25 50,-15 49,-12 44,-17","-24,64 -14,65 -14,64"];
 const DL=LAND.map(s=>{const P=s.split(" ").map(p=>p.split(",").map(Number).reverse()),o=[];P.forEach((p,i)=>{const q=P[(i+1)%P.length],n=Math.max(1,Math.ceil(Math.max(Math.abs(q[0]-p[0]),Math.abs(q[1]-p[1]))/4));for(let k=0;k<n;k++)o.push([p[0]+(q[0]-p[0])*k/n,p[1]+(q[1]-p[1])*k/n])});return o});
 DL.push([[-70,-180],[-74,-120],[-65,-60],[-70,0],[-67,60],[-66,120],[-70,180],[-90,180],[-90,-180]]);
-/* ================= i18n ================= */
+
 const LI={en:0,zh:1,ja:2,ko:3,vi:4};let lang="vi";{const q=new URLSearchParams(location.search).get("lang");if(["vi","ja","ko","zh"].includes(q))lang=q}
 const TX={
-tNow:["Device time","设备时间","端末の時刻","기기 시간","Giờ máy"],m_time:["Clock set to your time.","已按您的时间校准。","時刻をあなたの時間に合わせました。","시간을 사용자 시간으로 맞췄습니다.","Đã chỉnh giờ theo giờ của bạn."],
+loaderText:["Loading","加载中","読み込み中","로딩 중","Đang tải"],
+back:["Back to home","返回首页","ホームに戻る","홈으로 돌아가기","Quay lại trang chủ"],
+tNow:["Device time","设备时间","端末の時刻","기기 시간","Giờ máy"],
+m_time:["Clock set to your time.","已按您的时间校准。","時刻をあなたの時間に合わせました。","시간을 사용자 시간으로 맞췄습니다.","Đã chỉnh giờ theo giờ của bạn."],
 m_lay:["{0} landed for transit at {1}.","{0} 已降落 {1} 中转。","{0} が {1} で乗り継ぎのため着陸。","{0}이(가) {1}에서 환승을 위해 착륙.","{0} hạ cánh quá cảnh tại {1}."],
 m_ret:["{0} departs on the return trip to {1}.","{0} 起飞返程前往 {1}。","{0} が {1} への復路で出発。","{0}이(가) {1}(으)로 귀환 비행 시작.","{0} cất cánh chặng khứ hồi về {1}."],
 s_lay:["Transit stop – aircraft parked","中转停留 – 飞机停放","乗り継ぎ中 – 駐機","환승 중 – 주기","Quá cảnh – máy bay đang đậu"],
-s_airdef:["Air-defense zone – comms lost, diverting to emergency military airfield","防空区 – 通信中断，备降紧急军用机场","防空圏 – 通信途絶、緊急軍用飛行場へ退避","방공 구역 – 통신 두절, 비상 군용 공항으로 우회","Vùng phòng không – mất liên lạc, chuyển hướng sân bay quân sự khẩn cấp"],
+s_airdef:["Air-defense zone – comms lost","防空区 – 通信中断","防空圏 – 通信途絶","방공 구역 – 통신 두절","Vùng phòng không – mất liên lạc"],
 z_airdef:["Air defense","防空区","防空圏","방공 구역","Phòng không"],
-e_airdef:["{0} entered an air-defense zone: comms lost, holding while diverting toward emergency airfield {1}.","{0} 进入防空区：通信中断，盘旋并备降紧急军用机场 {1}。","{0} が防空圏に進入：通信途絶、緊急軍用飛行場 {1} へ向け待機。","{0}이(가) 방공 구역에 진입: 통신 두절, 비상 군용 공항 {1}(으)로 선회 대기.","{0} vào vùng phòng không: mất liên lạc, bay vòng chờ, chuyển hướng sân bay quân sự khẩn cấp {1}."],
+e_airdef:["{0} entered air-defense zone: comms lost.","{0} 进入防空区：通信中断。","{0} が防空圏に進入：通信途絶。","{0}이(가) 방공 구역에 진입: 통신 두절.","{0} vào vùng phòng không: mất liên lạc."],
 live:["LIVE","直播","ライブ","라이브","TRỰC TIẾP"],bn:["NEWS","快讯","ニュース","뉴스","BẢN TIN"],
 newOrder:["New order","新订单","新しい注文","새 주문","Đơn hàng mới"],follow:["Follow","跟随","追尾","따라가기","Theo dõi"],world:["World","全球","世界","전체","Toàn cầu"],
-warrOn:["Escort protection: ON","护航保障：开","護衛保証：オン","호위 보증: 켜짐","Bảo hành hộ tống: BẬT"],warrOff:["Escort protection: OFF","护航保障：关","護衛保証：オフ","호위 보증: 꺼짐","Bảo hành hộ tống: TẮT"],
-sndOn:["🔊 Sound","🔊 声音","🔊 サウンド","🔊 소리","🔊 Âm thanh"],sndTap:["🔇 Tap to enable sound","🔇 点击开启声音","🔇 タップで音を有効化","🔇 눌러서 소리 켜기","🔇 Chạm để bật tiếng"],sndOff:["🔇 Muted","🔇 已静音","🔇 ミュート","🔇 음소거","🔇 Tắt tiếng"],
-note:["Simulation: one flight carrying your order. Delays are handled automatically by AI. Drag to move, scroll to zoom. Sound plays after your first tap.","模拟：一架航班运送您的订单，延误由 AI 自动处理。拖动移动，滚轮缩放。首次点击后才会播放声音。","シミュレーション：あなたの注文を運ぶ1機のフライト。遅延は AI が自動で処理します。ドラッグで移動、スクロールで拡大。音は最初のタップ後に再生されます。","시뮬레이션: 주문을 싣고 가는 비행기 한 대. 지연은 AI가 자동 처리합니다. 드래그로 이동, 스크롤로 확대. 소리는 처음 터치한 뒤 재생됩니다.","Mô phỏng: một chuyến bay chở đơn hàng của bạn. Mọi chậm trễ do AI tự xử lý. Kéo để di chuyển, cuộn để phóng to. Âm thanh phát sau lần chạm đầu tiên."],
-l_status:["Status","状态","状況","상태","Trạng thái"],l_rem:["Remaining · ETA","剩余 · 预计到达","残り · 到着予定","남은 거리 · 도착 예정","Còn lại · ETA"],l_data:["Altitude · speed · heading","高度 · 速度 · 航向","高度 · 速度 · 方位","고도 · 속도 · 방향","Độ cao · tốc độ · hướng"],l_ac:["Aircraft","机型","機体","기종","Máy bay"],
-l_order:["Your order","您的订单","あなたの注文","내 주문","Đơn hàng của bạn"],l_code:["Order code","订单号","注文番号","주문 번호","Mã đơn hàng"],l_cargo:["Cargo","货物","貨物","화물","Mặt hàng"],show:["Show","显示","表示","표시","Hiện"],hide:["Hide","隐藏","非表示","숨기기","Ẩn"],hidden:["•••••• (hidden)","•••••• （已隐藏）","•••••• （非表示）","•••••• (숨김)","•••••• (đã ẩn)"],
-pickTitle:["Receive your cargo","领取货物","貨物の受け取り","화물 수령","Nhận hàng"],pickHint:["The flight has landed. The aircraft stays parked at the airport. Choose how to receive your cargo:","航班已降落，飞机将停放在机场。请选择收货方式：","フライトが着陸しました。機体は空港に駐機したままです。受け取り方法を選んでください：","비행기가 착륙했습니다. 비행기는 공항에 주기됩니다. 수령 방법을 선택하세요:","Chuyến bay đã hạ cánh, máy bay đậu lại sân bay. Hãy chọn cách nhận hàng:"],
-pickHome:["Deliver to my home","送货上门","自宅で受け取る","집으로 배송","Nhận tại nhà"],pickCenter:["Pick up now at the cargo collection center","直接到货物集散中心自提","貨物集荷センターで今すぐ受け取る","화물 집하 센터에서 바로 수령","Nhận ngay tại trung tâm thu thập hàng hoá"],
+warrOn:["Escort: ON","护航：开","護衛：オン","호위: 켜짐","Bảo hành hộ tống: BẬT"],warrOff:["Escort: OFF","护航：关","護衛：オフ","호위: 꺼짐","Bảo hành hộ tống: TẮT"],
+sndOn:["🔊 Sound","🔊 声音","🔊 サウンド","🔊 소리","🔊 Âm thanh"],sndTap:["🔇 Tap sound","🔇 点击开启","🔇 タップ","🔇 눌러서","🔇 Chạm bật"],sndOff:["🔇 Muted","🔇 静音","🔇 ミュート","🔇 음소거","🔇 Tắt tiếng"],
+l_status:["Status","状态","状況","상태","Trạng thái"],l_rem:["Remaining · ETA","剩余 · 预计","残り · 到着","남은 거리","Còn lại · ETA"],l_data:["Altitude · speed · heading","高度 · 速度 · 航向","高度 · 速度 · 方位","고도 · 속도","Độ cao · tốc độ · hướng"],l_ac:["Aircraft","机型","機体","기종","Máy bay"],
+l_order:["Your order","您的订单","ご注文","내 주문","Đơn hàng của bạn"],l_code:["Order code","订单号","注文番号","주문 번호","Mã đơn hàng"],l_cargo:["Cargo","货物","貨物","화물","Mặt hàng"],show:["Show","显示","表示","표시","Hiện"],hide:["Hide","隐藏","非表示","숨기기","Ẩn"],hidden:["•••••• (hidden)","•••••• (已隐藏)","•••••• (非表示)","•••••• (숨김)","•••••• (đã ẩn)"],
+pickTitle:["Receive cargo","领取货物","貨物受取","화물 수령","Nhận hàng"],pickHint:["Flight landed. Choose how to receive:","航班已降落。选择收货方式：","着陸しました。受取方法：","착륙했습니다. 수령 방법:","Chuyến bay đã hạ cánh. Chọn cách nhận:"],
+pickHome:["Deliver to home","送货上门","自宅配送","집 배송","Nhận tại nhà"],pickCenter:["Pick up at center","集散中心自提","集荷センター","집하 센터","Nhận tại trung tâm"],
 home:["Home","家","自宅","집","Nhà"],center:["Collection center","集散中心","集荷センター","집하 센터","Trung tâm thu thập"],
-s_normal:["Flying normally","正常飞行","通常飛行中","정상 비행 중","Đang bay bình thường"],s_customs:["Customs clearance error – waiting for documents","清关出错 – 等待补充文件","通関エラー – 書類待ち","통관 오류 – 서류 대기","Lỗi thông quan – chờ bổ sung giấy tờ"],
-s_conflict:["Conflict zone – customs paperwork delayed","进入冲突区域 – 清关文件延误","紛争地域 – 通関書類が遅延","분쟁 지역 – 통관 서류 지연","Vùng chiến sự – chậm trễ giấy tờ thông quan"],s_epi:["Epidemic zone – quarantine & paperwork delay","疫情区域 – 检疫和文件延误","感染症地域 – 検疫と書類が遅延","감염병 지역 – 검역 및 서류 지연","Vùng dịch bệnh – chậm trễ kiểm dịch và giấy tờ"],
-s_storm:["Storm center – holding to re-route","风暴中心 – 盘旋等待改航","嵐の中心 – 待機して経路再計算","폭풍 중심 – 선회 대기, 경로 재계산","Tâm bão – bay vòng chờ đổi đường bay"],s_ash:["Volcanic ash – holding for a new route","火山灰 – 盘旋等待新航线","火山灰 – 待機して新経路を待つ","화산재 – 선회 대기, 새 경로","Tro bụi núi lửa – chờ đường bay mới"],
-s_solar:["Geomagnetic storm – comms degraded","磁暴 – 通信受影响","磁気嵐 – 通信が不安定","자기 폭풍 – 통신 저하","Bão từ – liên lạc suy giảm"],s_sand:["Sandstorm – holding","沙尘暴 – 盘旋等待","砂嵐 – 待機中","모래 폭풍 – 선회 대기","Bão cát – bay vòng chờ"],s_snow:["Snowstorm – holding","暴风雪 – 盘旋等待","吹雪 – 待機中","눈보라 – 선회 대기","Bão tuyết – bay vòng chờ"],
-s_blackout:["Comms lost over the sea – flying the estimated path","海上通信中断 – 按推算航线飞行","洋上で通信途絶 – 推定経路で飛行","해상 통신 두절 – 추정 경로로 비행","Mất liên lạc trên biển – bay theo đường ước tính"],s_parked:["Landed – aircraft parked at the airport","已降落 – 飞机停放在机场","着陸済み – 機体は空港に駐機","착륙 완료 – 비행기 주기 중","Đã hạ cánh – máy bay đậu tại sân bay"],
-s_ai:["AI is handling it automatically","AI 正在自动处理","AI が自動で対応中","AI가 자동으로 처리 중","AI đang tự xử lý"],
-z_storm:["Storm","风暴","嵐","폭풍","Bão"],z_ash:["Volcanic ash","火山灰","火山灰","화산재","Tro bụi"],z_solar:["Magnetic storm","磁暴","磁気嵐","자기 폭풍","Bão từ"],z_sand:["Sandstorm","沙尘暴","砂嵐","모래 폭풍","Bão cát"],z_snow:["Snowstorm","暴风雪","吹雪","눈보라","Bão tuyết"],
-z_conflict:["Conflict zone","冲突区域","紛争地域","분쟁 지역","Vùng chiến sự"],z_epi:["Epidemic zone","疫情区域","感染症地域","감염병 지역","Vùng dịch bệnh"],z_blackout:["Comms blackout","通信盲区","通信不能区域","통신 두절 지역","Vùng mù liên lạc"],z_customs:["Customs checkpoint","海关检查点","通関検査所","세관 검문소","Trạm thông quan"],
-m_ready:["Select a flight or start a new order.","请选择航班或开始新订单。","フライトを選ぶか、新しい注文を開始してください。","항공편을 선택하거나 새 주문을 시작하세요.","Chọn chuyến bay hoặc bắt đầu đơn hàng mới."],
-m_new:["Order {0}: {1} → {2} on flight {3}.","订单 {0}：{1} → {2}，航班 {3}。","注文 {0}：{1} → {2}（{3}便）。","주문 {0}: {1} → {2}, {3} 편.","Đơn hàng {0}: {1} → {2}, chuyến {3}."],
-m_zone:["{0} detected ahead of {1}'s route.","{1} 航线前方发现{0}。","{1}便の経路前方に{0}を検知。","{1} 항로 전방에서 {0} 감지.","Phát hiện {0} phía trước tuyến bay của {1}."],
-e_customs:["{0}: customs clearance error over land – paperwork delayed, AI is resolving it.","{0}：陆地上空清关出错，文件延误，AI 正在处理。","{0}：陸上で通関エラー、書類が遅延。AI が対応中。","{0}: 육상에서 통관 오류, 서류 지연. AI가 처리 중.","{0}: lỗi thông quan trên đất liền, chậm giấy tờ – AI đang tự xử lý."],
-e_conflict:["{0} entered a conflict zone: customs paperwork delayed, AI is requesting clearance.","{0} 进入冲突区域：清关文件延误，AI 正在申请许可。","{0} が紛争地域に進入：通関書類が遅延。AI が許可を申請中。","{0}이(가) 분쟁 지역에 진입: 통관 서류 지연, AI가 허가를 요청 중.","{0} đi vào vùng chiến sự: chậm giấy tờ thông quan – AI đang xin cấp phép."],
-e_epi:["{0} entered an epidemic zone: quarantine and customs paperwork delayed.","{0} 进入疫情区域：检疫和清关文件延误。","{0} が感染症地域に進入：検疫と通関書類が遅延。","{0}이(가) 감염병 지역에 진입: 검역 및 통관 서류 지연.","{0} đi vào vùng dịch bệnh: chậm kiểm dịch và giấy tờ thông quan."],
-e_storm:["{0} reached a storm center: holding while AI re-routes.","{0} 进入风暴中心：盘旋等待，AI 正在改航。","{0} が嵐の中心に到達：待機し AI が経路を再計算。","{0}이(가) 폭풍 중심에 도달: 선회 대기, AI가 경로 재계산.","{0} vào tâm bão: bay vòng chờ, AI đang tính lại đường bay."],
-e_ash:["{0} met volcanic ash: holding for a new route.","{0} 遇到火山灰：盘旋等待新航线。","{0} が火山灰に遭遇：新経路待ち。","{0}이(가) 화산재를 만남: 새 경로 대기.","{0} gặp tro bụi núi lửa: bay vòng chờ đường bay mới."],
-e_solar:["{0}: geomagnetic storm – communications degraded, AI keeps the planned path.","{0}：磁暴导致通信受影响，AI 保持计划航线。","{0}：磁気嵐で通信が不安定。AI が計画経路を維持。","{0}: 자기 폭풍으로 통신 저하, AI가 계획 경로 유지.","{0}: bão từ làm liên lạc suy giảm – AI giữ đường bay dự kiến."],
-e_sand:["{0} met a sandstorm: holding until it clears.","{0} 遇到沙尘暴：盘旋等待。","{0} が砂嵐に遭遇：回復まで待機。","{0}이(가) 모래 폭풍을 만남: 대기.","{0} gặp bão cát: bay vòng chờ tan."],
-e_snow:["{0} met a snowstorm: holding until it clears.","{0} 遇到暴风雪：盘旋等待。","{0} が吹雪に遭遇：回復まで待機。","{0}이(가) 눈보라를 만남: 대기.","{0} gặp bão tuyết: bay vòng chờ tan."],
-e_blackout:["{0} lost communications over the sea: AI flies the estimated path.","{0} 在海上失去通信：AI 按推算航线飞行。","{0} が洋上で通信途絶：AI が推定経路で飛行。","{0}이(가) 해상에서 통신 두절: AI가 추정 경로로 비행.","{0} mất liên lạc trên biển: AI bay theo đường ước tính."],
-m_resolved:["{0}: AI resolved it, resuming the journey.","{0}：AI 已处理完毕，继续飞行。","{0}：AI が対応を完了、飛行を再開。","{0}: AI가 처리 완료, 비행을 재개합니다.","{0}: AI đã xử lý xong, tiếp tục hành trình."],
-m_arrive:["{0} landed at {1}. The aircraft stays parked at the airport.","{0} 已降落 {1}。飞机将停放在机场。","{0} が {1} に着陸。機体は空港に駐機します。","{0}이(가) {1}에 착륙했습니다. 비행기는 공항에 주기됩니다.","{0} đã hạ cánh tại {1}. Máy bay đậu lại sân bay."],
-m_home:["Truck dispatched: your cargo is on its way home.","货车已出发，货物正送往您家。","トラックが出発：貨物が自宅へ向かっています。","트럭 출발: 화물이 집으로 이동 중입니다.","Xe tải đã xuất phát: hàng đang về tận nhà bạn."],
-m_home_done:["Cargo delivered to your home. Order {0}.","货物已送达您家。订单 {0}。","貨物を自宅に配達しました。注文 {0}。","화물이 집에 배송되었습니다. 주문 {0}.","Đã giao hàng tận nhà. Đơn hàng {0}."],
-m_center:["Your cargo is ready at the collection center. Pickup code {0}.","货物已到集散中心，取货码 {0}。","貨物は集荷センターで受け取り可能です。受取コード {0}。","화물이 집하 센터에 준비되었습니다. 수령 코드 {0}.","Hàng đã sẵn sàng tại trung tâm thu thập. Mã nhận hàng {0}."],
-m_nohome:["No road access here – switched to the collection center.","此处无陆路 – 已改为集散中心自提。","陸路がないため集荷センター受け取りに切り替えました。","육로가 없어 집하 센터 수령으로 전환했습니다.","Không có đường bộ – đã chuyển sang nhận tại trung tâm."],
-m_warr_on:["Escort protection on: the fleet shields the flight and delays are halved.","护航保障已开启：舰队保护航班，延误减半。","護衛保証オン：艦隊が護衛し、遅延は半分に。","호위 보증 켜짐: 함대가 호위하며 지연이 절반으로 줄어듭니다.","Đã bật bảo hành hộ tống: hạm đội bảo vệ chuyến bay, chậm trễ giảm một nửa."],
-m_warr_off:["Escort protection off.","护航保障已关闭。","護衛保証をオフにしました。","호위 보증이 꺼졌습니다.","Đã tắt bảo hành hộ tống."],
-c_elec:["Electronic components","电子元器件","電子部品","전자 부품","Linh kiện điện tử"],c_fash:["Fashion goods","时尚服饰","ファッション商品","패션 상품","Hàng thời trang"],c_med:["Medical equipment","医疗设备","医療機器","의료 장비","Thiết bị y tế"],c_mach:["Industrial machinery","工业机械","産業機械","산업 기계","Máy móc công nghiệp"],c_food:["Frozen food","冷冻食品","冷凍食品","냉동식품","Thực phẩm đông lạnh"],c_art:["Art and handicrafts","艺术品与手工艺品","美術品・工芸品","예술품·공예품","Tranh và đồ thủ công"],c_book:["Books and publications","图书与出版物","書籍・出版物","도서·출판물","Sách và ấn phẩm"],c_flower:["Fresh flowers","鲜花","生花","생화","Hoa tươi"],c_coffee:["Coffee","咖啡","コーヒー","커피","Cà phê"],c_tele:["Telecom equipment","通信设备","通信機器","통신 장비","Thiết bị viễn thông"]};
+s_normal:["Flying normally","正常飞行","通常飛行","정상 비행","Đang bay bình thường"],s_customs:["Customs error","清关出错","通関エラー","통관 오류","Lỗi thông quan"],
+s_conflict:["Conflict zone","冲突区域","紛争地域","분쟁 지역","Vùng chiến sự"],s_epi:["Epidemic zone","疫情区域","感染症地域","감염병 지역","Vùng dịch bệnh"],
+s_storm:["Storm center","风暴中心","嵐の中心","폭풍 중심","Tâm bão"],s_ash:["Volcanic ash","火山灰","火山灰","화산재","Tro bụi"],
+s_solar:["Geomagnetic storm","磁暴","磁気嵐","자기 폭풍","Bão từ"],s_sand:["Sandstorm","沙尘暴","砂嵐","모래 폭풍","Bão cát"],s_snow:["Snowstorm","暴风雪","吹雪","눈보라","Bão tuyết"],
+s_blackout:["Comms lost","通信中断","通信途絶","통신 두절","Mất liên lạc"],s_parked:["Landed – parked","已降落","着陸済み","착륙 완료","Đã hạ cánh"],
+s_ai:["AI is handling","AI 处理中","AI 対応中","AI 처리 중","AI đang tự xử lý"],
+z_storm:["Storm","风暴","嵐","폭풍","Bão"],z_ash:["Ash","火山灰","火山灰","화산재","Tro bụi"],z_solar:["Mag storm","磁暴","磁気嵐","자기 폭풍","Bão từ"],z_sand:["Sandstorm","沙尘暴","砂嵐","모래 폭풍","Bão cát"],z_snow:["Snowstorm","暴风雪","吹雪","눈보라","Bão tuyết"],
+z_conflict:["Conflict","冲突","紛争","분쟁","Chiến sự"],z_epi:["Epidemic","疫情","感染症","감염병","Dịch bệnh"],z_blackout:["Blackout","通信盲区","通信不能","통신 두절","Mù liên lạc"],z_customs:["Customs","海关","通関","세관","Thông quan"],
+m_ready:["Select a flight.","请选择航班。","フライトを選択。","항공편을 선택.","Chọn chuyến bay."],
+m_new:["Order {0}: {1} → {2} on {3}.","订单 {0}: {1} → {2}, 航班 {3}.","注文 {0}: {1} → {2} ({3}).","주문 {0}: {1} → {2}, {3}.","Đơn hàng {0}: {1} → {2}, chuyến {3}."],
+e_customs:["{0}: customs error.","{0}: 清关出错。","{0}: 通関エラー。","{0}: 통관 오류.","{0}: lỗi thông quan."],
+e_conflict:["{0}: conflict zone.","{0}: 冲突区域。","{0}: 紛争地域。","{0}: 분쟁 지역.","{0}: vùng chiến sự."],
+e_epi:["{0}: epidemic zone.","{0}: 疫情区域。","{0}: 感染症地域。","{0}: 감염병 지역.","{0}: vùng dịch bệnh."],
+e_storm:["{0}: storm center.","{0}: 风暴中心。","{0}: 嵐の中心。","{0}: 폭풍 중심.","{0}: tâm bão."],
+e_ash:["{0}: volcanic ash.","{0}: 火山灰。","{0}: 火山灰。","{0}: 화산재.","{0}: tro bụi."],
+e_solar:["{0}: geomagnetic storm.","{0}: 磁暴。","{0}: 磁気嵐。","{0}: 자기 폭풍.","{0}: bão từ."],
+e_sand:["{0}: sandstorm.","{0}: 沙尘暴。","{0}: 砂嵐。","{0}: 모래 폭풍.","{0}: bão cát."],
+e_snow:["{0}: snowstorm.","{0}: 暴风雪。","{0}: 吹雪。","{0}: 눈보라.","{0}: bão tuyết."],
+e_blackout:["{0}: comms lost.","{0}: 通信中断。","{0}: 通信途絶。","{0}: 통신 두절.","{0}: mất liên lạc."],
+m_resolved:["{0}: resolved.","{0}: 已处理。","{0}: 対応完了。","{0}: 처리 완료.","{0}: đã xử lý."],
+m_arrive:["{0} landed at {1}.","{0} 已降落 {1}。","{0} が {1} に着陸。","{0}이(가) {1}에 착륙.","{0} hạ cánh tại {1}."],
+m_home:["Truck dispatched.","货车已出发。","トラック出発。","트럭 출발.","Xe tải đã xuất phát."],
+m_home_done:["Delivered to home. Order {0}.","已送达。订单 {0}。","自宅配達。注文 {0}。","집 배송. 주문 {0}.","Đã giao tận nhà. Đơn {0}."],
+m_center:["Ready at center. Code {0}.","集散中心。取货码 {0}。","集荷センター。コード {0}。","집하 센터. 코드 {0}.","Sẵn sàng tại trung tâm. Mã {0}."],
+m_nohome:["No road – switch to center.","无陆路 – 转集散中心。","陸路なし – 集荷センターへ。","육로 없음 – 집하 센터.","Không có đường bộ – chuyển trung tâm."],
+m_warr_on:["Escort ON.","护航开启。","護衛オン。","호위 켜짐.","Bật bảo hành hộ tống."],
+m_warr_off:["Escort OFF.","护航关闭。","護衛オフ。","호위 꺼짐.","Tắt bảo hành hộ tống."],
+c_elec:["Electronic components","电子元器件","電子部品","전자 부품","Linh kiện điện tử"],c_fash:["Fashion goods","时尚服饰","ファッション","패션","Hàng thời trang"],c_med:["Medical equipment","医疗设备","医療機器","의료 장비","Thiết bị y tế"],c_mach:["Industrial machinery","工业机械","産業機械","산업 기계","Máy móc công nghiệp"],c_food:["Frozen food","冷冻食品","冷凍食品","냉동식품","Thực phẩm đông lạnh"],c_art:["Art and handicrafts","艺术品","美術品","예술품","Tranh và đồ thủ công"],c_book:["Books","图书","書籍","도서","Sách"],c_flower:["Fresh flowers","鲜花","生花","생화","Hoa tươi"],c_coffee:["Coffee","咖啡","コーヒー","커피","Cà phê"],c_tele:["Telecom equipment","通信设备","通信機器","통신 장비","Thiết bị viễn thông"],
+"demo.title":["Demo Tool","演示工具","デモツール","데모 도구","Công cụ Demo"],
+"demo.note":["This tool <b>explains</b> how shipping works. Pick start and end points to preview.","此工具用于<b>解释</b>运输系统。选择起点和终点以预览。","このツールは配送システムを<b>説明</b>します。出発点と到着点を選んでプレビュー。","이 도구는 배송 시스템을 <b>설명</b>합니다. 출발지와 도착지를 선택하여 미리보세요.","Công cụ này dùng để <b>giải thích</b> cách hệ thống vận chuyển hoạt động. Chọn điểm bắt đầu và kết thúc để xem mô phỏng."],
+"demo.from":["Start point (Demo)","起点（演示）","出発点（デモ）","출발지 (데모)","Điểm bắt đầu (Demo)"],
+"demo.to":["End point (Demo)","终点（演示）","到着点（デモ）","도착지 (데모)","Điểm kết thúc (Demo)"],
+"demo.pick":["Pick on map","在地图上选择","地図上で選択","지도에서 선택","Chọn trên bản đồ"],
+"demo.preview":["👁 Preview route","👁 预览路线","👁 経路プレビュー","👁 경로 미리보기","👁 Xem demo đường bay"],
+"demo.reset":["Clear selection","清除选择","クリア","지우기","Xoá lựa chọn"],
+"official.title":["Track your order","追踪订单","注文追跡","주문 추적","Theo dõi đơn hàng"],
+"official.note":["This is the <b>official view</b> for customers — only your plane is shown.","面向客户的<b>官方视图</b>——仅显示您的飞机。","お客様向けの<b>公式ビュー</b>です。","고객용 <b>공식 뷰</b>입니다.","Đây là <b>góc nhìn chính thức</b> dành cho khách hàng — chỉ hiển thị máy bay chở đơn hàng của bạn."],
+"official.follow":["🎯 Track my flight","🎯 追踪我的航班","🎯 自分の便を追跡","🎯 내 항공편 추적","🎯 Theo dõi chuyến bay của tôi"],
+"official.flying":["In flight","飞行中","飛行中","비행 중","Đang bay"],
+"official.arrived":["Landed","已降落","着陸済み","착륙","Đã hạ cánh"],
+"official.delayed":["Delayed","延误","遅延","지연","Chậm trễ"]
+};
 const t=(k,...a)=>{const v=TX[k];if(!v)return k;let s=v[LI[lang]]||v[0];a.forEach((x,i)=>{s=s.split("{"+i+"}").join(x)});return s};
-const CNT={vn:["Vietnam","越南","ベトナム","베트남","Việt Nam"],us:["United States","美国","アメリカ合衆国","미국","Hoa Kỳ"],hk:["Hong Kong","中国香港","香港","홍콩","Hồng Kông"],cn:["China","中国","中国","중국","Trung Quốc"],qa:["Qatar","卡塔尔","カタール","카타르","Qatar"],il:["Israel","以色列","イスラエル","이스라엘","Israel"],fr:["France","法国","フランス","프랑스","Pháp"],gn:["Guinea","几内亚","ギニア","기니","Guinea"],br:["Brazil","巴西","ブラジル","브라질","Brazil"],mx:["Mexico","墨西哥","メキシコ","멕시코","Mexico"],es:["Spain","西班牙","スペイン","스페인","Tây Ban Nha"],sd:["Sudan","苏丹","スーダン","수단","Sudan"],gb:["United Kingdom","英国","イギリス","영국","Anh"],sg:["Singapore","新加坡","シンガポール","싱가포르","Singapore"],au:["Australia","澳大利亚","オーストラリア","호주","Úc"],jp:["Japan","日本","日本","일본","Nhật Bản"],ke:["Kenya","肯尼亚","ケニア","케냐","Kenya"],ae:["UAE","阿联酋","アラブ首長国連邦","아랍에미리트","UAE"],et:["Ethiopia","埃塞俄比亚","エチオピア","에티오피아","Ethiopia"],ua:["Ukraine","乌克兰","ウクライナ","우크라이나","Ukraine"],cu:["Cuba","古巴","キューバ","쿠바","Cuba"],kp:["North Korea","朝鲜","北朝鮮","북한","Triều Tiên"],de:["Germany","德国","ドイツ","독일","Đức"],kr:["South Korea","韩国","韓国","한국","Hàn Quốc"],th:["Thailand","泰国","タイ","태국","Thái Lan"],tr:["Türkiye","土耳其","トルコ","튀르키예","Thổ Nhĩ Kỳ"],za:["South Africa","南非","南アフリカ","남아프리카공화국","Nam Phi"],in:["India","印度","インド","인도","Ấn Độ"],ar:["Argentina","阿根廷","アルゼンチン","아르헨티나","Argentina"],ca:["Canada","加拿大","カナダ","캐나다","Canada"],nz:["New Zealand","新西兰","ニュージーランド","뉴질랜드","New Zealand"],ph:["Philippines","菲律宾","フィリピン","필리핀","Philippines"]};
-const AP={};("SGN|10.82|106.65|vn|Ho Chi Minh City|胡志明市|ホーチミン市|호치민|TP. Hồ Chí Minh;HAN|21.22|105.81|vn|Hanoi|河内|ハノイ|하노이|Hà Nội;SFO|37.62|-122.38|us|San Francisco|旧金山|サンフランシスコ|샌프란시스코|San Francisco;LAX|33.94|-118.41|us|Los Angeles|洛杉矶|ロサンゼルス|로스앤젤레스|Los Angeles;JFK|40.64|-73.78|us|New York|纽约|ニューヨーク|뉴욕|New York;ORD|41.98|-87.9|us|Chicago|芝加哥|シカゴ|시카고|Chicago;MIA|25.79|-80.29|us|Miami|迈阿密|マイアミ|마이애미|Miami;HKG|22.31|113.92|hk|Hong Kong|香港|香港|홍콩|Hồng Kông;PEK|40.08|116.58|cn|Beijing (Peking)|北京|北京|베이징|Bắc Kinh (Peking);DOH|25.27|51.61|qa|Doha|多哈|ドーハ|도하|Doha;TLV|32.01|34.89|il|Tel Aviv|特拉维夫|テルアビブ|텔아비브|Tel Aviv;CDG|49.01|2.55|fr|Paris|巴黎|パリ|파리|Paris;CKY|9.58|-13.61|gn|Conakry|科纳克里|コナクリ|코나크리|Conakry;GIG|-22.81|-43.25|br|Rio de Janeiro|里约热内卢|リオデジャネイロ|리우데자네이루|Rio de Janeiro;GRU|-23.43|-46.47|br|São Paulo|圣保罗|サンパウロ|상파울루|São Paulo;MEX|19.44|-99.07|mx|Mexico City|墨西哥城|メキシコシティ|멕시코시티|Mexico City;MAD|40.49|-3.57|es|Madrid|马德里|マドリード|마드리드|Madrid;KRT|15.59|32.55|sd|Khartoum|喀土穆|ハルツーム|하르툼|Khartoum;LHR|51.47|-0.45|gb|London|伦敦|ロンドン|런던|London;SIN|1.36|103.99|sg|Singapore|新加坡|シンガポール|싱가포르|Singapore;SYD|-33.95|151.18|au|Sydney|悉尼|シドニー|시드니|Sydney;HND|35.55|139.78|jp|Tokyo|东京|東京|도쿄|Tokyo;NRT|35.77|140.39|jp|Tokyo (Narita)|东京（成田）|東京（成田）|도쿄(나리타)|Tokyo (Narita);NBO|-1.32|36.93|ke|Nairobi|内罗毕|ナイロビ|나이로비|Nairobi;DXB|25.25|55.36|ae|Dubai|迪拜|ドバイ|두바이|Dubai;ADD|8.98|38.8|et|Addis Ababa|亚的斯亚贝巴|アディスアベバ|아디스아바바|Addis Ababa;KBP|50.35|30.9|ua|Kyiv|基辅|キーウ|키이우|Kyiv;HAV|22.99|-82.41|cu|Havana|哈瓦那|ハバナ|아바나|Havana;FNJ|39.22|125.67|kp|Pyongyang|平壤|平壌|평양|Bình Nhưỡng;FRA|50.03|8.57|de|Frankfurt|法兰克福|フランクフルト|프랑크푸르트|Frankfurt;ICN|37.46|126.44|kr|Seoul|首尔|ソウル|서울|Seoul;BKK|13.69|100.75|th|Bangkok|曼谷|バンコク|방콕|Bangkok;IST|41.26|28.74|tr|Istanbul|伊斯坦布尔|イスタンブール|이스탄불|Istanbul;JNB|-26.14|28.24|za|Johannesburg|约翰内斯堡|ヨハネスブルグ|요하네스버그|Johannesburg;DEL|28.56|77.1|in|Delhi|德里|デリー|델리|Delhi;EZE|-34.82|-58.54|ar|Buenos Aires|布宜诺斯艾利斯|ブエノスアイレス|부에노스아이레스|Buenos Aires;YVR|49.19|-123.18|ca|Vancouver|温哥华|バンクーバー|밴쿠버|Vancouver;AKL|-37.01|174.79|nz|Auckland|奥克兰|オークランド|오클랜드|Auckland;MNL|14.51|121.02|ph|Manila|马尼拉|マニラ|마닐라|Manila").split(";").forEach(s=>{const a=s.split("|");AP[a[0]]={k:a[0],la:+a[1],lo:+a[2],cc:a[3],nm:[a[4],a[5],a[6],a[7],a[8]]}});
-(function(){const C={ru:["Russia","俄罗斯","ロシア","러시아","Nga"],by:["Belarus","白俄罗斯","ベラルーシ","벨라루스","Belarus"],id:["Indonesia","印度尼西亚","インドネシア","인도네시아","Indonesia"],it:["Italy","意大利","イタリア","이탈리아","Ý"],nl:["Netherlands","荷兰","オランダ","네덜란드","Hà Lan"],pl:["Poland","波兰","ポーランド","폴란드","Ba Lan"],eg:["Egypt","埃及","エジプト","이집트","Ai Cập"]};for(const k in C)CNT[k]=CNT[k]||C[k];
-"SVO|55.97|37.41|ru|Moscow (Sheremetyevo)|莫斯科（谢列梅捷沃）|モスクワ（シェレメチェボ）|모스크바(셰레메티예보)|Mát-xcơ-va (Sheremetyevo);LED|59.8|30.26|ru|Saint Petersburg|圣彼得堡|サンクトペテルブルク|상트페테르부르크|Xanh Pê-téc-bua;MSQ|53.88|28.03|by|Minsk|明斯克|ミンスク|민스크|Minsk;CGK|-6.13|106.66|id|Jakarta|雅加达|ジャカルタ|자카르타|Jakarta;FCO|41.8|12.25|it|Rome|罗马|ローマ|로마|Rome;AMS|52.31|4.76|nl|Amsterdam|阿姆斯特丹|アムステルダム|암스테르담|Amsterdam;WAW|52.17|20.97|pl|Warsaw|华沙|ワルシャワ|바르샤바|Warsaw;CAI|30.12|31.4|eg|Cairo|开罗|カイロ|카이로|Cairo".split(";").forEach(s=>{const a=s.split("|");AP[a[0]]={k:a[0],la:+a[1],lo:+a[2],cc:a[3],nm:[a[4],a[5],a[6],a[7],a[8]]}})})();
+const CNT={vn:["Vietnam","越南","ベトナム","베트남","Việt Nam"],us:["United States","美国","アメリカ","미국","Hoa Kỳ"],hk:["Hong Kong","中国香港","香港","홍콩","Hồng Kông"],cn:["China","中国","中国","중국","Trung Quốc"],qa:["Qatar","卡塔尔","カタール","카타르","Qatar"],il:["Israel","以色列","イスラエル","이스라엘","Israel"],fr:["France","法国","フランス","프랑스","Pháp"],gn:["Guinea","几内亚","ギニア","기니","Guinea"],br:["Brazil","巴西","ブラジル","브라질","Brazil"],mx:["Mexico","墨西哥","メキシコ","멕시코","Mexico"],es:["Spain","西班牙","スペイン","스페인","Tây Ban Nha"],sd:["Sudan","苏丹","スーダン","수단","Sudan"],gb:["United Kingdom","英国","イギリス","영국","Anh"],sg:["Singapore","新加坡","シンガポール","싱가포르","Singapore"],au:["Australia","澳大利亚","オーストラリア","호주","Úc"],jp:["Japan","日本","日本","일본","Nhật Bản"],ke:["Kenya","肯尼亚","ケニア","케냐","Kenya"],ae:["UAE","阿联酋","アラブ","아랍","UAE"],et:["Ethiopia","埃塞俄比亚","エチオピア","에티오피아","Ethiopia"],ua:["Ukraine","乌克兰","ウクライナ","우크라이나","Ukraine"],cu:["Cuba","古巴","キューバ","쿠바","Cuba"],kp:["North Korea","朝鲜","北朝鮮","북한","Triều Tiên"],de:["Germany","德国","ドイツ","독일","Đức"],kr:["South Korea","韩国","韓国","한국","Hàn Quốc"],th:["Thailand","泰国","タイ","태국","Thái Lan"],tr:["Türkiye","土耳其","トルコ","튀르키예","Thổ Nhĩ Kỳ"],za:["South Africa","南非","南アフリカ","남아공","Nam Phi"],in:["India","印度","インド","인도","Ấn Độ"],ar:["Argentina","阿根廷","アルゼンチン","아르헨티나","Argentina"],ca:["Canada","加拿大","カナダ","캐나다","Canada"],nz:["New Zealand","新西兰","ニュージーランド","뉴질랜드","New Zealand"],ph:["Philippines","菲律宾","フィリピン","필리핀","Philippines"]};
+const AP={};("SGN|10.82|106.65|vn|Ho Chi Minh City|胡志明市|ホーチミン|호치민|TP. Hồ Chí Minh;HAN|21.22|105.81|vn|Hanoi|河内|ハノイ|하노이|Hà Nội;SFO|37.62|-122.38|us|San Francisco|旧金山|サンフランシスコ|샌프란시스코|San Francisco;LAX|33.94|-118.41|us|Los Angeles|洛杉矶|ロサンゼルス|LA|Los Angeles;JFK|40.64|-73.78|us|New York|纽约|ニューヨーク|뉴욕|New York;ORD|41.98|-87.9|us|Chicago|芝加哥|シカゴ|시카고|Chicago;MIA|25.79|-80.29|us|Miami|迈阿密|マイアミ|마이애미|Miami;HKG|22.31|113.92|hk|Hong Kong|香港|香港|홍콩|Hồng Kông;PEK|40.08|116.58|cn|Beijing|北京|北京|베이징|Bắc Kinh;DOH|25.27|51.61|qa|Doha|多哈|ドーハ|도하|Doha;TLV|32.01|34.89|il|Tel Aviv|特拉维夫|テルアビブ|텔아비브|Tel Aviv;CDG|49.01|2.55|fr|Paris|巴黎|パリ|파리|Paris;CKY|9.58|-13.61|gn|Conakry|科纳克里|コナクリ|코나크리|Conakry;GIG|-22.81|-43.25|br|Rio de Janeiro|里约|リオ|리우|Rio de Janeiro;GRU|-23.43|-46.47|br|São Paulo|圣保罗|サンパウロ|상파울루|São Paulo;MEX|19.44|-99.07|mx|Mexico City|墨西哥城|メキシコシティ|멕시코시티|Mexico City;MAD|40.49|-3.57|es|Madrid|马德里|マドリード|마드리드|Madrid;KRT|15.59|32.55|sd|Khartoum|喀土穆|ハルツーム|하르툼|Khartoum;LHR|51.47|-0.45|gb|London|伦敦|ロンドン|런던|London;SIN|1.36|103.99|sg|Singapore|新加坡|シンガポール|싱가포르|Singapore;SYD|-33.95|151.18|au|Sydney|悉尼|シドニー|시드니|Sydney;HND|35.55|139.78|jp|Tokyo|东京|東京|도쿄|Tokyo;NRT|35.77|140.39|jp|Narita|成田|成田|나리타|Narita;NBO|-1.32|36.93|ke|Nairobi|内罗毕|ナイロビ|나이로비|Nairobi;DXB|25.25|55.36|ae|Dubai|迪拜|ドバイ|두바이|Dubai;ADD|8.98|38.8|et|Addis Ababa|亚的斯|アディス|아디스|Addis Ababa;KBP|50.35|30.9|ua|Kyiv|基辅|キーウ|키이우|Kyiv;HAV|22.99|-82.41|cu|Havana|哈瓦那|ハバナ|아바나|Havana;FNJ|39.22|125.67|kp|Pyongyang|平壤|平壌|평양|Bình Nhưỡng;FRA|50.03|8.57|de|Frankfurt|法兰克福|フランクフルト|프랑크푸르트|Frankfurt;ICN|37.46|126.44|kr|Seoul|首尔|ソウル|서울|Seoul;BKK|13.69|100.75|th|Bangkok|曼谷|バンコク|방콕|Bangkok;IST|41.26|28.74|tr|Istanbul|伊斯坦布尔|イスタンブール|이스탄불|Istanbul;JNB|-26.14|28.24|za|Johannesburg|约翰内斯堡|ヨハネスブルグ|요하네스버그|Johannesburg;DEL|28.56|77.1|in|Delhi|德里|デリー|델리|Delhi;EZE|-34.82|-58.54|ar|Buenos Aires|布宜诺斯|ブエノス|부에노스|Buenos Aires;YVR|49.19|-123.18|ca|Vancouver|温哥华|バンクーバー|밴쿠버|Vancouver;AKL|-37.01|174.79|nz|Auckland|奥克兰|オークランド|오클랜드|Auckland;MNL|14.51|121.02|ph|Manila|马尼拉|マニラ|마닐라|Manila").split(";").forEach(s=>{const a=s.split("|");AP[a[0]]={k:a[0],la:+a[1],lo:+a[2],cc:a[3],nm:[a[4],a[5],a[6],a[7],a[8]]}});
+(function(){const C={ru:["Russia","俄罗斯","ロシア","러시아","Nga"],by:["Belarus","白俄","ベラルーシ","벨라루스","Belarus"],id:["Indonesia","印尼","インドネシア","인도네시아","Indonesia"],it:["Italy","意大利","イタリア","이탈리아","Ý"],nl:["Netherlands","荷兰","オランダ","네덜란드","Hà Lan"],pl:["Poland","波兰","ポーランド","폴란드","Ba Lan"],eg:["Egypt","埃及","エジプト","이집트","Ai Cập"]};for(const k in C)CNT[k]=CNT[k]||C[k];
+"SVO|55.97|37.41|ru|Moscow|莫斯科|モスクワ|모스크바|Mát-xcơ-va;LED|59.8|30.26|ru|Saint Petersburg|圣彼得堡|サンクト|상트|Xanh Pê-téc-bua;MSQ|53.88|28.03|by|Minsk|明斯克|ミンスク|민스크|Minsk;CGK|-6.13|106.66|id|Jakarta|雅加达|ジャカルタ|자카르타|Jakarta;FCO|41.8|12.25|it|Rome|罗马|ローマ|로마|Rome;AMS|52.31|4.76|nl|Amsterdam|阿姆斯特丹|アムステルダム|암스테르담|Amsterdam;WAW|52.17|20.97|pl|Warsaw|华沙|ワルシャワ|바르샤바|Warsaw;CAI|30.12|31.4|eg|Cairo|开罗|カイロ|카이로|Cairo".split(";").forEach(s=>{const a=s.split("|");AP[a[0]]={k:a[0],la:+a[1],lo:+a[2],cc:a[3],nm:[a[4],a[5],a[6],a[7],a[8]]}})})();
 const city=a=>a.nm[LI[lang]],cname=a=>CNT[a.cc][LI[lang]];
 const LV={VN:["#fff","#0a4a8a","#c9a227","#0a4a8a","Vietnam Airlines"],CX:["#fff","#00645a","#00645a","#00645a","Cathay Pacific"],QR:["#fff","#5c0632","#5c0632","#5c0632","Qatar Airways"],LY:["#fff","#0b3a8a","#0b3a8a","#0b3a8a","El Al"],AF:["#fff","#0a2a6e","#d3202c","#0a2a6e","Air France"],AA:["#d5dbe1","#0b3d91","#c8102e","#1a2a3a","American Airlines"],AM:["#fff","#0b2e6b","#0b2e6b","#0b2e6b","Aeroméxico"],SD:["#fff","#0f6b3a","#0f6b3a","#0f6b3a","Sudan Airways"],SQ:["#fff","#0a2d6e","#f5a800","#0a2d6e","Singapore Airlines"],UA:["#fff","#1c4fa0","#1c4fa0","#1c4fa0","United Airlines"],JL:["#fff","#d71920","#d71920","#222","Japan Airlines"],KQ:["#fff","#c8102e","#1a1a1a","#c8102e","Kenya Airways"],ET:["#fff","#0b6b3a","#e8b100","#0b6b3a","Ethiopian Airlines"],CA:["#fff","#c8102e","#c8102e","#c8102e","Air China"],CU:["#fff","#0050a4","#cf142b","#0050a4","Cubana de Aviación"]};
 const PRE=[["VN19","VN","SGN","SFO","elec","Airbus A350-900 · VN-A896"],["CX880","CX","HKG","LAX","fash","Airbus A350-1000 · B-LXA"],["QR720","QR","DOH","ORD","med","Boeing 777-300ER · A7-BAC"],["LY002","LY","TLV","JFK","elec","Boeing 787-9 · 4X-EDA"],["AF748","AF","CDG","CKY","med","Airbus A330-200 · F-GZCP"],["AA819","AA","MIA","GIG","mach","Boeing 777-200ER · N761AJ"],["AM120","AM","MEX","MAD","food","Boeing 787-8 · XA-AMX"],["SD120","SD","KRT","LHR","art","Airbus A330-300 · ST-ATK"],["SQ321","SQ","SIN","LHR","elec","Airbus A350-900 · 9V-SMA"],["UA890","UA","SFO","SYD","mach","Boeing 787-10 · N14011"],["JL005","JL","JFK","HND","book","Boeing 777-300ER · JA731J"],["KQ310","KQ","NBO","DXB","flower","Boeing 787-8 · 5Y-KZA"],["ET701","ET","ADD","DXB","coffee","Boeing 787-8 · ET-AUP"],["CA981","CA","PEK","KBP","tele","Boeing 777-300ER · B-2085"],["CU7","CU","HAV","FNJ","med","Ilyushin Il-96 · CU-T1250"]];
 const VIA={CA981:"MSQ",SQ321:"SVO",QR720:"LED"};
-/* ================= hình học ================= */
+
 const ang=(a,b)=>{const p=rad(a.la),q=rad(b.la),d=rad(b.lo-a.lo);return 2*Math.asin(Math.sqrt(Math.sin((q-p)/2)**2+Math.cos(p)*Math.cos(q)*Math.sin(d/2)**2))},kmd=(p,q)=>ang(p,q)*6371;
 function GC(a,b,f){const d=ang(a,b);if(d<1e-6)return{la:a.la,lo:a.lo};const A=Math.sin((1-f)*d)/Math.sin(d),B=Math.sin(f*d)/Math.sin(d),p=rad(a.la),q=rad(b.la),l=rad(a.lo),m=rad(b.lo),x=A*Math.cos(p)*Math.cos(l)+B*Math.cos(q)*Math.cos(m),y=A*Math.cos(p)*Math.sin(l)+B*Math.cos(q)*Math.sin(m),z=A*Math.sin(p)+B*Math.sin(q);return{la:deg(Math.atan2(z,Math.hypot(x,y))),lo:deg(Math.atan2(y,x))}}
 function PT(f,x){if(!f.V)return GC(f.A,f.B,x);return x<=f.tv?GC(f.A,f.V,x/f.tv):GC(f.V,f.B,(x-f.tv)/(1-f.tv))}
@@ -161,7 +351,7 @@ function dst(la,lo,b,d){const p=rad(la),l=rad(lo),a=d/6371,la2=Math.asin(Math.si
 function onLand(la,lo){for(const poly of DL){let ins=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const yi=poly[i][0],xi=poly[i][1],yj=poly[j][0],xj=poly[j][1];if((yi>la)!==(yj>la)&&lo<(xj-xi)*(la-yi)/(yj-yi)+xi)ins=!ins}if(ins)return true}return false}
 function nearAP(p){let b=null,bd=1e9;for(const k in AP){const d=kmd(p,AP[k]);if(d<bd){bd=d;b=AP[k]}}return b}
 const pick1=a=>a[Math.floor(Math.random()*a.length)];
-/* ================= cờ quốc gia ================= */
+
 function star(g,cx,cy,R,col,rot){g.fillStyle=col;g.beginPath();for(let k=0;k<10;k++){const r=k%2?R*.382:R,a=(rot===undefined?-Math.PI/2:rot)+k*Math.PI/5;g.lineTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r)}g.closePath();g.fill()}
 function strp(g,x,y,w,h,v,cols){let tot=0;cols.forEach(c=>tot+=c[1]||1);let o=0;cols.forEach(c=>{const f=(c[1]||1)/tot;g.fillStyle=c[0];v?g.fillRect(x+o*w,y,f*w+.6,h):g.fillRect(x,y+o*h,w,f*h+.6);o+=f})}
 function dsc(g,cx,cy,r,col){g.fillStyle=col;g.beginPath();g.arc(cx,cy,r,0,7);g.fill()}
@@ -172,7 +362,8 @@ cn:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#de2910"]]);star(g,x+w*.17,y+h*.27,h*.21,"#
 hk:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#de2910"]]);for(let k=0;k<5;k++){const a=-Math.PI/2+k*2*Math.PI/5;g.fillStyle="#fff";g.beginPath();g.ellipse(x+w/2+Math.cos(a)*h*.17,y+h/2+Math.sin(a)*h*.17,h*.14,h*.075,a,0,7);g.fill()}dsc(g,x+w/2,y+h/2,h*.035,"#de2910")},
 us:(g,x,y,w,h)=>{for(let i=0;i<13;i++){g.fillStyle=i%2?"#fff":"#b22234";g.fillRect(x,y+i*h/13,w,h/13+.5)}g.fillStyle="#3c3b6e";g.fillRect(x,y,w*.42,h*7/13);g.fillStyle="#fff";for(let r=0;r<4;r++)for(let c=0;c<5;c++)g.fillRect(x+w*(.04+c*.075),y+h*(.06+r*.115),w*.025,h*.045)},
 gb:(g,x,y,w,h)=>ujack(g,x,y,w,h),
-fr:(g,x,y,w,h)=>strp(g,x,y,w,h,1,[["#0055a4"],["#fff"],["#ef4135"]]),de:(g,x,y,w,h)=>strp(g,x,y,w,h,0,[["#000"],["#dd0000"],["#ffce00"]]),
+fr:(g,x,y,w,h)=>strp(g,x,y,w,h,1,[["#0055a4"],["#fff"],["#ef4135"]]),
+de:(g,x,y,w,h)=>strp(g,x,y,w,h,0,[["#000"],["#dd0000"],["#ffce00"]]),
 es:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#aa151b"],["#f1bf00",2],["#aa151b"]]);g.fillStyle="#ad1519";g.fillRect(x+w*.2,y+h*.38,w*.13,h*.24)},
 ua:(g,x,y,w,h)=>strp(g,x,y,w,h,0,[["#0057b7"],["#ffd700"]]),
 tr:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#e30a17"]]);dsc(g,x+w*.4,y+h/2,h*.26,"#fff");dsc(g,x+w*.45,y+h/2,h*.21,"#e30a17");star(g,x+w*.56,y+h/2,h*.12,"#fff")},
@@ -195,23 +386,122 @@ sg:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#ed2939"],["#fff"]]);dsc(g,x+w*.2,y+h*.25,h
 au:(g,x,y,w,h)=>{g.fillStyle="#00008b";g.fillRect(x,y,w,h);ujack(g,x,y,w/2,h/2);star(g,x+w*.25,y+h*.78,h*.13,"#fff");[[.7,.2],[.82,.45],[.7,.8],[.58,.5]].forEach(p=>star(g,x+w*p[0],y+h*p[1],h*.07,"#fff"))},
 nz:(g,x,y,w,h)=>{g.fillStyle="#00247d";g.fillRect(x,y,w,h);ujack(g,x,y,w/2,h/2);[[.72,.2],[.84,.45],[.72,.8],[.6,.5]].forEach(p=>star(g,x+w*p[0],y+h*p[1],h*.08,"#cc142b"))},
 th:(g,x,y,w,h)=>strp(g,x,y,w,h,0,[["#a51931"],["#fff"],["#2d2a4a",2],["#fff"],["#a51931"]]),
-za:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#de3831"],["#002395"]]);g.lineCap="butt";g.strokeStyle="#fff";g.lineWidth=h*.36;g.beginPath();g.moveTo(x,y);g.lineTo(x+w*.4,y+h/2);g.lineTo(x+w,y+h/2);g.moveTo(x,y+h);g.lineTo(x+w*.4,y+h/2);g.stroke();g.strokeStyle="#007a4d";g.lineWidth=h*.22;g.beginPath();g.moveTo(x,y);g.lineTo(x+w*.4,y+h/2);g.lineTo(x+w,y+h/2);g.moveTo(x,y+h);g.lineTo(x+w*.4,y+h/2);g.stroke();g.fillStyle="#000";g.beginPath();g.moveTo(x,y+h*.2);g.lineTo(x+w*.28,y+h/2);g.lineTo(x,y+h*.8);g.fill()},
+za:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#de3831"],["#002395"]]);g.strokeStyle="#fff";g.lineWidth=h*.36;g.beginPath();g.moveTo(x,y);g.lineTo(x+w*.4,y+h/2);g.lineTo(x+w,y+h/2);g.moveTo(x,y+h);g.lineTo(x+w*.4,y+h/2);g.stroke();g.strokeStyle="#007a4d";g.lineWidth=h*.22;g.beginPath();g.moveTo(x,y);g.lineTo(x+w*.4,y+h/2);g.lineTo(x+w,y+h/2);g.moveTo(x,y+h);g.lineTo(x+w*.4,y+h/2);g.stroke();g.fillStyle="#000";g.beginPath();g.moveTo(x,y+h*.2);g.lineTo(x+w*.28,y+h/2);g.lineTo(x,y+h*.8);g.fill()},
 in:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#ff9933"],["#fff"],["#138808"]]);g.strokeStyle="#000080";g.lineWidth=h*.03;g.beginPath();g.arc(x+w/2,y+h/2,h*.14,0,7);for(let k=0;k<12;k++){const a=k*Math.PI/6;g.moveTo(x+w/2,y+h/2);g.lineTo(x+w/2+Math.cos(a)*h*.14,y+h/2+Math.sin(a)*h*.14)}g.stroke()},
-ph:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#0038a8"],["#ce1126"]]);g.fillStyle="#fff";g.beginPath();g.moveTo(x,y);g.lineTo(x+w*.45,y+h/2);g.lineTo(x,y+h);g.fill();dsc(g,x+w*.14,y+h/2,h*.1,"#fcd116");[[.04,.1],[.04,.9],[.4,.5]].forEach(p=>star(g,x+w*p[0]+2,y+h*p[1]+(p[1]<.5?2:p[1]>.5?-2:0),h*.06,"#fcd116"))}};
+ph:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#0038a8"],["#ce1126"]]);g.fillStyle="#fff";g.beginPath();g.moveTo(x,y);g.lineTo(x+w*.45,y+h/2);g.lineTo(x,y+h);g.fill();dsc(g,x+w*.14,y+h/2,h*.1,"#fcd116")}};
 Object.assign(FLAG,{ru:(g,x,y,w,h)=>strp(g,x,y,w,h,0,[["#fff"],["#0039a6"],["#d52b1e"]]),by:(g,x,y,w,h)=>{strp(g,x,y,w,h,0,[["#cf101a",2],["#007c30"]]);g.fillStyle="#fff";g.fillRect(x,y,w*.1,h);g.fillStyle="#cf101a";g.fillRect(x+w*.02,y+h*.1,w*.06,h*.8)},id:(g,x,y,w,h)=>strp(g,x,y,w,h,0,[["#ce1126"],["#fff"]]),it:(g,x,y,w,h)=>strp(g,x,y,w,h,1,[["#009246"],["#fff"],["#ce2b37"]]),nl:(g,x,y,w,h)=>strp(g,x,y,w,h,0,[["#ae1c28"],["#fff"],["#21468b"]]),pl:(g,x,y,w,h)=>strp(g,x,y,w,h,0,[["#fff"],["#dc143c"]]),eg:(g,x,y,w,h)=>strp(g,x,y,w,h,0,[["#ce1126"],["#fff"],["#000"]])});
 function paintFlag(g,x,y,w,h,cc){const f=FLAG[cc];if(f)f(g,x,y,w,h);else{g.fillStyle="#889";g.fillRect(x,y,w,h)}}
 const FC={};function flagURL(cc){if(FC[cc])return FC[cc];const c=document.createElement("canvas");c.width=36;c.height=24;paintFlag(c.getContext("2d"),0,0,36,24,cc);return FC[cc]=c.toDataURL()}
 const flagImg=a=>'<img class="fg" alt="" src="'+flagURL(a.cc)+'">';
-/* ================= trạng thái ================= */
+
 const cv=$("g");let ctx=cv.getContext("2d");
-let W=800,H=400,cam={lo:10,la:15,z:1},follow=true,zT=0,T=0,SPD=1,SIM=300,F=null,ZS=[],warr=false,wp=0,snd=true,dr=null,mv=0,LC=null,lkey="",hideOrd=false,hideCg=false,TR=null,lastZ=0,lastAtc=0,lastSay=0,AC=null,AM=null,sel=0;
+let W=800,H=400,cam={lo:10,la:15,z:1},follow=true,zT=0,T=0,SPD=1,SIM=300,F=null,ZS=[],warr=false,wp=0,snd=true,dr=null,mv=0,LC=null,lkey="",hideOrd=true,hideCg=true,TR=null,lastZ=0,lastAtc=0,lastSay=0,AC=null,AM=null,sel=0;
 const SUN={lo:0,dec:0};
 const SXf=()=>Math.max(W/360,H/180)*cam.z;
 function fit(){const D=devicePixelRatio||1,r=cv.getBoundingClientRect();W=r.width||800;H=r.height||400;cv.width=W*D;cv.height=H*D;ctx.setTransform(D,0,0,D,0,0)}
 addEventListener("resize",fit);
 function clampCam(){const s=SXf(),hv=H/(2*s);cam.la=hv>=90?0:cl(cam.la,-90+hv,90-hv);cam.lo=((cam.lo+540)%360)-180}
 function pr(la,lo){const s=SXf(),dl=((lo-cam.lo+540)%360)-180;return[W/2+dl*s,H/2-(la-cam.la)*s]}
-/* ================= âm thanh ================= */
+
+/* ===== BRAND META (fetch data/<brand>/meta.json) ===== */
+let BRAND_META=null,BRAND_ID="brand-1";
+async function loadBrandMeta(){
+  try{
+    const params=new URLSearchParams(location.search);
+    let bid=params.get("brand");
+    if(!bid){try{const b=await fetch("../data/brands.json",{cache:"no-cache"}).then(r=>r.json());bid=b.default||"brand-1"}catch(e){bid="brand-1"}}
+    BRAND_ID=bid;
+    const meta=await fetch("../data/"+bid+"/meta.json",{cache:"no-cache"}).then(r=>r.json());
+    BRAND_META=meta;
+    const media=(meta&&meta.media)||{};
+    document.querySelectorAll("[data-media]").forEach(el=>{const k=el.dataset.media;if(media[k])el.src=media[k]});
+    const th=(meta&&meta.theme)||{};
+    if(th.primaryRgb){
+      document.documentElement.style.setProperty("--lime-rgb",th.primaryRgb);
+      const [r,g,b]=th.primaryRgb.split(",").map(s=>parseInt(s.trim(),10));
+      document.documentElement.style.setProperty("--lime","rgb("+r+","+g+","+b+")");
+      document.documentElement.style.setProperty("--lime-2","rgb("+Math.max(0,r-30)+","+Math.max(0,g-30)+","+Math.max(0,b-30)+")");
+    }
+  }catch(e){
+    // Fallback: giữ SVG
+    const logo=document.querySelector("[data-media='loader']");
+    if(logo&&!logo.src)logo.style.display="none";
+  }
+}
+
+/* ================= DEMO + OFFICIAL ================= */
+const DEMO={from:null,to:null,picking:null,flight:null};
+const OFFICIAL={planeId:"DTR-TRL-9821-VN",flight:null,active:false};
+
+function updateDemoUI(){
+  const fc=$("demoFromCoord"),tc=$("demoToCoord"),pv=$("demoPreview");
+  if(!fc)return;
+  fc.textContent=DEMO.from?DEMO.from.la.toFixed(3)+"°, "+DEMO.from.lo.toFixed(3)+"°":"—";
+  tc.textContent=DEMO.to?DEMO.to.la.toFixed(3)+"°, "+DEMO.to.lo.toFixed(3)+"°":"—";
+  pv.disabled=!(DEMO.from&&DEMO.to);
+  $("demoPickFrom").classList.toggle("active",DEMO.picking==="from");
+  $("demoPickTo").classList.toggle("active",DEMO.picking==="to");
+}
+
+function demoClickMap(mx,my){
+  if(!DEMO.picking)return false;
+  const s=SXf();
+  const lo=cam.lo+(mx-W/2)/s, la=cam.la-(my-H/2)/s;
+  const pt={la:cl(la,-85,85),lo:((lo+540)%360)-180};
+  if(DEMO.picking==="from")DEMO.from=pt; else DEMO.to=pt;
+  DEMO.picking=null; updateDemoUI(); sfx("click"); return true;
+}
+
+$("demoPickFrom").onclick=()=>{DEMO.picking=DEMO.picking==="from"?null:"from";updateDemoUI();if(DEMO.picking){const tp=$("tip");tp.innerHTML='<span style="color:var(--lime)">● '+t("demo.pick")+'</span>';tp.style.display="block";clearTimeout(tp.h);tp.h=setTimeout(()=>{tp.style.display="none"},4000)}};
+$("demoPickTo").onclick=()=>{DEMO.picking=DEMO.picking==="to"?null:"to";updateDemoUI();if(DEMO.picking){const tp=$("tip");tp.innerHTML='<span style="color:var(--lime)">● '+t("demo.pick")+'</span>';tp.style.display="block";clearTimeout(tp.h);tp.h=setTimeout(()=>{tp.style.display="none"},4000)}};
+
+$("demoPreview").onclick=()=>{
+  if(!DEMO.from||!DEMO.to)return;
+  if(DEMO.flight){const idx=FL.indexOf(DEMO.flight);if(idx>=0)FL.splice(idx,1)}
+  const A={k:"A",la:DEMO.from.la,lo:DEMO.from.lo,cc:"vn",nm:["Start","起点","出発","출발","Điểm đi"]};
+  const B={k:"B",la:DEMO.to.la,lo:DEMO.to.lo,cc:"vn",nm:["End","终点","到着","도착","Điểm đến"]};
+  const f={i:FL.length,id:"DEMO-EXPLAIN",lv:["#fff","#3ecf8e","#0b0d12","#0b0d12","DEMO Route"],A,B,V:null,cargo:"elec",act:"Demo · Giải thích đường bay",t:0,st:"fly",alt:0,hold:null,blind:false,pk:null,p:{la:A.la,lo:A.lo},q:{la:A.la,lo:A.lo},hit:new Set(),lay:0,isDemo:true};
+  setRoute(f); newOrd(f); FL.push(f); DEMO.flight=f;
+  selectFlight(f.i,true); sfx("chime"); buildSel();
+};
+
+$("demoReset").onclick=()=>{
+  DEMO.from=null;DEMO.to=null;DEMO.picking=null;
+  if(DEMO.flight){const idx=FL.indexOf(DEMO.flight);if(idx>=0)FL.splice(idx,1);DEMO.flight=null}
+  updateDemoUI(); buildSel(); sfx("click");
+};
+
+function ensureOfficialFlight(){
+  let f=FL.find(x=>x.id===OFFICIAL.planeId);
+  if(f)return f;
+  const A=AP["SGN"],B=AP["SFO"];
+  f={i:FL.length,id:OFFICIAL.planeId,lv:["#fff","#c5ff3d","#0b0d12","#0b0d12","DTR Express"],A,B,V:null,cargo:"elec",act:"DTR Express · Order flight",t:0,st:"fly",alt:0,hold:null,blind:false,pk:null,p:{la:A.la,lo:A.lo},q:{la:A.la,lo:A.lo},hit:new Set(),lay:0,isOfficial:true};
+  setRoute(f);
+  f.ord=OFFICIAL.planeId;
+  FL.push(f);
+  return f;
+}
+
+$("officialFollow").onclick=()=>{
+  const f=ensureOfficialFlight();
+  OFFICIAL.flight=f; OFFICIAL.active=true;
+  selectFlight(f.i,true);
+  zT=4.5; cam.z=4.5;
+  sfx("chime");
+  buildSel();
+  $("officialStatus").textContent=t("official.flying");
+};
+
+function updateOfficialStatus(){
+  if(!OFFICIAL.active||!OFFICIAL.flight)return;
+  const f=OFFICIAL.flight, st=$("officialStatus");
+  if(!st)return;
+  if(f.st==="parked")st.textContent=t("official.arrived");
+  else if(f.st==="hold")st.textContent=t("official.delayed");
+  else st.textContent=t("official.flying")+" · "+Math.round(f.t*100)+"%";
+}
+
+/* ================= AUDIO ================= */
 function au(){if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(AC&&AC.state==="suspended")AC.resume();return AC}
 function tone(f1,d,ty,v,f2,t0){if(!snd||!au())return;const tt=AC.currentTime+(t0||0),o=AC.createOscillator(),g=AC.createGain();o.type=ty;o.frequency.setValueAtTime(f1,tt);if(f2)o.frequency.exponentialRampToValueAtTime(f2,tt+d);g.gain.setValueAtTime(v,tt);g.gain.exponentialRampToValueAtTime(.001,tt+d);o.connect(g);g.connect(AC.destination);o.start(tt);o.stop(tt+d)}
 function noise(d,v,f1,f2,ty,t0){if(!snd||!au())return;const tt=AC.currentTime+(t0||0),n=Math.floor(AC.sampleRate*d),b=AC.createBuffer(1,n,AC.sampleRate),a=b.getChannelData(0);for(let i=0;i<n;i++)a[i]=Math.random()*2-1;const s=AC.createBufferSource(),fl=AC.createBiquadFilter(),g=AC.createGain();s.buffer=b;fl.type=ty;fl.frequency.setValueAtTime(f1,tt);fl.frequency.exponentialRampToValueAtTime(f2,tt+d);g.gain.setValueAtTime(v,tt);g.gain.exponentialRampToValueAtTime(.001,tt+d);s.connect(fl);fl.connect(g);g.connect(AC.destination);s.start(tt)}
@@ -219,26 +509,23 @@ const SFX={chime(){tone(880,.25,"sine",.08);tone(660,.35,"sine",.08,0,.2)},ok(){
 const LT={};function sfx(n){if(BG&&!(picked&&F&&F.i===sel))return;const t0=performance.now();if(LT[n]&&t0-LT[n]<150)return;LT[n]=t0;SFX[n]()}
 ["pointerdown","keydown","touchstart"].forEach(e=>addEventListener(e,()=>au(),{passive:true}));
 function ambStep(){if(!AC||AC.state!=="running")return;if(!AM){const o=AC.createOscillator(),o2=AC.createOscillator(),g=AC.createGain(),fl=AC.createBiquadFilter();o.type="sawtooth";o2.type="sawtooth";o.frequency.value=62;o2.frequency.value=62.6;fl.type="lowpass";fl.frequency.value=160;g.gain.value=0;o.connect(fl);o2.connect(fl);fl.connect(g);g.connect(AC.destination);o.start();o2.start();AM={g}}AM.g.gain.setTargetAtTime(snd&&F&&F.st!=="parked"?.02:0,AC.currentTime,.6)}
-/* ================= liên lạc không lưu đa ngôn ngữ ================= */
-const ATC={en:["{c}, contact {f} on {q}.","{c}, radar contact, maintain flight level {l}.","{c}, descend and maintain flight level {l}.","{c}, cleared to land.","{c}, expect delay, hold at your present position.","{c}, delay cleared, resume own navigation."],
-vi:["{c}, liên hệ {f} tần số {q}.","{c}, đã nhận tín hiệu radar, duy trì mực bay {l}.","{c}, giảm độ cao và duy trì mực bay {l}.","{c}, được phép hạ cánh.","{c}, dự kiến chậm trễ, bay vòng chờ tại vị trí hiện tại.","{c}, đã hết chậm trễ, tiếp tục tự dẫn đường."],
-zh:["{c}，请联系{f}，频率{q}。","{c}，雷达识别，保持飞行高度层{l}。","{c}，下降并保持飞行高度层{l}。","{c}，可以着陆。","{c}，预计延误，请在当前位置盘旋等待。","{c}，延误解除，请自主导航继续飞行。"],
-ja:["{c}、{f}と交信してください、周波数{q}。","{c}、レーダーコンタクト、フライトレベル{l}を維持してください。","{c}、フライトレベル{l}まで降下してください。","{c}、着陸を許可します。","{c}、遅延が見込まれます。現在位置で待機してください。","{c}、遅延は解消されました。自己航法で再開してください。"],
-ko:["{c}, {f}와 교신하세요, 주파수 {q}.","{c}, 레이더 식별, 비행고도 {l} 유지하세요.","{c}, 비행고도 {l}까지 하강하세요.","{c}, 착륙을 허가합니다.","{c}, 지연이 예상됩니다. 현재 위치에서 선회 대기하세요.","{c}, 지연이 해소되었습니다. 자체 항법으로 재개하세요."],
-fr:["{c}, contactez {f} sur {q}.","{c}, contact radar, maintenez le niveau de vol {l}.","{c}, descendez et maintenez le niveau de vol {l}.","{c}, autorisé à atterrir.","{c}, retard prévu, attente à votre position actuelle.","{c}, retard terminé, reprenez votre navigation."],
-de:["{c}, rufen Sie {f} auf {q}.","{c}, Radarkontakt, halten Sie Flugfläche {l}.","{c}, sinken Sie und halten Sie Flugfläche {l}.","{c}, Landung frei.","{c}, mit Verzögerung rechnen, Warteschleife an der aktuellen Position.","{c}, Verzögerung beendet, weiter mit eigener Navigation."],
-es:["{c}, contacte con {f} en {q}.","{c}, contacto radar, mantenga nivel de vuelo {l}.","{c}, descienda y mantenga nivel de vuelo {l}.","{c}, autorizado a aterrizar.","{c}, se esperan demoras, espere en su posición actual.","{c}, demora finalizada, reanude navegación propia."],
-pt:["{c}, contate {f} na frequência {q}.","{c}, contato radar, mantenha nível de voo {l}.","{c}, desça e mantenha nível de voo {l}.","{c}, autorizado a pousar.","{c}, atraso previsto, aguarde na posição atual.","{c}, atraso encerrado, retome a navegação própria."],
-tr:["{c}, {q} frekansında {f} ile görüşün.","{c}, radar teması, uçuş seviyesi {l} koruyun.","{c}, alçalın ve uçuş seviyesi {l} koruyun.","{c}, iniş izni verildi.","{c}, gecikme bekleniyor, mevcut konumda bekleyin.","{c}, gecikme sona erdi, kendi seyrüseferinize devam edin."]};
-const ATX={en:["{c}, {f}, wind calm, cleared for takeoff.","{c}, {f} calling. No reply, radar contact lost.","{c}, taxi to the transit stand and hold, ground crew standing by."],vi:["{c}, {f}, gió lặng, được phép cất cánh.","{c}, {f} gọi, không có phản hồi, mất tín hiệu radar.","{c}, lăn đến vị trí quá cảnh và dừng chờ, tổ mặt đất sẵn sàng."],zh:["{c}，{f}，风平，可以起飞。","{c}，{f} 呼叫，无应答，雷达信号丢失。","{c}，滑行至中转机位等待，地勤已就位。"],ja:["{c}、{f}、風は静穏、離陸を許可します。","{c}、{f}より呼び出し。応答なし、レーダーコンタクトを喪失。","{c}、乗り継ぎ用スポットへ地上走行して待機してください。"],ko:["{c}, {f}, 바람 고요, 이륙을 허가합니다.","{c}, {f} 호출. 응답 없음, 레이더 접촉 상실.","{c}, 환승 주기장으로 지상 이동 후 대기하세요."]};for(const k in ATX)ATC[k]=ATC[k].concat(ATX[k]);
-Object.assign(ATC,{ru:["{c}, свяжитесь с {f} на частоте {q}.","{c}, радиолокационный контакт, сохраняйте эшелон {l}.","{c}, снижайтесь и занимайте эшелон {l}.","{c}, посадку разрешаю.","{c}, ожидается задержка, держитесь в зоне ожидания.","{c}, задержка снята, продолжайте самостоятельную навигацию."],uk:["{c}, зв'яжіться з {f} на частоті {q}.","{c}, радіолокаційний контакт, зберігайте ешелон {l}.","{c}, знижуйтесь і займіть ешелон {l}.","{c}, посадку дозволено.","{c}, очікується затримка, тримайтесь у зоні очікування.","{c}, затримку знято, продовжуйте самостійну навігацію."],ar:["{c}، تواصل مع {f} على التردد {q}.","{c}، اتصال رادار، حافظ على مستوى الطيران {l}.","{c}، اهبط وحافظ على مستوى الطيران {l}.","{c}، مصرح لك بالهبوط.","{c}، يُتوقع تأخير، انتظر في موقعك الحالي.","{c}، انتهى التأخير، استأنف الملاحة الذاتية."],he:["{c}, צור קשר עם {f} בתדר {q}.","{c}, קשר מכ״ם, שמור על גובה טיסה {l}.","{c}, רד ושמור על גובה טיסה {l}.","{c}, מאושר לנחיתה.","{c}, צפוי עיכוב, המתן במיקומך הנוכחי.","{c}, העיכוב הסתיים, המשך בניווט עצמי."],hi:["{c}, {q} आवृत्ति पर {f} से संपर्क करें।","{c}, रडार संपर्क स्थापित, उड़ान स्तर {l} बनाए रखें।","{c}, उतरें और उड़ान स्तर {l} पर बने रहें।","{c}, उतरने की अनुमति है।","{c}, देरी की संभावना है, वर्तमान स्थिति में प्रतीक्षा करें।","{c}, देरी समाप्त, अपनी नेविगेशन से आगे बढ़ें।"],th:["{c} ติดต่อ {f} ความถี่ {q}","{c} ตรวจพบด้วยเรดาร์ รักษาระดับการบิน {l}","{c} ลดระดับและรักษาระดับการบิน {l}","{c} อนุญาตให้ลงจอด","{c} คาดว่าจะล่าช้า โปรดรอที่ตำแหน่งปัจจุบัน","{c} หมดความล่าช้า เดินทางต่อด้วยการนำทางเอง"],id:["{c}, hubungi {f} di frekuensi {q}.","{c}, kontak radar, pertahankan tingkat terbang {l}.","{c}, turun dan pertahankan tingkat terbang {l}.","{c}, diizinkan mendarat.","{c}, diperkirakan tertunda, tahan di posisi saat ini.","{c}, penundaan selesai, lanjutkan navigasi sendiri."],it:["{c}, contatti {f} su {q}.","{c}, contatto radar, mantenga livello di volo {l}.","{c}, scenda e mantenga livello di volo {l}.","{c}, autorizzato all'atterraggio.","{c}, previsto ritardo, attenda alla posizione attuale.","{c}, ritardo terminato, riprenda la navigazione autonoma."],nl:["{c}, neem contact op met {f} op {q}.","{c}, radarcontact, behoud vliegniveau {l}.","{c}, daal en behoud vliegniveau {l}.","{c}, toestemming om te landen.","{c}, vertraging verwacht, wacht op uw huidige positie.","{c}, vertraging voorbij, hervat eigen navigatie."],pl:["{c}, skontaktuj się z {f} na częstotliwości {q}.","{c}, kontakt radarowy, utrzymuj poziom lotu {l}.","{c}, zniżaj i utrzymuj poziom lotu {l}.","{c}, zezwalam na lądowanie.","{c}, spodziewane opóźnienie, oczekuj na obecnej pozycji.","{c}, opóźnienie zakończone, kontynuuj własną nawigację."]});
-const ATX2={"ru": ["{c}, {f}, ветер спокойный, взлёт разрешаю.", "{c}, {f} вызывает. Ответа нет, радиолокационный контакт потерян.", "{c}, руление на стоянку транзита, ожидайте, наземная служба готова."], "uk": ["{c}, {f}, вітер спокійний, зліт дозволено.", "{c}, {f} викликає. Відповіді немає, радіолокаційний контакт втрачено.", "{c}, рухайтесь на стоянку транзиту й очікуйте, наземна служба готова."], "ar": ["{c}، {f}، الرياح هادئة، مصرح لك بالإقلاع.", "{c}، {f} ينادي. لا رد، فُقد اتصال الرادار.", "{c}، تحرك إلى موقف العبور وانتظر، طاقم الأرض جاهز."], "he": ["{c}, {f}, רוח שקטה, מאושר להמראה.", "{c}, {f} קורא. אין מענה, קשר המכ״ם אבד.", "{c}, גלגל לעמדת המעבר והמתן, צוות הקרקע ממתין."], "hi": ["{c}, {f}, हवा शांत, उड़ान भरने की अनुमति है।", "{c}, {f} बुला रहा है। कोई जवाब नहीं, रडार संपर्क टूट गया।", "{c}, ट्रांज़िट स्टैंड पर जाकर प्रतीक्षा करें, ग्राउंड स्टाफ तैयार है।"], "th": ["{c} {f} ลมสงบ อนุญาตให้ขึ้นบิน", "{c} {f} เรียก ไม่มีการตอบกลับ สูญเสียการติดต่อเรดาร์", "{c} เคลื่อนที่ไปจุดจอดแวะพักและรอ ทีมภาคพื้นพร้อมแล้ว"], "id": ["{c}, {f}, angin tenang, diizinkan lepas landas.", "{c}, {f} memanggil. Tidak ada jawaban, kontak radar hilang.", "{c}, taksi ke tempat transit dan tunggu, kru darat siaga."], "it": ["{c}, {f}, vento calmo, autorizzato al decollo.", "{c}, {f} chiama. Nessuna risposta, contatto radar perso.", "{c}, rulli al parcheggio di transito e attenda, personale a terra pronto."], "nl": ["{c}, {f}, windstil, toestemming om op te stijgen.", "{c}, {f} roept op. Geen antwoord, radarcontact verloren.", "{c}, taxi naar de transitplek en wacht, grondpersoneel staat klaar."], "pl": ["{c}, {f}, wiatr spokojny, zezwalam na start.", "{c}, {f} wywołuje. Brak odpowiedzi, utracono kontakt radarowy.", "{c}, kołuj na stanowisko tranzytowe i oczekuj, obsługa naziemna gotowa."], "fr": ["{c}, {f}, vent calme, autorisé au décollage.", "{c}, {f} appelle. Pas de réponse, contact radar perdu.", "{c}, roulez vers le poste de transit et attendez, équipe au sol prête."], "de": ["{c}, {f}, Wind ruhig, Start frei.", "{c}, {f} ruft. Keine Antwort, Radarkontakt verloren.", "{c}, rollen Sie zum Transitstand und warten Sie, Bodenpersonal bereit."], "es": ["{c}, {f}, viento en calma, autorizado a despegar.", "{c}, {f} llama. Sin respuesta, contacto radar perdido.", "{c}, ruede a la posición de tránsito y espere, personal de tierra listo."], "pt": ["{c}, {f}, vento calmo, autorizado a decolar.", "{c}, {f} chamando. Sem resposta, contato radar perdido.", "{c}, táxi até a posição de trânsito e aguarde, equipe de solo pronta."], "tr": ["{c}, {f}, rüzgâr sakin, kalkış izni verildi.", "{c}, {f} çağırıyor. Yanıt yok, radar teması kaybedildi.", "{c}, transit park yerine taksi yapın ve bekleyin, yer ekibi hazır."]};for(const k in ATX2)ATC[k]=ATC[k].concat(ATX2[k]);
-const CTL={en:"Control",vi:"Kiểm soát không lưu",zh:"管制",ja:"コントロール",ko:"관제",fr:"Contrôle",de:"Kontrolle",es:"Control",pt:"Controle",tr:"Kontrol"},BCP={en:"en-US",vi:"vi-VN",zh:"zh-CN",ja:"ja-JP",ko:"ko-KR",fr:"fr-FR",de:"de-DE",es:"es-ES",pt:"pt-BR",tr:"tr-TR"};
+
+/* ================= ATC ================= */
+const ATC={en:["{c}, contact {f} on {q}.","{c}, radar contact, maintain FL {l}.","{c}, descend and maintain FL {l}.","{c}, cleared to land.","{c}, expect delay, hold present position.","{c}, delay cleared, resume own nav."],
+vi:["{c}, liên hệ {f} tần số {q}.","{c}, đã nhận radar, duy trì mực bay {l}.","{c}, giảm độ cao, duy trì mực bay {l}.","{c}, được phép hạ cánh.","{c}, dự kiến chậm trễ, bay vòng chờ.","{c}, đã hết chậm trễ, tiếp tục."],
+zh:["{c}，联系{f}，频率{q}。","{c}，雷达识别，保持高度层{l}。","{c}，下降并保持高度层{l}。","{c}，可以着陆。","{c}，预计延误，当前位置等待。","{c}，延误解除，继续自主导航。"],
+ja:["{c}、{f}と交信、周波数{q}。","{c}、レーダーコンタクト、FL{l}維持。","{c}、FL{l}まで降下。","{c}、着陸許可。","{c}、遅延予想、待機。","{c}、遅延解消、自己航法再開。"],
+ko:["{c}, {f}와 교신, 주파수 {q}.","{c}, 레이더 식별, 고도 {l} 유지.","{c}, 고도 {l}까지 하강.","{c}, 착륙 허가.","{c}, 지연 예상, 대기.","{c}, 지연 해소, 재개."],
+fr:["{c}, contactez {f} sur {q}.","{c}, contact radar, maintenez FL {l}.","{c}, descendez FL {l}.","{c}, autorisé atterrir.","{c}, retard prévu, attente.","{c}, retard fini, reprenez."],
+de:["{c}, rufen {f} auf {q}.","{c}, Radarkontakt, FL {l} halten.","{c}, sinken auf FL {l}.","{c}, Landung frei.","{c}, Verzögerung, warten.","{c}, Verzögerung beendet."],
+es:["{c}, contacte {f} en {q}.","{c}, contacto radar, mantenga FL {l}.","{c}, descienda a FL {l}.","{c}, autorizado aterrizar.","{c}, demora, espere.","{c}, demora fin, reanude."]};
+const ATX={en:["{c}, {f}, wind calm, cleared takeoff.","{c}, {f} calling. No reply, radar lost.","{c}, taxi to transit stand."],vi:["{c}, {f}, gió lặng, cất cánh.","{c}, {f} gọi, không phản hồi.","{c}, lăn đến vị trí quá cảnh."],zh:["{c}，{f}，可以起飞。","{c}，{f} 呼叫无应答。","{c}，滑行至中转机位。"],ja:["{c}、{f}、離陸許可。","{c}、{f}応答なし。","{c}、乗り継ぎ位置へ。"],ko:["{c}, {f}, 이륙 허가.","{c}, {f} 응답 없음.","{c}, 환승 주기장으로."]};for(const k in ATX)ATC[k]=ATC[k].concat(ATX[k]);
+const CTL={en:"Control",vi:"Kiểm soát không lưu",zh:"管制",ja:"コントロール",ko:"관제",fr:"Contrôle",de:"Kontrolle",es:"Control"},BCP={en:"en-US",vi:"vi-VN",zh:"zh-CN",ja:"ja-JP",ko:"ko-KR",fr:"fr-FR",de:"de-DE",es:"es-ES"};
 const SPL={vn:"vi",cn:"zh",hk:"zh",jp:"ja",kr:"ko",kp:"ko",fr:"fr",gn:"fr",de:"de",es:"es",mx:"es",ar:"es",cu:"es",br:"pt",tr:"tr"};
-Object.assign(CTL,{ru:"Диспетчер",uk:"Диспетчер",ar:"المراقبة",he:"פיקוח",hi:"नियंत्रण",th:"ควบคุมการบิน",id:"Kontrol",it:"Controllo",nl:"Verkeersleiding",pl:"Kontrola"});Object.assign(BCP,{ru:"ru-RU",uk:"uk-UA",ar:"ar-SA",he:"he-IL",hi:"hi-IN",th:"th-TH",id:"id-ID",it:"it-IT",nl:"nl-NL",pl:"pl-PL"});Object.assign(SPL,{ru:"ru",by:"ru",ua:"uk",qa:"ar",ae:"ar",sd:"ar",eg:"ar",il:"he",in:"hi",th:"th",id:"id",it:"it",nl:"nl",pl:"pl"});
 function say(txt,lg){if(!snd||!window.speechSynthesis||!AC||AC.state!=="running")return;const n=performance.now();if(n-lastSay<4000)return;lastSay=n;try{const u=new SpeechSynthesisUtterance(txt);u.lang=BCP[lg]||"en-US";const vs=speechSynthesis.getVoices(),vv=vs.find(x=>x.lang.replace("_","-").toLowerCase().slice(0,2)===u.lang.slice(0,2));if(vv)u.voice=vv;u.rate=1.02;u.pitch=.9;u.volume=.85;setTimeout(()=>speechSynthesis.speak(u),150)}catch(e){}}
 function atc(k){if(!F)return;const a=nearAP(F.p);let lg=SPL[a.cc]||"en";if(!(ATC[lg]&&ATC[lg][k]))lg="en";const q=(118+Math.floor(Math.random()*18))+"."+pick1(["1","3","5","7","9"]),fl=Math.max(100,Math.round(F.alt/1000)*10),cs=F.lv[4]+" "+F.id.replace(/\D/g,""),mk=L=>ATC[L][k].split("{c}").join(cs).split("{f}").join((a.nm[LI[L]]||a.nm[0])+" "+(CTL[L]||CTL.en)).split("{q}").join(q).split("{l}").join(fl),txt=mk(lg);notify(null,[],0,"ATC·"+lg.toUpperCase(),()=>mk(ATC[lang]&&ATC[lang][k]?lang:"en"));if(picked&&F.i===sel){sfx("squelch");say(txt,lg)}}
-/* ================= bản tin chạy chữ ================= */
+
+/* ================= TICKER ================= */
 let nx=0,TK=[],fillI=0,hov=false,HL=[];
 const msgText=it=>(it.tag?it.tag+": ":"")+(it.raw?(typeof it.raw==="function"?it.raw():it.raw):t(it.k,...it.a.map(x=>typeof x==="function"?x():x)));
 function notify(k,a,sev,tag,raw){const it={k,a:a||[],sev:sev||0,tag:tag||"",raw:raw||null};HL.unshift(it);if(HL.length>14)HL.pop();$("nu").textContent=nowD().toISOString().slice(11,16)+" UTC";tkClean();tkAdd(it,false)}
@@ -246,25 +533,27 @@ function tkAdd(it,fl){const el=document.createElement("span");el.className="ti";
 function tkClean(){let x=nx;const cw=+$("tkw").clientWidth||600;TK=TK.filter(k=>{const l=x;x+=k.w;if(k.fl&&l>cw){k.el.remove();return false}return true})}
 function tkRebuild(){TK.forEach(k=>{k.el.textContent=msgText(k.it);k.w=Math.max(30,k.el.offsetWidth)})}
 function tkStep(rd){const cw=+$("tkw").clientWidth||600;let x=nx,pend=0;for(const k of TK){if(!k.fl&&x+k.w>cw)pend++;x+=k.w}if(!hov)nx-=rd*(62+Math.min(80,Math.max(0,pend-1)*16));while(TK.length>1&&-nx>=TK[0].w){nx+=TK[0].w;TK[0].el.remove();TK.shift()}let tot=TK.reduce((a,k)=>a+k.w,0);for(let g=0;g<14&&tot+nx<cw*1.3&&HL.length;g++){const h=HL[fillI++%HL.length];tkAdd(h,true);tot+=TK[TK.length-1].w}$("tr").style.transform="translateX("+nx+"px)"}
-/* ================= vùng bất ổn ================= */
+
+/* ================= ZONES ================= */
 const ZI={storm:{d:8,blind:1},ash:{d:7,blind:1},solar:{d:7,blind:1},sand:{d:6,blind:1},snow:{d:6,blind:1},conflict:{d:9,blind:1},epi:{d:8},blackout:{d:7,blind:1},customs:{d:7},airdef:{d:8,blind:1}};
 const WXC={storm:[[90,180,130],[235,205,70],[235,90,70]],ash:[[150,140,130],[200,130,70],[240,90,60]],solar:[[150,90,220],[80,170,230],[90,240,170]],sand:[[200,170,110],[220,150,80],[200,110,60]],snow:[[210,230,250],[150,190,240],[110,150,230]]};
 function zoneTypeAt(la,lo){const land=onLand(la,lo);if(land){const r=Math.random();if(la>48&&r<.3)return"snow";if(Math.abs(la)<36&&la>10&&r<.2)return"sand";return r<.35?"customs":r<.6?"conflict":r<.9?"epi":"sand"}const r=Math.random();return r<.4?"storm":r<.75?"blackout":r<.9?"solar":"ash"}
 function addZone(la,lo,ty,r,ttl,evt){ZS.push({la,lo,ty,r:r||300+Math.random()*180,t0:T,ttl:ttl||400,h:false,ph:Math.random()*6,fl:0,evt:!!evt});return ZS[ZS.length-1]}
 function planZones(f0){const n=F.km>6000?2:1;for(let i=0;i<n;i++){const tt=Math.min(.9,f0+(.9-f0)*(i+.4+Math.random()*.4)/n),p=PT(F,tt),la=p.la+(Math.random()-.5)*1.2,lo=p.lo+(Math.random()-.5)*1.2;addZone(la,lo,zoneTypeAt(la,lo),80+Math.random()*50,500+Math.random()*100,true)}}
 function spawnDeco(){if(ZS.filter(z=>!z.evt).length>=5)return;const la=Math.random()*110-55,lo=Math.random()*360-180;addZone(la,lo,zoneTypeAt(la,lo),90+Math.random()*70,70+Math.random()*50,false)}
-/* ================= chuyến bay ================= */
+
+/* ================= FLIGHTS ================= */
 const ALPH="ABCDEFGHJKMNPQRSTUVWXYZ23456789",rnd=n=>Array.from({length:n},()=>ALPH[Math.floor(Math.random()*ALPH.length)]).join("");
 const FL=[],ACT=new Set();
 function mkFlight(i){const p=PRE[i],A=AP[p[2]],B=AP[p[3]],V=VIA[p[0]]?AP[VIA[p[0]]]:null,f={i,id:p[0],lv:LV[p[1]],A,B,V,cargo:p[4],act:p[5],t:0,st:"fly",alt:0,hold:null,blind:false,pk:null,p:{la:A.la,lo:A.lo},q:{la:A.la,lo:A.lo},hit:new Set(),lay:0};setRoute(f);newOrd(f);return f}
 function setRoute(f){if(f.V){const d1=kmd(f.A,f.V),d2=kmd(f.V,f.B);f.km=d1+d2;f.tv=d1/(d1+d2)}else f.km=kmd(f.A,f.B);f.Th=f.km/830+.6;f.rp=null}
-function newOrd(f){const d=nowD(),yy=String(d.getUTCFullYear()).slice(2)+String(d.getUTCMonth()+1).padStart(2,"0")+String(d.getUTCDate()).padStart(2,"0");f.ord="ORD-"+yy+"-"+f.A.k+f.B.k+"-"+rnd(5);f.pk=null;f.home=null;f.center=null;f.code=null}
+function newOrd(f){const num=String(Math.floor(1000+Math.random()*9000));f.ord="DTR-TRL-"+num+"-"+f.B.k;f.pk=null;f.home=null;f.center=null;f.code=null}
 function initFlights(){PRE.forEach((p,i)=>{const f=mkFlight(i);FL.push(f);ACT.add(f.A);ACT.add(f.B);if(f.V)ACT.add(f.V);f.t=.04+Math.random()*.8;if(f.V&&f.t>f.tv)f.lay=1;F=f;pos();planZones(f.t)})}
 function selectFlight(i,fol){picked=true;document.querySelector(".main").classList.remove("np");sel=i;F=FL[i];TR=null;follow=!!fol;if(fol){zT=2;cam.lo=F.p.lo;cam.la=F.p.la}showPk();buildSel();buildLiv();ui(true)}
 function startFlight(i){selectFlight(i,true)}
 function showPk(){$("pkc").style.display=F.st==="parked"?"block":"none";$("pkb").style.display=F.pk?"none":"block";$("pkr").style.display=F.pk?"block":"none";if(F.pk&&F.pk!=="pending")$("pkt").textContent=F.pk==="home"?t("m_home_done",F.ord):t("m_center",F.code)}
 function retTrip(f){const o=f.A;f.A=f.B;f.B=o;f.id=f.id.replace(/\d+$/,n=>+n+1);f.t=0;f.st="fly";f.alt=0;f.hit=new Set();f.dA=false;f.lay=0;f.blind=false;f.hold=null;setRoute(f);newOrd(f);const sv=F;F=f;pos();planZones(0);notify("m_ret",[f.id,()=>city(f.B)],0);if(picked&&f.i===sel)sfx("click");atc(6);F=sv;buildSel();if(f.i===sel){TR=null;showPk();buildLiv();ui(true)}}
-function pos(){let p,q;if(F.st==="hold"){const h=F.hold;p={la:h.an.la,lo:h.an.lo};q=PT(F,Math.min(1,F.t+.004))}else if(F.st==="parked"||F.st==="lay"){const L=F.st==="lay"?F.V:F.B;p={la:L.la,lo:L.lo};q={la:p.la+.01,lo:p.lo+.01}}else if(false){const h=F.hold,a=h.ang;p={la:h.an.la+1.1*Math.sin(a),lo:h.an.lo+1.1*Math.cos(a)/Math.max(.2,Math.cos(rad(h.an.la)))};q={la:h.an.la+1.1*Math.sin(a+.1),lo:h.an.lo+1.1*Math.cos(a+.1)/Math.max(.2,Math.cos(rad(h.an.la)))}}else if(F.st==="parked"||F.st==="lay"){const L=F.st==="lay"?F.V:F.B;p={la:L.la,lo:L.lo};q={la:p.la+.01,lo:p.lo+.01}}else{p=PT(F,F.t);q=PT(F,Math.min(1,F.t+.004));if(F.t>.99)q={la:2*p.la-PT(F,F.t-.004).la,lo:2*p.lo-PT(F,F.t-.004).lo}}F.p=p;F.q=q}
+function pos(){let p,q;if(F.st==="hold"){const h=F.hold;p={la:h.an.la,lo:h.an.lo};q=PT(F,Math.min(1,F.t+.004))}else if(F.st==="parked"||F.st==="lay"){const L=F.st==="lay"?F.V:F.B;p={la:L.la,lo:L.lo};q={la:p.la+.01,lo:p.lo+.01}}else{p=PT(F,F.t);q=PT(F,Math.min(1,F.t+.004));if(F.t>.99)q={la:2*p.la-PT(F,F.t-.004).la,lo:2*p.lo-PT(F,F.t-.004).lo}}F.p=p;F.q=q}
 function startEvent(z){z.h=true;const d=ZI[z.ty].d*(warr?.5:1);F.st="hold";F.hold={z,rem:d,tot:d,ang:0,an:{la:F.p.la,lo:F.p.lo}};F.blind=!!ZI[z.ty].blind;notify("e_"+z.ty,[F.id,()=>nearMil(F.p).nm],1);sfx("chime");atc(F.blind?7:4)}
 function endEvent(){F.st="fly";F.blind=false;F.hold=null;notify("m_resolved",[F.id],0);sfx("ok");atc(5)}
 function arrive(){F.t=1;F.st="parked";F.alt=0;F.blind=false;pos();notify("m_arrive",[F.id,()=>city(F.B)],0);sfx("arrive");atc(3);if(picked&&F.i===sel)showPk()}
@@ -281,13 +570,12 @@ function step(dt){T+=dt;if(!FL.length)return;const c=sel;BG=true;for(const f of 
 ZS=ZS.filter(z=>T-z.t0<z.ttl);lastZ+=dt;if(lastZ>22){lastZ=0;spawnDeco()}
 lastAtc+=dt;if(lastAtc>12){lastAtc=0;const fl=FL.filter(f=>f.st==="fly"&&f.i===c&&picked);if(fl.length){F=pick1(fl);atc(Math.random()<.5?0:1);F=FL[c]}}
 wp+=((warr?1:0)-wp)*Math.min(1,dt*2.5)}
-/* ================= nhận hàng ================= */
-function done(kind){const f0=F;setTimeout(()=>{if(f0.st==="parked"&&f0.pk&&f0.pk!=="pending")retTrip(f0)},5000);F.pk=kind;$("pkb").style.display="none";$("pkr").style.display="block";$("pkt").textContent=kind==="home"?TXd("m_home_done",F.ord):TXd("m_center",F.code)}
-const TXd=(k,...a)=>t(k,...a);
+function done(kind){const f0=F;setTimeout(()=>{if(f0.st==="parked"&&f0.pk&&f0.pk!=="pending")retTrip(f0)},5000);F.pk=kind;$("pkb").style.display="none";$("pkr").style.display="block";$("pkt").textContent=kind==="home"?t("m_home_done",F.ord):t("m_center",F.code)}
 function homePoint(A){for(let i=0;i<50;i++){const p=dst(A.la,A.lo,Math.random()*6.283,30+Math.random()*90);if(onLand(p.la,p.lo))return p}return null}
 function pickHome(){if(!F||F.st!=="parked"||F.pk)return;sfx("click");const hp=homePoint(F.B);if(!hp){notify("m_nohome",[],1);pickCenter();return}F.pk="pending";TR={from:{la:F.B.la,lo:F.B.lo},to:hp,t0:T,dur:10,p:{la:F.B.la,lo:F.B.lo},q:{la:F.B.la,lo:F.B.lo}};sfx("truck");notify("m_home",[],0);$("pkb").style.display="none"}
 function pickCenter(){if(!F||F.st!=="parked"||(F.pk&&F.pk!=="pending0"))return;if(F.pk==="pending")return;sfx("click");F.code=rnd(6);F.center=dst(F.B.la,F.B.lo,.8,18);notify("m_center",[F.code],0);sfx("ok");done("center")}
-/* ================= vẽ ================= */
+
+/* ================= DRAWING ================= */
 const RAMP=[[-90,"#e9eef2"],[-66,"#cfd8de"],[-55,"#5d7a52"],[-40,"#6f8456"],[-28,"#9c8e61"],[-20,"#a6935f"],[-10,"#4c7a3f"],[0,"#3c6a38"],[10,"#4c7a3f"],[20,"#a8955f"],[28,"#9a8d60"],[38,"#6f8650"],[50,"#4a6a42"],[62,"#566d48"],[70,"#cfd8de"],[90,"#eef2f5"]].map(r=>[r[0],[1,3,5].map(i=>parseInt(r[1].slice(i,i+2),16))]);
 function ramp(l){for(let i=1;i<RAMP.length;i++)if(l<=RAMP[i][0]){const a=RAMP[i-1],b=RAMP[i],k=(l-a[0])/(b[0]-a[0]);return"rgb("+[0,1,2].map(j=>Math.round(a[1][j]+(b[1][j]-a[1][j])*k)).join(",")+")"}return"#fff"}
 const RG=[[22,12,1900,"#c5a977"],[24,45,1000,"#c9aa72"],[43,104,800,"#b09c72"],[-25,134,1300,"#b88f58"],[-4,-62,1700,"#2c5a31"],[0,22,1200,"#2d5b32"],[15,103,1000,"#34693a"],[37,-84,900,"#4d7242"],[50,12,900,"#58794a"],[60,95,2200,"#3e5e3c"],[22,79,800,"#7d9150"],[58,-100,1800,"#3f5d3d"]];
@@ -308,52 +596,73 @@ function auroraDraw(){const s=SXf();for(const sg of[1,-1]){const y0=H/2-(sg*70-c
 function cloudsDraw(){const s=SXf();ctx.fillStyle="rgba(255,255,255,.06)";ctx.beginPath();for(const c of CL){const q=pr(c.la,c.lo+T*.4*(.5+c.s)),rr=c.r/111*s;if(q[0]<-rr*2||q[0]>W+rr*2)continue;[[0,0,1],[.8,.2,.7],[-.7,.1,.6]].forEach(o=>{const x=q[0]+rr*o[0],y=q[1]+rr*o[1]*.6,r=rr*o[2]*.8;ctx.moveTo(x+r,y);ctx.arc(x,y,r,0,7)})}ctx.fill()}
 function zoneDraw(){const s=SXf();for(const z of ZS){const age=T-z.t0,al=Math.min(1,age/3,(z.ttl-age)/6);if(al<=0)continue;const q=pr(z.la,z.lo),rr=z.r/111*s;if(q[0]<-rr||q[0]>W+rr||q[1]<-rr||q[1]>H+rr)continue;const cc=WXC[z.ty];
 if(cc){for(let k=0;k<5;k++){const kr=1-k*.19,col=cc[Math.min(2,Math.floor(k/1.7))];ctx.beginPath();for(let a=0;a<=64;a++){const th=a/64*6.2832,m=1+.09*Math.sin(5*th+T*1.3+k)+.05*Math.sin(9*th-T*.9+z.ph),x=q[0]+Math.cos(th)*rr*kr*m,y=q[1]+Math.sin(th)*rr*kr*m;a?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath();ctx.strokeStyle="rgba("+col+","+(.35+.12*k)*al+")";ctx.lineWidth=1.3;ctx.stroke();if(k===0){ctx.fillStyle="rgba("+col+","+.08*al+")";ctx.fill()}}}
-else if(z.ty==="epi"){const pl=.5+.5*Math.sin(T*3+z.ph);ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.fillStyle="rgba(150,80,210,"+(.14+.08*pl)*al+")";ctx.fill();ctx.strokeStyle="rgba(190,120,255,"+.8*al+")";ctx.lineWidth=1.6;ctx.setLineDash([6,5]);ctx.stroke();ctx.setLineDash([]);ctx.font="bold 15px system-ui,sans-serif";ctx.fillStyle="rgba(235,200,255,"+al+")";ctx.textAlign="center";ctx.fillText("☣",q[0],q[1]+5);ctx.textAlign="left"}
-else if(z.ty==="conflict"){ctx.save();ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.clip();ctx.fillStyle="rgba(240,176,58,"+.1*al+")";ctx.fillRect(q[0]-rr,q[1]-rr,rr*2,rr*2);ctx.strokeStyle="rgba(240,176,58,"+.35*al+")";ctx.lineWidth=1;for(let o=-rr*2;o<rr*2;o+=9){ctx.beginPath();ctx.moveTo(q[0]+o,q[1]-rr);ctx.lineTo(q[0]+o+rr*2,q[1]+rr);ctx.stroke()}ctx.restore();ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.strokeStyle="rgba(240,176,58,"+.85*al+")";ctx.lineWidth=1.6;ctx.setLineDash([8,5]);ctx.stroke();ctx.setLineDash([]);ctx.font="bold 15px system-ui,sans-serif";ctx.fillStyle="rgba(255,214,120,"+al+")";ctx.textAlign="center";ctx.fillText("⚠",q[0],q[1]+5);ctx.textAlign="left"}
-else if(z.ty==="customs"){ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.fillStyle="rgba(80,150,230,"+.08*al+")";ctx.fill();ctx.strokeStyle="rgba(110,170,255,"+.85*al+")";ctx.lineWidth=1.6;ctx.setLineDash([3,5]);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle="rgba(150,200,255,"+al+")";ctx.fillRect(q[0]-8,q[1]-6,16,12);ctx.fillStyle="#0d1014";ctx.fillRect(q[0]-5,q[1]-3,10,6)}
-else if(z.ty==="airdef"){ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.fillStyle="rgba(229,72,77,"+.1*al+")";ctx.fill();ctx.strokeStyle="rgba(229,72,77,"+.9*al+")";ctx.lineWidth=1.6;ctx.stroke();const sw=T*1.5;ctx.beginPath();ctx.moveTo(q[0],q[1]);ctx.lineTo(q[0]+Math.cos(sw)*rr,q[1]+Math.sin(sw)*rr);ctx.stroke();ctx.fillStyle="rgba(255,150,150,"+al+")";ctx.fillRect(q[0]-3,q[1]-3,6,6)}
-else if(z.ty==="blackout"){ctx.save();ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.clip();ctx.fillStyle="rgba(95,108,122,"+.5*al+")";ctx.fillRect(q[0]-rr,q[1]-rr,rr*2,rr*2);for(let i=0;i<60;i++){ctx.fillStyle="rgba(215,225,235,"+Math.random()*.25*al+")";ctx.fillRect(q[0]+(Math.random()-.5)*rr*2,q[1]+(Math.random()-.5)*rr*2,1+Math.random()*3,1+Math.random()*2)}ctx.restore();for(let k=0;k<3;k++){const ph=(T*.35+k/3)%1;ctx.strokeStyle="rgba(190,205,225,"+.5*(1-ph)*al+")";ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(q[0],q[1],rr*(.3+.7*ph),0,7);ctx.stroke()}}
-if(rr>14){ctx.font="600 10px system-ui,sans-serif";ctx.fillStyle="rgba(235,235,240,"+.85*al+")";ctx.textAlign="center";ctx.fillText(t("z_"+z.ty),q[0],q[1]+(z.ty==="epi"||z.ty==="conflict"||z.ty==="customs"||z.ty==="airdef"?20:3));ctx.textAlign="left"}}}
+else if(z.ty==="epi"){ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.fillStyle="rgba(150,80,210,"+.14*al+")";ctx.fill();ctx.strokeStyle="rgba(190,120,255,"+.8*al+")";ctx.lineWidth=1.6;ctx.setLineDash([6,5]);ctx.stroke();ctx.setLineDash([])}
+else if(z.ty==="conflict"){ctx.save();ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.clip();ctx.fillStyle="rgba(240,176,58,"+.1*al+")";ctx.fillRect(q[0]-rr,q[1]-rr,rr*2,rr*2);ctx.restore();ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.strokeStyle="rgba(240,176,58,"+.85*al+")";ctx.lineWidth=1.6;ctx.setLineDash([8,5]);ctx.stroke();ctx.setLineDash([])}
+else if(z.ty==="customs"){ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.fillStyle="rgba(80,150,230,"+.08*al+")";ctx.fill();ctx.strokeStyle="rgba(110,170,255,"+.85*al+")";ctx.lineWidth=1.6;ctx.setLineDash([3,5]);ctx.stroke();ctx.setLineDash([])}
+else if(z.ty==="airdef"){ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.fillStyle="rgba(229,72,77,"+.1*al+")";ctx.fill();ctx.strokeStyle="rgba(229,72,77,"+.9*al+")";ctx.lineWidth=1.6;ctx.stroke()}
+else if(z.ty==="blackout"){ctx.save();ctx.beginPath();ctx.arc(q[0],q[1],rr,0,7);ctx.clip();ctx.fillStyle="rgba(95,108,122,"+.5*al+")";ctx.fillRect(q[0]-rr,q[1]-rr,rr*2,rr*2);ctx.restore()}
+if(rr>14){ctx.font="600 10px system-ui,sans-serif";ctx.fillStyle="rgba(235,235,240,"+.85*al+")";ctx.textAlign="center";ctx.fillText(t("z_"+z.ty),q[0],q[1]+3);ctx.textAlign="left"}}}
 const P_F=new Path2D("M0,-15 C2.2,-14 2.6,-10 2.6,-4 L2.6,9 C2.6,12 1.2,14.5 0,15.5 C-1.2,14.5 -2.6,12 -2.6,9 L-2.6,-4 C-2.6,-10 -2.2,-14 0,-15Z"),P_W=new Path2D("M2.4,-3 L16,5.5 L16,7.6 L2.4,3 Z M-2.4,-3 L-16,5.5 L-16,7.6 L-2.4,3 Z"),P_T=new Path2D("M1.8,10.5 L7,14.2 L7,15.4 L1.5,13.4 Z M-1.8,10.5 L-7,14.2 L-7,15.4 L-1.5,13.4 Z"),P_E=new Path2D("M5.4,1.5 h2.2 v4.2 h-2.2Z M-7.6,1.5 h2.2 v4.2 h-2.2Z");
 function drawPlane(a,th,s,lv,halo){ctx.save();ctx.translate(a[0],a[1]);ctx.rotate(th);ctx.scale(s,s);ctx.shadowColor=halo||"transparent";ctx.shadowBlur=halo?9:0;ctx.fillStyle="#eef3f8";ctx.fill(P_F);ctx.shadowBlur=0;ctx.fillStyle="#cfd7e0";ctx.fill(P_W);ctx.fillStyle=lv[1];ctx.fill(P_T);ctx.fillStyle="#7b8794";ctx.fill(P_E);ctx.fillStyle=lv[2];ctx.fillRect(-.7,-8,1.4,17);ctx.strokeStyle="rgba(0,0,0,.55)";ctx.lineWidth=.7;ctx.stroke(P_F);ctx.stroke(P_W);ctx.restore()}
 function navLights(a,th,s){ctx.save();ctx.translate(a[0],a[1]);ctx.rotate(th);ctx.fillStyle="#ff3030";ctx.beginPath();ctx.arc(-16*s,6.5*s,1.3,0,7);ctx.fill();ctx.fillStyle="#30ff70";ctx.beginPath();ctx.arc(16*s,6.5*s,1.3,0,7);ctx.fill();if(Math.sin(T*9)>.85){ctx.fillStyle="#fff";ctx.beginPath();ctx.arc(0,14*s,1.8,0,7);ctx.fill()}ctx.restore()}
 function truckDraw(){if(!TR||!TR.p)return;const q=pr(TR.p.la,TR.p.lo),n=pr(TR.q.la,TR.q.lo),an=Math.atan2(n[1]-q[1],n[0]-q[0]),s=.9+.1*Math.min(cam.z,3);const a0=pr(TR.from.la,TR.from.lo),b0=pr(TR.to.la,TR.to.lo);ctx.strokeStyle="rgba(240,176,58,.5)";ctx.setLineDash([3,4]);ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(a0[0],a0[1]);ctx.lineTo(b0[0],b0[1]);ctx.stroke();ctx.setLineDash([]);
-ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(an);ctx.scale(s,s);const g=ctx.createLinearGradient(6,0,22,0);g.addColorStop(0,"rgba(255,240,170,.55)");g.addColorStop(1,"rgba(255,240,170,0)");ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(6,-1);ctx.lineTo(22,-5);ctx.lineTo(22,5);ctx.lineTo(6,1);ctx.fill();ctx.fillStyle="#e8ecf1";ctx.fillRect(-9,-3,10,6);ctx.fillStyle="#f0b03a";ctx.fillRect(2,-3,5,6);ctx.fillStyle="#222";[[-7,-3.6],[-7,2.4],[3,-3.6],[3,2.4]].forEach(w=>ctx.fillRect(w[0],w[1],2,1.2));ctx.restore()}
+ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(an);ctx.scale(s,s);ctx.fillStyle="#e8ecf1";ctx.fillRect(-9,-3,10,6);ctx.fillStyle="#f0b03a";ctx.fillRect(2,-3,5,6);ctx.fillStyle="#222";[[-7,-3.6],[-7,2.4],[3,-3.6],[3,2.4]].forEach(w=>ctx.fillRect(w[0],w[1],2,1.2));ctx.restore()}
 function house(q,lab){ctx.fillStyle="#e8ecf1";ctx.fillRect(q[0]-6,q[1]-4,12,9);ctx.fillStyle="#e5484d";ctx.beginPath();ctx.moveTo(q[0]-8,q[1]-4);ctx.lineTo(q[0],q[1]-11);ctx.lineTo(q[0]+8,q[1]-4);ctx.fill();ctx.font="600 10px system-ui,sans-serif";ctx.fillStyle="#e8ecf1";ctx.fillText(lab,q[0]+11,q[1]+3)}
-function warehouse(q,lab){ctx.fillStyle="#9fc4e8";ctx.fillRect(q[0]-8,q[1]-5,16,10);ctx.fillStyle="#2c3f55";ctx.beginPath();ctx.moveTo(q[0]-9,q[1]-5);ctx.lineTo(q[0],q[1]-11);ctx.lineTo(q[0]+9,q[1]-5);ctx.fill();ctx.fillStyle="#f0b03a";ctx.fillRect(q[0]-3,q[1]-1,6,6);ctx.font="600 10px system-ui,sans-serif";ctx.fillStyle="#e8ecf1";ctx.fillText(lab,q[0]+12,q[1]+3)}
-function carrier(q,ang,s){ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(ang);ctx.scale(s,s);ctx.fillStyle="#6f7a85";ctx.beginPath();ctx.moveTo(-14,0);ctx.lineTo(-12,-3);ctx.lineTo(10,-3);ctx.lineTo(15,0);ctx.lineTo(10,3);ctx.lineTo(-12,3);ctx.closePath();ctx.fill();ctx.fillStyle="#98a3ae";ctx.fillRect(-12,-3.8,22,7.6);ctx.strokeStyle="rgba(255,255,255,.8)";ctx.lineWidth=.6;ctx.beginPath();ctx.moveTo(-10,-2);ctx.lineTo(11,2);ctx.stroke();ctx.fillStyle="#dfe5ea";ctx.fillRect(1,2,5,2);ctx.restore()}
-function tagTxt(a,nm,dim){ctx.font="600 10px system-ui,sans-serif";const w=ctx.measureText(nm).width+12,x=a[0]+12,y=a[1]-18;ctx.globalAlpha=dim?.6:1;ctx.fillStyle="rgba(10,12,16,.85)";ctx.fillRect(x,y,w,15);ctx.fillStyle=F.lv[1];ctx.fillRect(x,y,3,15);ctx.fillStyle="#f1f4f8";ctx.fillText(nm,x+7,y+11);ctx.globalAlpha=1}
+function warehouse(q,lab){ctx.fillStyle="#9fc4e8";ctx.fillRect(q[0]-8,q[1]-5,16,10);ctx.fillStyle="#2c3f55";ctx.beginPath();ctx.moveTo(q[0]-9,q[1]-5);ctx.lineTo(q[0],q[1]-11);ctx.lineTo(q[0]+9,q[1]-5);ctx.fill();ctx.font="600 10px system-ui,sans-serif";ctx.fillStyle="#e8ecf1";ctx.fillText(lab,q[0]+12,q[1]+3)}
+function carrier(q,ang,s){ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(ang);ctx.scale(s,s);ctx.fillStyle="#6f7a85";ctx.beginPath();ctx.moveTo(-14,0);ctx.lineTo(-12,-3);ctx.lineTo(10,-3);ctx.lineTo(15,0);ctx.lineTo(10,3);ctx.lineTo(-12,3);ctx.closePath();ctx.fill();ctx.fillStyle="#98a3ae";ctx.fillRect(-12,-3.8,22,7.6);ctx.restore()}
+function tagS(a,txt,col,dim){ctx.font="600 10px system-ui,sans-serif";const w=ctx.measureText(txt).width+12,x=a[0]+12,y=a[1]-18;ctx.globalAlpha=dim?.6:1;ctx.fillStyle="rgba(10,12,16,.85)";ctx.fillRect(x,y,w,15);ctx.fillStyle=col;ctx.fillRect(x,y,3,15);ctx.fillStyle="#f1f4f8";ctx.fillText(txt,x+7,y+11);ctx.globalAlpha=1}
+const MIL=[["Ramstein AB",49.44,7.6],["Incirlik AB",37,35.43],["Kadena AB",26.36,127.77],["Elmendorf AFB",61.25,-149.8],["Lajes Field",38.76,-27.09],["Al Udeid AB",25.12,51.31],["Diego Garcia",-7.31,72.41]].map(m=>({nm:m[0],la:m[1],lo:m[2]}));
+const nearMil=p=>MIL.reduce((b,m)=>kmd(p,m)<kmd(p,b)?m:b,MIL[0]);
+const FLEETS=[["US 7th Fleet",28,145],["US Pacific Fleet",21,-158],["US 2nd Fleet",38,-55],["US 6th Fleet",35,18],["Royal Navy CSG",55,-15],["Indian Navy Western Fleet",13,68]].map(m=>({nm:m[0],la:m[1],lo:m[2]})).filter(m=>!onLand(m.la,m.lo));
+function fleetsFor(f){return FLEETS.map(m=>{let d=1e9;for(let i=0;i<=10;i++)d=Math.min(d,kmd(PT(f,i/10),m));return[d,m]}).sort((a,b)=>a[0]-b[0]).slice(0,3).map(x=>x[1])}
+function lnR(arr,col,w,dash){if(arr.length<2)return;const s=SXf();ctx.strokeStyle=col;ctx.lineWidth=w;ctx.setLineDash(dash||[]);ctx.beginPath();let x=0,pl=0;arr.forEach((p,i)=>{if(i===0){const q=pr(p.la,p.lo);x=q[0];pl=p.lo;ctx.moveTo(x,q[1])}else{let d=p.lo-pl;d=((d+540)%360)-180;x+=d*s;pl=p.lo;ctx.lineTo(x,H/2-(p.la-cam.la)*s)}});ctx.stroke();ctx.setLineDash([])}
+function drawRoutes(){for(const f of FL){if(!picked||f.i!==sel)continue;if(!f.rp){f.rp=[];for(let i=0;i<=60;i++)f.rp.push(PT(f,i/60))}const sl=f.i===sel,tt=f.st==="parked"?1:f.t;lnR(f.rp.filter((_,i)=>i/60<=tt),"rgba(255,255,255,"+(sl?.55:.22)+")",sl?1.6:.8);lnR(f.rp.filter((_,i)=>i/60>=tt),"rgba(240,176,58,"+(sl?.9:.4)+")",sl?1.6:.8,[6,5])}}
+function drawFlights(){
+  const sv=F,cur=FL[sel];
+  const onlyOfficial=OFFICIAL.active;
+  for(const m of MIL){const q=pr(m.la,m.lo);if(q[0]<-10||q[0]>W+10||q[1]<-10||q[1]>H+10)continue;ctx.fillStyle="#e5484d";ctx.beginPath();ctx.moveTo(q[0],q[1]-5);ctx.lineTo(q[0]+4.5,q[1]+3.5);ctx.lineTo(q[0]-4.5,q[1]+3.5);ctx.fill()}
+  F=cur;const a0=pr(cur.p.la,cur.p.lo);
+  if(picked&&wp>.02&&!onlyOfficial){for(const m of fleetsFor(cur)){const q=pr(m.la,m.lo);ctx.globalAlpha=Math.min(1,wp);carrier(q,.1*Math.sin(T*.4+m.la),.8+.2*Math.min(cam.z,3));tagS([q[0]-6,q[1]+6],m.nm,"#6ea8ff");ctx.globalAlpha=1}}
+  if(cur.center)warehouse(pr(cur.center.la,cur.center.lo),t("center"));
+  if(cur.home)house(pr(cur.home.la,cur.home.lo),t("home"));
+  truckDraw();
+  for(const f of FL.filter(x=>x!==cur).concat([cur])){
+    if(onlyOfficial&&f.id!==OFFICIAL.planeId)continue;
+    F=f;const sl=picked&&f===cur,a=pr(f.p.la,f.p.lo);if(a[0]<-30||a[0]>W+30)continue;
+    const b=pr(f.q.la,f.q.lo),th=Math.atan2(b[1]-a[1],b[0]-a[0])+Math.PI/2,sc=(.34+.2*cam.z)*(sl?1:.8),nm=f.id+" → "+f.B.k;
+    if(f.blind){const jr=14+4*Math.sin(T*2);ctx.fillStyle="rgba(240,176,58,.08)";ctx.strokeStyle="rgba(240,176,58,.35)";ctx.setLineDash([4,4]);ctx.lineWidth=1;ctx.beginPath();ctx.arc(a[0],a[1],jr,0,7);ctx.fill();ctx.stroke();ctx.setLineDash([]);if(sl)tagS(a,nm+" · NO COMM",f.lv[1],true)}
+    else{
+      drawPlane(a,th,sc,f.lv,f.st==="hold"?"#f0b03a":null);
+      if(f.st!=="parked"&&f.st!=="lay")navLights(a,th,sc);
+      if(sl){ctx.strokeStyle="#f0b03a";ctx.lineWidth=1.6;ctx.beginPath();ctx.arc(a[0],a[1],16,0,7);ctx.stroke()}
+      if(sl)tagS(a,nm+" · "+f.lv[4],f.lv[1],false);
+    }
+  }
+  F=sv;
+}
+function drawDemoAndOfficial(){
+  if(DEMO.from||DEMO.to){
+    const drawPin=(pt,color,label)=>{const q=pr(pt.la,pt.lo);if(q[0]<-30||q[0]>W+30)return;const pulse=1+Math.sin(T*3)*0.3;ctx.fillStyle=color.replace("rgb(","rgba(").replace(")",",.15)");ctx.beginPath();ctx.arc(q[0],q[1],14*pulse,0,7);ctx.fill();ctx.fillStyle=color;ctx.beginPath();ctx.arc(q[0],q[1],7,0,7);ctx.fill();ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.stroke();ctx.font="700 10px system-ui,sans-serif";const tw=ctx.measureText(label).width+12;const lx=q[0]-tw/2,ly=q[1]-26;ctx.fillStyle="rgba(11,13,18,.92)";ctx.fillRect(lx,ly,tw,16);ctx.fillStyle=color;ctx.fillRect(lx,ly,tw,2);ctx.fillStyle="#fff";ctx.fillText(label,lx+6,ly+12)};
+    if(DEMO.from)drawPin(DEMO.from,"rgb(62,207,142)","A · "+t("demo.from"));
+    if(DEMO.to)drawPin(DEMO.to,"rgb(240,176,58)","B · "+t("demo.to"));
+    if(DEMO.from&&DEMO.to){const a=pr(DEMO.from.la,DEMO.from.lo);const b=pr(DEMO.to.la,DEMO.to.lo);ctx.strokeStyle="rgba(197,255,61,.5)";ctx.lineWidth=1.5;ctx.setLineDash([6,5]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();ctx.setLineDash([])}
+  }
+  if(OFFICIAL.active&&OFFICIAL.flight){const f=OFFICIAL.flight;const q=pr(f.p.la,f.p.lo);const pulse=1+Math.sin(T*2.5)*0.15;ctx.strokeStyle="rgba(197,255,61,"+(0.5+Math.sin(T*3)*0.2)+")";ctx.lineWidth=2;ctx.beginPath();ctx.arc(q[0],q[1],28*pulse,0,7);ctx.stroke();ctx.strokeStyle="rgba(197,255,61,.25)";ctx.lineWidth=1;ctx.beginPath();ctx.arc(q[0],q[1],42*pulse,0,7);ctx.stroke();ctx.font="700 11px system-ui,sans-serif";const lab=OFFICIAL.planeId;const tw=ctx.measureText(lab).width+16;const lx=q[0]-tw/2,ly=q[1]-42;ctx.fillStyle="rgba(11,13,18,.95)";ctx.fillRect(lx,ly,tw,18);ctx.fillStyle="#c5ff3d";ctx.fillRect(lx,ly,tw,3);ctx.fillStyle="#fff";ctx.fillText(lab,lx+8,ly+14)}
+}
 function draw(){const s=SXf(),cx=W/2,cy=H/2,X=l=>cx+(l-cam.lo)*s,Y=l=>cy-(l-cam.la)*s;ctx.save();ctx.fillStyle="#03060a";ctx.fillRect(0,0,W,H);baseLayer(X,Y,s);ctx.drawImage(LC,0,0,W,H);cloudsDraw();nightDraw();lightsDraw();auroraDraw();zoneDraw();
 drawRoutes();
 for(const k in AP){const a=AP[k],act=ACT.has(a),q=pr(a.la,a.lo);if(!(act||cam.z>1.8))continue;if(q[0]<-20||q[0]>W+20)continue;ctx.fillStyle="#9fc4e8";ctx.beginPath();ctx.arc(q[0],q[1],act?3:2,0,7);ctx.fill();paintFlag(ctx,q[0]+5,q[1]-12,16,11,a.cc);ctx.strokeStyle="rgba(0,0,0,.55)";ctx.lineWidth=.6;ctx.strokeRect(q[0]+5,q[1]-12,16,11);if(act||cam.z>2.4){ctx.font="600 10px system-ui,sans-serif";ctx.fillStyle="#e8ecf1";ctx.fillText(k,q[0]+24,q[1]-3)}}
 drawFlights();
+drawDemoAndOfficial();
 ctx.restore()}
-const MIL=[["Ramstein AB",49.44,7.6],["Incirlik AB",37,35.43],["Kadena AB",26.36,127.77],["Elmendorf AFB",61.25,-149.8],["Thule AB",76.53,-68.7],["Lajes Field",38.76,-27.09],["Al Udeid AB",25.12,51.31],["Andersen AFB",13.58,144.93],["Camp Lemonnier",11.55,43.16],["Aviano AB",46.03,12.6],["Akrotiri RAF",34.59,32.99],["Diego Garcia",-7.31,72.41]].map(m=>({nm:m[0],la:m[1],lo:m[2]}));
-const nearMil=p=>MIL.reduce((b,m)=>kmd(p,m)<kmd(p,b)?m:b,MIL[0]);
-const FLEETS=[["US 7th Fleet",28,145],["US 3rd Fleet",25,-140],["US Pacific Fleet",21,-158],["US 2nd Fleet",38,-55],["US 6th Fleet",35,18],["US 5th Fleet",18,64],["US 4th Fleet",15,-73],["Royal Navy CSG",55,-15],["Marine Nationale (CdG)",37,-14],["Indian Navy Western Fleet",13,68],["Russian Northern Fleet",74,35],["Brazilian Navy",-15,-30],["Royal Australian Navy",-30,160],["South African Navy",-37,25]].map(m=>({nm:m[0],la:m[1],lo:m[2]})).filter(m=>!onLand(m.la,m.lo));
-function fleetsFor(f){return FLEETS.map(m=>{let d=1e9;for(let i=0;i<=10;i++)d=Math.min(d,kmd(PT(f,i/10),m));return[d,m]}).sort((a,b)=>a[0]-b[0]).slice(0,3).map(x=>x[1])}
-function lnR(arr,col,w,dash){if(arr.length<2)return;const s=SXf();ctx.strokeStyle=col;ctx.lineWidth=w;ctx.setLineDash(dash||[]);ctx.beginPath();let x=0,pl=0;arr.forEach((p,i)=>{if(i===0){const q=pr(p.la,p.lo);x=q[0];pl=p.lo;ctx.moveTo(x,q[1])}else{let d=p.lo-pl;d=((d+540)%360)-180;x+=d*s;pl=p.lo;ctx.lineTo(x,H/2-(p.la-cam.la)*s)}});ctx.stroke();ctx.setLineDash([])}
-function drawRoutes(){for(const f of FL){if(!picked||f.i!==sel)continue;if(!f.rp){f.rp=[];for(let i=0;i<=60;i++)f.rp.push(PT(f,i/60))}const sl=f.i===sel,tt=f.st==="parked"?1:f.t;lnR(f.rp.filter((_,i)=>i/60<=tt),"rgba(255,255,255,"+(sl?.55:.22)+")",sl?1.6:.8);lnR(f.rp.filter((_,i)=>i/60>=tt),"rgba(240,176,58,"+(sl?.9:.4)+")",sl?1.6:.8,[6,5])}}
-function tagS(a,txt,col,dim){ctx.font="600 10px system-ui,sans-serif";const w=ctx.measureText(txt).width+12,x=a[0]+12,y=a[1]-18;ctx.globalAlpha=dim?.6:1;ctx.fillStyle="rgba(10,12,16,.85)";ctx.fillRect(x,y,w,15);ctx.fillStyle=col;ctx.fillRect(x,y,3,15);ctx.fillStyle="#f1f4f8";ctx.fillText(txt,x+7,y+11);ctx.globalAlpha=1}
-function drawFlights(){const sv=F,cur=FL[sel];
-for(const m of MIL){const q=pr(m.la,m.lo);if(q[0]<-10||q[0]>W+10||q[1]<-10||q[1]>H+10)continue;ctx.fillStyle="#e5484d";ctx.beginPath();ctx.moveTo(q[0],q[1]-5);ctx.lineTo(q[0]+4.5,q[1]+3.5);ctx.lineTo(q[0]-4.5,q[1]+3.5);ctx.fill();if(cam.z>1.8){ctx.font="600 9px system-ui,sans-serif";ctx.fillStyle="#ff9a9d";ctx.fillText("✚ "+m.nm,q[0]+8,q[1]+3)}}
-for(const m of [["Hoàng Sa · Việt Nam",16.5,112],["Trường Sa · Việt Nam",9.8,114.2]]){const q=pr(m[1],m[2]);if(q[0]<-40||q[0]>W+40)continue;ctx.fillStyle="#ffeb3b";ctx.beginPath();ctx.arc(q[0],q[1],2.5,0,7);ctx.fill();paintFlag(ctx,q[0]+6,q[1]-14,16,11,"vn");ctx.font="600 10px system-ui,sans-serif";ctx.fillStyle="#ffe9a8";ctx.fillText(m[0],q[0]+25,q[1]-5)}
-F=cur;const a0=pr(cur.p.la,cur.p.lo);
-if(picked&&wp>.02){for(const m of fleetsFor(cur)){const q=pr(m.la,m.lo);ctx.globalAlpha=Math.min(1,wp);carrier(q,.1*Math.sin(T*.4+m.la),.8+.2*Math.min(cam.z,3));tagS([q[0]-6,q[1]+6],m.nm,"#6ea8ff");if(kmd(cur.p,m)<3500){ctx.strokeStyle="rgba(110,170,255,.45)";ctx.setLineDash([2,4]);ctx.beginPath();ctx.moveTo(q[0],q[1]);ctx.lineTo(a0[0],a0[1]);ctx.stroke();ctx.setLineDash([])}ctx.globalAlpha=1}
-const rr=22+2*Math.sin(T*3),gg=ctx.createRadialGradient(a0[0],a0[1],rr*.4,a0[0],a0[1],rr);gg.addColorStop(0,"rgba(110,170,255,0)");gg.addColorStop(1,"rgba(110,170,255,"+.28*wp+")");ctx.fillStyle=gg;ctx.beginPath();ctx.arc(a0[0],a0[1],rr,0,7);ctx.fill()}
-if(cur.center)warehouse(pr(cur.center.la,cur.center.lo),t("center"));if(cur.home)house(pr(cur.home.la,cur.home.lo),t("home"));truckDraw();
-for(const f of FL.filter(x=>x!==cur).concat([cur])){F=f;const sl=picked&&f===cur,a=pr(f.p.la,f.p.lo);if(a[0]<-30||a[0]>W+30)continue;const b=pr(f.q.la,f.q.lo),th=Math.atan2(b[1]-a[1],b[0]-a[0])+Math.PI/2,sc=(.34+.2*cam.z)*(sl?1:.8),nm=f.id+" → "+f.B.k;
-if(f.blind){const jr=14+4*Math.sin(T*2);ctx.fillStyle="rgba(240,176,58,.08)";ctx.strokeStyle="rgba(240,176,58,.35)";ctx.setLineDash([4,4]);ctx.lineWidth=1;ctx.beginPath();ctx.arc(a[0],a[1],jr,0,7);ctx.fill();ctx.stroke();ctx.setLineDash([]);if(sl)tagS(a,nm+" · NO COMM",f.lv[1],true)}
-else{drawPlane(a,th,sc,f.lv,f.st==="hold"?"#f0b03a":null);if(f.st!=="parked"&&f.st!=="lay")navLights(a,th,sc);if(sl){ctx.strokeStyle="#f0b03a";ctx.lineWidth=1.6;ctx.beginPath();ctx.arc(a[0],a[1],16,0,7);ctx.stroke();for(let k=0;k<2;k++){const ph=(T*.5+k*.5)%1;ctx.strokeStyle="rgba(240,176,58,"+.5*(1-ph)+")";ctx.lineWidth=1.2;ctx.beginPath();ctx.arc(a[0],a[1],16+ph*30,0,7);ctx.stroke()}}
-if(sl)tagS(a,nm+" · "+f.lv[4]+(f.st==="parked"?" · P":f.st==="lay"?" · TRANSIT":" · FL"+Math.round(f.alt/100)),f.lv[1],false)}}
-F=sv}
-/* ================= giao diện ================= */
-function buildLiv(){const c=F.lv;$("liv").innerHTML='<svg viewBox="0 0 300 100"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#24384d"/><stop offset="1" stop-color="#4a6b8a"/></linearGradient></defs><rect width="300" height="100" fill="url(#sk)"/><path d="M150,56 L204,56 L176,86 L152,86Z" fill="#aeb8c2"/><ellipse cx="172" cy="72" rx="15" ry="7" fill="#8a96a3"/><path d="M30,50 L14,12 L42,12 L68,40Z" fill="'+c[1]+'"/><path d="M20,56 Q22,40 70,38 L240,38 Q286,38 294,50 Q286,64 240,64 L70,64 Q24,64 20,56Z" fill="'+c[0]+'" stroke="#aab4bf"/><path d="M26,59 L288,56" stroke="'+c[2]+'" stroke-width="5"/><path d="M262,42 Q280,42 287,49 L262,49Z" fill="#35506b"/><text x="92" y="52" font-size="13" font-weight="700" fill="'+c[3]+'" font-family="sans-serif">'+c[4]+'</text></svg>'}
-function applyLang(){document.documentElement.lang=lang;document.querySelectorAll("[data-i]").forEach(e=>{e.textContent=t(e.dataset.i)});[...$("lg").children].forEach(b=>b.classList.toggle("on",b.dataset.l===lang));$("bw").textContent=t(warr?"warrOn":"warrOff");$("bw").classList.toggle("on",warr);buildSel();tkRebuild();if(F)ui(true)}
+
+/* ================= UI ================= */
+function buildLiv(){const c=F.lv;$("liv").innerHTML='<svg viewBox="0 0 300 100"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#24384d"/><stop offset="1" stop-color="#4a6b8a"/></linearGradient></defs><rect width="300" height="100" fill="url(#sk)"/><path d="M20,56 Q22,40 70,38 L240,38 Q286,38 294,50 Q286,64 240,64 L70,64 Q24,64 20,56Z" fill="'+c[0]+'" stroke="#aab4bf"/><path d="M26,59 L288,56" stroke="'+c[2]+'" stroke-width="5"/><text x="92" y="52" font-size="13" font-weight="700" fill="'+c[3]+'" font-family="sans-serif">'+c[4]+'</text></svg>'}
+function applyLang(){document.documentElement.lang=lang;document.querySelectorAll("[data-i]").forEach(e=>{e.textContent=t(e.dataset.i)});[...$("lg").children].forEach(b=>b.classList.toggle("on",b.dataset.l===lang));$("bw").textContent=t(warr?"warrOn":"warrOff");$("bw").classList.toggle("on",warr);buildSel();tkRebuild();if(F)ui(true);updateDemoUI()}
 function buildSel(){$("sel").innerHTML=FL.map(f=>'<option value="'+f.i+'">'+f.id+" · "+city(f.A)+" → "+city(f.B)+"</option>").join("");$("sel").value=sel}
 function sndLabel(){return!snd?t("sndOff"):(AC&&AC.state==="running")?t("sndOn"):t("sndTap")}
 function ui(force){$("utc").textContent=nowD().toISOString().slice(11,19)+" UTC";$("bs").textContent=sndLabel();ambStep();syncTm();if(!F)return;
-$("pc").textContent=F.id;$("pa").textContent=F.lv[4];$("of").textContent=F.A.k;$("oc").innerHTML=flagImg(F.A)+city(F.A)+", "+cname(F.A);$("df").textContent=F.B.k;$("dc").innerHTML=flagImg(F.B)+city(F.B)+", "+cname(F.B);$("pty").textContent=F.act;
+$("pc").textContent=F.id;$("pa").textContent=F.lv[4];$("of").textContent=F.A.k;$("oc").innerHTML=flagImg(F.A)+city(F.A);$("df").textContent=F.B.k;$("dc").innerHTML=flagImg(F.B)+city(F.B);$("pty").textContent=F.act;
 let sk="s_normal",col="#3ecf8e";if(F.st==="hold"){sk="s_"+F.hold.z.ty;col="#f0b03a"}else if(F.st==="parked"){sk="s_parked";col="#6ea8ff"}else if(F.st==="lay"){sk="s_lay";col="#6ea8ff"}$("pst").textContent=t(sk);$("pst").style.background=col;
 $("ai").innerHTML=F.st==="hold"?"<b>"+t("s_ai")+"</b> · "+Math.ceil(F.hold.rem)+"s":"";
 $("prg").style.width=(F.st==="parked"?1:F.t)*100+"%";
@@ -362,16 +671,18 @@ $("rem").textContent=F.st==="parked"?"—":Math.round(rem).toLocaleString()+" km
 $("fdt").textContent=Math.round(F.alt).toLocaleString("en-US")+" ft · "+gs+" kt · "+hd+"°";
 $("ord").textContent=hideOrd?t("hidden"):F.ord;$("bo").textContent=t(hideOrd?"show":"hide");$("cg").textContent=hideCg?t("hidden"):t("c_"+F.cargo);$("bc").textContent=t(hideCg?"show":"hide");
 if(F.pk&&F.pk!=="pending"){$("pkt").textContent=F.pk==="home"?t("m_home_done",F.ord):t("m_center",F.code)}}
-/* ================= điều khiển ================= */
+
+/* ================= CONTROLS ================= */
 $("lg").onclick=e=>{const b=e.target.closest("button");if(!b)return;lang=b.dataset.l;applyLang()};
-$("sel").onchange=()=>{startFlight(+$("sel").value)};
-const newOrder=()=>{let i;do{i=Math.floor(Math.random()*PRE.length)}while(i===sel&&PRE.length>1);startFlight(i)};
+$("sel").onchange=()=>{OFFICIAL.active=false;startFlight(+$("sel").value)};
+const newOrder=()=>{let i;do{i=Math.floor(Math.random()*PRE.length)}while(i===sel&&PRE.length>1);OFFICIAL.active=false;startFlight(i)};
 $("bnew").onclick=newOrder;$("bnew2").onclick=newOrder;
 $("bw").onclick=()=>{warr=!warr;$("bw").textContent=t(warr?"warrOn":"warrOff");$("bw").classList.toggle("on",warr);notify(warr?"m_warr_on":"m_warr_off",[],0);sfx("click")};
 $("bs").onclick=()=>{snd=!snd;if(snd)au();ui()};
 $("bo").onclick=()=>{hideOrd=!hideOrd;ui()};$("bc").onclick=()=>{hideCg=!hideCg;ui()};
 $("pkh").onclick=pickHome;$("pkc2").onclick=pickCenter;
-$("zi").onclick=()=>{zT=0;cam.z=cl(cam.z*1.3,1,6)};$("zo").onclick=()=>{zT=0;cam.z=cl(cam.z/1.3,1,6)};$("zf").onclick=()=>{follow=true;zT=2};$("zg").onclick=()=>{follow=false;zT=1;cam.lo=10;cam.la=15};
+$("zi").onclick=()=>{zT=0;cam.z=cl(cam.z*1.3,1,6)};$("zo").onclick=()=>{zT=0;cam.z=cl(cam.z/1.3,1,6)};
+$("zf").onclick=()=>{follow=true;zT=2};$("zg").onclick=()=>{follow=false;zT=1;cam.lo=10;cam.la=15;OFFICIAL.active=false};
 $("bsp").onclick=()=>{SPD=SPD===1?2:SPD===2?4:1;$("bsp").textContent=SPD+"×"};
 const pad=n=>String(n).padStart(2,"0"),loc=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())+"T"+pad(d.getHours())+":"+pad(d.getMinutes());
 function syncTm(){if(document.activeElement!==$("tm"))$("tm").value=loc(nowD())}
@@ -382,23 +693,56 @@ cv.addEventListener("pointerdown",e=>{dr=[e.clientX,e.clientY];mv=0});
 addEventListener("pointermove",e=>{if(!dr)return;const s=SXf(),dx=e.clientX-dr[0],dy=e.clientY-dr[1];cam.lo-=dx/s;cam.la+=dy/s;mv+=Math.abs(dx)+Math.abs(dy);dr=[e.clientX,e.clientY];if(mv>4)follow=false;clampCam()});
 addEventListener("pointerup",()=>dr=null);
 cv.addEventListener("wheel",e=>{e.preventDefault();zT=0;const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,s0=SXf(),glo=cam.lo+(x-W/2)/s0,gla=cam.la-(y-H/2)/s0;cam.z=cl(cam.z*(e.deltaY>0?.9:1.1),1,6);const s1=SXf();cam.lo=glo-(x-W/2)/s1;cam.la=gla+(y-H/2)/s1;clampCam()},{passive:false});
-cv.addEventListener("click",e=>{if(mv>4)return;const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;let hf=null,hd=18;for(const f of FL){const q=pr(f.p.la,f.p.lo),d=Math.hypot(q[0]-x,q[1]-y);if(d<hd){hd=d;hf=f}}if(hf){sfx("click");selectFlight(hf.i,false);if(hf.st==="parked")retTrip(hf);return}let b=null,bd=14;for(const k in AP){const q=pr(AP[k].la,AP[k].lo),d=Math.hypot(q[0]-x,q[1]-y);if(d<bd){bd=d;b=AP[k]}}if(b){const tp=$("tip");tp.innerHTML=flagImg(b)+b.k+" · "+city(b)+" · "+cname(b);tp.style.display="block";clearTimeout(tp.h);tp.h=setTimeout(()=>{tp.style.display="none"},4000)}});
+cv.addEventListener("click",e=>{
+  if(mv>4)return;
+  const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+  if(DEMO.picking){if(demoClickMap(x,y))return}
+  let hf=null,hd=18;
+  for(const f of FL){const q=pr(f.p.la,f.p.lo),d=Math.hypot(q[0]-x,q[1]-y);if(d<hd){hd=d;hf=f}}
+  if(hf){sfx("click");selectFlight(hf.i,false);if(hf.st==="parked")retTrip(hf);return}
+  let b=null,bd=14;
+  for(const k in AP){const q=pr(AP[k].la,AP[k].lo),d=Math.hypot(q[0]-x,q[1]-y);if(d<bd){bd=d;b=AP[k]}}
+  if(b){const tp=$("tip");tp.innerHTML=flagImg(b)+b.k+" · "+city(b)+" · "+cname(b);tp.style.display="block";clearTimeout(tp.h);tp.h=setTimeout(()=>{tp.style.display="none"},4000)}
+});
 let last=performance.now(),fr=0;
-function loop(now){const rd=Math.min(.1,(now-last)/1000);last=now;step(rd);tkStep(rd);
+function loop(now){const rd=Math.min(.1,(now-last)/1000);last=now;step(rd);tkStep(rd);updateOfficialStatus();
 if(F&&follow){cam.lo+=(((F.p.lo-cam.lo+540)%360)-180)*.06;cam.la+=(F.p.la-cam.la)*.06}
 if(zT){cam.z+=(zT-cam.z)*.05;if(Math.abs(zT-cam.z)<.02)zT=0}
 if(fr%30==0){const r=cv.getBoundingClientRect();if(Math.abs(r.width-W)>1||Math.abs(r.height-H)>1)fit()}clampCam();draw();if(++fr%8==0)ui();requestAnimationFrame(loop)}
 document.querySelector(".gl").appendChild($("pkc"));
-const LFL={en:"gb",zh:"cn",ja:"jp",ko:"kr",vi:"vn"};[...$("lg").children].forEach(b=>{b.innerHTML='<img class="fg" style="width:26px;height:17px;margin:0;vertical-align:middle" alt="'+b.dataset.l+'" src="'+flagURL(LFL[b.dataset.l])+'">';b.title=b.dataset.l.toUpperCase()});
-fit();initFlights();sel=0;F=FL[0];document.querySelector(".main").classList.add("np");buildSel();buildLiv();showPk();applyLang();notify("m_ready",[],0);requestAnimationFrame(loop);
 
-/* ================= [AI-ASSISTED: Claude] cầu nối với trang chủ ================= */
+/* ================= LOADER ================= */
+function runLoader(){
+  return new Promise((resolve)=>{
+    if(window.self!==window.top){const ld=$("loader");if(ld)ld.classList.add("done");return resolve()}
+    const fill=$("loaderFill"),pct=$("loaderPct");
+    if(!fill||!pct)return resolve();
+    const t0=performance.now(),dur=1800;
+    (function tick(now){const p=Math.min(1,(now-t0)/dur),v=Math.floor(p*100);fill.style.width=v+"%";pct.textContent=v+"%";if(p<1)requestAnimationFrame(tick);else setTimeout(()=>{$("loader").classList.add("done");resolve()},250)})(t0);
+  });
+}
+
+/* ================= BOOT ================= */
+(async()=>{
+  await loadBrandMeta();
+  fit();
+  initFlights();
+  sel=0;F=FL[0];
+  document.querySelector(".main").classList.add("np");
+  buildSel();buildLiv();showPk();applyLang();
+  updateDemoUI();
+  notify("m_ready",[],0);
+  requestAnimationFrame(loop);
+  runLoader();
+})();
+
+/* ================= BRIDGE ================= */
 addEventListener("message",e=>{
- if(e.source!==parent||!e.data||e.data.type!=="dtr:sync")return;
- const d=e.data;
- if(["vi","ja","ko","zh"].includes(d.lang)&&d.lang!==lang){lang=d.lang;applyLang();buildLiv()}
- const th=d.theme||{},ok=v=>typeof v==="string"&&/^[#\w\s,.()%-]+$/.test(v);
- if(ok(th["--lime"]))document.documentElement.style.setProperty("--acc",th["--lime"]);
+  if(e.source!==parent||!e.data||e.data.type!=="dtr:sync")return;
+  const d=e.data;
+  if(["vi","ja","ko","zh"].includes(d.lang)&&d.lang!==lang){lang=d.lang;applyLang();buildLiv()}
+  const th=d.theme||{},ok=v=>typeof v==="string"&&/^[#\w\s,.()%-]+$/.test(v);
+  if(ok(th["--lime"]))document.documentElement.style.setProperty("--acc",th["--lime"]);
 });
 function dtrH(){parent.postMessage({type:"dtr:height",h:Math.ceil(document.body.getBoundingClientRect().height)},"*")}
 new ResizeObserver(dtrH).observe(document.body);dtrH();
