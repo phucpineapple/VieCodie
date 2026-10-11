@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(Copy-Item \"dd184 \\(3\\) \\(1\\).html\" -Destination \"_backup_tmp.html\"; Write-Output \"copied\"; \\(Get-Item \"_backup_tmp.html\"\\).Length)",
-      "PowerShell(\\(Get-Item _backup_tmp.html\\).Length; Select-String -LiteralPath _backup_tmp.html -Pattern 'window\\\\.I18N' | Select-Object -First 3 | ForEach-Object { $_.LineNumber })"
-    ]
-  }
-}
