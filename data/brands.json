@@ -1,0 +1,20 @@
+﻿{
+    "default":  "brand-1",
+    "brands":  [
+                   {
+                       "id":  "brand-1",
+                       "label":  "DTR—Mart",
+                       "path":  "data/brand-1"
+                   },
+                   {
+                       "id":  "brand-2",
+                       "label":  "NovaCargo",
+                       "path":  "data/brand-2"
+                   },
+                   {
+                       "id":  "brand-3",
+                       "label":  "Sakura Trade",
+                       "path":  "data/brand-3"
+                   }
+               ]
+}

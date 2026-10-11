@@ -1,0 +1,39 @@
+{
+  "theme": {
+    "--lime": "#ff9bb8",
+    "--lime-rgb": "255,155,184",
+    "--cream": "#fff0f4",
+    "--pink": "#ffd27a",
+    "--bg": "#120b0f",
+    "--bg-2": "#1a1016"
+  },
+  "sections": {
+    "hero": true,
+    "marquee": false,
+    "brand": true,
+    "journey": false,
+    "features": true,
+    "cta": true,
+    "globe": true,
+    "skywatch": true,
+    "partner": true,
+    "faq": true
+  },
+  "media": {
+    "logo": "https://scontent.fsgn2-9.fna.fbcdn.net/v/t1.15752-9/837090217_1838708297575574_9035449063746888478_n.png?stp=dst-png_s2048x2048&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeHsTynfi-mpXvKnUmCSGCRlA9phdcaf0jYD2mF1xp_SNnjTUSsilZXeH2NqzkxuOQxCJHrbIz9eAS_adSA-BkAu&_nc_ohc=GkPaAjM9dKEQ7kNvwFYBwKf&_nc_oc=AdqFB0LFlvR5XVV6WucxYdlAAmDEuB-fqHyWDTG1f1AebXJ89MjrCaC1xlLGcqDkGn-iGcXihccdjMJr_Dg22JkF&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_ss=7b2a8&oh=03_Q7cD6gHbprmEUCeKhqstWvVHxMK80sJlG1fBiMN2XVkzSy33kA&oe=6AF05B29",
+    "favicon": "https://scontent.fsgn2-9.fna.fbcdn.net/v/t1.15752-9/837090217_1838708297575574_9035449063746888478_n.png?stp=dst-png_s2048x2048&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeHsTynfi-mpXvKnUmCSGCRlA9phdcaf0jYD2mF1xp_SNnjTUSsilZXeH2NqzkxuOQxCJHrbIz9eAS_adSA-BkAu&_nc_ohc=GkPaAjM9dKEQ7kNvwFYBwKf&_nc_oc=AdqFB0LFlvR5XVV6WucxYdlAAmDEuB-fqHyWDTG1f1AebXJ89MjrCaC1xlLGcqDkGn-iGcXihccdjMJr_Dg22JkF&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_ss=7b2a8&oh=03_Q7cD6gHbprmEUCeKhqstWvVHxMK80sJlG1fBiMN2XVkzSy33kA&oe=6AF05B29",
+    "loader": "https://scontent.fsgn2-9.fna.fbcdn.net/v/t1.15752-9/837090217_1838708297575574_9035449063746888478_n.png?stp=dst-png_s2048x2048&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeHsTynfi-mpXvKnUmCSGCRlA9phdcaf0jYD2mF1xp_SNnjTUSsilZXeH2NqzkxuOQxCJHrbIz9eAS_adSA-BkAu&_nc_ohc=GkPaAjM9dKEQ7kNvwFYBwKf&_nc_oc=AdqFB0LFlvR5XVV6WucxYdlAAmDEuB-fqHyWDTG1f1AebXJ89MjrCaC1xlLGcqDkGn-iGcXihccdjMJr_Dg22JkF&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_ss=7b2a8&oh=03_Q7cD6gHbprmEUCeKhqstWvVHxMK80sJlG1fBiMN2XVkzSy33kA&oe=6AF05B29",
+    "dashboard": "https://cdn.upanhlaylink.com/i/2WoSFIBE.png",
+    "product1": "https://i.postimg.cc/mzWP5Ypq/2.png",
+    "product2": "https://i.postimg.cc/wyY1GX4r/3.png",
+    "product3": "https://i.postimg.cc/DJ3SMrpM/4.png",
+    "product4": "https://i.postimg.cc/5YWXRBKT/5.png",
+    "product5": "https://i.postimg.cc/cgGvbR5N/6.png",
+    "product6": "https://i.postimg.cc/bDfZBxFh/7.png"
+  },
+  "hiddenMedia": [],
+  "links": {
+    "partnerLearnMore": "",
+    "globeLearnMore": ""
+  }
+}

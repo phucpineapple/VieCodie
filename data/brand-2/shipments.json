@@ -1,0 +1,88 @@
+﻿{
+    "shipments":  [
+                      {
+                          "id":  "DTR-TRL-9821-VN",
+                          "status":  "in_transit",
+                          "progress":  62,
+                          "origin":  {
+                                         "code":  "HAN",
+                                         "city":  "Hà Nội",
+                                         "country":  "VN"
+                                     },
+                          "destination":  {
+                                              "code":  "SIN",
+                                              "city":  "Singapore",
+                                              "country":  "SG"
+                                          },
+                          "eta":  "2026-10-10T14:30:00Z",
+                          "fleetKey":  "skyfreight",
+                          "cargoKey":  "electronics",
+                          "cargoWeight":  "2.4t",
+                          "events":  [
+                                         {
+                                             "type":  "departed",
+                                             "at":  "2026-10-08T08:15:00Z",
+                                             "locationKey":  "HAN",
+                                             "noteKey":  "loaded_ontime"
+                                         },
+                                         {
+                                             "type":  "in_transit",
+                                             "at":  "2026-10-08T11:20:00Z",
+                                             "locationKey":  "SCS",
+                                             "noteKey":  "fl380_normal"
+                                         },
+                                         {
+                                             "type":  "eco_corridor",
+                                             "at":  "2026-10-08T13:45:00Z",
+                                             "locationKey":  "SEA_ECO",
+                                             "noteKey":  "eco_route_42"
+                                         },
+                                         {
+                                             "type":  "in_transit",
+                                             "at":  "2026-10-08T16:30:00Z",
+                                             "locationKey":  "GOT",
+                                             "noteKey":  "approach_sin"
+                                         }
+                                     ]
+                      },
+                      {
+                          "id":  "DTR-TRK-4417-JP",
+                          "status":  "customs",
+                          "progress":  78,
+                          "origin":  {
+                                         "code":  "SIN",
+                                         "city":  "Singapore",
+                                         "country":  "SG"
+                                     },
+                          "destination":  {
+                                              "code":  "NRT",
+                                              "city":  "Tokyo",
+                                              "country":  "JP"
+                                          },
+                          "eta":  "2026-10-09T09:00:00Z",
+                          "fleetKey":  "skyfreight",
+                          "cargoKey":  "pharma",
+                          "cargoWeight":  "850kg",
+                          "events":  [
+                                         {
+                                             "type":  "departed",
+                                             "at":  "2026-10-07T22:00:00Z",
+                                             "locationKey":  "SIN",
+                                             "noteKey":  "temp_verified"
+                                         },
+                                         {
+                                             "type":  "eco_corridor",
+                                             "at":  "2026-10-08T03:30:00Z",
+                                             "locationKey":  "PAC_ECO",
+                                             "noteKey":  "eco_route_pac"
+                                         },
+                                         {
+                                             "type":  "customs",
+                                             "at":  "2026-10-08T08:45:00Z",
+                                             "locationKey":  "NRT",
+                                             "noteKey":  "docs_verified"
+                                         }
+                                     ]
+                      }
+                  ]
+}
