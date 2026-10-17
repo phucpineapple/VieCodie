@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <script src="js/events.js?v=7defa05f4547"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Đăng nhập · DTR—Mart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&amp;f[]=satoshi@300,400,500,700,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/login.css?v=09fa318dfe42">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/interface.css?v=a32ecc6783eb">
+    <script src="js/interface.js?v=ec1398677513"></script>
+  </head>
+  <body class="is-loading">
+    <div class="loader" id="loader">
+      <div class="loader-mark"> <img class="loader-logo" src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t1.15752-9/837090217_1838708297575574_9035449063746888478_n.png?stp=dst-png_s2048x2048&amp;_nc_cat=107&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=9f807c&amp;_nc_eui2=AeHsTynfi-mpXvKnUmCSGCRlA9phdcaf0jYD2mF1xp_SNnjTUSsilZXeH2NqzkxuOQxCJHrbIz9eAS_adSA-BkAu&amp;_nc_ohc=GkPaAjM9dKEQ7kNvwFYBwKf&amp;_nc_oc=AdqFB0LFlvR5XVV6WucxYdlAAmDEuB-fqHyWDTG1f1AebXJ89MjrCaC1xlLGcqDkGn-iGcXihccdjMJr_Dg22JkF&amp;_nc_zt=23&amp;_nc_ht=scontent.fsgn2-9.fna&amp;_nc_ss=7b2a8&amp;oh=03_Q7cD6gHbprmEUCeKhqstWvVHxMK80sJlG1fBiMN2XVkzSy33kA&amp;oe=6AF05B29" alt="DTR—Mart logo"> </div>
+      <div class="loader-bar">
+        <div class="loader-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-text"> <span id="loaderLabel">Đang kiểm tra phiên đăng nhập</span> <span class="pct" id="loaderPct">0%</span> </div>
+    </div>
+    <div class="bg"></div>
+    <div class="bg"></div>
+    <nav class="topbar"> <a href="index.html" class="topbar-back"> <span data-i18n="topbar.back">Trang chủ</span> </a> </nav>
+    <div class="stage">
+      <div class="left">
+        <div class="headline">
+          <div class="eyebrow" data-i18n="brand.tag">Digital Tech Resolution</div>
+          <h1> <span data-i18n="login.title.1">Thương mại</span> <span class="it" data-i18n="login.title.2">không biên giới,</span> <span class="outline" data-i18n="login.title.3">vận hành</span> <span class="accent" data-i18n="login.title.4">bằng dữ liệu.</span> </h1>
+          <div class="badges">
+            <div class="badge"><span class="badge-dot"></span><span data-i18n="login.b1">50+ quốc gia</span></div>
+            <div class="badge"><span class="badge-dot"></span><span data-i18n="login.b2">38K+ sản phẩm</span></div>
+            <div class="badge"><span class="badge-dot"></span><span data-i18n="login.b3">12K+ đối tác</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="card">
+          <div class="forms-wrap" id="formsWrap">
+            <div class="form-panel" id="loginPanel">
+              <h2 data-i18n="login.title">Đăng nhập</h2>
+              <p class="card-sub" data-i18n="login.sub">Chào mừng trở lại hệ thống DTR—Mart.</p>
+              <form id="loginForm" autocomplete="off">
+                <div class="field"> <label data-i18n="login.email">Email</label> <input type="email" id="loginEmail" placeholder="you@company.com" required=""> </div>
+                <div class="field">
+                  <label data-i18n="login.password">Mật khẩu</label>
+                  <div class="pass-wrap"> <input type="password" id="loginPassword" placeholder="••••••••" required=""> <button type="button" class="pass-toggle" data-toggle-pass="loginPassword"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"> <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path> <circle cx="12" cy="12" r="3"></circle> </svg> </button> </div>
+                </div>
+                <div class="row-help"> <label> <input type="checkbox" id="rememberMe"> <span data-i18n="login.remember">Lưu phiên đăng nhập</span> </label> <a href="#" data-i18n="login.forgot">Quên mật khẩu?</a> </div>
+                <button type="submit" class="btn-primary" id="loginBtn"> <span data-i18n="login.submit">Đăng nhập</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14M13 5l7 7-7 7"></path> </svg> </button>
+              </form>
+              <div class="bottom-link"> <span data-i18n="login.noAccount">Chưa có tài khoản?</span> <button type="button" id="gotoRegister" data-i18n="login.create">Đăng ký ngay</button> </div>
+            </div>
+            <div class="form-panel hidden" id="registerPanel">
+              <h2 data-i18n="register.title">Đăng ký</h2>
+              <p class="card-sub" data-i18n="register.sub">Tạo tài khoản mới để trải nghiệm DTR—Mart.</p>
+              <form id="registerForm" novalidate="">
+                <div class="field" id="nameField">
+                  <label data-i18n="register.name">Tên hiển thị</label>
+                  <input type="text" id="regName" placeholder="Nguyễn Văn A" autocomplete="name" required="">
+                  <div class="error" data-i18n="register.err.name">Tên tối thiểu 2 ký tự</div>
+                </div>
+                <div class="field" id="emailField">
+                  <label data-i18n="login.email">Email</label>
+                  <input type="email" id="regEmail" placeholder="you@company.com" autocomplete="email" required="">
+                  <div class="error" data-i18n="register.err.email">Email không hợp lệ hoặc đã tồn tại</div>
+                </div>
+                <div class="field" id="passField">
+                  <label data-i18n="login.password">Mật khẩu</label>
+                  <div class="pass-wrap"> <input type="password" id="regPassword" placeholder="Tối thiểu 6 ký tự" autocomplete="new-password" required=""> <button type="button" class="pass-toggle" data-toggle-pass="regPassword"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"> <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path> <circle cx="12" cy="12" r="3"></circle> </svg> </button> </div>
+                  <div class="error" data-i18n="register.err.pass">Mật khẩu tối thiểu 6 ký tự</div>
+                </div>
+                <div class="field" id="confirmField">
+                  <label data-i18n="register.confirm">Xác nhận mật khẩu</label>
+                  <input type="password" id="regConfirm" placeholder="Nhập lại mật khẩu" autocomplete="new-password" required="">
+                  <div class="error" data-i18n="register.err.confirm">Mật khẩu xác nhận không khớp</div>
+                </div>
+                <button type="submit" class="btn-primary" id="registerBtn" style="margin-top: 8px;"> <span data-i18n="register.submit">Tạo tài khoản</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14M13 5l7 7-7 7"></path> </svg> </button>
+              </form>
+              <div class="bottom-link"> <span data-i18n="register.haveAccount">Đã có tài khoản?</span> <button type="button" id="gotoLogin" data-i18n="register.login">Đăng nhập</button> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="fab-btn" id="fabBtn" aria-label="Quick menu" aria-expanded="false"> <svg viewBox="0 0 24 24"> <rect x="3" y="3" width="7" height="7" rx="1.5"></rect> <rect x="14" y="3" width="7" height="7" rx="1.5"></rect> <rect x="3" y="14" width="7" height="7" rx="1.5"></rect> <rect x="14" y="14" width="7" height="7" rx="1.5"></rect> </svg> </button>
+    <div class="fab-overlay" id="fabOverlay"></div>
+    <div class="fab-panel" id="fabPanel" role="dialog" aria-modal="true" aria-label="Quick menu">
+      <div class="fab-head">
+        <div>
+          <span class="fab-title-tag" data-i18n="fab.tag">Truy cập nhanh</span>
+          <h3 class="fab-title" data-i18n="fab.title">Chọn chức năng</h3>
+        </div>
+        <button class="fab-close" id="fabClose" aria-label="Close"> <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg> </button>
+      </div>
+      <div class="fab-grid"> <a href="index.html" class="fab-item"> <span class="fab-item-icon"> <svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2h-4v-7h-6v7H5a2 2 0 0 1-2-2z"></path></svg> </span> <span class="fab-item-title" data-i18n="fab.nav.home">Trang chủ</span> <span class="fab-item-desc" data-i18n="fab.nav.home.desc">Về landing page DTR—Mart</span> </a> <button type="button" class="fab-item" id="fabLogin"> <span class="fab-item-icon"> <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> </span> <span class="fab-item-title" data-i18n="fab.nav.login">Đăng nhập</span> <span class="fab-item-desc" data-i18n="fab.nav.login.desc">Chuyển về form đăng nhập</span> </button> <button type="button" class="fab-item" id="fabRegister"> <span class="fab-item-icon"> <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M20 8v6M23 11h-6"></path></svg> </span> <span class="fab-item-title" data-i18n="fab.nav.register">Đăng ký</span> <span class="fab-item-desc" data-i18n="fab.nav.register.desc">Tạo tài khoản mới</span> </button> <a href="index.html#journey" class="fab-item"> <span class="fab-item-icon"> <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg> </span> <span class="fab-item-title" data-i18n="fab.nav.journey">Hành trình</span> <span class="fab-item-desc" data-i18n="fab.nav.journey.desc">Câu chuyện doanh nghiệp</span> </a> <a href="index.html#skywatch" class="fab-item"> <span class="fab-item-icon"> <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><path d="M3.3 7L12 12l8.7-5"></path><path d="M12 22V12"></path></svg> </span> <span class="fab-item-title" data-i18n="fab.nav.support">Hỗ trợ</span> <span class="fab-item-desc" data-i18n="fab.nav.support.desc">Tra cứu đơn hàng</span> </a> <a href="index.html#partner" class="fab-item"> <span class="fab-item-icon"> <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><path d="M20 8v6M23 11h-6"></path></svg> </span> <span class="fab-item-title" data-i18n="fab.nav.partner">Đại lý</span> <span class="fab-item-desc" data-i18n="fab.nav.partner.desc">Trở thành đối tác</span> </a> </div>
+      <div class="fab-foot">
+        <span class="fab-foot-label" data-i18n="fab.lang">Ngôn ngữ</span>
+        <div class="fab-langs" id="fabLangs"> <button class="fab-lang active" data-lang="vi">🇻🇳 VI</button> <button class="fab-lang" data-lang="ja">🇯🇵 JA</button> <button class="fab-lang" data-lang="en">🇬🇧 EN</button> <button class="fab-lang" data-lang="zh">🇨🇳 ZH</button> </div>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="js/auth.js?v=8d5e6df0165a"></script>
+    <script src="js/login.js?v=a540549b0422"></script>
+    <button class="dtr-fab" id="dtrFabBtn" aria-label="Menu nhanh" aria-expanded="false"> <i class="fa-solid fa-table-cells-large"></i> </button>
+    <div class="dtr-fab-overlay" id="dtrFabOverlay"></div>
+    <div class="dtr-fab-panel" id="dtrFabPanel" role="dialog" aria-modal="true">
+      <div class="dtr-fab-panel-head">
+        <div>
+          <span class="dtr-fab-panel-tag" data-i18n="fab.quick">Truy cập nhanh</span>
+          <h3 class="dtr-fab-panel-title" data-i18n="fab.title">Chọn chức năng</h3>
+        </div>
+        <button class="dtr-fab-close" id="dtrFabClose" aria-label="Đóng"> <i class="fa-solid fa-xmark"></i> </button>
+      </div>
+      <div class="dtr-fab-grid"> <a href="marketplace.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-house"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.home">Trang chủ</span> <span class="dtr-fab-item-desc" data-i18n="fab.homeDesc">Về Marketplace</span> </a> <a href="cinema.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-film"></i></span> <span class="dtr-fab-item-title" data-i18n="field.cinema">Phim rạp</span> <span class="dtr-fab-item-desc" data-i18n="field.cinemaDesc">Đặt vé &amp; chọn ghế</span> </a> <a href="category.html?group=industrial" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-industry"></i></span> <span class="dtr-fab-item-title" data-i18n="field.industrial">Công nghiệp</span> <span class="dtr-fab-item-desc" data-i18n="field.industrialDesc">Thiết bị &amp; tự động</span> </a> <a href="category.html?group=electronics" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-microchip"></i></span> <span class="dtr-fab-item-title" data-i18n="field.electronics">Điện tử</span> <span class="dtr-fab-item-desc" data-i18n="field.electronicsDesc">Phone, Laptop, Gear</span> </a> <a href="category.html?group=digital" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-compact-disc"></i></span> <span class="dtr-fab-item-title" data-i18n="field.digital">Kĩ thuật số</span> <span class="dtr-fab-item-desc" data-i18n="field.digitalDesc">Game, Nhạc, Gift</span> </a> <a href="deals.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-bolt"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.deals">Ưu đãi</span> <span class="dtr-fab-item-desc" data-i18n="fab.dealsDesc">Deal hôm nay</span> </a> <a href="services.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-headset"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.services">Dịch vụ</span> <span class="dtr-fab-item-desc" data-i18n="fab.servicesDesc">Hỗ trợ khách hàng</span> </a> <a href="index.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-circle-info"></i></span><span class="dtr-fab-item-title" data-i18n="fab.about">Về DTR</span><span class="dtr-fab-item-desc" data-i18n="fab.aboutDesc">Trang giới thiệu</span></a><a href="about/manager.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-sliders"></i></span> <span class="dtr-fab-item-title" data-i18n="fab.manager">Manager</span> <span class="dtr-fab-item-desc" data-i18n="fab.managerDesc">Cấu hình hệ thống</span> </a> <a href="login.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-user"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.account">Tài khoản</span> <span class="dtr-fab-item-desc" data-i18n="fab.accountDesc">Đăng nhập / Đăng ký</span> </a> </div>
+    </div>
+    <nav class="dtr-mobile-nav" id="dtrMobileNav" aria-label="Menu ngôn ngữ">
+      <div class="dtr-mobile-nav-inner">
+        <a href="marketplace.html" data-nav="home"><i class="fa-solid fa-house"></i><span>HOME</span></a>
+        <button type="button" data-lang="vi"><span class="flag">🇻🇳</span><span>VI</span></button>
+        <button type="button" data-lang="ja"><span class="flag">🇯🇵</span><span>JA</span></button>
+        <button type="button" data-lang="en"><span class="flag">🇬🇧</span><span>EN</span></button>
+        <button type="button" data-lang="zh"><span class="flag">🇨🇳</span><span>ZH</span></button>
+      </div>
+    </nav>
+  </body>
+</html>

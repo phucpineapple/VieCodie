@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+  <head>
+    <script src="js/events.js?v=7defa05f4547"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chi Tiết Đặt Vé &amp; Sơ Đồ Ghế · DTR-Cinema</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/dtr-utility.css?v=48ff48d3204e">
+    <link rel="stylesheet" href="css/marketplace.css?v=b006bba81f99">
+    <link rel="stylesheet" href="css/interface.css?v=a32ecc6783eb">
+    <script src="js/interface.js?v=ec1398677513"></script>
+  </head>
+  <body data-page="detail_cinema" class="editorial-market is-loading cyber-grid-bg min-h-screen flex flex-col text-slate-100">
+    <div class="loader" id="loader">
+      <div class="loader-mark"> <img class="loader-logo" src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t1.15752-9/837090217_1838708297575574_9035449063746888478_n.png?stp=dst-png_s2048x2048&amp;_nc_cat=107&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=9f807c&amp;_nc_eui2=AeHsTynfi-mpXvKnUmCSGCRlA9phdcaf0jYD2mF1xp_SNnjTUSsilZXeH2NqzkxuOQxCJHrbIz9eAS_adSA-BkAu&amp;_nc_ohc=GkPaAjM9dKEQ7kNvwFYBwKf&amp;_nc_oc=AdqFB0LFlvR5XVV6WucxYdlAAmDEuB-fqHyWDTG1f1AebXJ89MjrCaC1xlLGcqDkGn-iGcXihccdjMJr_Dg22JkF&amp;_nc_zt=23&amp;_nc_ht=scontent.fsgn2-9.fna&amp;_nc_ss=7b2a8&amp;oh=03_Q7cD6gHbprmEUCeKhqstWvVHxMK80sJlG1fBiMN2XVkzSy33kA&amp;oe=6AF05B29" alt="DTR"> </div>
+      <div class="loader-bar">
+        <div class="loader-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-text"><span id="loaderLabel">Đang tải Phòng vé &amp; Sơ đồ ghế</span><span class="pct" id="loaderPct">0%</span></div>
+    </div>
+    <header class="mp-nav sticky top-0 z-40 bg-[#050c1a]/90 backdrop-blur-md border-b border-slate-800/80">
+      <div class="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 h-16 flex items-center justify-between gap-3"> <a href="cinema.html" class="flex items-center gap-2 text-xs font-bold text-slate-200 hover:text-[#a3e635]"> <i class="fa-solid fa-arrow-left"></i> <span data-i18n="detail_cinema.back">Quay lại</span> </a> <span id="brandLogoContainer" class="flex items-center gap-2 text-base sm:text-lg font-extrabold"><span class="text-white">DTR-</span><span class="text-[#a3e635]">Cinema Booking</span></span> <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-[#0c182c] border border-slate-700/80 text-slate-200 hover:text-[#a3e635] flex items-center justify-center" aria-label="Giỏ hàng"> <i class="fa-solid fa-cart-shopping text-sm"></i> <span id="cartBadge" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[#a3e635] text-slate-950 font-extrabold text-[10px] flex items-center justify-center">0</span> </button> </div>
+    </header>
+    <main class="mp-main flex-1 w-full max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 pt-6 space-y-6 pb-20">
+      <section id="movieHeroInfo" class="cyber-card rounded-2xl p-5 flex flex-col md:flex-row items-center gap-6">  </section>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-8 space-y-6">
+          <section class="cyber-card rounded-2xl p-5 space-y-3">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#a3e635] text-slate-950 font-mono text-xs font-extrabold flex items-center justify-center">1</span>
+              <h2 class="text-base font-bold text-white" data-i18n="detail_cinema.step1">Chọn Thương Hiệu Rạp Thầu Chiếu Phim Tại Khu Vực</h2>
+            </div>
+            <div id="theaterBrandList" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">  </div>
+          </section>
+          <section id="showtimeSection" class="cyber-card rounded-2xl p-5 space-y-3 opacity-50 pointer-events-none transition-opacity">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#a3e635] text-slate-950 font-mono text-xs font-extrabold flex items-center justify-center">2</span>
+              <h2 class="text-base font-bold text-white" data-i18n="detail_cinema.step2">Chọn Khung Giờ Lịch Chiếu</h2>
+            </div>
+            <div id="showtimeList" class="flex flex-wrap gap-2.5 pt-1">  </div>
+          </section>
+          <section id="seatMapSection" class="cyber-card rounded-2xl p-5 space-y-5 opacity-50 pointer-events-none transition-opacity">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2.5">
+                <span class="w-6 h-6 rounded-full bg-[#a3e635] text-slate-950 font-mono text-xs font-extrabold flex items-center justify-center">3</span>
+                <h2 class="text-base font-bold text-white" data-i18n="detail_cinema.step3">Sơ Đồ Ghế Phòng Chiếu</h2>
+              </div>
+              <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-[11px] text-slate-300"> <span class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-slate-800 border border-slate-600 inline-block"></span><span data-i18n="cinema.seat_normal">Thường</span></span> <span class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-amber-500/20 border border-amber-400 inline-block"></span><span data-i18n="cinema.seat_vip">VIP</span></span> <span class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-[#a3e635] inline-block"></span><span data-i18n="cinema.seat_selected">Chọn</span></span> <span class="flex items-center gap-1.5"><span class="w-3.5 h-3.5 rounded bg-rose-950 border border-rose-700 inline-block"></span><span data-i18n="cinema.seat_occupied">Đã đặt</span></span> </div>
+            </div>
+            <div class="w-4/5 mx-auto pt-2 text-center">
+              <div class="h-2 rounded-full bg-gradient-to-r from-transparent via-[#a3e635] to-transparent shadow-[0_6px_20px_#a3e635]"></div>
+              <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-slate-400 mt-1.5 block" data-i18n="cinema.screen">MÀN HÌNH (SCREEN)</span>
+            </div>
+            <div id="seatGridContainer" class="flex flex-col items-center gap-2 overflow-x-auto py-2">  </div>
+          </section>
+          <section id="comboAddonSection" class="cyber-card rounded-2xl p-5 space-y-4 opacity-50 pointer-events-none transition-opacity">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full bg-[#a3e635] text-slate-950 font-mono text-xs font-extrabold flex items-center justify-center">4</span>
+              <div>
+                <h2 class="text-base font-bold text-white" data-i18n="detail_cinema.step4">Chọn Sản Phẩm Đi Kèm</h2>
+                <p class="text-xs text-slate-400" data-i18n="detail_cinema.step4_desc">Chọn combo bắp nước hoặc quà lưu niệm theo phim.</p>
+              </div>
+            </div>
+            <div id="comboAddonGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">  </div>
+          </section>
+        </div>
+        <div class="lg:col-span-4">
+          <div class="cyber-card rounded-2xl p-5 lg:sticky lg:top-20 space-y-4 border border-[#a3e635]/50">
+            <h3 class="text-base font-extrabold text-white border-b border-slate-800 pb-3"> <i class="fa-solid fa-ticket text-[#a3e635] mr-2"></i><span data-i18n="detail_cinema.summary_title">Thông Tin Đặt Vé &amp; Combo</span> </h3>
+            <div class="space-y-2.5 text-xs">
+              <div class="flex justify-between gap-2"><span class="text-slate-400" data-i18n="detail_cinema.lbl_movie">Phim:</span><strong id="sumMovieName" class="text-white text-right">--</strong></div>
+              <div class="flex justify-between gap-2"><span class="text-slate-400" data-i18n="detail_cinema.lbl_location">Vị trí:</span><span id="sumLocation" class="text-slate-200 text-right">--</span></div>
+              <div class="flex justify-between gap-2"><span class="text-slate-400" data-i18n="detail_cinema.lbl_theater">Rạp:</span><strong id="sumTheater" class="text-[#a3e635] text-right" data-i18n="cinema.unselected">Chưa chọn</strong></div>
+              <div class="flex justify-between gap-2"><span class="text-slate-400" data-i18n="detail_cinema.lbl_showtime">Suất chiếu:</span><strong id="sumShowtime" class="text-cyan-400 font-mono text-right" data-i18n="cinema.unselected">Chưa chọn</strong></div>
+              <div class="flex justify-between gap-2"><span class="text-slate-400"><span data-i18n="detail_cinema.lbl_seats">Ghế</span> (<span id="sumSeatCount">0</span>):</span><strong id="sumSeats" class="text-amber-300 font-mono text-right" data-i18n="cinema.unselected">Chưa chọn</strong></div>
+              <div class="flex justify-between gap-2"><span class="text-slate-400" data-i18n="detail_cinema.lbl_combos">Combo:</span><span id="sumCombos" class="text-slate-200 text-right" data-i18n="cinema.no_combo">Không có</span></div>
+            </div>
+            <div class="border-t border-slate-800 pt-3 flex items-baseline justify-between"> <span class="text-xs text-slate-400" data-i18n="detail_cinema.lbl_total">Tổng:</span> <strong id="sumCinemaTotal" class="text-2xl font-extrabold text-[#a3e635] font-mono">0đ</strong> </div>
+            <button type="button" id="submitCinemaOrderBtn" disabled="" class="w-full py-3 rounded-full bg-[#a3e635] hover:bg-[#b5f347] text-slate-950 font-extrabold text-xs sm:text-sm shadow-neon-lime disabled:opacity-40 disabled:cursor-not-allowed transition-all"> <i class="fa-solid fa-check-double mr-1.5"></i><span data-i18n="detail_cinema.btn_submit">Xác Nhận Order Vé &amp; Combo</span> </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="mp-drawer-overlay" id="cartOverlay"></div>
+    <aside class="mp-cart-drawer" id="cartDrawer">
+      <div class="mp-cart-head">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-[#a3e635]"></i>
+          <h3>Giỏ hàng DTR-Market</h3>
+        </div>
+        <button class="mp-cart-close" id="cartClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="mp-cart-list" id="cartList"></div>
+      <div class="mp-cart-foot">
+        <div class="mp-cart-total"><span>Tổng cộng</span><strong id="cartTotal">0đ</strong></div>
+        <div class="flex gap-2"> <button id="cartClearBtn" class="w-1/3 py-3 rounded-full border border-slate-700 text-xs font-semibold text-slate-300">Xóa hết</button> <button class="mp-cart-checkout w-2/3">Thanh toán ngay</button> </div>
+      </div>
+    </aside>
+    <nav class="dtr-mobile-nav" id="dtrMobileNav" aria-label="Menu ngôn ngữ">
+      <div class="dtr-mobile-nav-inner"> <a href="marketplace.html" data-nav="home"> <i class="fa-solid fa-house"></i> <span>HOME</span> </a> <button type="button" data-lang="vi" aria-label="Tiếng Việt"> <span class="flag">🇻🇳</span> <span>VI</span> </button> <button type="button" data-lang="ja" aria-label="日本語"> <span class="flag">🇯🇵</span> <span>JA</span> </button> <button type="button" data-lang="en" aria-label="English"> <span class="flag">🇬🇧</span> <span>EN</span> </button> <button type="button" data-lang="zh" aria-label="中文"> <span class="flag">🇨🇳</span> <span>ZH</span> </button> </div>
+    </nav>
+    <button class="dtr-fab" id="dtrFabBtn" aria-label="Menu nhanh" aria-expanded="false"> <i class="fa-solid fa-table-cells-large"></i> </button>
+    <div class="dtr-fab-overlay" id="dtrFabOverlay"></div>
+    <div class="dtr-fab-panel" id="dtrFabPanel" role="dialog" aria-modal="true">
+      <div class="dtr-fab-panel-head">
+        <div>
+          <span class="dtr-fab-panel-tag" data-i18n="fab.quick">Truy cập nhanh</span>
+          <h3 class="dtr-fab-panel-title" data-i18n="fab.title">Chọn chức năng</h3>
+        </div>
+        <button class="dtr-fab-close" id="dtrFabClose" aria-label="Đóng"> <i class="fa-solid fa-xmark"></i> </button>
+      </div>
+      <div class="dtr-fab-grid"> <a href="marketplace.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-house"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.home">Trang chủ</span> <span class="dtr-fab-item-desc" data-i18n="fab.homeDesc">Về Marketplace</span> </a> <a href="cinema.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-film"></i></span> <span class="dtr-fab-item-title" data-i18n="field.cinema">Phim rạp</span> <span class="dtr-fab-item-desc" data-i18n="field.cinemaDesc">Đặt vé &amp; chọn ghế</span> </a> <a href="category.html?group=industrial" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-industry"></i></span> <span class="dtr-fab-item-title" data-i18n="field.industrial">Công nghiệp</span> <span class="dtr-fab-item-desc" data-i18n="field.industrialDesc">Thiết bị &amp; tự động</span> </a> <a href="category.html?group=electronics" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-microchip"></i></span> <span class="dtr-fab-item-title" data-i18n="field.electronics">Điện tử</span> <span class="dtr-fab-item-desc" data-i18n="field.electronicsDesc">Phone, Laptop, Gear</span> </a> <a href="category.html?group=digital" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-compact-disc"></i></span> <span class="dtr-fab-item-title" data-i18n="field.digital">Kĩ thuật số</span> <span class="dtr-fab-item-desc" data-i18n="field.digitalDesc">Game, Nhạc, Gift</span> </a> <a href="deals.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-bolt"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.deals">Ưu đãi</span> <span class="dtr-fab-item-desc" data-i18n="fab.dealsDesc">Deal hôm nay</span> </a> <a href="services.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-headset"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.services">Dịch vụ</span> <span class="dtr-fab-item-desc" data-i18n="fab.servicesDesc">Hỗ trợ khách hàng</span> </a> <a href="index.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-circle-info"></i></span><span class="dtr-fab-item-title" data-i18n="fab.about">Về DTR</span><span class="dtr-fab-item-desc" data-i18n="fab.aboutDesc">Trang giới thiệu</span></a><a href="about/manager.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-sliders"></i></span> <span class="dtr-fab-item-title" data-i18n="fab.manager">Manager</span> <span class="dtr-fab-item-desc" data-i18n="fab.managerDesc">Cấu hình hệ thống</span> </a> <a href="login.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-user"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.account">Tài khoản</span> <span class="dtr-fab-item-desc" data-i18n="fab.accountDesc">Đăng nhập / Đăng ký</span> </a> </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="js/auth.js?v=8d5e6df0165a"></script>
+    <script src="js/orders.js?v=b5e893c042d1"></script>
+    <script src="js/marketplace.js?v=0e5fed338263"></script>
+  </body>
+</html>

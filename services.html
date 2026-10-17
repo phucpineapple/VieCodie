@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+  <head>
+    <script src="js/events.js?v=7defa05f4547"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Customer Portal · Dịch Vụ Khách Hàng · DTR-Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/dtr-utility.css?v=48ff48d3204e">
+    <link rel="stylesheet" href="css/marketplace.css?v=b006bba81f99">
+    <link rel="stylesheet" href="css/interface.css?v=a32ecc6783eb">
+    <script src="js/interface.js?v=ec1398677513"></script>
+    <style>
+      .sv-tab-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        border-radius: 100px;
+        background: #0c182c;
+        border: 1px solid #334155;
+        color: #cbd5e1;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      
+      .sv-tab-btn:hover {
+        border-color: #a3e635;
+        color: #fff;
+      }
+      
+      .sv-tab-btn.active {
+        background: #a3e635;
+        border-color: #a3e635;
+        color: #0b1220;
+        box-shadow: 0 0 14px rgba(163,230,53,0.4);
+      }
+      
+      @media (max-width: 640px) {
+        .sv-tab-btn {
+          padding: 8px 14px;
+          font-size: 11px;
+        }
+      }
+      
+      .sv-field {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 14px;
+        font-family: 'Be Vietnam Pro', sans-serif;
+        border-radius: 12px;
+        background: #061020;
+        border: 1px solid #334155;
+        color: #fff;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      
+      .sv-field:focus {
+        border-color: #a3e635;
+      }
+      
+      .sv-field:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      
+      .sv-label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 11px;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #94a3b8;
+      }
+      
+      .sv-fav-card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        background: linear-gradient(180deg, #0c182c 0%, #091426 100%);
+        border: 1px solid rgba(148,163,184,0.14);
+        border-radius: 14px;
+        transition: all 0.22s;
+      }
+      
+      .sv-fav-card:hover {
+        border-color: rgba(163,230,53,0.75);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.5), 0 0 18px rgba(163,230,53,0.15);
+        transform: translateY(-3px);
+      }
+      
+      .sv-fav-card img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+      }
+      
+      .sv-fav-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 10px 12px 12px;
+      }
+      
+      .sv-fav-name {
+        display: -webkit-box;
+        overflow: hidden;
+        min-height: 32px;
+        font-size: 12.5px;
+        font-weight: 700;
+        line-height: 1.3;
+        color: #f1f5f9;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      
+      .sv-fav-price {
+        font-size: 15px;
+        font-weight: 800;
+        font-family: 'JetBrains Mono', monospace;
+        color: #a3e635;
+      }
+      
+      #svChatWidget {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 9997;
+        display: none;
+      }
+      
+      #svChatWidget.open {
+        display: block;
+      }
+      
+      #svChatPanel {
+        display: flex;
+        flex-direction: column;
+        width: 340px;
+        max-width: calc(100vw - 32px);
+        overflow: hidden;
+        max-height: 520px;
+        background: rgba(9,21,40,0.98);
+        border: 1px solid rgba(163,230,53,0.4);
+        border-radius: 18px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 30px rgba(163,230,53,0.2);
+      }
+      
+      #svChatHead {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 16px;
+        background: linear-gradient(90deg, #0c182c 0%, #0a1628 100%);
+        border-bottom: 1px solid rgba(163,230,53,0.3);
+      }
+      
+      #svChatHead .sv-chat-avatar {
+        display: grid;
+        place-items: center;
+        position: relative;
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+        border-radius: 50%;
+        background: rgba(163,230,53,0.15);
+        border: 1px solid #a3e635;
+        color: #a3e635;
+      }
+      
+      #svChatHead .sv-chat-avatar::after {
+        position: absolute;
+        bottom: -1px;
+        right: -1px;
+        width: 10px;
+        height: 10px;
+        content: '';
+        border-radius: 50%;
+        background: #10b981;
+        border: 2px solid #0c182c;
+      }
+      
+      #svChatHead .sv-chat-title {
+        font-size: 13px;
+        font-weight: 800;
+        color: #fff;
+      }
+      
+      #svChatHead .sv-chat-status {
+        font-size: 10px;
+        font-family: 'JetBrains Mono', monospace;
+        color: #10b981;
+      }
+      
+      #svChatHead .sv-chat-close {
+        display: grid;
+        place-items: center;
+        margin-left: auto;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid #334155;
+        color: #94a3b8;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      
+      #svChatHead .sv-chat-close:hover {
+        background: rgba(244,63,94,0.2);
+        border-color: #f43f5e;
+        color: #f43f5e;
+      }
+      
+      #svChatBody {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow-y: auto;
+        padding: 14px;
+        min-height: 260px;
+        background: rgba(4,9,20,0.6);
+      }
+      
+      .sv-msg {
+        max-width: 82%;
+        padding: 9px 12px;
+        font-size: 12.5px;
+        line-height: 1.5;
+        word-wrap: break-word;
+        border-radius: 14px;
+      }
+      
+      .sv-msg.bot {
+        align-self: flex-start;
+        background: rgba(163,230,53,0.08);
+        border: 1px solid rgba(163,230,53,0.25);
+        color: #e2e8f0;
+        border-bottom-left-radius: 4px;
+      }
+      
+      .sv-msg.user {
+        align-self: flex-end;
+        font-weight: 600;
+        background: #a3e635;
+        color: #0b1220;
+        border-bottom-right-radius: 4px;
+      }
+      
+      .sv-msg .sv-msg-time {
+        display: block;
+        margin-top: 3px;
+        font-size: 9.5px;
+        font-family: 'JetBrains Mono', monospace;
+        color: #64748b;
+        opacity: 0.7;
+      }
+      
+      .sv-msg.user .sv-msg-time {
+        color: rgba(11,18,32,0.5);
+      }
+      
+      #svChatQuick {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        padding: 8px 12px;
+        border-top: 1px solid rgba(51,65,85,0.6);
+        background: rgba(9,21,40,0.9);
+      }
+      
+      .sv-quick-chip {
+        padding: 5px 10px;
+        font-size: 10.5px;
+        font-family: 'JetBrains Mono', monospace;
+        white-space: nowrap;
+        border-radius: 100px;
+        background: #0c182c;
+        border: 1px solid #334155;
+        color: #cbd5e1;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      
+      .sv-quick-chip:hover {
+        border-color: #a3e635;
+        color: #a3e635;
+      }
+      
+      #svChatInput {
+        display: flex;
+        gap: 8px;
+        padding: 10px 12px;
+        border-top: 1px solid rgba(51,65,85,0.6);
+        background: rgba(9,21,40,0.95);
+      }
+      
+      #svChatInput input {
+        flex: 1;
+        padding: 9px 14px;
+        font-size: 12.5px;
+        border-radius: 100px;
+        background: #061020;
+        border: 1px solid #334155;
+        color: #fff;
+        outline: none;
+      }
+      
+      #svChatInput input:focus {
+        border-color: #a3e635;
+      }
+      
+      #svChatInput button {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #a3e635;
+        border: none;
+        color: #0b1220;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      
+      #svChatInput button:hover {
+        box-shadow: 0 0 14px rgba(163,230,53,0.5);
+      }
+      
+      @media (max-width: 640px) {
+        #svChatWidget {
+          bottom: 100px;
+          right: 16px;
+        }
+      
+        #svChatPanel {
+          width: calc(100vw - 32px);
+          max-height: 70vh;
+        }
+      }
+      
+      #svChatLauncher {
+        position: fixed;
+        bottom: 100px;
+        left: 24px;
+        z-index: 9996;
+        display: grid;
+        place-items: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #a3e635 0%, #84cc16 100%);
+        border: none;
+        color: #0b1220;
+        cursor: pointer;
+        box-shadow: 0 10px 28px rgba(163,230,53,0.5), 0 0 0 1px rgba(163,230,53,0.4);
+        transition: transform 0.3s;
+        animation: svChatFloat 4s ease-in-out infinite;
+      }
+      
+      #svChatLauncher:hover {
+        transform: scale(1.08);
+        animation-play-state: paused;
+      }
+      
+      @keyframes svChatFloat {
+        0%, 100% {
+          transform: translateY(0);
+        }
+      
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+      
+      #svChatLauncher i {
+        font-size: 22px;
+      }
+      
+      #svChatLauncher .sv-chat-badge {
+        position: absolute;
+        top: -2px;
+        right: -2px;
+        display: grid;
+        place-items: center;
+        min-width: 18px;
+        height: 18px;
+        padding: 0 5px;
+        font-size: 10px;
+        font-weight: 800;
+        background: #f43f5e;
+        color: #fff;
+        border: 2px solid #040914;
+        border-radius: 100px;
+      }
+      
+      @media (max-width: 640px) {
+        #svChatLauncher {
+          bottom: 24px;
+          left: 16px;
+          width: 50px;
+          height: 50px;
+        }
+      }
+      
+      .sv-faq-item {
+        border-bottom: 1px solid rgba(51,65,85,0.5);
+      }
+      
+      .sv-faq-item:last-child {
+        border-bottom: none;
+      }
+      
+      .sv-faq-q {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 14px 4px;
+        text-align: left;
+        font-size: 13px;
+        font-weight: 600;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #e2e8f0;
+        transition: color 0.2s;
+      }
+      
+      .sv-faq-q:hover {
+        color: #a3e635;
+      }
+      
+      .sv-faq-q .sv-faq-icon {
+        margin-left: auto;
+        font-size: 11px;
+        color: #64748b;
+        transition: transform 0.25s;
+      }
+      
+      .sv-faq-item.open .sv-faq-q {
+        color: #a3e635;
+      }
+      
+      .sv-faq-item.open .sv-faq-icon {
+        color: #a3e635;
+        transform: rotate(180deg);
+      }
+      
+      .sv-faq-a {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 4px;
+        font-size: 12.5px;
+        line-height: 1.7;
+        color: #94a3b8;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+      }
+      
+      .sv-faq-item.open .sv-faq-a {
+        max-height: 300px;
+        padding: 0 4px 16px;
+      }
+    </style>
+    <link rel="stylesheet" href="css/interface.css?v=a32ecc6783eb">
+    <script src="js/interface.js?v=ec1398677513"></script>
+  </head>
+  <body data-page="services" class="is-loading cyber-grid-bg min-h-screen flex flex-col text-slate-100">
+    <div class="loader" id="loader">
+      <div class="loader-mark"> <img class="loader-logo" src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t1.15752-9/837090217_1838708297575574_9035449063746888478_n.png?stp=dst-png_s2048x2048&amp;_nc_cat=107&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=9f807c&amp;_nc_eui2=AeHsTynfi-mpXvKnUmCSGCRlA9phdcaf0jYD2mF1xp_SNnjTUSsilZXeH2NqzkxuOQxCJHrbIz9eAS_adSA-BkAu&amp;_nc_ohc=GkPaAjM9dKEQ7kNvwFYBwKf&amp;_nc_oc=AdqFB0LFlvR5XVV6WucxYdlAAmDEuB-fqHyWDTG1f1AebXJ89MjrCaC1xlLGcqDkGn-iGcXihccdjMJr_Dg22JkF&amp;_nc_zt=23&amp;_nc_ht=scontent.fsgn2-9.fna&amp;_nc_ss=7b2a8&amp;oh=03_Q7cD6gHbprmEUCeKhqstWvVHxMK80sJlG1fBiMN2XVkzSy33kA&amp;oe=6AF05B29" alt="DTR"> </div>
+      <div class="loader-bar">
+        <div class="loader-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-text"><span id="loaderLabel">Đang tải Customer Portal</span><span class="pct" id="loaderPct">0%</span></div>
+    </div>
+    <header class="mp-nav sticky top-0 z-40 bg-[#050c1a]/90 backdrop-blur-md border-b border-slate-800/80">
+      <div class="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 h-16 flex items-center justify-between gap-3">
+        <a href="marketplace.html" class="flex items-center gap-2 shrink-0">
+          <div id="brandLogoContainer" class="relative w-8 h-8 flex items-center justify-center shrink-0"></div>
+          <span class="text-base sm:text-xl font-extrabold"><span class="text-white">DTR-</span><span class="text-[#a3e635]">Portal</span></span>
+        </a>
+        <div class="flex items-center gap-2 shrink-0"> <a href="marketplace.html" class="px-3 py-1.5 rounded-full bg-[#0c182c] border border-slate-700 text-slate-200 hover:border-[#a3e635] hover:text-[#a3e635] text-xs font-semibold transition-all"> <i class="fa-solid fa-arrow-left mr-1"></i><span class="hidden sm:inline">Về Marketplace</span> </a> <button id="cartBtn" class="relative w-10 h-10 rounded-full bg-[#0c182c] border border-slate-700/80 text-slate-200 hover:text-[#a3e635] flex items-center justify-center" aria-label="Giỏ hàng"> <i class="fa-solid fa-cart-shopping text-sm"></i> <span id="cartBadge" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[#a3e635] text-slate-950 font-extrabold text-[10px] flex items-center justify-center">0</span> </button> </div>
+      </div>
+    </header>
+    <main class="mp-main flex-1 w-full max-w-[1100px] mx-auto px-3 sm:px-4 lg:px-6 pt-6 space-y-5 pb-8">
+      <div class="cyber-card rounded-2xl p-5 sm:p-6 flex flex-wrap items-center gap-4">
+        <div class="w-14 h-14 rounded-2xl bg-[#a3e635]/15 border border-[#a3e635]/50 flex items-center justify-center text-[#a3e635] text-2xl shrink-0"> <i class="fa-solid fa-user-astronaut"></i> </div>
+        <div class="flex-1 min-w-0">
+          <div class="text-[10.5px] font-mono uppercase tracking-widest text-[#a3e635]">// CUSTOMER PORTAL</div>
+          <h1 id="svUserName" class="text-xl sm:text-2xl font-extrabold text-white truncate">Khách hàng</h1>
+          <p id="svUserEmail" class="text-xs font-mono text-slate-400 truncate">--</p>
+        </div>
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 shrink-0">
+          <div class="text-center">
+            <div id="svStatOrders" class="text-lg sm:text-xl font-extrabold text-[#a3e635] font-mono">0</div>
+            <div class="text-[9.5px] font-mono uppercase tracking-widest text-slate-500">Đơn hàng</div>
+          </div>
+          <div class="text-center">
+            <div id="svStatFavs" class="text-lg sm:text-xl font-extrabold text-cyan-400 font-mono">0</div>
+            <div class="text-[9.5px] font-mono uppercase tracking-widest text-slate-500">Yêu thích</div>
+          </div>
+          <div class="text-center">
+            <div id="svStatCart" class="text-lg sm:text-xl font-extrabold text-amber-400 font-mono">0</div>
+            <div class="text-[9.5px] font-mono uppercase tracking-widest text-slate-500">Trong giỏ</div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2" id="svTabs"> <button type="button" data-sv-tab="account" class="sv-tab-btn active"> <i class="fa-solid fa-user-gear"></i>TÀI KHOẢN </button> <button type="button" data-sv-tab="favorites" class="sv-tab-btn"> <i class="fa-solid fa-heart"></i>YÊU THÍCH </button> <button type="button" data-sv-tab="orders" class="sv-tab-btn"> <i class="fa-solid fa-box"></i>ĐƠN HÀNG </button> <button type="button" data-sv-tab="support" class="sv-tab-btn"> <i class="fa-solid fa-headset"></i>HỖ TRỢ </button> </div>
+      <section id="svTabAccount" class="sv-tab-panel space-y-4">
+        <div class="cyber-card rounded-2xl p-5 sm:p-6 space-y-5">
+          <div class="flex items-center gap-2.5 pb-3 border-b border-slate-800/80">
+            <i class="fa-solid fa-id-card text-[#a3e635] text-lg"></i>
+            <h2 class="text-base font-extrabold text-white">Thông tin cá nhân</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div> <label class="sv-label">Tên hiển thị</label> <input type="text" id="svAccName" class="sv-field" placeholder="Nguyễn Văn A"> </div>
+            <div> <label class="sv-label">Email (không đổi được)</label> <input type="email" id="svAccEmail" class="sv-field" disabled=""> </div>
+          </div>
+          <div class="flex flex-wrap gap-2.5 pt-2"> <button id="svSaveProfile" type="button" class="px-5 py-2.5 rounded-full bg-[#a3e635] hover:bg-[#b5f347] text-slate-950 font-extrabold text-xs transition-all"> <i class="fa-solid fa-floppy-disk mr-1.5"></i>LƯU THAY ĐỔI </button> <button id="svResetProfile" type="button" class="px-5 py-2.5 rounded-full border border-slate-700 text-slate-300 hover:border-[#a3e635] hover:text-[#a3e635] text-xs font-semibold transition-all"> <i class="fa-solid fa-rotate-left mr-1.5"></i>Khôi phục </button> </div>
+        </div>
+        <div class="cyber-card rounded-2xl p-5 sm:p-6 space-y-5">
+          <div class="flex items-center gap-2.5 pb-3 border-b border-slate-800/80">
+            <i class="fa-solid fa-lock text-[#a3e635] text-lg"></i>
+            <h2 class="text-base font-extrabold text-white">Đổi mật khẩu</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div> <label class="sv-label">Mật khẩu hiện tại</label> <input type="password" id="svPwdOld" class="sv-field" placeholder="••••••••"> </div>
+            <div> <label class="sv-label">Mật khẩu mới</label> <input type="password" id="svPwdNew" class="sv-field" placeholder="Tối thiểu 6 ký tự"> </div>
+            <div> <label class="sv-label">Xác nhận mật khẩu mới</label> <input type="password" id="svPwdConfirm" class="sv-field" placeholder="Nhập lại"> </div>
+          </div>
+          <button id="svChangePwd" type="button" class="px-5 py-2.5 rounded-full bg-rose-500 hover:bg-rose-400 text-white font-extrabold text-xs transition-all"> <i class="fa-solid fa-key mr-1.5"></i>CẬP NHẬT MẬT KHẨU </button>
+        </div>
+        <div class="cyber-card rounded-2xl p-5 sm:p-6 space-y-4">
+          <div class="flex items-center gap-2.5 pb-3 border-b border-slate-800/80">
+            <i class="fa-solid fa-shield-halved text-[#a3e635] text-lg"></i>
+            <h2 class="text-base font-extrabold text-white">Phiên đăng nhập</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
+            <div>
+              <div class="text-slate-500 mb-1">Thời điểm đăng nhập</div>
+              <div id="svSessionLogin" class="text-white">--</div>
+            </div>
+            <div>
+              <div class="text-slate-500 mb-1">Hết hạn sau</div>
+              <div id="svSessionExpire" class="text-white">--</div>
+            </div>
+            <div>
+              <div class="text-slate-500 mb-1">Vai trò</div>
+              <div id="svSessionRole" class="text-[#a3e635] font-bold">--</div>
+            </div>
+          </div>
+          <button id="svLogout" type="button" class="px-5 py-2.5 rounded-full border border-rose-500/50 text-rose-400 hover:bg-rose-500 hover:text-white font-bold text-xs transition-all"> <i class="fa-solid fa-right-from-bracket mr-1.5"></i>ĐĂNG XUẤT </button>
+        </div>
+      </section>
+      <section id="svTabFavorites" class="sv-tab-panel space-y-4 hidden">
+        <div class="cyber-card rounded-2xl p-5 sm:p-6">
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-800/80">
+            <div class="flex items-center gap-2.5">
+              <i class="fa-solid fa-heart text-rose-400 text-lg"></i>
+              <h2 class="text-base font-extrabold text-white">Danh mục yêu thích</h2>
+            </div>
+            <button id="svClearFavs" type="button" class="px-3 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/40 text-rose-300 hover:bg-rose-500 hover:text-white text-[11px] font-bold transition-all"> <i class="fa-solid fa-broom mr-1"></i>Xóa tất cả </button>
+          </div>
+          <div id="svFavList" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mt-5"></div>
+        </div>
+      </section>
+      <section id="svTabOrders" class="sv-tab-panel space-y-4 hidden">
+        <div class="cyber-card rounded-2xl p-5 sm:p-6 space-y-4">
+          <div class="flex items-center gap-2.5 pb-3 border-b border-slate-800/80">
+            <i class="fa-solid fa-magnifying-glass-location text-[#a3e635] text-lg"></i>
+            <h2 class="text-base font-extrabold text-white">Tra cứu bằng mã tracking</h2>
+          </div>
+          <div class="flex flex-wrap gap-2"> <input id="svTrackInput" type="text" placeholder="VD: DTR-TRK-4821-VN" class="sv-field flex-1 min-w-[220px] font-mono"> <button id="svTrackBtn" type="button" class="px-6 py-3 rounded-full bg-[#a3e635] hover:bg-[#b5f347] text-slate-950 font-extrabold text-xs transition-all"> <i class="fa-solid fa-bolt mr-1"></i>TRA CỨU </button> </div>
+          <div id="svTrackResult"></div>
+        </div>
+        <div class="cyber-card rounded-2xl p-5 sm:p-6">
+          <div class="flex items-center gap-2.5 pb-3 border-b border-slate-800/80 mb-4">
+            <i class="fa-solid fa-receipt text-[#a3e635] text-lg"></i>
+            <h2 class="text-base font-extrabold text-white">Đơn hàng của tôi</h2>
+          </div>
+          <div id="svMyOrders" class="space-y-3"></div>
+        </div>
+      </section>
+      <section id="svTabSupport" class="sv-tab-panel space-y-4 hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="cyber-card rounded-2xl p-5 space-y-2 text-center">
+            <i class="fa-solid fa-comments text-2xl text-[#a3e635]"></i>
+            <h3 class="text-sm font-extrabold text-white">Chat trực tuyến</h3>
+            <p class="text-[11px] text-slate-400">Phản hồi tức thì 24/7 với trợ lý AI</p>
+            <button type="button" id="svOpenChat1" class="mt-2 px-4 py-2 rounded-full bg-[#a3e635]/15 border border-[#a3e635]/50 text-[#a3e635] hover:bg-[#a3e635] hover:text-slate-950 text-[11px] font-bold transition-all"> <i class="fa-solid fa-comment-dots mr-1"></i>BẮT ĐẦU CHAT </button>
+          </div>
+          <div class="cyber-card rounded-2xl p-5 space-y-2 text-center">
+            <i class="fa-solid fa-envelope text-2xl text-cyan-400"></i>
+            <h3 class="text-sm font-extrabold text-white">Email hỗ trợ</h3>
+            <p class="text-[11px] text-slate-400">Phản hồi trong vòng 2 giờ làm việc</p>
+            <a href="mailto:support@dtr-market.cyber" class="mt-2 inline-block px-4 py-2 rounded-full bg-cyan-500/15 border border-cyan-500/50 text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 text-[11px] font-bold transition-all"> <i class="fa-solid fa-paper-plane mr-1"></i>GỬI EMAIL </a>
+          </div>
+          <div class="cyber-card rounded-2xl p-5 space-y-2 text-center">
+            <i class="fa-solid fa-phone-volume text-2xl text-rose-400"></i>
+            <h3 class="text-sm font-extrabold text-white">Hotline 24/7</h3>
+            <p class="text-[11px] text-slate-400">Gọi ngay để được trợ giúp khẩn cấp</p>
+            <a href="tel:1900123456" class="mt-2 inline-block px-4 py-2 rounded-full bg-rose-500/15 border border-rose-500/50 text-rose-300 hover:bg-rose-500 hover:text-white text-[11px] font-bold transition-all"> <i class="fa-solid fa-phone mr-1"></i>1900 1234 </a>
+          </div>
+        </div>
+        <div class="cyber-card rounded-2xl p-5 sm:p-6">
+          <div class="flex items-center gap-2.5 pb-3 border-b border-slate-800/80 mb-2">
+            <i class="fa-solid fa-circle-question text-[#a3e635] text-lg"></i>
+            <h2 class="text-base font-extrabold text-white">Câu hỏi thường gặp</h2>
+          </div>
+          <div id="svFaqList"></div>
+        </div>
+      </section>
+    </main>
+    <button id="svChatLauncher" aria-label="Mở chat hỗ trợ"> <i class="fa-solid fa-comment-dots"></i> <span class="sv-chat-badge" id="svChatBadge" style="display: none;">1</span> </button>
+    <div id="svChatWidget">
+      <div id="svChatPanel">
+        <div id="svChatHead">
+          <div class="sv-chat-avatar"><i class="fa-solid fa-robot"></i></div>
+          <div>
+            <div class="sv-chat-title">DTR Assistant</div>
+            <div class="sv-chat-status"><i class="fa-solid fa-circle text-[6px]"></i> Trực tuyến</div>
+          </div>
+          <button class="sv-chat-close" id="svChatClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="svChatBody"></div>
+        <div id="svChatQuick"> <button type="button" class="sv-quick-chip" data-q="Làm sao để tra cứu đơn hàng?">📦 Tra cứu đơn</button> <button type="button" class="sv-quick-chip" data-q="Chính sách đổi trả như thế nào?">↩️ Đổi trả</button> <button type="button" class="sv-quick-chip" data-q="Thời gian giao hàng bao lâu?">🚚 Giao hàng</button> <button type="button" class="sv-quick-chip" data-q="Phương thức thanh toán nào được hỗ trợ?">💳 Thanh toán</button> </div>
+        <div id="svChatInput"> <input type="text" id="svChatText" placeholder="Nhập tin nhắn..." autocomplete="off"> <button type="button" id="svChatSend" aria-label="Gửi"><i class="fa-solid fa-paper-plane"></i></button> </div>
+      </div>
+    </div>
+    <button class="dtr-fab" id="dtrFabBtn" aria-label="Menu nhanh" aria-expanded="false"> <i class="fa-solid fa-table-cells-large"></i> </button>
+    <div class="dtr-fab-overlay" id="dtrFabOverlay"></div>
+    <div class="dtr-fab-panel" id="dtrFabPanel" role="dialog" aria-modal="true">
+      <div class="dtr-fab-panel-head">
+        <div>
+          <span class="dtr-fab-panel-tag" data-i18n="fab.quick">Truy cập nhanh</span>
+          <h3 class="dtr-fab-panel-title" data-i18n="fab.title">Chọn chức năng</h3>
+        </div>
+        <button class="dtr-fab-close" id="dtrFabClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="dtr-fab-grid"> <a href="marketplace.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-house"></i></span><span class="dtr-fab-item-title" data-i18n="nav.home">Trang chủ</span><span class="dtr-fab-item-desc" data-i18n="fab.homeDesc">Về Marketplace</span></a> <a href="cinema.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-film"></i></span><span class="dtr-fab-item-title" data-i18n="field.cinema">Phim rạp</span><span class="dtr-fab-item-desc" data-i18n="field.cinemaDesc">Đặt vé &amp; chọn ghế</span></a> <a href="category.html?group=industrial" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-industry"></i></span><span class="dtr-fab-item-title" data-i18n="field.industrial">Công nghiệp</span><span class="dtr-fab-item-desc" data-i18n="field.industrialDesc">Thiết bị &amp; tự động</span></a> <a href="category.html?group=electronics" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-microchip"></i></span><span class="dtr-fab-item-title" data-i18n="field.electronics">Điện tử</span><span class="dtr-fab-item-desc" data-i18n="field.electronicsDesc">Phone, Laptop, Gear</span></a> <a href="category.html?group=digital" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-compact-disc"></i></span><span class="dtr-fab-item-title" data-i18n="field.digital">Kĩ thuật số</span><span class="dtr-fab-item-desc" data-i18n="field.digitalDesc">Game, Nhạc, Gift</span></a> <a href="deals.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-bolt"></i></span><span class="dtr-fab-item-title" data-i18n="nav.deals">Ưu đãi</span><span class="dtr-fab-item-desc" data-i18n="fab.dealsDesc">Deal hôm nay</span></a> <a href="services.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-headset"></i></span><span class="dtr-fab-item-title" data-i18n="nav.services">Dịch vụ</span><span class="dtr-fab-item-desc" data-i18n="fab.servicesDesc">Hỗ trợ khách hàng</span></a> <a href="index.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-circle-info"></i></span><span class="dtr-fab-item-title" data-i18n="fab.about">Về DTR</span><span class="dtr-fab-item-desc" data-i18n="fab.aboutDesc">Trang giới thiệu</span></a><a href="about/manager.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-sliders"></i></span><span class="dtr-fab-item-title" data-i18n="fab.manager">Manager</span><span class="dtr-fab-item-desc" data-i18n="fab.managerDesc">Cấu hình hệ thống</span></a> <a href="login.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-user"></i></span><span class="dtr-fab-item-title" data-i18n="nav.account">Tài khoản</span><span class="dtr-fab-item-desc" data-i18n="fab.accountDesc">Đăng nhập / Đăng ký</span></a> </div>
+    </div>
+    <nav class="dtr-mobile-nav" id="dtrMobileNav" aria-label="Menu">
+      <div class="dtr-mobile-nav-inner"> <a href="marketplace.html" data-nav="home"><i class="fa-solid fa-house"></i><span>HOME</span></a> <button type="button" data-lang="vi"><span class="flag">🇻🇳</span><span>VI</span></button> <button type="button" data-lang="ja"><span class="flag">🇯🇵</span><span>JA</span></button> <button type="button" data-lang="en"><span class="flag">🇬🇧</span><span>EN</span></button> <button type="button" data-lang="zh"><span class="flag">🇨🇳</span><span>ZH</span></button> </div>
+    </nav>
+    <div class="toast" id="toast"></div>
+    <script src="js/auth.js?v=8d5e6df0165a"></script>
+    <script src="js/orders.js?v=b5e893c042d1"></script>
+    <script src="js/marketplace.js?v=0e5fed338263"></script>
+    <script>
+      (function () {
+        'use strict';
+      
+        const $ = function (s, p) {
+          return (p || document).querySelector(s);
+        };
+        const $$ = function (s, p) {
+          return Array.from((p || document).querySelectorAll(s));
+        };
+        const FAV_KEY = 'dtr_favorites';
+        const CHAT_KEY = 'dtr_chat_history';
+        function readJSON(key, fallback) {
+          let raw, v;
+          try {
+            raw = localStorage.getItem(key);
+            if (!raw) return fallback;
+            v = JSON.parse(raw);
+            return v == null ? fallback : v;
+          } catch (e) {
+            return fallback;
+          }
+        }
+        function writeJSON(key, val) {
+          try {
+            localStorage.setItem(key, JSON.stringify(val));
+            return true;
+          } catch (e) {
+            return false;
+          }
+        }
+        function formatPrice(n) {
+          return Number(n || 0).toLocaleString('vi-VN') + 'đ';
+        }
+        function toast(msg, isErr) {
+          const t = $('#toast');
+          if (!t) return;
+          const icon = isErr ? 'fa-triangle-exclamation text-rose-500' : 'fa-circle-check text-[#a3e635]';
+          t.innerHTML = '<i class="fa-solid ' + icon + ' mr-2"></i><span>' + msg + '</span>';
+          t.classList.toggle('error', !!isErr);
+          t.classList.add('show');
+          clearTimeout(t._tmr);
+          t._tmr = setTimeout(function () {
+            t.classList.remove('show');
+          }, 2600);
+        }
+        const PRODUCTS_MAP = {};
+        async function loadProducts() {
+          let i, res, json;
+          if (window.DATA && Array.isArray(window.DATA.products) && window.DATA.products.length) {
+            window.DATA.products.forEach(function (p) {
+              if (p && p.id) PRODUCTS_MAP[p.id] = p;
+            });
+            return;
+          }
+          const paths = ['products.json', 'data/products.json'];
+          for (i = 0; i < paths.length; i++) {
+            try {
+              res = await fetch(paths[i]);
+              if (res && res.ok) {
+                json = await res.json();
+                if (json && Array.isArray(json.products)) {
+                  json.products.forEach(function (p) {
+                    if (p && p.id) PRODUCTS_MAP[p.id] = p;
+                  });
+                  return;
+                }
+              }
+            } catch (e) {}
+          }
+        }
+        function switchTab(tab) {
+          $$('#svTabs .sv-tab-btn').forEach(function (b) {
+            b.classList.toggle('active', b.dataset.svTab === tab);
+          });
+          ['account', 'favorites', 'orders', 'support'].forEach(function (t) {
+            const panel = $('#svTab' + t.charAt(0).toUpperCase() + t.slice(1));
+            if (panel) panel.classList.toggle('hidden', t !== tab);
+          });
+          if (tab === 'favorites') renderFavorites();
+          if (tab === 'orders') {
+            renderMyOrders();
+            updateTrackFromUrl();
+          }
+          if (tab === 'support') renderFaq();
+          try {
+            sessionStorage.setItem('sv_tab', tab);
+          } catch (e) {}
+        }
+        $$('#svTabs .sv-tab-btn').forEach(function (b) {
+          b.addEventListener('click', function () {
+            switchTab(b.dataset.svTab);
+          });
+        });
+        function loadAccount() {
+          let remainH;
+          const session = window.DTRAuth?.get?.();
+          if (!session) return;
+          $('#svUserName').textContent = session.name || session.email;
+          $('#svUserEmail').textContent = session.email;
+          $('#svAccName').value = session.name || '';
+          $('#svAccEmail').value = session.email;
+          if (session.createdAt) $('#svSessionLogin').textContent = new Date(session.createdAt).toLocaleString('vi-VN');
+          if (session.expiresAt) {
+            remainH = Math.max(0, Math.round((session.expiresAt - Date.now()) / 3600000));
+            $('#svSessionExpire').textContent = remainH + ' giờ';
+          }
+          $('#svSessionRole').textContent = (session.role || 'customer').toUpperCase();
+        }
+        function saveProfile() {
+          const session = window.DTRAuth?.get?.();
+          if (!session) {
+            toast('Chưa đăng nhập', true);
+            return;
+          }
+          const newName = ($('#svAccName').value || '').trim();
+          if (newName.length < 2) {
+            toast('Tên tối thiểu 2 ký tự', true);
+            return;
+          }
+          const users = window.DTRAuth.getUsers();
+          const key = String(session.email).toLowerCase();
+          if (!users[key]) {
+            toast('Không tìm thấy tài khoản', true);
+            return;
+          }
+          users[key].name = newName;
+          try {
+            localStorage.setItem('dtr_users', JSON.stringify(users));
+          } catch (e) {}
+          session.name = newName;
+          try {
+            if (localStorage.getItem('dtr_session')) localStorage.setItem('dtr_session', JSON.stringify(session));else if (sessionStorage.getItem('dtr_session')) sessionStorage.setItem('dtr_session', JSON.stringify(session));
+          } catch (e) {}
+          loadAccount();
+          toast('Đã lưu thông tin cá nhân');
+        }
+        $('#svSaveProfile')?.addEventListener('click', saveProfile);
+        $('#svResetProfile')?.addEventListener('click', loadAccount);
+        async function changePassword() {
+          const session = window.DTRAuth?.get?.();
+          if (!session) {
+            toast('Chưa đăng nhập', true);
+            return;
+          }
+          const oldPwd = $('#svPwdOld').value;
+          const newPwd = $('#svPwdNew').value;
+          const confirmPwd = $('#svPwdConfirm').value;
+          if (!oldPwd) {
+            toast('Nhập mật khẩu hiện tại', true);
+            return;
+          }
+          if (newPwd.length < 6) {
+            toast('Mật khẩu mới tối thiểu 6 ký tự', true);
+            return;
+          }
+          if (newPwd !== confirmPwd) {
+            toast('Xác nhận mật khẩu không khớp', true);
+            return;
+          }
+          const user = await window.DTRAuth.verify(session.email, oldPwd);
+          if (!user) {
+            toast('Mật khẩu hiện tại không đúng', true);
+            return;
+          }
+          const users = window.DTRAuth.getUsers();
+          const key = String(session.email).toLowerCase();
+          const newHash = await window.DTRAuth.hashPassword(newPwd);
+          if (users[key]) {
+            users[key].passwordHash = newHash;
+            try {
+              localStorage.setItem('dtr_users', JSON.stringify(users));
+            } catch (e) {}
+            toast('Đổi mật khẩu thành công');
+            $('#svPwdOld').value = '';
+            $('#svPwdNew').value = '';
+            $('#svPwdConfirm').value = '';
+          } else {
+            toast('Không tìm thấy tài khoản', true);
+          }
+        }
+        $('#svChangePwd')?.addEventListener('click', changePassword);
+        $('#svLogout')?.addEventListener('click', function () {
+          if (!confirm('Đăng xuất khỏi tài khoản?')) return;
+          window.DTRAuth?.logout?.();
+        });
+        function getFavorites() {
+          const arr = readJSON(FAV_KEY, []);
+          return Array.isArray(arr) ? arr : [];
+        }
+        function renderFavorites() {
+          const list = $('#svFavList');
+          if (!list) return;
+          const favs = getFavorites();
+          if (!favs.length) {
+            list.innerHTML = '<div class="col-span-full text-center py-12 space-y-2">' + '<i class="fa-regular fa-heart text-4xl text-slate-600"></i>' + '<p class="text-sm text-slate-400">Chưa có sản phẩm yêu thích nào</p>' + '<p class="text-xs text-slate-500">Nhấn ♥ trên thẻ sản phẩm để thêm vào đây</p>' + '<a href="marketplace.html" class="inline-block mt-2 px-5 py-2 rounded-full bg-[#a3e635] text-slate-950 text-xs font-extrabold">Khám phá sản phẩm</a>' + '</div>';
+            return;
+          }
+          list.innerHTML = favs.map(function (id) {
+            const p = PRODUCTS_MAP[id];
+            if (!p) {
+              return '<div class="sv-fav-card"><div class="sv-fav-body">' + '<div class="text-[11px] text-slate-500">Sản phẩm không tồn tại</div>' + '<div class="text-xs font-mono text-slate-400">' + id + '</div>' + '<button type="button" data-fav-remove="' + id + '" class="mt-2 px-3 py-1.5 rounded-full bg-rose-500/20 text-rose-300 text-[11px] font-bold">Gỡ bỏ</button>' + '</div></div>';
+            }
+            return '<div class="sv-fav-card">' + '<img src="' + (p.img || '') + '" alt="' + p.name + "\" loading=\"lazy\" data-action-error=\"action-c99b772c95e0\">" + '<div class="sv-fav-body">' + '<div class="sv-fav-name">' + p.name + '</div>' + '<div class="sv-fav-price">' + formatPrice(p.price) + '</div>' + '<div class="flex gap-1.5 mt-2">' + '<button type="button" data-fav-open="' + id + '" class="flex-1 px-2 py-1.5 rounded-full bg-[#a3e635]/15 border border-[#a3e635]/50 text-[#a3e635] hover:bg-[#a3e635] hover:text-slate-950 text-[10.5px] font-bold transition-all">Xem</button>' + '<button type="button" data-fav-remove="' + id + '" class="w-8 h-8 rounded-full bg-rose-500/15 border border-rose-500/40 text-rose-400 hover:bg-rose-500 hover:text-white flex items-center justify-center" title="Gỡ khỏi yêu thích"><i class="fa-solid fa-heart-crack text-[11px]"></i></button>' + '</div>' + '</div>' + '</div>';
+          }).join('');
+          $$('[data-fav-open]').forEach(function (b) {
+            b.addEventListener('click', function () {
+              window.location.href = 'marketplace.html?open=' + encodeURIComponent(b.dataset.favOpen);
+            });
+          });
+          $$('[data-fav-remove]').forEach(function (b) {
+            b.addEventListener('click', function () {
+              const id = b.dataset.favRemove;
+              const arr = getFavorites().filter(function (x) {
+                return x !== id;
+              });
+              writeJSON(FAV_KEY, arr);
+              renderFavorites();
+              updateStats();
+              toast('Đã gỡ khỏi yêu thích');
+            });
+          });
+        }
+        $('#svClearFavs')?.addEventListener('click', function () {
+          if (!confirm('Xóa toàn bộ danh mục yêu thích?')) return;
+          writeJSON(FAV_KEY, []);
+          renderFavorites();
+          updateStats();
+          toast('Đã xóa danh mục yêu thích');
+        });
+        function renderMyOrders() {
+          const box = $('#svMyOrders');
+          if (!box) return;
+          if (!window.DTR?.orders) {
+            box.innerHTML = '<p class="text-rose-400 text-sm text-center py-6">Module orders.js chưa nạp.</p>';
+            return;
+          }
+          const O = window.DTR.orders;
+          const session = window.DTRAuth?.get?.();
+          const email = session?.email || '';
+          const orders = email ? O.getByEmail(email) : [];
+          if (!orders.length) {
+            box.innerHTML = '<div class="text-center py-10 space-y-2">' + '<i class="fa-solid fa-box-open text-4xl text-slate-600"></i>' + '<p class="text-sm text-slate-400">Bạn chưa có đơn hàng nào</p>' + '<a href="marketplace.html" class="inline-block mt-2 px-5 py-2 rounded-full bg-[#a3e635] text-slate-950 text-xs font-extrabold">Bắt đầu mua sắm</a>' + '</div>';
+            return;
+          }
+          box.innerHTML = orders.map(function (o) {
+            const c = O.STATUS_COLOR[o.status];
+            const lbl = O.STATUS_LABEL[o.status];
+            return '<div class="cyber-card rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 border border-slate-800/80 hover:border-[#a3e635]/40 transition-all cursor-pointer" data-order-id="' + o.id + '">' + '<div class="min-w-0 flex-1">' + '<div class="flex items-center gap-2 flex-wrap mb-1">' + '<span class="text-[11px] font-mono font-bold text-[#a3e635]">' + o.trackingCode + '</span>' + '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold font-mono" style="background:' + c + '22;border:1px solid ' + c + '88;color:' + c + '">' + lbl + '</span>' + '</div>' + '<div class="text-[12px] text-slate-300 truncate">' + o.items.map(function (i) {
+              return i.name;
+            }).join(', ') + '</div>' + '<div class="text-[10.5px] font-mono text-slate-500 mt-0.5">' + O.formatDate(o.createdAt) + '</div>' + '</div>' + '<div class="text-right shrink-0">' + '<div class="text-[15px] font-extrabold font-mono text-[#a3e635]">' + O.formatPrice(o.total) + '</div>' + '<div class="text-[10.5px] font-mono text-slate-500">' + o.items.length + ' SP</div>' + '</div>' + '</div>';
+          }).join('');
+          $$('[data-order-id]').forEach(function (el) {
+            el.addEventListener('click', function () {
+              const order = orders.find(function (o) {
+                return o.id === el.dataset.orderId;
+              });
+              if (order) {
+                $('#svTrackInput').value = order.trackingCode;
+                renderTrackDetail(order);
+                $('#svTrackResult').scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'center'
+                });
+              }
+            });
+          });
+        }
+        function doTrack() {
+          const code = ($('#svTrackInput').value || '').trim().toUpperCase();
+          if (!code) {
+            toast('Nhập mã tracking', true);
+            return;
+          }
+          const O = window.DTR?.orders;
+          if (!O) {
+            toast('Module chưa nạp', true);
+            return;
+          }
+          const order = O.getByTracking(code);
+          if (!order) {
+            $('#svTrackResult').innerHTML = window.DTRUI.emptyStateMarkup({ icon: 'search', title: 'Không tìm thấy đơn hàng', message: 'Mã ' + code + '. Kiểm tra mã trên biên lai. Định dạng: DTR-TRK-XXXX-XX.' });
+            return;
+          }
+          renderTrackDetail(order);
+        }
+        function renderTrackDetail(order) {
+          const O = window.DTR.orders;
+          const c = O.STATUS_COLOR[order.status];
+          const lbl = O.STATUS_LABEL[order.status];
+          const itemsHtml = order.items.map(function (it) {
+            return '<div class="flex items-center gap-3 py-2 border-b border-slate-800/60 last:border-0">' + '<img src="' + (it.img || '') + "\" class=\"w-10 h-10 rounded-lg object-cover border border-slate-800\" data-action-error=\"action-06014a4747e8\">" + '<div class="flex-1 min-w-0"><div class="text-[12px] font-bold text-white truncate">' + it.name + '</div>' + '<div class="text-[10px] font-mono text-slate-400">x' + it.qty + ' · ' + O.formatPrice(it.price) + '</div></div>' + '<div class="text-[11.5px] font-mono text-[#a3e635] font-bold">' + O.formatPrice(it.price * it.qty) + '</div>' + '</div>';
+          }).join('');
+          const timelineHtml = (order.statusHistory || []).map(function (h, idx, arr) {
+            const hc = O.STATUS_COLOR[h.status] || '#94a3b8';
+            const hl = O.STATUS_LABEL[h.status] || h.status;
+            const isLast = idx === arr.length - 1;
+            return '<div class="flex gap-3">' + '<div class="flex flex-col items-center">' + '<div class="w-3 h-3 rounded-full border-2" style="border-color:' + hc + ';background:' + (isLast ? hc : 'transparent') + '"></div>' + (!isLast ? '<div class="w-px flex-1 bg-slate-700/60 my-1"></div>' : '') + '</div>' + '<div class="flex-1 pb-3">' + '<div class="flex items-center gap-2 flex-wrap">' + '<span class="text-[12px] font-bold" style="color:' + hc + '">' + hl + '</span>' + '<span class="text-[10px] font-mono text-slate-500">' + O.formatDate(h.at) + '</span>' + '</div>' + '<div class="text-[11.5px] text-slate-400 mt-0.5">' + (h.note || '') + '</div>' + '</div>' + '</div>';
+          }).join('');
+          const adminNoteHtml = order.adminNote ? '<div class="rounded-xl bg-[#a3e635]/10 border border-[#a3e635]/40 p-4 space-y-1">' + '<div class="text-[10.5px] font-mono uppercase tracking-widest text-[#a3e635] flex items-center gap-1.5">' + '<i class="fa-solid fa-comment-dots"></i> Ghi chú từ Admin' + '</div>' + '<div class="text-[12.5px] text-white leading-relaxed">' + order.adminNote + '</div>' + '</div>' : '';
+          $('#svTrackResult').innerHTML = '<div class="mt-4 cyber-card rounded-2xl p-5 space-y-5 border border-[#a3e635]/30">' + '<div class="flex flex-wrap items-start justify-between gap-3 pb-4 border-b border-slate-800/80">' + '<div>' + '<div class="text-[10px] font-mono uppercase text-slate-400 mb-1">Mã tracking</div>' + '<div class="text-base font-extrabold font-mono text-[#a3e635] tracking-wider">' + order.trackingCode + '</div>' + '<div class="text-[10px] font-mono text-slate-500 mt-1">Tạo: ' + O.formatDate(order.createdAt) + '</div>' + '</div>' + '<span class="px-3 py-1.5 rounded-full text-[11px] font-bold font-mono" style="background:' + c + '22;border:1px solid ' + c + '88;color:' + c + '">' + lbl + '</span>' + '</div>' + '<div class="rounded-xl bg-slate-950/60 border border-slate-800 p-4">' + '<div class="text-[10px] font-mono uppercase text-slate-400 mb-2">Sản phẩm (' + order.items.length + ')</div>' + itemsHtml + '</div>' + '<div class="rounded-xl bg-slate-950/60 border border-slate-800 p-4 space-y-1.5 font-mono text-[11.5px]">' + '<div class="flex justify-between text-slate-400"><span>Tạm tính</span><span class="text-white">' + O.formatPrice(order.subtotal) + '</span></div>' + '<div class="flex justify-between text-slate-400"><span>Phí ship</span><span class="text-white">' + O.formatPrice(order.shippingFee) + '</span></div>' + '<div class="flex justify-between text-sm pt-2 border-t border-slate-800"><span class="font-bold text-white">TỔNG</span><span class="text-[#a3e635] font-extrabold">' + O.formatPrice(order.total) + '</span></div>' + '</div>' + '<div><div class="text-[10px] font-mono uppercase text-slate-400 mb-3">Lịch sử trạng thái</div>' + timelineHtml + '</div>' + adminNoteHtml + '</div>';
+        }
+        $('#svTrackBtn')?.addEventListener('click', doTrack);
+        $('#svTrackInput')?.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter') doTrack();
+        });
+        function updateTrackFromUrl() {
+          let inp;
+          const params = new URLSearchParams(window.location.search);
+          const code = params.get('track');
+          if (code) {
+            inp = $('#svTrackInput');
+            if (inp) inp.value = code;
+            doTrack();
+          }
+        }
+        const FAQ_DATA = [{
+          q: 'Làm sao để tra cứu đơn hàng?',
+          a: 'Vào tab "Đơn hàng" trong trang này, nhập mã tracking (dạng DTR-TRK-XXXX-XX) hoặc chọn từ danh sách đơn của bạn. Kết quả hiển thị trạng thái theo thời gian thực.'
+        }, {
+          q: 'Thời gian giao hàng mất bao lâu?',
+          a: 'Tùy khu vực: nội thành 2-4 giờ (drone), liên tỉnh 1-2 ngày, quốc tế 5-14 ngày. Theo dõi tiến độ qua tab "Đơn hàng".'
+        }, {
+          q: 'Chính sách đổi trả như thế nào?',
+          a: 'Đổi trả trong 7 ngày nếu sản phẩm lỗi do nhà sản xuất. Sản phẩm phải còn nguyên seal, đầy đủ phụ kiện. Liên hệ hotline 1900 1234 để được hỗ trợ.'
+        }, {
+          q: 'Phương thức thanh toán nào được hỗ trợ?',
+          a: 'Chúng tôi hỗ trợ: thẻ tín dụng/ghi nợ, ví điện tử (CyberWallet), chuyển khoản ngân hàng, và thanh toán khi nhận hàng (COD).'
+        }, {
+          q: 'Sản phẩm có được bảo hành không?',
+          a: 'Có. Thiết bị điện tử được bảo hành 12-60 tháng tùy loại. Xem chi tiết trên trang sản phẩm hoặc liên hệ bộ phận CSKH.'
+        }, {
+          q: 'Làm sao để hủy đơn hàng?',
+          a: 'Đơn ở trạng thái "Chờ xử lý" có thể hủy qua chat hoặc hotline. Sau khi chuyển "Đang giao" không thể hủy. Vào chat và cung cấp mã tracking để được hỗ trợ.'
+        }];
+        function renderFaq() {
+          const list = $('#svFaqList');
+          if (!list || list.dataset.rendered) return;
+          list.dataset.rendered = '1';
+          list.innerHTML = FAQ_DATA.map(function (item, i) {
+            return '<div class="sv-faq-item" data-faq-idx="' + i + '">' + '<button type="button" class="sv-faq-q">' + '<i class="fa-solid fa-circle-question text-[#a3e635] text-sm"></i>' + '<span>' + item.q + '</span>' + '<i class="fa-solid fa-chevron-down sv-faq-icon"></i>' + '</button>' + '<div class="sv-faq-a">' + item.a + '</div>' + '</div>';
+          }).join('');
+          $$('#svFaqList .sv-faq-item').forEach(function (el) {
+            el.querySelector('.sv-faq-q').addEventListener('click', function () {
+              el.classList.toggle('open');
+            });
+          });
+        }
+        const CHAT_BOT_RULES = [{
+          keys: ['tra cứu', 'tracking', 'mã đơn', 'đơn hàng đâu'],
+          reply: 'Bạn vào tab <b>Đơn hàng</b> và nhập mã tracking (DTR-TRK-XXXX-XX). Nếu không nhớ mã, xem trong lịch sử đơn của bạn.'
+        }, {
+          keys: ['giao hàng', 'ship', 'vận chuyển', 'bao lâu'],
+          reply: 'Giao hàng nội thành 2-4 giờ (drone), liên tỉnh 1-2 ngày, quốc tế 5-14 ngày. Theo dõi chi tiết trong tab Đơn hàng.'
+        }, {
+          keys: ['đổi trả', 'hoàn tiền', 'refund', 'trả hàng'],
+          reply: 'Chính sách đổi trả trong <b>7 ngày</b> nếu lỗi từ nhà sản xuất. Liên hệ hotline <b>1900 1234</b> để được xử lý.'
+        }, {
+          keys: ['thanh toán', 'payment', 'trả tiền', 'cod'],
+          reply: 'Chúng tôi hỗ trợ: thẻ tín dụng/ghi nợ, CyberWallet, chuyển khoản, và COD (thanh toán khi nhận).'
+        }, {
+          keys: ['bảo hành', 'warranty'],
+          reply: 'Bảo hành 12-60 tháng tùy sản phẩm. Xem chi tiết tại trang sản phẩm hoặc liên hệ hotline.'
+        }, {
+          keys: ['hủy', 'cancel'],
+          reply: 'Đơn ở trạng thái "Chờ xử lý" có thể hủy qua chat này. Đơn "Đang giao" không thể hủy.'
+        }, {
+          keys: ['xin chào', 'hello', 'hi', 'chào'],
+          reply: 'Xin chào! Tôi là trợ lý DTR. Tôi có thể giúp bạn tra cứu đơn hàng, hỏi về giao hàng, đổi trả, thanh toán. Bạn cần hỗ trợ gì?'
+        }, {
+          keys: ['cảm ơn', 'thank'],
+          reply: 'Rất vui được giúp bạn! Nếu cần gì thêm, cứ nhắn cho tôi nhé 😊'
+        }];
+        function botReply(text) {
+          let i, rule, j;
+          const lower = (text || '').toLowerCase();
+          for (i = 0; i < CHAT_BOT_RULES.length; i++) {
+            rule = CHAT_BOT_RULES[i];
+            for (j = 0; j < rule.keys.length; j++) {
+              if (lower.indexOf(rule.keys[j]) !== -1) return rule.reply;
+            }
+          }
+          return 'Tôi chưa hiểu rõ câu hỏi. Bạn có thể hỏi về: <b>tra cứu đơn</b>, <b>giao hàng</b>, <b>đổi trả</b>, <b>thanh toán</b>, hoặc <b>bảo hành</b>. Hoặc gọi hotline <b>1900 1234</b> để gặp nhân viên.';
+        }
+        function appendMessage(text, who) {
+          const body = $('#svChatBody');
+          if (!body) return;
+          const now = new Date();
+          const time = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+          const div = document.createElement('div');
+          div.className = 'sv-msg ' + (who === 'user' ? 'user' : 'bot');
+          div.innerHTML = text + '<span class="sv-msg-time">' + time + '</span>';
+          body.appendChild(div);
+          body.scrollTop = body.scrollHeight;
+        }
+        function saveChatHistory() {
+          const body = $('#svChatBody');
+          if (!body) return;
+          const msgs = $$('.sv-msg', body).map(function (el) {
+            return {
+              html: el.innerHTML,
+              who: el.classList.contains('user') ? 'user' : 'bot'
+            };
+          });
+          writeJSON(CHAT_KEY, msgs.slice(-30));
+        }
+        function loadChatHistory() {
+          const history = readJSON(CHAT_KEY, []);
+          const body = $('#svChatBody');
+          if (!body) return;
+          if (!history.length) {
+            appendMessage('Xin chào! Tôi là trợ lý ảo DTR. Tôi có thể giúp bạn tra cứu đơn hàng, hỏi về giao hàng, đổi trả, thanh toán. Bạn cần hỗ trợ gì?', 'bot');
+          } else {
+            history.forEach(function (m) {
+              const div = document.createElement('div');
+              div.className = 'sv-msg ' + (m.who === 'user' ? 'user' : 'bot');
+              div.innerHTML = m.html;
+              body.appendChild(div);
+            });
+            body.scrollTop = body.scrollHeight;
+          }
+        }
+        function openChat() {
+          const w = $('#svChatWidget');
+          if (!w) return;
+          w.classList.add('open');
+          const badge = $('#svChatBadge');
+          if (badge) badge.style.display = 'none';
+          setTimeout(function () {
+            const input = $('#svChatText');
+            if (input) input.focus();
+          }, 200);
+        }
+        function closeChat() {
+          const w = $('#svChatWidget');
+          if (w) w.classList.remove('open');
+        }
+        function sendChat() {
+          const input = $('#svChatText');
+          if (!input) return;
+          const text = (input.value || '').trim();
+          if (!text) return;
+          appendMessage(text.replace(/[<>]/g, ''), 'user');
+          input.value = '';
+          saveChatHistory();
+          setTimeout(function () {
+            appendMessage(botReply(text), 'bot');
+            saveChatHistory();
+          }, 500 + Math.random() * 400);
+        }
+        $('#svChatLauncher')?.addEventListener('click', openChat);
+        $('#svChatClose')?.addEventListener('click', closeChat);
+        $('#svChatSend')?.addEventListener('click', sendChat);
+        $('#svChatText')?.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            sendChat();
+          }
+        });
+        $$('.sv-quick-chip').forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            const q = chip.dataset.q;
+            if (!q) return;
+            const input = $('#svChatText');
+            if (input) input.value = q;
+            sendChat();
+          });
+        });
+        $('#svOpenChat1')?.addEventListener('click', openChat);
+        setTimeout(function () {
+          let badge;
+          let visited = false;
+          try {
+            visited = sessionStorage.getItem('sv_chat_seen') === '1';
+          } catch (e) {}
+          if (!visited) {
+            badge = $('#svChatBadge');
+            if (badge) badge.style.display = 'grid';
+          }
+          try {
+            sessionStorage.setItem('sv_chat_seen', '1');
+          } catch (e) {}
+        }, 3000);
+        function updateStats() {
+          let cart;
+          const session = window.DTRAuth?.get?.();
+          const email = session?.email || '';
+          let orderCount = 0;
+          if (window.DTR?.orders && email) {
+            orderCount = window.DTR.orders.getByEmail(email).length;
+          }
+          const el1 = $('#svStatOrders');
+          if (el1) el1.textContent = orderCount;
+          const favCount = getFavorites().length;
+          const el2 = $('#svStatFavs');
+          if (el2) el2.textContent = favCount;
+          let cartCount = 0;
+          try {
+            cart = JSON.parse(localStorage.getItem('dtr_cart') || '[]');
+            cartCount = Array.isArray(cart) ? cart.reduce(function (s, i) {
+              return s + (i.qty || 1);
+            }, 0) : 0;
+          } catch (e) {}
+          const el3 = $('#svStatCart');
+          if (el3) el3.textContent = cartCount;
+        }
+        async function boot() {
+          await loadProducts();
+          loadAccount();
+          updateStats();
+          loadChatHistory();
+          let lastTab = 'account';
+          try {
+            lastTab = sessionStorage.getItem('sv_tab') || 'account';
+          } catch (e) {}
+          switchTab(lastTab);
+          const params = new URLSearchParams(window.location.search);
+          const urlTab = params.get('tab');
+          if (urlTab && ['account', 'favorites', 'orders', 'support'].indexOf(urlTab) !== -1) {
+            switchTab(urlTab);
+          }
+          window.addEventListener('storage', function (e) {
+            if (e.key === 'dtr_orders') updateStats();
+            if (e.key === 'dtr_cart') updateStats();
+            if (e.key === 'dtr_favorites') {
+              updateStats();
+              renderFavorites();
+            }
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', boot);
+        } else {
+          boot();
+        }
+        (function () {
+          const panel = $('#dtrFabPanel');
+          const ov = $('#dtrFabOverlay');
+          function openFab() {
+            if (panel) {
+              panel.classList.add('open');
+              panel.style.setProperty('visibility', 'visible', 'important');
+              panel.style.setProperty('pointer-events', 'auto', 'important');
+              panel.style.setProperty('transform', 'translateY(0)', 'important');
+            }
+            if (ov) {
+              ov.classList.add('open');
+              ov.style.setProperty('visibility', 'visible', 'important');
+              ov.style.setProperty('opacity', '1', 'important');
+              ov.style.setProperty('pointer-events', 'auto', 'important');
+            }
+            const f = $('#dtrFabBtn');
+            if (f) f.classList.add('active');
+            document.body.classList.add('fab-open');
+            document.body.style.overflow = 'hidden';
+          }
+          function closeFab() {
+            if (panel) {
+              panel.classList.remove('open');
+              panel.style.setProperty('visibility', 'hidden', 'important');
+              panel.style.setProperty('pointer-events', 'none', 'important');
+              panel.style.setProperty('transform', 'translateY(110%)', 'important');
+            }
+            if (ov) {
+              ov.classList.remove('open');
+              ov.style.setProperty('visibility', 'hidden', 'important');
+              ov.style.setProperty('opacity', '0', 'important');
+              ov.style.setProperty('pointer-events', 'none', 'important');
+            }
+            const f = $('#dtrFabBtn');
+            if (f) f.classList.remove('active');
+            document.body.classList.remove('fab-open');
+            document.body.style.overflow = '';
+          }
+          document.addEventListener('click', function (e) {
+            const t = e.target;
+            if (t.closest && t.closest('#dtrFabBtn')) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (panel && panel.classList.contains('open')) closeFab();else openFab();
+              return;
+            }
+            if (t.closest && t.closest('#dtrFabOverlay')) {
+              e.preventDefault();
+              e.stopPropagation();
+              closeFab();
+              return;
+            }
+            if (t.closest && t.closest('#dtrFabClose')) {
+              e.preventDefault();
+              e.stopPropagation();
+              closeFab();
+              return;
+            }
+            if (t.closest && t.closest('.dtr-fab-item')) {
+              closeFab();
+              return;
+            }
+          }, true);
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeFab();
+          });
+        })();
+        (function () {
+          const LK = 'dtr_lang';
+          const LM = {
+            vi: 'Tiếng Việt',
+            ja: '日本語',
+            en: 'English',
+            zh: '中文'
+          };
+          let cur = 'vi';
+          try {
+            cur = localStorage.getItem(LK) || 'vi';
+          } catch (e) {}
+          function setA(l) {
+            $$('#dtrMobileNav button[data-lang]').forEach(function (b) {
+              b.classList.toggle('active', b.dataset.lang === l);
+            });
+          }
+          document.addEventListener('click', function (e) {
+            const btn = e.target.closest('#dtrMobileNav button[data-lang]');
+            if (!btn) return;
+            e.preventDefault();
+            const lang = btn.dataset.lang;
+            try {
+              localStorage.setItem(LK, lang);
+            } catch (err) {}
+            setA(lang);
+            document.documentElement.lang = lang;
+            toast('Ngôn ngữ: ' + (LM[lang] || lang));
+          }, true);
+          setA(cur);
+          document.documentElement.lang = cur;
+        })();
+      })();
+    </script>
+  </body>
+</html>

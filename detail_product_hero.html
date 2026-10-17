@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <script src="js/events.js?v=7defa05f4547"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Chi tiết sản phẩm · DTR-Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="css/dtr-utility.css?v=48ff48d3204e">
+    <link rel="stylesheet" href="css/marketplace.css?v=b006bba81f99">
+    <link rel="stylesheet" href="css/interface.css?v=a32ecc6783eb">
+    <script src="js/interface.js?v=ec1398677513"></script>
+  </head>
+  <body data-page="product-hero" class="editorial-market is-loading min-h-screen flex flex-col">
+    <div class="loader" id="loader">
+      <div class="loader-mark">
+        <img class="loader-logo" id="loaderLogo" src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t1.15752-9/837090217_1838708297575574_9035449063746888478_n.png?stp=dst-png_s2048x2048&amp;_nc_cat=107&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=9f807c&amp;_nc_eui2=AeHsTynfi-mpXvKnUmCSGCRlA9phdcaf0jYD2mF1xp_SNnjTUSsilZXeH2NqzkxuOQxCJHrbIz9eAS_adSA-BkAu&amp;_nc_ohc=GkPaAjM9dKEQ7kNvwFYBwKf&amp;_nc_oc=AdqFB0LFlvR5XVV6WucxYdlAAmDEuB-fqHyWDTG1f1AebXJ89MjrCaC1xlLGcqDkGn-iGcXihccdjMJr_Dg22JkF&amp;_nc_zt=23&amp;_nc_ht=scontent.fsgn2-9.fna&amp;_nc_ss=7b2a8&amp;oh=03_Q7cD6gHbprmEUCeKhqstWvVHxMK80sJlG1fBiMN2XVkzSy33kA&amp;oe=6AF05B29" alt="DTR" data-action-error="action-00baa6836a92">
+        <div id="loaderLogoFallback" style="display: none; place-items: center; width: 64px; height: 64px; font-family: Fraunces,serif; font-size: 22px; color: #77807a; border: 1px solid rgba(232,237,226,0.14); border-radius: 50%;">DTR</div>
+      </div>
+      <div class="loader-bar">
+        <div class="loader-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-text"> <span id="loaderLabel">Đang tải sản phẩm</span> <span class="pct" id="loaderPct">0%</span> </div>
+    </div>
+    <header class="mp-nav sticky top-0 z-40">
+      <div class="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 flex items-center justify-between gap-2">
+        <a href="marketplace.html" class="flex items-center gap-2 group shrink-0"> <span id="brandLogoContainer" class="flex items-center gap-2 text-lg sm:text-xl font-extrabold tracking-tight" style="font-family: 'Be Vietnam Pro', sans-serif; font-weight: 700;"> <span class="text-white">DTR</span><span style="color: #77807a;">—</span><span class="text-[#a3e635]">Market</span> </span> </a>
+        <nav class="hidden xl:flex items-center gap-6 text-[13px] font-medium text-slate-400"> <a href="marketplace.html" class="hover:text-white transition-colors" data-i18n="nav.home">Trang chủ</a> <a href="category.html?group=electronics" class="text-white" data-i18n="field.electronics">Điện tử</a> <a href="deals.html" class="hover:text-white transition-colors" data-i18n="nav.deals">Ưu đãi</a> <a href="cinema.html" class="hover:text-white transition-colors" data-i18n="field.cinema">Phim rạp</a> <a href="services.html" class="hover:text-white transition-colors" data-i18n="nav.services">Dịch vụ</a> </nav>
+        <div class="flex items-center gap-2 shrink-0"> <a href="login.html" id="authLink" class="flex items-center justify-center text-xs font-medium text-slate-300 w-10 h-10 sm:w-auto sm:h-auto sm:px-3 sm:py-2"> <i class="fa-regular fa-user text-xs"></i> <span class="hidden md:inline ml-1.5" data-i18n="nav.account">Tài khoản</span> </a> <button id="cartBtn" class="relative w-10 h-10 sm:w-auto sm:h-auto sm:p-2 flex items-center justify-center text-slate-300" aria-label="Giỏ hàng"> <i class="fa-solid fa-bag-shopping text-sm"></i> <span id="cartBadge" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 font-extrabold text-[10px] flex items-center justify-center" style="border-radius: 2px;">0</span> </button> </div>
+      </div>
+    </header>
+    <main id="pdMain" class="mp-main flex-1 w-full max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 pt-6 pb-8">
+      <div id="pdLoading" class="pd-loading">
+        <i class="fa-solid fa-circle-notch fa-spin"></i>
+        <p>Đang tải sản phẩm</p>
+      </div>
+      <div id="pdContent"></div>
+    </main>
+    <div class="mp-drawer-overlay" id="cartOverlay"></div>
+    <aside class="mp-cart-drawer" id="cartDrawer">
+      <div class="mp-cart-head">
+        <div class="flex items-center gap-2">
+          <h3>Giỏ hàng</h3>
+        </div>
+        <button class="mp-cart-close" id="cartClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="mp-cart-list" id="cartList"></div>
+      <div class="mp-cart-foot">
+        <div class="mp-cart-total"><span>Tổng cộng</span><strong id="cartTotal">0đ</strong></div>
+        <div class="flex gap-2"> <button id="cartClearBtn" class="w-1/3 py-3 text-xs font-medium">Xóa hết</button> <button class="mp-cart-checkout w-2/3">Thanh toán</button> </div>
+      </div>
+    </aside>
+    <div class="mp-modal-overlay" id="modalOverlay"></div>
+    <div class="mp-modal" id="productModal">
+      <button class="mp-modal-close" id="modalClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      <div class="mp-modal-body" id="modalBody"></div>
+    </div>
+    <div id="checkout-modal" class="mp-modal" style="max-width: 480px;">
+      <button class="mp-modal-close" data-action-click="action-81980b311371" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      <div class="p-8 space-y-5">
+        <h3>Xác nhận thanh toán</h3>
+        <div class="box p-5 space-y-3 text-[12.5px]">
+          <div class="flex justify-between text-slate-400"> <span>Sản phẩm</span> <span id="checkout-product-name" class="text-white font-medium">—</span> </div>
+          <div class="flex justify-between text-slate-400"> <span>Số lượng</span> <span id="modal-qty" class="text-white font-medium">1</span> </div>
+          <div class="flex justify-between text-slate-400"> <span>Đơn giá</span> <span id="checkout-unit-price" class="text-white">—</span> </div>
+          <div class="pt-3 flex justify-between text-sm" style="border-top: 1px solid rgba(232,237,226,0.08);"> <span class="text-white font-semibold">Tổng cộng</span> <span id="modal-total-price" class="font-semibold" style="color: #a3e635;">—</span> </div>
+        </div>
+        <button data-action-click="action-c03150868ae2" class="confirm w-full py-3.5"> Xác nhận thanh toán </button>
+      </div>
+    </div>
+    <nav class="dtr-mobile-nav" id="dtrMobileNav" aria-label="Menu">
+      <div class="dtr-mobile-nav-inner"> <a href="marketplace.html" data-nav="home"> <i class="fa-solid fa-house"></i><span>Home</span> </a> <button type="button" data-lang="vi"><span class="flag">🇻🇳</span><span>VI</span></button> <button type="button" data-lang="ja"><span class="flag">🇯🇵</span><span>JA</span></button> <button type="button" data-lang="en"><span class="flag">🇬🇧</span><span>EN</span></button> <button type="button" data-lang="zh"><span class="flag">🇨🇳</span><span>ZH</span></button> </div>
+    </nav>
+    <button class="dtr-fab" id="dtrFabBtn" aria-label="Menu" aria-expanded="false"> <i class="fa-solid fa-table-cells-large"></i> </button>
+    <div class="dtr-fab-overlay" id="dtrFabOverlay"></div>
+    <div class="dtr-fab-panel" id="dtrFabPanel" role="dialog" aria-modal="true">
+      <div class="dtr-fab-panel-head">
+        <div>
+          <span class="dtr-fab-panel-tag" data-i18n="fab.quick">Truy cập nhanh</span>
+          <h3 class="dtr-fab-panel-title" data-i18n="fab.title">Chọn chức năng</h3>
+        </div>
+        <button class="dtr-fab-close" id="dtrFabClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="dtr-fab-grid"> <a href="marketplace.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-house"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.home">Trang chủ</span> <span class="dtr-fab-item-desc" data-i18n="fab.homeDesc">Về Marketplace</span> </a> <a href="cinema.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-film"></i></span> <span class="dtr-fab-item-title" data-i18n="field.cinema">Phim rạp</span> <span class="dtr-fab-item-desc" data-i18n="field.cinemaDesc">Đặt vé &amp; chọn ghế</span> </a> <a href="category.html?group=industrial" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-industry"></i></span> <span class="dtr-fab-item-title" data-i18n="field.industrial">Công nghiệp</span> <span class="dtr-fab-item-desc" data-i18n="field.industrialDesc">Thiết bị &amp; tự động</span> </a> <a href="category.html?group=electronics" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-microchip"></i></span> <span class="dtr-fab-item-title" data-i18n="field.electronics">Điện tử</span> <span class="dtr-fab-item-desc" data-i18n="field.electronicsDesc">Phone, Laptop, Gear</span> </a> <a href="category.html?group=digital" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-compact-disc"></i></span> <span class="dtr-fab-item-title" data-i18n="field.digital">Kĩ thuật số</span> <span class="dtr-fab-item-desc" data-i18n="field.digitalDesc">Game, Nhạc, Gift</span> </a> <a href="deals.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-bolt"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.deals">Ưu đãi</span> <span class="dtr-fab-item-desc" data-i18n="fab.dealsDesc">Deal hôm nay</span> </a> <a href="services.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-headset"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.services">Dịch vụ</span> <span class="dtr-fab-item-desc" data-i18n="fab.servicesDesc">Hỗ trợ khách hàng</span> </a> <a href="index.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-circle-info"></i></span><span class="dtr-fab-item-title" data-i18n="fab.about">Về DTR</span><span class="dtr-fab-item-desc" data-i18n="fab.aboutDesc">Trang giới thiệu</span></a><a href="about/manager.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-solid fa-sliders"></i></span> <span class="dtr-fab-item-title" data-i18n="fab.manager">Manager</span> <span class="dtr-fab-item-desc" data-i18n="fab.managerDesc">Cấu hình hệ thống</span> </a> <a href="login.html" class="dtr-fab-item"> <span class="dtr-fab-item-icon"><i class="fa-regular fa-user"></i></span> <span class="dtr-fab-item-title" data-i18n="nav.account">Tài khoản</span> <span class="dtr-fab-item-desc" data-i18n="fab.accountDesc">Đăng nhập / Đăng ký</span> </a> </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="js/auth.js?v=8d5e6df0165a"></script>
+    <script src="js/orders.js?v=b5e893c042d1"></script>
+    <script src="js/marketplace.js?v=0e5fed338263"></script>
+    <script>
+      (function () {
+        'use strict';
+      
+        const params = new URLSearchParams(location.search);
+        const productId = params.get('product');
+        const loadingEl = document.getElementById('pdLoading');
+        const contentEl = document.getElementById('pdContent');
+        function formatPrice(n) {
+          return Number(n || 0).toLocaleString('vi-VN') + 'đ';
+        }
+        function showToast(msg, isError) {
+          const t = document.getElementById('toast');
+          if (!t) return;
+          t.textContent = msg;
+          t.classList.toggle('error', !!isError);
+          t.classList.add('show');
+          clearTimeout(t._tmr);
+          t._tmr = setTimeout(function () {
+            t.classList.remove('show');
+          }, 2600);
+        }
+        function showError(title, desc, code) {
+          if (loadingEl) loadingEl.style.display = 'none';
+          contentEl.innerHTML = '<div class="pd-error-state">' + '<h1>' + title + '</h1>' + '<p>' + desc + '</p>' + (code ? '<p style="font-family: \'JetBrains Mono\', monospace; font-size: 11px; color: var(--ed-ink-4); margin-bottom: 24px;">Mã: ' + code + '</p>' : '') + '<a href="marketplace.html">← Về Marketplace</a>' + '</div>';
+        }
+        const state = {
+          product: null,
+          currentQty: 1,
+          isAutoRotate: true,
+          selectedOption: null
+        };
+        if (!productId) {
+          setTimeout(function () {
+            showError('Không tìm thấy sản phẩm', 'Vui lòng chọn sản phẩm từ Marketplace để xem chi tiết.', null);
+          }, 200);
+          return;
+        }
+        (async function loadProduct() {
+          let i, res;
+          let data = null;
+          const paths = ['products.json', 'data/products.json'];
+          for (i = 0; i < paths.length; i++) {
+            try {
+              res = await fetch(paths[i]);
+              if (res && res.ok) {
+                data = await res.json();
+                break;
+              }
+            } catch (e) {}
+          }
+          if (!data && window.DTR && window.DTR.data) {
+            data = window.DTR.data;
+          }
+          if (!data) {
+            showError('Không tải được dữ liệu', 'Vui lòng kiểm tra kết nối hoặc thử lại sau.', null);
+            return;
+          }
+          const product = (data.products || []).find(function (p) {
+            return p && p.id === productId;
+          });
+          if (!product) {
+            showError('Sản phẩm không tồn tại', 'Sản phẩm bạn chọn có thể đã bị gỡ hoặc đổi mã.', productId);
+            return;
+          }
+          const validGroups = ['electronics', 'industrial', 'digital'];
+          if (product.group && validGroups.indexOf(product.group) === -1) {
+            showError('Trang không phù hợp', 'Sản phẩm này không thuộc lĩnh vực công nghệ hoặc điện tử.', product.id);
+            return;
+          }
+          state.product = product;
+          document.title = product.name + ' · DTR-Market';
+          renderProduct(product, data);
+          if (loadingEl) loadingEl.style.display = 'none';
+        })();
+        function renderProduct(p, data) {
+          const brandName = getBrandName(p.brand, data);
+          const discountPct = getDiscountPct(p);
+          const groupName = getGroupName(p.group, data);
+          let html = '';
+          html += '<div id="pdBreadcrumb">';
+          html += '<a href="marketplace.html">Trang chủ</a>';
+          html += '<span class="sep">/</span>';
+          html += '<a href="category.html?group=' + encodeURIComponent(p.group || '') + '">' + groupName + '</a>';
+          html += '<span class="sep">/</span>';
+          html += '<span class="current">' + p.name + '</span>';
+          html += '</div>';
+          html += '<div class="pd-hero-grid">';
+          html += '<div class="flex flex-col gap-5">';
+          if (p.has3D && p.model3d) {
+            html += '<div class="cyber-card p-2 relative overflow-hidden">';
+            html += '<div class="pd-viewer-stage">';
+            html += '<div class="pd-pedestal"></div>';
+            html += '<model-viewer id="pd3dViewer" ';
+            html += 'src="' + p.model3d + '" ';
+            html += 'alt="Mô hình 3D ' + p.name + '" ';
+            html += 'auto-rotate camera-controls bounds="auto" ';
+            html += 'shadow-intensity="1.0" exposure="1.05" ';
+            html += 'camera-orbit="0deg 75deg 105%" field-of-view="30deg" ';
+            html += 'class="w-full h-full cursor-grab active:cursor-grabbing relative z-10">';
+            html += '<div slot="poster" class="w-full h-full flex flex-col items-center justify-center bg-transparent space-y-3">';
+            html += '<i class="fa-solid fa-circle-notch fa-spin text-2xl" style="color: #77807a;"></i>';
+            html += '<span class="text-xs" style="color: #47504d; letter-spacing: 0.16em; font-family: \'JetBrains Mono\', monospace;">ĐANG TẢI MÔ HÌNH</span>';
+            html += '</div>';
+            html += '</model-viewer>';
+            html += '<div id="pd3dFallback" class="pd-3d-fallback" style="position:absolute; inset:0;">';
+            html += '<img src="' + (p.img || '') + '" alt="' + p.name + '">';
+            html += '<p>Mô hình 3D tạm không khả dụng</p>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="cyber-card p-4 flex flex-wrap items-center justify-between gap-3">';
+            html += '<span class="text-[11.5px] text-slate-400 pl-1">Điều chỉnh góc nhìn</span>';
+            html += '<div class="flex flex-wrap items-center gap-1.5">';
+            html += '<button type="button" data-cam="0deg 75deg 105%" class="pd-cam-btn">Trước</button>';
+            html += '<button type="button" data-cam="180deg 75deg 105%" class="pd-cam-btn">Sau</button>';
+            html += '<button type="button" data-cam="0deg 0deg 110%" class="pd-cam-btn">Trên</button>';
+            html += '<button type="button" id="pdResetCam" class="pd-cam-btn">Đặt lại</button>';
+            html += '<button type="button" id="rotate-toggle-btn" class="pd-cam-btn">Tự xoay</button>';
+            html += '</div>';
+            html += '</div>';
+          } else {
+            html += '<div class="cyber-card p-2 relative overflow-hidden">';
+            html += '<div class="pd-static-media">';
+            html += '<img src="' + (p.img || '') + '" alt="' + p.name + '">';
+            html += '</div>';
+            html += '</div>';
+          }
+          html += '</div>';
+          html += '<div class="flex flex-col gap-4">';
+          html += '<div class="cyber-card p-7 pd-info-card">';
+          html += '<div class="flex items-center gap-3 text-[11.5px] mb-4 flex-wrap" style="font-family: \'JetBrains Mono\', monospace; letter-spacing: 0.04em;">';
+          html += '<span class="text-slate-400">' + (p.id || '').toUpperCase() + '</span>';
+          html += '<span class="text-slate-600">·</span>';
+          html += '<span class="text-slate-300 flex items-center gap-1.5">';
+          const curLang = localStorage.getItem('dtr_lang') || 'vi';
+          const locName = (curLang !== 'vi' && p['name_' + curLang]) ? p['name_' + curLang] : p.name;
+          const locDesc = (curLang !== 'vi' && p['desc_' + curLang]) ? p['desc_' + curLang] : (p.desc || '');
+          const inStockLabel = curLang === 'en' ? 'In Stock' : curLang === 'ja' ? '在庫あり' : curLang === 'zh' ? '现货有售' : 'Còn hàng';
+          const descTitle = curLang === 'en' ? 'Product Description' : curLang === 'ja' ? '商品説明' : curLang === 'zh' ? '商品描述' : 'Mô tả sản phẩm';
+          const buyNowLabel = curLang === 'en' ? 'Buy Now' : curLang === 'ja' ? '今すぐ購入' : curLang === 'zh' ? '立即购买' : 'Mua ngay';
+          const addCartLabel = curLang === 'en' ? 'Add to Cart' : curLang === 'ja' ? 'カートに追加' : curLang === 'zh' ? '加入购物车' : 'Thêm vào giỏ hàng';
+          const qtyLabel = curLang === 'en' ? 'Quantity' : curLang === 'ja' ? '数量' : curLang === 'zh' ? '数量' : 'Số lượng';
+          const soldSuffix = curLang === 'en' ? ' sold' : curLang === 'ja' ? ' 点販売済' : curLang === 'zh' ? ' 件已售' : ' đã bán';
+
+          html += '<span class="w-1.5 h-1.5 rounded-full" style="background: #c9a35c;"></span>';
+          html += inStockLabel;
+          html += '</span>';
+          html += '</div>';
+          html += '<h1 class="text-3xl leading-tight mb-4">';
+          html += locName;
+          if (p.subtitle) html += '<br><em>' + p.subtitle + '</em>';
+          html += '</h1>';
+          html += '<div class="flex flex-wrap items-center gap-4 py-4 mb-6 border-y text-xs" style="border-color: rgba(232,237,226,0.08);">';
+          html += '<span class="font-medium" style="color: #c9a35c;">★ ' + (p.rating || '5.0') + '</span>';
+          html += '<span class="text-slate-400">' + Number(p.sold || 0).toLocaleString('vi-VN') + soldSuffix + '</span>';
+          html += '<span class="text-slate-400">' + brandName + '</span>';
+          html += '</div>';
+          html += '<div class="pd-price-row">';
+          html += '<span class="pd-price-current">' + formatPrice(p.price) + '</span>';
+          if (p.priceOld) {
+            html += '<span class="pd-price-old">' + formatPrice(p.priceOld) + '</span>';
+          }
+          if (discountPct > 0) {
+            html += '<span class="pd-discount">-' + discountPct + '%</span>';
+          }
+          html += '</div>';
+          const options = p.options || [];
+          if (options.length > 0) {
+            html += '<div class="mb-6">';
+            html += '<label class="block text-[11.5px] text-slate-400 mb-3">' + (p.optionLabel || 'Tùy chọn') + '</label>';
+            html += '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">';
+            options.forEach(function (opt, idx) {
+              const optName = typeof opt === 'string' ? opt : opt.name || '';
+              const isActive = idx === 0 ? ' active' : '';
+              html += '<button type="button" class="pd-opt' + isActive + '" data-option="' + optName + '">';
+              html += '<span>' + optName + '</span>';
+              html += '<i class="fa-solid fa-check tick" style="font-size: 11px;"></i>';
+              html += '</button>';
+            });
+            html += '</div>';
+            html += '</div>';
+          }
+          html += '<div class="flex items-center justify-between border-t py-4 mb-6" style="border-color: rgba(232,237,226,0.08);">';
+          html += '<span class="text-[12.5px] text-slate-300">' + qtyLabel + '</span>';
+          html += '<div class="flex items-center gap-3">';
+          html += '<button type="button" id="pdQtyMinus" class="pd-qty-btn">−</button>';
+          html += '<span id="qty-val" class="w-8 text-center">1</span>';
+          html += '<button type="button" id="pdQtyPlus" class="pd-qty-btn">+</button>';
+          html += '</div>';
+          html += '</div>';
+          html += '<div class="space-y-2.5">';
+          html += '<button type="button" id="pdBuyNow" class="pd-btn-buy">' + buyNowLabel + '</button>';
+          html += '<button type="button" id="pdAddCart" class="pd-btn-cart">' + addCartLabel + '</button>';
+          html += '</div>';
+          html += '<div class="mt-5 p-4 rounded-xl bg-[#0c182c]/90 border border-slate-700/60 shadow-inner space-y-2">';
+          html += '<div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#a3e635]">';
+          html += '<i class="fa-solid fa-align-left text-[11px]"></i><span>' + descTitle + '</span>';
+          html += '</div>';
+          html += '<p class="text-xs sm:text-[13px] text-slate-300 leading-relaxed">' + (locDesc || 'Sản phẩm công nghệ số chất lượng cao chính hãng DTR.') + '</p>';
+          html += '</div>';
+          html += '</div>';
+          html += '</div>';
+          html += '</div>';
+          if (Array.isArray(p.specs) && p.specs.length > 0) {
+            html += '<section class="pt-12">';
+            html += '<div class="mb-10">';
+            const specHeading = curLang === 'en' ? 'Technical Specifications' : curLang === 'ja' ? '技術仕様' : curLang === 'zh' ? '技术规格' : 'Thông số <em>kỹ thuật</em>'; html += '<h2 class="text-2xl sm:text-3xl mb-3">' + specHeading + '</h2>';
+            html += '</div>';
+            html += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">';
+            p.specs.forEach(function (spec) {
+              html += '<div class="pd-spec">';
+              if (spec.icon) {
+                html += '<div class="pd-spec-icon"><i class="fa-solid ' + spec.icon + '"></i></div>';
+              }
+              html += '<h3>' + (spec.title || '') + '</h3>';
+              if (spec.code) {
+                html += '<p class="code">' + spec.code + '</p>';
+              }
+              if (Array.isArray(spec.items) && spec.items.length > 0) {
+                html += '<ul>';
+                spec.items.forEach(function (item) {
+                  html += '<li>' + item + '</li>';
+                });
+                html += '</ul>';
+              }
+              html += '</div>';
+            });
+            html += '</div>';
+            html += '</section>';
+          }
+          if (p.origin && p.origin.story) {
+            html += '<section class="pt-12">';
+            html += '<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">';
+            html += '<div class="lg:col-span-5">';
+            html += '<h2 class="text-2xl sm:text-3xl mb-5">' + (p.origin.heading || 'Nguồn gốc <em>thiết kế</em>') + '</h2>';
+            html += '<p class="text-[13.5px] text-slate-300 leading-relaxed mb-8">' + p.origin.story + '</p>';
+            if (Array.isArray(p.origin.tabs) && p.origin.tabs.length > 0) {
+              html += '<div class="flex flex-col">';
+              p.origin.tabs.forEach(function (tab, idx) {
+                const isActive = idx === 0 ? ' active' : '';
+                html += '<button type="button" class="pd-tab' + isActive + '" data-tab-idx="' + idx + '">' + (tab.title || '') + '</button>';
+              });
+              html += '</div>';
+            }
+            html += '</div>';
+            html += '<div class="lg:col-span-7">';
+            if (Array.isArray(p.origin.tabs) && p.origin.tabs.length > 0) {
+              p.origin.tabs.forEach(function (tab, idx) {
+                const isHidden = idx === 0 ? '' : ' hidden';
+                html += '<div class="pd-tab-content' + isHidden + '" data-tab-content="' + idx + '">';
+                if (tab.heading) html += '<h3>' + tab.heading + '</h3>';
+                if (tab.body) html += '<p>' + tab.body + '</p>';
+                if (Array.isArray(tab.codeLines) && tab.codeLines.length > 0) {
+                  html += '<div class="code-box">';
+                  tab.codeLines.forEach(function (line) {
+                    html += '<p>' + line + '</p>';
+                  });
+                  html += '</div>';
+                }
+                html += '</div>';
+              });
+            }
+            html += '</div>';
+            html += '</div>';
+            html += '</section>';
+          }
+          if (Array.isArray(p.reviews) && p.reviews.length > 0) {
+            html += '<section class="pt-12">';
+            html += '<div class="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-8">';
+            const rvHeading = curLang === 'en' ? 'Customer Reviews' : curLang === 'ja' ? 'カスタマーレビュー' : curLang === 'zh' ? '客户评价' : 'Đánh giá <em>khách hàng</em>'; html += '<h2 class="text-2xl sm:text-3xl">' + rvHeading + '</h2>';
+            html += '<div class="flex items-center gap-3 text-sm">';
+            html += '<span class="font-medium" style="color: #c9a35c;">★ ' + (p.rating || '5.0') + '</span>';
+            const rvConfirmed = curLang === 'en' ? ' verified' : curLang === 'ja' ? ' 件の確認済' : curLang === 'zh' ? ' 条已验证' : ' xác nhận'; html += '<span class="text-slate-500 text-xs">' + (p.reviewCount || p.reviews.length) + rvConfirmed + '</span>';
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="grid grid-cols-1 md:grid-cols-3 gap-4">';
+            p.reviews.forEach(function (rv) {
+              html += '<div class="pd-review">';
+              html += '<div class="flex items-center gap-3 mb-5">';
+              html += '<div class="pd-avatar">' + (rv.avatar || 'KH') + '</div>';
+              html += '<div>';
+              html += '<h4>' + (rv.name || '') + '</h4>';
+              html += '<p class="role">' + (rv.role || '') + '</p>';
+              html += '</div>';
+              html += '</div>';
+              html += '<p class="text-[13px] text-slate-300 leading-relaxed mb-4">' + (rv.content || '') + '</p>';
+              html += '<div class="pd-stars">★★★★★</div>';
+              html += '</div>';
+            });
+            html += '</div>';
+            html += '</section>';
+          }
+          contentEl.innerHTML = html;
+          bindEvents(p);
+        }
+        function bindEvents(p) {
+          let shown, showFb;
+          const qtyMinus = document.getElementById('pdQtyMinus');
+          const qtyPlus = document.getElementById('pdQtyPlus');
+          if (qtyMinus) qtyMinus.addEventListener('click', function () {
+            state.currentQty = Math.max(1, state.currentQty - 1);
+            document.getElementById('qty-val').textContent = state.currentQty;
+          });
+          if (qtyPlus) qtyPlus.addEventListener('click', function () {
+            state.currentQty++;
+            document.getElementById('qty-val').textContent = state.currentQty;
+          });
+          const opts = contentEl.querySelectorAll('.pd-opt');
+          opts.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              opts.forEach(function (b) {
+                b.classList.remove('active');
+              });
+              btn.classList.add('active');
+              state.selectedOption = btn.dataset.option;
+            });
+          });
+          const camBtns = contentEl.querySelectorAll('[data-cam]');
+          camBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              const mv = document.getElementById('pd3dViewer');
+              if (mv) mv.cameraOrbit = btn.dataset.cam;
+            });
+          });
+          const resetBtn = document.getElementById('pdResetCam');
+          if (resetBtn) resetBtn.addEventListener('click', function () {
+            const mv = document.getElementById('pd3dViewer');
+            if (mv) {
+              mv.cameraOrbit = '0deg 75deg 105%';
+              mv.fieldOfView = '30deg';
+            }
+          });
+          const rotateBtn = document.getElementById('rotate-toggle-btn');
+          if (rotateBtn) {
+            rotateBtn.addEventListener('click', function () {
+              const mv = document.getElementById('pd3dViewer');
+              if (!mv) return;
+              state.isAutoRotate = !state.isAutoRotate;
+              mv.autoRotate = state.isAutoRotate;
+              if (state.isAutoRotate) {
+                rotateBtn.style.borderColor = 'rgba(163,230,53,0.28)';
+                rotateBtn.style.color = '#a3e635';
+                rotateBtn.textContent = 'Tự xoay';
+              } else {
+                rotateBtn.style.borderColor = 'rgba(232,237,226,0.14)';
+                rotateBtn.style.color = '#77807a';
+                rotateBtn.textContent = 'Đã tắt';
+              }
+            });
+          }
+          const mv3d = document.getElementById('pd3dViewer');
+          const fb3d = document.getElementById('pd3dFallback');
+          if (mv3d && fb3d) {
+            shown = false;
+            showFb = function () {
+              if (shown) return;
+              shown = true;
+              fb3d.classList.add('show');
+              mv3d.style.display = 'none';
+            };
+            mv3d.addEventListener('error', showFb);
+            setTimeout(function () {
+              if (!mv3d.loaded && !mv3d.modelIsVisible) showFb();
+            }, 12000);
+          }
+          const tabs = contentEl.querySelectorAll('.pd-tab');
+          tabs.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              const idx = btn.dataset.tabIdx;
+              tabs.forEach(function (b) {
+                b.classList.remove('active');
+              });
+              btn.classList.add('active');
+              contentEl.querySelectorAll('.pd-tab-content').forEach(function (c) {
+                c.classList.add('hidden');
+              });
+              const target = contentEl.querySelector('.pd-tab-content[data-tab-content="' + idx + '"]');
+              if (target) target.classList.remove('hidden');
+            });
+          });
+          const addBtn = document.getElementById('pdAddCart');
+          if (addBtn) addBtn.addEventListener('click', function () {
+            addProductToCart(p, state.currentQty);
+          });
+          const buyBtn = document.getElementById('pdBuyNow');
+          if (buyBtn) buyBtn.addEventListener('click', function () {
+            openCheckout(p);
+          });
+        }
+        function addProductToCart(p, qty) {
+          let badge, total;
+          const CART_KEY = 'dtr_cart';
+          let cart = [];
+          try {
+            cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+            if (!Array.isArray(cart)) cart = [];
+          } catch (e) {
+            cart = [];
+          }
+          const existing = cart.find(function (i) {
+            return i && i.id === p.id;
+          });
+          if (existing) {
+            existing.qty = (existing.qty || 1) + qty;
+          } else {
+            cart.push({
+              id: p.id,
+              qty: qty,
+              customName: p.name,
+              customPrice: p.price,
+              customImg: p.img
+            });
+          }
+          try {
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+          } catch (e) {
+            showToast('Không lưu được giỏ hàng', true);
+            return false;
+          }
+          if (window.DTR && window.DTR.cart) {
+            try {
+              window.DTR.cart.updateBadge();
+              window.DTR.cart.render();
+            } catch (e) {}
+          } else {
+            badge = document.getElementById('cartBadge');
+            if (badge) {
+              total = cart.reduce(function (s, i) {
+                return s + (i && i.qty || 1);
+              }, 0);
+              badge.textContent = String(total);
+            }
+          }
+          showToast('Đã thêm ' + qty + ' sản phẩm vào giỏ hàng');
+          return true;
+        }
+        function openCheckout(p) {
+          const modal = document.getElementById('checkout-modal');
+          if (!modal) return;
+          const total = p.price * state.currentQty;
+          const nameEl = document.getElementById('checkout-product-name');
+          const qtyEl = document.getElementById('modal-qty');
+          const unitEl = document.getElementById('checkout-unit-price');
+          const totalEl = document.getElementById('modal-total-price');
+          if (nameEl) nameEl.textContent = p.name;
+          if (qtyEl) qtyEl.textContent = state.currentQty;
+          if (unitEl) unitEl.textContent = formatPrice(p.price);
+          if (totalEl) totalEl.textContent = formatPrice(total);
+          modal.classList.add('open');
+          const ov = document.getElementById('modalOverlay');
+          if (ov) ov.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+        window.closeCheckoutModal = function () {
+          const modal = document.getElementById('checkout-modal');
+          if (modal) modal.classList.remove('open');
+          const ov = document.getElementById('modalOverlay');
+          if (ov) ov.classList.remove('open');
+          document.body.style.overflow = '';
+        };
+        window.processPayment = function () {
+          const p = state.product;
+          if (!p) return;
+          if (addProductToCart(p, state.currentQty)) window.location.href = '12.html';
+        };
+        function getBrandName(brandId, data) {
+          const b = (data.brands || []).find(function (x) {
+            return x && x.id === brandId;
+          });
+          return b ? b.name : brandId || '';
+        }
+        function getGroupName(groupId, data) {
+          const g = (data.majorGroups || []).find(function (x) {
+            return x && x.id === groupId;
+          });
+          return g ? g.name : '';
+        }
+        function getDiscountPct(product) {
+          if (!product || !product.priceOld || product.priceOld <= product.price) return 0;
+          return Math.round((product.priceOld - product.price) / product.priceOld * 100);
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+          const ov = document.getElementById('modalOverlay');
+          if (ov) ov.addEventListener('click', function () {
+            const cm = document.getElementById('checkout-modal');
+            if (cm && cm.classList.contains('open')) window.closeCheckoutModal();
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

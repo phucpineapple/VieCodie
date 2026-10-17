@@ -1,0 +1,48 @@
+<Task>
+I need you to fix the critical architectural flaws in my DTR-Market project to meet the "White Label" criteria for tomorrow's Web Design 2026 final. 
+Success criteria: 
+1. FULL Branding Sync: All colors (theme), fonts, and the Logo (Header + Footer) must sync perfectly from Admin to ALL Marketplace pages via LocalStorage.
+2. Hero Banners are rendered dynamically from JSON data instead of hardcoded HTML.
+3. Authentication logic only restricts protected pages, allowing public browsing.
+4. A Shared Footer is automatically injected into all Marketplace pages.
+5. All trademark-infringing product names are replaced with fictional ones.
+</Task>
+
+<ContextFiles>
+I have uploaded several files. Before answering, you MUST read and strictly follow the rules inside these 3 markdown files:
+- `RULES.md` (Competition rules & Vanilla JS constraints)
+- `SKILLS.md` (Zero-Question mode, Patch-Only output, Defensive Programming)
+- `PROJECT_CONTEXT.md` (Current file structure & known bugs)
+</ContextFiles>
+
+<Reference>
+Base your solutions EXACTLY on the provided source code. Do not invent new architectures or rewrite entire files.
+</Reference>
+
+<Brief>
+- Output format: Explicit code PATCHES only. Specify exactly where to insert/replace.
+- Success is: I can copy/paste your patches into my project and it runs immediately without console errors.
+</Brief>
+
+<Rules>
+Review the uploaded `.md` files. If you are about to violate any rule, STOP and warn me.
+1. ZERO-QUESTION MODE: Do not ask for clarification. Make the best logical assumptions.
+2. DEFENSIVE PROGRAMMING: Always include `if (!element) return;`, `try/catch` for fetch/localStorage to prevent white-screen crashes.
+3. TASK LIST to execute:
+   - TASK 1 (Auth & Path): In `market-admin.js`, change fetch `../data/products.json` to `../products.json`. In `marketplace.js` (bootstrap), modify the auth guard to ONLY redirect if `document.body.dataset.page` is `['checkout', 'services', 'manager']`.
+   - TASK 2 (FULL White Label Branding): 
+     + In `about/manager.html` (saveAll), add `localStorage.setItem('dtr_brand_meta', JSON.stringify(state.meta));`.
+     + In `marketplace.html`, wrap the header logo in a div with `id="brandLogoContainer"`.
+     + In `marketplace.js`, write `applyBranding()`. It must read `dtr_brand_meta`, loop through the ENTIRE `theme` object (e.g., `--lime`, `--bg`, fonts) and apply them as CSS variables to `document.documentElement`. Then, replace the innerHTML of `#brandLogoContainer` with an `<img>` tag using `meta.media.logo`. Call it in `bootstrap()`.
+   - TASK 3 (Hero Banner): In `marketplace.js`, write `renderHeroBanners()` to read `DATA.heroBanners`, render slides into `#heroTrack` and dots into `#heroDots`, and attach slide logic. Delete hardcoded slides in `marketplace.html`. In `manager.html` (root), add UI for Banner management. Update `initManagerPage()` in `marketplace.js` to save banners to `localStorage.dtr_catalog_preview`.
+   - TASK 4 (Shared Footer): In `marketplace.js`, write `injectSharedFooter()`. It must generate the exact HTML footer from `about/index.html` and append it to the end of `<body>` (before scripts) on all pages, checking `if (!document.querySelector('footer'))`.
+   - TASK 5 (Trademark Renaming): Provide the exact JSON key-value replacements in `products.json` to change: "NovaPhone 16 Ultra" -> "AeroPhone Z1", "CyberQuest 2077" -> "NeonQuest 2088", and Giftcards (Lumen, Orbis, etc.) -> "ZenoPay", "AstroCard", etc.
+</Rules>
+
+<PlanAndAlignment>
+DO NOT write any code yet. 
+Step 1: List the 3 most critical rules from `RULES.md` and `SKILLS.md` that you will apply.
+Step 2: Present a concise execution plan for the 5 Tasks above.
+Step 3: Ask me "Are you ready for me to output the patches?".
+Only start generating code AFTER I reply with "Proceed".
+</PlanAndAlignment>

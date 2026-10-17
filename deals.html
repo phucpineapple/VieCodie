@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+  <head>
+    <script src="js/events.js?v=7defa05f4547"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Ưu Đãi Hôm Nay · Săn Deal Thương Hiệu · DTR-Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/dtr-utility.css?v=48ff48d3204e">
+    <link rel="stylesheet" href="css/marketplace.css?v=b006bba81f99">
+    <link rel="stylesheet" href="css/interface.css?v=a32ecc6783eb">
+    <script src="js/interface.js?v=ec1398677513"></script>
+  </head>
+  <body data-page="deals" class="editorial-market is-loading cyber-grid-bg min-h-screen flex flex-col text-slate-100">
+    <div class="loader" id="loader">
+      <div class="loader-mark"> <img class="loader-logo" src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t1.15752-9/837090217_1838708297575574_9035449063746888478_n.png?stp=dst-png_s2048x2048&amp;_nc_cat=107&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=9f807c&amp;_nc_eui2=AeHsTynfi-mpXvKnUmCSGCRlA9phdcaf0jYD2mF1xp_SNnjTUSsilZXeH2NqzkxuOQxCJHrbIz9eAS_adSA-BkAu&amp;_nc_ohc=GkPaAjM9dKEQ7kNvwFYBwKf&amp;_nc_oc=AdqFB0LFlvR5XVV6WucxYdlAAmDEuB-fqHyWDTG1f1AebXJ89MjrCaC1xlLGcqDkGn-iGcXihccdjMJr_Dg22JkF&amp;_nc_zt=23&amp;_nc_ht=scontent.fsgn2-9.fna&amp;_nc_ss=7b2a8&amp;oh=03_Q7cD6gHbprmEUCeKhqstWvVHxMK80sJlG1fBiMN2XVkzSy33kA&amp;oe=6AF05B29" alt="DTR"> </div>
+      <div class="loader-bar">
+        <div class="loader-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-text"> <span id="loaderLabel">Đang tải Ưu đãi hôm nay</span> <span class="pct" id="loaderPct">0%</span> </div>
+    </div>
+    <header class="mp-nav sticky top-0 z-40 bg-[#050c1a]/90 backdrop-blur-md border-b border-slate-800/80">
+      <div class="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 h-16 flex items-center justify-between gap-3">
+        <a href="marketplace.html" class="flex items-center gap-2.5 shrink-0">
+          <div id="brandLogoContainer" class="relative w-8 h-8 flex items-center justify-center shrink-0"></div>
+          <span class="text-xl font-extrabold"><span class="text-white">DTR-</span><span class="text-[#a3e635]">Market</span></span>
+        </a>
+        <nav class="hidden xl:flex items-center gap-6 text-[13px] font-medium text-slate-300"> <a href="marketplace.html" class="hover:text-[#a3e635] transition-colors"><i class="fa-solid fa-house text-xs mr-1"></i>Trang chủ</a> <a href="cinema.html" class="hover:text-[#a3e635] transition-colors"><i class="fa-solid fa-film text-xs mr-1"></i>Phim rạp</a> <a href="category.html?group=industrial" class="hover:text-[#a3e635] transition-colors">Công Nghiệp</a> <a href="category.html?group=electronics" class="hover:text-[#a3e635] transition-colors">Điện tử</a> <a href="category.html?group=digital" class="hover:text-[#a3e635] transition-colors">Kĩ thuật số</a> <a href="deals.html" class="nav-active-bar text-[#a3e635] font-bold"><i class="fa-solid fa-bolt text-xs mr-1"></i>Ưu đãi hôm nay</a> <a href="services.html" class="hover:text-[#a3e635] transition-colors">Dịch vụ khách hàng</a> </nav>
+        <div class="flex items-center gap-2 shrink-0"> <a href="login.html" id="authLink" class="flex items-center gap-1.5 text-xs font-semibold text-slate-200 bg-[#0c182c] border border-slate-700/80 rounded-full w-10 h-10 sm:w-auto sm:h-auto sm:px-3 sm:py-1.5 justify-center"> <i class="fa-solid fa-user text-xs text-[#a3e635]"></i> <span class="hidden sm:inline">Tài khoản</span> </a> <button id="cartBtn" class="relative w-10 h-10 sm:w-auto sm:h-auto sm:p-2 rounded-full bg-[#0c182c] border border-slate-700/80 text-slate-200 hover:text-[#a3e635] flex items-center justify-center" aria-label="Giỏ hàng"> <i class="fa-solid fa-cart-shopping text-sm"></i> <span id="cartBadge" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[#a3e635] text-slate-950 font-extrabold text-[10px] flex items-center justify-center">0</span> </button> </div>
+      </div>
+    </header>
+    <main class="mp-main flex-1 w-full max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 pt-5 space-y-5 pb-8">
+      <section class="relative rounded-2xl overflow-hidden border border-emerald-500/35 bg-[#071326] shadow-neon-card">
+        <button id="dealBannerPrev" aria-label="Banner trước" class="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#050c1a]/85 hover:bg-[#a3e635] text-white hover:text-slate-950 border border-slate-600 flex items-center justify-center transition-all"> <i class="fa-solid fa-chevron-left text-xs"></i> </button>
+        <button id="dealBannerNext" aria-label="Banner tiếp" class="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#050c1a]/85 hover:bg-[#a3e635] text-white hover:text-slate-950 border border-slate-600 flex items-center justify-center transition-all"> <i class="fa-solid fa-chevron-right text-xs"></i> </button>
+        <div id="dealsBannerViewport" class="relative min-h-[200px] sm:min-h-[250px] flex items-center"></div>
+        <div class="bg-[#050d1c]/95 border-t border-slate-800 px-4 sm:px-5 py-3 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-2 text-xs text-slate-300"> <i class="fa-solid fa-hand-pointer text-[#a3e635]"></i> <span class="hidden sm:inline">Mẹo: <strong>Nhấn trực tiếp vào Banner</strong> để lọc sản phẩm thương hiệu đó.</span> <span class="sm:hidden">Nhấn banner để lọc thương hiệu.</span> </div>
+          <div id="dealsBannerDots" class="flex items-center gap-2 flex-wrap"></div>
+        </div>
+      </section>
+      <section class="cyber-card rounded-2xl p-4 sm:p-5 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2.5"> <span class="px-3 py-1 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs font-bold"> <i class="fa-solid fa-fire-flame-curved mr-1"></i><span id="dealsEventTitle">Sự kiện Ưu Đãi Hôm Nay</span> </span> <span id="dealsActiveBrandPill" class="hidden px-3 py-1 rounded-full bg-[#a3e635]/20 border border-[#a3e635] text-[#a3e635] text-xs font-bold flex items-center gap-2"> <span id="dealsActiveBrandText">Thương hiệu: Tất cả</span> <button type="button" id="clearBrandDealBtn" class="hover:text-white" title="Bỏ lọc thương hiệu"><i class="fa-solid fa-circle-xmark"></i></button> </span> </div>
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <button type="button" id="openDealsFilterModal" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#a3e635] to-[#84cc16] text-slate-950 font-bold text-xs shadow-[0_0_14px_rgba(163,230,53,0.4)] hover:brightness-110 transition-all"> <i class="fa-solid fa-layer-group"></i> <span>Chọn danh mục</span> </button>
+            <div class="relative flex-1 sm:w-64"> <input id="dealsSearchInput" type="text" placeholder="Tìm sản phẩm..." class="w-full rounded-full bg-[#061020] border border-slate-700 focus:border-[#a3e635] pl-3.5 pr-8 py-2 text-xs text-white placeholder-slate-400 focus:outline-none"> <i class="fa-solid fa-magnifying-glass text-[11px] text-slate-400 absolute right-3 top-1/2 -translate-y-1/2"></i> </div>
+          </div>
+        </div>
+        <div id="dealsActiveFiltersWrap" class="hidden flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80">
+          <span class="text-[11px] font-mono uppercase text-slate-400"><i class="fa-solid fa-filter mr-1 text-[#a3e635]"></i>Đang lọc:</span>
+          <div id="dealsActiveFiltersList" class="flex flex-wrap gap-2"></div>
+          <button type="button" id="resetAllDealsFilterBtn" class="ml-auto px-3 py-1 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 hover:bg-rose-500 hover:text-white text-[11px] font-bold transition-all"> <i class="fa-solid fa-rotate-left mr-1"></i>Xoá hết </button>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-2 text-xs pt-2 border-t border-slate-800/80"> <span class="text-slate-400">Logic: <strong id="dealsSortStatus" class="font-mono text-[#a3e635]">Ưu tiên Đối tác Book → Giảm giá cao nhất</strong></span> <span id="dealsCountText" class="font-mono text-slate-300">Đang hiển thị 0 sản phẩm</span> </div>
+      </section>
+      <section class="space-y-3">
+        <div id="dealsProductGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-3.5"></div>
+      </section>
+      <div class="mp-modal-overlay" id="dealsFilterOverlay"></div>
+      <div class="mp-modal" id="dealsFilterModal">
+        <button class="mp-modal-close" id="dealsFilterClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+        <div class="p-5 sm:p-6 space-y-4 max-h-[85vh] overflow-y-auto">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-[#a3e635]">Bộ lọc nâng cao</span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-1">Chọn Danh Mục Sản Phẩm</h3>
+            <p class="text-xs text-slate-400 mt-1">Chọn lĩnh vực hoặc danh mục để lọc sản phẩm ưu đãi.</p>
+          </div>
+          <div class="relative"> <input id="dealsFilterModalSearch" type="text" placeholder="Tìm nhanh danh mục..." class="w-full rounded-full bg-[#061020] border border-slate-700 focus:border-[#a3e635] pl-4 pr-10 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none"> <i class="fa-solid fa-magnifying-glass text-slate-400 absolute right-4 top-1/2 -translate-y-1/2"></i> </div>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2"> <i class="fa-solid fa-layer-group text-[#a3e635] text-xs"></i> <span class="text-xs font-bold uppercase tracking-wider text-slate-300">Lĩnh vực:</span> </div>
+            <div id="dealsGroupFilterBar" class="flex flex-wrap gap-2"></div>
+          </div>
+          <div class="space-y-2 pt-3 border-t border-slate-800/80">
+            <div class="flex items-center gap-2"> <i class="fa-solid fa-tags text-[#a3e635] text-xs"></i> <span class="text-xs font-bold uppercase tracking-wider text-slate-300">Danh mục sản phẩm:</span> </div>
+            <div id="dealsCategoryFilterBar" class="flex flex-wrap gap-2"></div>
+          </div>
+          <div class="pt-3 border-t border-slate-800/80"> <button type="button" id="dealsFilterApplyBtn" class="w-full py-3 rounded-full bg-[#a3e635] text-slate-950 font-extrabold text-sm hover:bg-[#b5f347] transition-all"> <i class="fa-solid fa-check mr-1.5"></i>Xong </button> </div>
+        </div>
+      </div>
+    </main>
+    <div class="mp-drawer-overlay" id="cartOverlay"></div>
+    <aside class="mp-cart-drawer" id="cartDrawer">
+      <div class="mp-cart-head">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-[#a3e635]"></i>
+          <h3>Giỏ hàng DTR-Market</h3>
+        </div>
+        <button class="mp-cart-close" id="cartClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="mp-cart-list" id="cartList"></div>
+      <div class="mp-cart-foot">
+        <div class="mp-cart-total"><span>Tổng cộng</span><strong id="cartTotal">0đ</strong></div>
+        <div class="flex gap-2"> <button id="cartClearBtn" class="w-1/3 py-3 rounded-full border border-slate-700 text-xs font-semibold text-slate-300">Xóa hết</button> <button class="mp-cart-checkout w-2/3">Thanh toán ngay</button> </div>
+      </div>
+    </aside>
+    <div class="mp-modal-overlay" id="modalOverlay"></div>
+    <div class="mp-modal" id="productModal">
+      <button class="mp-modal-close" id="modalClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      <div class="mp-modal-body" id="modalBody"></div>
+    </div>
+    <nav class="dtr-mobile-nav" id="dtrMobileNav" aria-label="Menu ngôn ngữ">
+      <div class="dtr-mobile-nav-inner"> <a href="marketplace.html" data-nav="home"> <i class="fa-solid fa-house"></i> <span>HOME</span> </a> <button type="button" data-lang="vi" aria-label="Tiếng Việt"> <span class="flag">🇻🇳</span> <span>VI</span> </button> <button type="button" data-lang="ja" aria-label="日本語"> <span class="flag">🇯🇵</span> <span>JA</span> </button> <button type="button" data-lang="en" aria-label="English"> <span class="flag">🇬🇧</span> <span>EN</span> </button> <button type="button" data-lang="zh" aria-label="中文"> <span class="flag">🇨🇳</span> <span>ZH</span> </button> </div>
+    </nav>
+    <button class="dtr-fab" id="dtrFabBtn" aria-label="Menu nhanh" aria-expanded="false"> <i class="fa-solid fa-table-cells-large"></i> </button>
+    <div class="dtr-fab-overlay" id="dtrFabOverlay"></div>
+    <div class="dtr-fab-panel" id="dtrFabPanel" role="dialog" aria-modal="true">
+      <div class="dtr-fab-panel-head">
+        <div>
+          <span class="dtr-fab-panel-tag" data-i18n="fab.quick">Truy cập nhanh</span>
+          <h3 class="dtr-fab-panel-title" data-i18n="fab.title">Chọn chức năng</h3>
+        </div>
+        <button class="dtr-fab-close" id="dtrFabClose" aria-label="Đóng"> <i class="fa-solid fa-xmark"></i> </button>
+      </div>
+      <div class="dtr-fab-grid"> <a href="marketplace.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-house"></i></span><span class="dtr-fab-item-title" data-i18n="nav.home">Trang chủ</span><span class="dtr-fab-item-desc" data-i18n="fab.homeDesc">Về Marketplace</span></a> <a href="cinema.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-film"></i></span><span class="dtr-fab-item-title" data-i18n="field.cinema">Phim rạp</span><span class="dtr-fab-item-desc" data-i18n="field.cinemaDesc">Đặt vé &amp; chọn ghế</span></a> <a href="category.html?group=industrial" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-industry"></i></span><span class="dtr-fab-item-title" data-i18n="field.industrial">Công nghiệp</span><span class="dtr-fab-item-desc" data-i18n="field.industrialDesc">Thiết bị &amp; tự động</span></a> <a href="category.html?group=electronics" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-microchip"></i></span><span class="dtr-fab-item-title" data-i18n="field.electronics">Điện tử</span><span class="dtr-fab-item-desc" data-i18n="field.electronicsDesc">Phone, Laptop, Gear</span></a> <a href="category.html?group=digital" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-compact-disc"></i></span><span class="dtr-fab-item-title" data-i18n="field.digital">Kĩ thuật số</span><span class="dtr-fab-item-desc" data-i18n="field.digitalDesc">Game, Nhạc, Gift</span></a> <a href="deals.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-bolt"></i></span><span class="dtr-fab-item-title" data-i18n="nav.deals">Ưu đãi</span><span class="dtr-fab-item-desc" data-i18n="fab.dealsDesc">Deal hôm nay</span></a> <a href="services.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-headset"></i></span><span class="dtr-fab-item-title" data-i18n="nav.services">Dịch vụ</span><span class="dtr-fab-item-desc" data-i18n="fab.servicesDesc">Hỗ trợ khách hàng</span></a> <a href="index.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-circle-info"></i></span><span class="dtr-fab-item-title" data-i18n="fab.about">Về DTR</span><span class="dtr-fab-item-desc" data-i18n="fab.aboutDesc">Trang giới thiệu</span></a><a href="about/manager.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-sliders"></i></span><span class="dtr-fab-item-title" data-i18n="fab.manager">Manager</span><span class="dtr-fab-item-desc" data-i18n="fab.managerDesc">Cấu hình hệ thống</span></a> <a href="login.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-user"></i></span><span class="dtr-fab-item-title" data-i18n="nav.account">Tài khoản</span><span class="dtr-fab-item-desc" data-i18n="fab.accountDesc">Đăng nhập / Đăng ký</span></a> </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="js/auth.js?v=8d5e6df0165a"></script>
+    <script src="js/orders.js?v=b5e893c042d1"></script>
+    <script src="js/marketplace.js?v=0e5fed338263"></script>
+    <script>
+      (function () {
+        if (window.__dealsFilterInit) return;
+        window.__dealsFilterInit = true;
+        const modal = document.getElementById('dealsFilterModal');
+        const overlay = document.getElementById('dealsFilterOverlay');
+        const openBtn = document.getElementById('openDealsFilterModal');
+        const closeBtn = document.getElementById('dealsFilterClose');
+        const applyBtn = document.getElementById('dealsFilterApplyBtn');
+        const searchInput = document.getElementById('dealsFilterModalSearch');
+        const groupBar = document.getElementById('dealsGroupFilterBar');
+        const catBar = document.getElementById('dealsCategoryFilterBar');
+        const filtersWrap = document.getElementById('dealsActiveFiltersWrap');
+        const filtersList = document.getElementById('dealsActiveFiltersList');
+        const countBadge = document.getElementById('dealsFilterCountBadge');
+        if (!modal || !openBtn) return;
+        function openModal() {
+          overlay.classList.add('open');
+          modal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+          overlay.classList.remove('open');
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+        openBtn.addEventListener('click', openModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (applyBtn) applyBtn.addEventListener('click', closeModal);
+        if (overlay) overlay.addEventListener('click', closeModal);
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeModal();
+        });
+        if (searchInput) {
+          searchInput.addEventListener('input', function () {
+            const q = (searchInput.value || '').trim().toLowerCase();
+            [groupBar, catBar].forEach(function (bar) {
+              if (!bar) return;
+              bar.querySelectorAll('button').forEach(function (btn) {
+                const txt = (btn.textContent || '').toLowerCase();
+                btn.style.display = !q || txt.indexOf(q) !== -1 ? '' : 'none';
+              });
+            });
+          });
+        }
+        function updateActiveChips() {
+          if (!filtersList) return;
+          const chips = [];
+          if (groupBar) {
+            groupBar.querySelectorAll('button[data-deal-group]').forEach(function (b) {
+              let t;
+              if (b.className.indexOf('bg-[#a3e635]') !== -1) {
+                t = (b.textContent || '').trim();
+                if (t && t.toLowerCase().indexOf('tất cả') === -1) {
+                  chips.push({
+                    type: 'group',
+                    label: t
+                  });
+                }
+              }
+            });
+          }
+          if (catBar) {
+            catBar.querySelectorAll('button[data-deal-cat]').forEach(function (b) {
+              let t;
+              const cls = b.className || '';
+              if (cls.indexOf('bg-[#a3e635]') !== -1) {
+                t = (b.textContent || '').trim();
+                if (t && t.toLowerCase().indexOf('tất cả') === -1) {
+                  chips.push({
+                    type: 'cat',
+                    label: t
+                  });
+                }
+              }
+            });
+          }
+          if (chips.length === 0) {
+            filtersWrap.classList.add('hidden');
+          } else {
+            filtersWrap.classList.remove('hidden');
+            filtersList.innerHTML = chips.map(function (c) {
+              return '<span class="px-2.5 py-1 rounded-full bg-[#a3e635]/15 border border-[#a3e635]/40 text-[#a3e635] text-[11px] font-bold">' + c.label + '</span>';
+            }).join('');
+          }
+          if (countBadge) countBadge.textContent = String(chips.length);
+        }
+        setTimeout(updateActiveChips, 800);
+        setTimeout(updateActiveChips, 1500);
+        document.addEventListener('click', function (e) {
+          if (e.target.closest('[data-deal-group]') || e.target.closest('[data-deal-cat]')) {
+            setTimeout(updateActiveChips, 100);
+          }
+        }, true);
+        [groupBar, catBar].forEach(function (bar) {
+          if (!bar) return;
+          bar.addEventListener('click', function (e) {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+            setTimeout(closeModal, 400);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

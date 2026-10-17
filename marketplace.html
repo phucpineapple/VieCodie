@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+  <head>
+    <script src="js/events.js?v=7defa05f4547"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>DTR—Market · Thiết bị hiện đại - Kết nối mọi đam mê</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/dtr-utility.css?v=48ff48d3204e">
+    <link rel="stylesheet" href="css/marketplace.css?v=b006bba81f99">
+    <link rel="stylesheet" href="css/interface.css?v=a32ecc6783eb">
+    <script src="js/interface.js?v=ec1398677513"></script>
+  </head>
+  <body data-page="home" class="editorial-market is-loading cyber-grid-bg min-h-screen flex flex-col text-slate-100 selection:bg-[#a3e635] selection:text-slate-950">
+    <div class="loader" id="loader">
+      <div class="loader-mark"> <img class="loader-logo" src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t1.15752-9/837090217_1838708297575574_9035449063746888478_n.png?stp=dst-png_s2048x2048&amp;_nc_cat=107&amp;_nc_map=urlgen_bucketless&amp;ccb=1-7&amp;_nc_sid=9f807c&amp;_nc_eui2=AeHsTynfi-mpXvKnUmCSGCRlA9phdcaf0jYD2mF1xp_SNnjTUSsilZXeH2NqzkxuOQxCJHrbIz9eAS_adSA-BkAu&amp;_nc_ohc=GkPaAjM9dKEQ7kNvwFYBwKf&amp;_nc_oc=AdqFB0LFlvR5XVV6WucxYdlAAmDEuB-fqHyWDTG1f1AebXJ89MjrCaC1xlLGcqDkGn-iGcXihccdjMJr_Dg22JkF&amp;_nc_zt=23&amp;_nc_ht=scontent.fsgn2-9.fna&amp;_nc_ss=7b2a8&amp;oh=03_Q7cD6gHbprmEUCeKhqstWvVHxMK80sJlG1fBiMN2XVkzSy33kA&amp;oe=6AF05B29" alt="DTR"> </div>
+      <div class="loader-bar">
+        <div class="loader-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-text"> <span id="loaderLabel">Đang mở cửa hàng</span> <span class="pct" id="loaderPct">0%</span> </div>
+    </div>
+    <header class="mp-nav sticky top-0 z-40 bg-[#050c1a]/90 backdrop-blur-md border-b border-slate-800/80">
+      <div class="max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 h-16 flex items-center justify-between gap-2">
+        <a href="marketplace.html" class="flex items-center gap-2 group shrink-0">
+          <div id="brandLogoContainer" class="relative w-11 sm:w-14 h-9 sm:h-11 flex items-center justify-center">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/30 via-[#a3e635]/30 to-emerald-500/30 blur-md"></div>
+            <svg viewBox="0 0 120 80" class="w-11 sm:w-14 h-9 sm:h-11 relative z-10"> <defs> <linearGradient id="dtrRing" x1="0%" y1="0%" x2="100%" y2="100%"> <stop offset="0%" stop-color="#38bdf8"></stop> <stop offset="50%" stop-color="#a3e635"></stop> <stop offset="100%" stop-color="#10b981"></stop> </linearGradient> <linearGradient id="dtrText" x1="0%" y1="0%" x2="0%" y2="100%"> <stop offset="0%" stop-color="#ffffff"></stop> <stop offset="45%" stop-color="#7dd3fc"></stop> <stop offset="100%" stop-color="#a3e635"></stop> </linearGradient> </defs> <ellipse cx="60" cy="42" rx="52" ry="22" fill="none" stroke="url(#dtrRing)" stroke-width="3.5" stroke-dasharray="180 60" transform="rotate(-14 60 42)"></ellipse> <ellipse cx="60" cy="42" rx="44" ry="16" fill="none" stroke="#a3e635" stroke-width="1.5" opacity="0.7" transform="rotate(10 60 42)"></ellipse> <text x="15" y="53" font-family="'Be Vietnam Pro', sans-serif" font-weight="900" font-style="italic" font-size="34" fill="url(#dtrText)" stroke="#0284c7" stroke-width="1" letter-spacing="-1">DTR</text> </svg>
+          </div>
+          <span class="text-lg sm:text-xl lg:text-[22px] font-extrabold tracking-tight hidden sm:inline"> <span class="text-white">DTR-</span><span class="text-[#a3e635]">Market</span> </span>
+        </a>
+        <nav class="hidden xl:flex items-center gap-6 text-[13px] font-medium text-slate-300"> <a href="marketplace.html" class="nav-active-bar flex items-center gap-1.5 text-[#a3e635] font-semibold"> <i class="fa-solid fa-house text-xs"></i><span data-i18n="nav.home">Trang chủ</span> </a> <button type="button" id="navProductBtn" class="flex items-center gap-1.5 hover:text-[#a3e635]"> <i class="fa-solid fa-layer-group text-xs text-slate-400"></i> <span data-i18n="nav.category">Sản phẩm</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 ml-0.5"></i> </button> <a href="deals.html" class="flex items-center gap-1.5 hover:text-[#a3e635]"><i class="fa-solid fa-bolt text-xs text-[#a3e635]"></i><span data-i18n="nav.deals">Ưu đãi hôm nay</span></a> <a href="services.html" class="flex items-center gap-1.5 hover:text-[#a3e635]"><i class="fa-solid fa-headset text-xs text-slate-400"></i><span data-i18n="nav.services">Dịch vụ</span></a> <a href="index.html" class="flex items-center gap-1.5 hover:text-[#a3e635]"><i class="fa-solid fa-circle-info text-xs text-slate-400"></i><span>Về DTR</span></a> </nav>
+        <div class="flex items-center gap-2 shrink-0">
+          <a href="about/manager.html" class="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-[#a3e635] bg-[#0c182c] border border-amber-400/40 rounded-full px-3 py-2"> <i class="fa-solid fa-sliders text-xs"></i> <span class="hidden md:inline">Manager</span> </a>
+          <a href="login.html" id="authLink" class="flex items-center justify-center text-xs font-semibold text-slate-200 hover:text-[#a3e635] bg-[#0c182c] border border-slate-700/80 rounded-full w-10 h-10 sm:w-auto sm:h-auto sm:px-3 sm:py-2"> <i class="fa-solid fa-user text-xs text-[#a3e635]"></i> <span class="hidden md:inline ml-1.5" data-i18n="nav.account">Tài khoản</span> </a>
+          <div class="mp-lang relative hidden md:block" id="mpLang">
+            <button id="mpLangBtn" class="flex items-center gap-1.5 bg-[#0c182c] hover:bg-[#11223d] border border-slate-700/80 rounded-full px-2.5 py-2 text-xs font-semibold text-slate-200"> <span id="mpLangFlag">🇻🇳</span> <span id="mpLangCode">VN</span> <i class="fa-solid fa-chevron-down text-[9px] text-slate-400"></i> </button>
+            <div class="mp-lang-menu" id="mpLangMenu"> <button data-lang="vi"><span>🇻🇳</span><span>Tiếng Việt</span><span>VI</span></button> <button data-lang="ja"><span>🇯🇵</span><span>日本語</span><span>JA</span></button> <button data-lang="en"><span>🇬🇧</span><span>English</span><span>EN</span></button> <button data-lang="zh"><span>🇨🇳</span><span>中文</span><span>ZH</span></button> </div>
+          </div>
+          <button id="cartBtn" class="relative w-10 h-10 sm:w-auto sm:h-auto sm:p-2 rounded-full bg-[#0c182c] hover:bg-[#11223d] border border-slate-700/80 text-slate-200 hover:text-[#a3e635] flex items-center justify-center" aria-label="Giỏ hàng"> <i class="fa-solid fa-cart-shopping text-sm"></i> <span id="cartBadge" class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-[#a3e635] text-slate-950 font-extrabold text-[10px] flex items-center justify-center">0</span> </button>
+        </div>
+      </div>
+    </header>
+    <main class="mp-main flex-1 w-full max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 pt-3 pb-8 space-y-5">
+      <section id="heroBanner" class="relative rounded-2xl overflow-hidden border border-emerald-500/30 shadow-neon-card select-none">
+        <div id="heroTrack" class="flex transition-transform duration-500 ease-out" style="will-change: transform;">
+          <a href="category.html?group=electronics" data-slide-link class="hero-slide shrink-0 w-full block cursor-pointer group relative">
+            <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1600&q=80" alt="Thiết Bị Điện Tử & Công Nghệ Số" draggable="false" class="w-full h-[180px] sm:h-[220px] md:h-[250px] object-cover pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#040914] via-transparent to-transparent flex items-end p-4 sm:p-6">
+              <div>
+                <div class="text-white font-extrabold text-base sm:text-2xl drop-shadow-md">Thiết Bị Điện Tử &amp; Công Nghệ Số</div>
+                <div class="text-slate-300 text-xs sm:text-sm mt-0.5 drop-shadow">Flagship, Laptop &amp; Phụ Kiện Đỉnh Cao</div>
+              </div>
+            </div>
+          </a>
+          <a href="cinema.html" data-slide-link class="hero-slide shrink-0 w-full block cursor-pointer group relative">
+            <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1600&q=80" alt="Rạp Chiếu Phim Đỉnh Cao Cyber Cinema" draggable="false" class="w-full h-[180px] sm:h-[220px] md:h-[250px] object-cover pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#040914] via-transparent to-transparent flex items-end p-4 sm:p-6">
+              <div>
+                <div class="text-white font-extrabold text-base sm:text-2xl drop-shadow-md">Rạp Chiếu Phim Đỉnh Cao Cyber Cinema</div>
+                <div class="text-slate-300 text-xs sm:text-sm mt-0.5 drop-shadow">Trải nghiệm âm thanh AetherSound 3D sống động</div>
+              </div>
+            </div>
+          </a>
+          <a href="category.html?group=digital" data-slide-link class="hero-slide shrink-0 w-full block cursor-pointer group relative">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1600&q=80" alt="Kỹ Thuật Số & Bản Quyền Game" draggable="false" class="w-full h-[180px] sm:h-[220px] md:h-[250px] object-cover pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#040914] via-transparent to-transparent flex items-end p-4 sm:p-6">
+              <div>
+                <div class="text-white font-extrabold text-base sm:text-2xl drop-shadow-md">Kỹ Thuật Số &amp; Bản Quyền Game</div>
+                <div class="text-slate-300 text-xs sm:text-sm mt-0.5 drop-shadow">Trò chơi bom tấn &amp; Thẻ nạp quà tặng Gift Card</div>
+              </div>
+            </div>
+          </a>
+          <a href="category.html?group=industrial" data-slide-link class="hero-slide shrink-0 w-full block cursor-pointer group relative">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80" alt="Tự Động Hóa & Thiết Bị Công Nghiệp" draggable="false" class="w-full h-[180px] sm:h-[220px] md:h-[250px] object-cover pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#040914] via-transparent to-transparent flex items-end p-4 sm:p-6">
+              <div>
+                <div class="text-white font-extrabold text-base sm:text-2xl drop-shadow-md">Tự Động Hóa &amp; Thiết Bị Công Nghiệp</div>
+                <div class="text-slate-300 text-xs sm:text-sm mt-0.5 drop-shadow">Giải pháp IoT và cánh tay Robot nhà máy</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <button id="heroPrev" aria-label="Slide trước" class="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 hover:bg-[#a3e635] text-white hover:text-slate-950 border border-white/20 backdrop-blur-sm flex items-center justify-center transition-all"><i class="fa-solid fa-chevron-left text-sm"></i></button>
+        <button id="heroNext" aria-label="Slide tiếp" class="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/50 hover:bg-[#a3e635] text-white hover:text-slate-950 border border-white/20 backdrop-blur-sm flex items-center justify-center transition-all"><i class="fa-solid fa-chevron-right text-sm"></i></button>
+        <div id="heroDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-30">
+          <button type="button" data-slide="0" aria-label="Slide 1" class="hero-dot w-2.5 h-2.5 rounded-full bg-[#a3e635] shadow-[0_0_8px_#a3e635] transition-all"></button>
+          <button type="button" data-slide="1" aria-label="Slide 2" class="hero-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all"></button>
+          <button type="button" data-slide="2" aria-label="Slide 3" class="hero-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all"></button>
+          <button type="button" data-slide="3" aria-label="Slide 4" class="hero-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all"></button>
+        </div>
+      </section>
+      <section id="categories-section" class="mp-cat-row rounded-2xl bg-[#071224]/90 backdrop-blur-md border border-slate-800/90 px-4 py-3.5 shadow-neon-card space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3 shrink-0">
+            <div class="w-10 h-10 rounded-xl bg-[#a3e635]/15 border border-[#a3e635]/50 flex items-center justify-center text-[#a3e635]"><i class="fa-solid fa-boxes-stacked text-xl"></i></div>
+            <div>
+              <h2 class="text-[15px] font-extrabold text-white leading-tight" data-i18n="cat.all">Tất cả sản phẩm</h2>
+              <p class="text-xs text-slate-400 mt-0.5" data-i18n="cat.filterSync">Lọc đồng bộ theo danh mục</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap"> <button type="button" id="openCatFilterModal" class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#a3e635] to-[#84cc16] text-slate-950 font-bold text-xs shadow-[0_0_14px_rgba(163,230,53,0.4)] hover:brightness-110 transition-all"> <i class="fa-solid fa-layer-group"></i><span data-i18n="cat.select">Chọn danh mục</span> </button> <button type="button" id="resetCatFilterBtn" class="px-3 py-2 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 hover:bg-rose-500 hover:text-white text-[11px] font-bold transition-all"> <i class="fa-solid fa-rotate-left mr-1"></i><span data-i18n="cat.reset">Bỏ lọc</span> </button> </div>
+        </div>
+        <div class="site-search-field"> <input id="searchInput" type="text" placeholder="Tìm sản phẩm, phim hoặc trang…" data-i18n-placeholder="search.placeholder" class="w-full bg-transparent text-sm text-white placeholder-slate-400 focus:outline-none"> <button id="searchBtn" type="button" class="bg-[#a3e635] hover:bg-[#b5f347] text-slate-950 rounded-full px-3.5 sm:px-4 py-2 flex items-center justify-center shadow-[0_0_12px_rgba(163,230,53,0.6)] shrink-0"><i class="fa-solid fa-magnifying-glass text-xs font-bold"></i></button> </div>
+      </section>
+      <section id="promo-products" class="mp-promo-products space-y-3 pt-1">
+        <div class="flex flex-wrap items-center justify-between gap-2 px-1">
+          <div class="flex flex-wrap items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-rose-500/15 border border-rose-500/50 flex items-center justify-center text-rose-400"><i class="fa-solid fa-bolt-lightning text-lg"></i></div>
+            <div>
+              <div class="flex items-center gap-2.5">
+                <h2 class="text-lg sm:text-xl font-extrabold text-white leading-tight" data-i18n="promo.title">Sản phẩm ưu đãi</h2>
+                <span id="globalPromoBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-rose-500/20 border border-rose-500/40 text-rose-300"><i class="fa-regular fa-clock mr-1"></i>Đang tải...</span>
+              </div>
+              <p class="text-xs text-slate-400" data-i18n="promo.subtitle">Giảm giá sự kiện lễ · Flash Sale giới hạn</p>
+            </div>
+          </div>
+          <a href="deals.html" id="seeAllPromoBtn" class="text-xs font-semibold text-slate-300 hover:text-[#a3e635] flex items-center gap-1.5"><span data-i18n="btn.seeAll">Xem tất cả</span><i class="fa-solid fa-arrow-right text-[11px]"></i></a>
+        </div>
+        <div id="promoProductGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-3.5"></div>
+      </section>
+      <section id="products" class="mp-products space-y-3 pt-2">
+        <div class="flex items-center justify-between px-1">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-[#a3e635]/15 border border-[#a3e635]/40 flex items-center justify-center text-[#a3e635]"><i class="fa-solid fa-fire text-lg"></i></div>
+            <div>
+              <h2 class="text-lg sm:text-xl font-extrabold text-white leading-tight" data-i18n="best.title">Sản phẩm bán chạy</h2>
+              <p class="text-xs text-slate-400" data-i18n="best.subtitle">Xếp hạng từ bán chạy nhất</p>
+            </div>
+          </div>
+          <button id="seeAllProductsBtn" type="button" class="text-xs font-semibold text-slate-300 hover:text-[#a3e635] flex items-center gap-1.5"><span data-i18n="btn.seeAll">Xem tất cả</span><i class="fa-solid fa-arrow-right text-[11px]"></i></button>
+        </div>
+        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-3.5"></div>
+      </section>
+    </main>
+    <div class="mp-modal-overlay" id="navMajorGroupOverlay"></div>
+    <div class="mp-modal" id="navMajorGroupModal">
+      <button class="mp-modal-close" id="navMajorGroupClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      <div class="p-6 sm:p-8 space-y-5 max-h-[85vh] overflow-y-auto">
+        <div>
+          <span class="text-[11px] font-mono uppercase tracking-widest text-[#a3e635]" data-i18n="modal.fieldPre">Khám phá hệ sinh thái DTR-Market</span>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-1" data-i18n="modal.fieldTitle">Chọn Lĩnh Vực Sản Phẩm</h3>
+          <p class="text-xs text-slate-400 mt-1" data-i18n="modal.fieldSub">Chọn lĩnh vực để mở trang danh mục tương ứng</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+          <a href="cinema.html" class="cyber-card rounded-2xl p-4 flex flex-col items-center justify-center gap-2.5 text-center no-underline"><div class="w-12 h-12 rounded-xl bg-rose-500/15 border border-rose-500/40 flex items-center justify-center text-rose-400"><i class="fa-solid fa-film text-2xl"></i></div><span class="text-sm font-bold text-white" data-i18n="field.cinema">Phim rạp</span><span class="text-[10.5px] text-slate-400" data-i18n="field.cinemaDesc">Đặt vé &amp; chọn ghế</span></a>
+          <a href="category.html?group=industrial" class="cyber-card rounded-2xl p-4 flex flex-col items-center justify-center gap-2.5 text-center no-underline"><div class="w-12 h-12 rounded-xl bg-amber-500/15 border border-amber-500/40 flex items-center justify-center text-amber-400"><i class="fa-solid fa-industry text-2xl"></i></div><span class="text-sm font-bold text-white" data-i18n="field.industrial">Công Nghiệp</span><span class="text-[10.5px] text-slate-400" data-i18n="field.industrialDesc">Thiết bị &amp; Tự động hóa</span></a>
+          <a href="category.html?group=electronics" class="cyber-card rounded-2xl p-4 flex flex-col items-center justify-center gap-2.5 text-center no-underline"><div class="w-12 h-12 rounded-xl bg-cyan-500/15 border border-cyan-500/40 flex items-center justify-center text-cyan-400"><i class="fa-solid fa-microchip text-2xl"></i></div><span class="text-sm font-bold text-white" data-i18n="field.electronics">Điện Tử</span><span class="text-[10.5px] text-slate-400" data-i18n="field.electronicsDesc">Điện thoại, Máy tính, Gear</span></a>
+          <a href="category.html?group=digital" class="cyber-card rounded-2xl p-4 flex flex-col items-center justify-center gap-2.5 text-center no-underline"><div class="w-12 h-12 rounded-xl bg-[#a3e635]/15 border border-[#a3e635]/40 flex items-center justify-center text-[#a3e635]"><i class="fa-solid fa-compact-disc text-2xl"></i></div><span class="text-sm font-bold text-white" data-i18n="field.digital">Kĩ Thuật Số</span><span class="text-[10.5px] text-slate-400" data-i18n="field.digitalDesc">Trò chơi, Nhạc, Gift Card</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="mp-modal-overlay" id="catFilterOverlay"></div>
+    <div class="mp-modal" id="catFilterModal">
+      <button class="mp-modal-close" id="catFilterClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      <div class="p-5 sm:p-6 space-y-4 max-h-[85vh] overflow-y-auto">
+        <div>
+          <span class="text-[11px] font-mono uppercase tracking-widest text-[#a3e635]" data-i18n="modal.filterPre">Bộ lọc nâng cao</span>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-1" data-i18n="modal.filterTitle">Chọn Danh Mục Sản Phẩm</h3>
+          <p class="text-xs text-slate-400 mt-1" data-i18n="modal.filterSub">Chọn lĩnh vực hoặc danh mục để lọc sản phẩm.</p>
+        </div>
+        <div class="relative"> <input id="catFilterSearchInput" type="text" placeholder="Tìm nhanh danh mục..." data-i18n-placeholder="modal.filterSearchPlaceholder" class="w-full rounded-full bg-[#061020] border border-slate-700 focus:border-[#a3e635] pl-4 pr-10 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none"> <i class="fa-solid fa-magnifying-glass text-slate-400 absolute right-4 top-1/2 -translate-y-1/2"></i> </div>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2"><i class="fa-solid fa-layer-group text-[#a3e635] text-xs"></i><span class="text-xs font-bold uppercase tracking-wider text-slate-300" data-i18n="modal.filterGroup">Lĩnh vực:</span></div>
+          <div id="marketGroupFilterBar" class="flex flex-wrap gap-2"></div>
+        </div>
+        <div class="space-y-2 pt-3 border-t border-slate-800/80">
+          <div class="flex items-center gap-2"><i class="fa-solid fa-tags text-[#a3e635] text-xs"></i><span class="text-xs font-bold uppercase tracking-wider text-slate-300" data-i18n="modal.filterCat">Danh mục sản phẩm:</span></div>
+          <div id="catList" class="flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mp-drawer-overlay" id="cartOverlay"></div>
+    <aside class="mp-cart-drawer" id="cartDrawer">
+      <div class="mp-cart-head">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-[#a3e635]"></i>
+          <h3 data-i18n="cart.title">Giỏ hàng DTR-Market</h3>
+        </div>
+        <button class="mp-cart-close" id="cartClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="mp-cart-list" id="cartList"></div>
+      <div class="mp-cart-foot">
+        <div class="mp-cart-total"><span data-i18n="cart.total">Tổng cộng</span><strong id="cartTotal">0đ</strong></div>
+        <div class="flex gap-2"> <button id="cartClearBtn" class="w-1/3 py-3 rounded-full border border-slate-700 text-xs font-semibold text-slate-300 hover:border-rose-500 hover:text-rose-400" data-i18n="cart.clear">Xóa hết</button> <button class="mp-cart-checkout w-2/3" data-i18n="cart.checkout">Thanh toán ngay</button> </div>
+      </div>
+    </aside>
+    <div class="mp-modal-overlay" id="modalOverlay"></div>
+    <div class="mp-modal" id="productModal">
+      <button class="mp-modal-close" id="modalClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      <div class="mp-modal-body" id="modalBody"></div>
+    </div>
+    <nav class="dtr-mobile-nav" id="dtrMobileNav" aria-label="Menu">
+      <div class="dtr-mobile-nav-inner"> <a href="marketplace.html" data-nav="home" class="active"><i class="fa-solid fa-house"></i><span>HOME</span></a> <button type="button" data-lang="vi"><span class="flag">🇻🇳</span><span>VI</span></button> <button type="button" data-lang="ja"><span class="flag">🇯🇵</span><span>JA</span></button> <button type="button" data-lang="en"><span class="flag">🇬🇧</span><span>EN</span></button> <button type="button" data-lang="zh"><span class="flag">🇨🇳</span><span>ZH</span></button> </div>
+    </nav>
+    <button class="dtr-fab" id="dtrFabBtn" aria-label="Menu" aria-expanded="false"><i class="fa-solid fa-table-cells-large"></i></button>
+    <div class="dtr-fab-overlay" id="dtrFabOverlay"></div>
+    <div class="dtr-fab-panel" id="dtrFabPanel" role="dialog" aria-modal="true">
+      <div class="dtr-fab-panel-head">
+        <div>
+          <span class="dtr-fab-panel-tag" data-i18n="fab.quick">Truy cập nhanh</span>
+          <h3 class="dtr-fab-panel-title" data-i18n="fab.title">Chọn chức năng</h3>
+        </div>
+        <button class="dtr-fab-close" id="dtrFabClose" aria-label="Đóng"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="dtr-fab-grid"> <a href="marketplace.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-house"></i></span><span class="dtr-fab-item-title" data-i18n="nav.home">Trang chủ</span><span class="dtr-fab-item-desc" data-i18n="fab.homeDesc">Về Marketplace</span></a> <a href="cinema.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-film"></i></span><span class="dtr-fab-item-title" data-i18n="field.cinema">Phim rạp</span><span class="dtr-fab-item-desc" data-i18n="field.cinemaDesc">Đặt vé &amp; chọn ghế</span></a> <a href="category.html?group=industrial" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-industry"></i></span><span class="dtr-fab-item-title" data-i18n="field.industrial">Công nghiệp</span><span class="dtr-fab-item-desc" data-i18n="field.industrialDesc">Thiết bị &amp; tự động</span></a> <a href="category.html?group=electronics" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-microchip"></i></span><span class="dtr-fab-item-title" data-i18n="field.electronics">Điện tử</span><span class="dtr-fab-item-desc" data-i18n="field.electronicsDesc">Phone, Laptop, Gear</span></a> <a href="category.html?group=digital" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-compact-disc"></i></span><span class="dtr-fab-item-title" data-i18n="field.digital">Kĩ thuật số</span><span class="dtr-fab-item-desc" data-i18n="field.digitalDesc">Game, Nhạc, Gift</span></a> <a href="deals.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-bolt"></i></span><span class="dtr-fab-item-title" data-i18n="nav.deals">Ưu đãi</span><span class="dtr-fab-item-desc" data-i18n="fab.dealsDesc">Deal hôm nay</span></a> <a href="services.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-headset"></i></span><span class="dtr-fab-item-title" data-i18n="nav.services">Dịch vụ</span><span class="dtr-fab-item-desc" data-i18n="fab.servicesDesc">Hỗ trợ khách hàng</span></a> <a href="index.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-circle-info"></i></span><span class="dtr-fab-item-title" data-i18n="fab.about">Về DTR</span><span class="dtr-fab-item-desc" data-i18n="fab.aboutDesc">Trang giới thiệu</span></a><a href="about/manager.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-sliders"></i></span><span class="dtr-fab-item-title" data-i18n="fab.manager">Manager</span><span class="dtr-fab-item-desc" data-i18n="fab.managerDesc">Cấu hình hệ thống</span></a> <a href="login.html" class="dtr-fab-item"><span class="dtr-fab-item-icon"><i class="fa-solid fa-user"></i></span><span class="dtr-fab-item-title" data-i18n="nav.account">Tài khoản</span><span class="dtr-fab-item-desc" data-i18n="fab.accountDesc">Đăng nhập / Đăng ký</span></a> </div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="js/auth.js?v=8d5e6df0165a"></script>
+    <script src="js/orders.js?v=b5e893c042d1"></script>
+    <script src="js/marketplace.js?v=0e5fed338263"></script>
+    <script src="js/site-search.js?v=d1aebb60c816"></script>
+    <script>
+      (function () {
+        if (window.__navProductModal) return;
+        window.__navProductModal = true;
+        const btn = document.getElementById('navProductBtn');
+        const modal = document.getElementById('navMajorGroupModal');
+        const overlay = document.getElementById('navMajorGroupOverlay');
+        const closeBtn = document.getElementById('navMajorGroupClose');
+        if (!btn || !modal || !overlay) return;
+        function open() {
+          overlay.classList.add('open');
+          modal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          try {
+            const curLang = localStorage.getItem('dtr_lang') || 'vi';
+            if (typeof window.applyLanguage === 'function') {
+              window.applyLanguage(curLang, false);
+            }
+          } catch (e) {}
+        }
+        function close() {
+          overlay.classList.remove('open');
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          open();
+        });
+        if (closeBtn) closeBtn.addEventListener('click', close);
+        overlay.addEventListener('click', close);
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') close();
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        'use strict';
+      
+        if (window.__simpleFilter) return;
+        window.__simpleFilter = true;
+        const $ = function (id) {
+          return document.getElementById(id);
+        };
+        let activeGroup = 'all';
+        let activeCat = 'all';
+        let DATA = {
+          products: [],
+          categories: [],
+          majorGroups: []
+        };
+        async function loadData() {
+          let i, res, json;
+          if (window.DATA && Array.isArray(window.DATA.products) && window.DATA.products.length) {
+            DATA = window.DATA;
+            return DATA;
+          }
+          const paths = ['data/products.json', 'products.json'];
+          for (i = 0; i < paths.length; i++) {
+            try {
+              res = await fetch(paths[i]);
+              if (res && res.ok) {
+                json = await res.json();
+                if (json && Array.isArray(json.products)) {
+                  DATA = Object.assign({}, DATA, json);
+                  return DATA;
+                }
+              }
+            } catch (e) {}
+          }
+          return DATA;
+        }
+        function attachAttrs() {
+          if (!DATA.products.length) return 0;
+          const map = {};
+          DATA.products.forEach(function (p) {
+            if (p && p.id) map[p.id] = p;
+          });
+          let count = 0;
+          document.querySelectorAll('.product-card[data-id]').forEach(function (card) {
+            const p = map[card.dataset.id];
+            if (!p) return;
+            card.dataset.category = p.category || '';
+            card.dataset.group = p.group || '';
+            card.dataset.name = (p.name || '').toLowerCase();
+            card.dataset.brand = (p.brand || '').toLowerCase();
+            card.dataset.desc = (p.desc || '').toLowerCase();
+            count++;
+          });
+          return count;
+        }
+        function filterCards(catId, grpId, keyword) {
+          const q = (keyword || '').toLowerCase().trim();
+          let visible = 0;
+          document.querySelectorAll('#promoProductGrid .product-card, #productGrid .product-card').forEach(function (card) {
+            const pCat = card.dataset.category || '';
+            const pGrp = card.dataset.group || '';
+            const pName = card.dataset.name || '';
+            const pBrand = card.dataset.brand || '';
+            const pDesc = card.dataset.desc || '';
+            const okCat = !catId || catId === 'all' || pCat === catId;
+            const okGrp = !grpId || grpId === 'all' || pGrp === grpId;
+            const okKw = !q || pName.indexOf(q) !== -1 || pBrand.indexOf(q) !== -1 || pDesc.indexOf(q) !== -1;
+            if (okCat && okGrp && okKw) {
+              card.style.display = '';
+              visible++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          return visible;
+        }
+        function resetCards() {
+          document.querySelectorAll('#promoProductGrid .product-card, #productGrid .product-card').forEach(function (c) {
+            c.style.display = '';
+          });
+        }
+        function renderPills() {
+          const groupBar = $('marketGroupFilterBar');
+          const catList = $('catList');
+          if (!groupBar || !catList) return;
+          const curLang = localStorage.getItem('dtr_lang') || 'vi';
+          const allFieldsName = curLang === 'en' ? 'All Fields' : (curLang === 'ja' ? 'すべての分野' : (curLang === 'zh' ? '全领域' : 'Tất cả lĩnh vực'));
+          const groups = [{
+            id: 'all',
+            name: allFieldsName,
+            icon: 'fa-layer-group'
+          }].concat(DATA.majorGroups || []);
+          groupBar.innerHTML = groups.map(function (g) {
+            const isAct = activeGroup === g.id;
+            const cls = isAct ? 'bg-[#a3e635] text-slate-950 border-[#a3e635] shadow-[0_0_12px_rgba(163,230,53,0.5)]' : 'bg-[#0b182e] text-slate-200 border-slate-700 hover:border-[#a3e635]';
+            const gName = (curLang !== 'vi' && g['name_' + curLang]) ? g['name_' + curLang] : (g.name || '');
+            return '<button type="button" data-cf-group="' + g.id + '" class="px-3 py-1.5 rounded-full text-xs font-bold border flex items-center gap-1.5 transition-all ' + cls + '"><i class="fa-solid ' + (g.icon || 'fa-cube') + ' text-[11px]"></i><span>' + gName + '</span></button>';
+          }).join('');
+          const cats = DATA.categories || [];
+          const filtered = activeGroup === 'all' ? cats : cats.filter(function (c) {
+            return c && c.group === activeGroup;
+          });
+          if (!filtered.length) {
+            const emptyCat = curLang === 'en' ? 'No categories available.' : (curLang === 'ja' ? 'カテゴリがありません。' : (curLang === 'zh' ? '暂无分类。' : 'Không có danh mục nào.'));
+            catList.innerHTML = '<p class="text-slate-400 italic text-xs py-2 w-full text-center">' + emptyCat + '</p>';
+            return;
+          }
+          catList.innerHTML = filtered.map(function (c) {
+            const isAct = activeCat === c.id;
+            const cls = isAct ? 'bg-[#a3e635] text-slate-950 border-[#a3e635] shadow-[0_0_12px_rgba(163,230,53,0.5)]' : 'bg-[#0b182e] text-slate-200 border-slate-700 hover:border-[#a3e635]';
+            const cName = (curLang !== 'vi' && c['name_' + curLang]) ? c['name_' + curLang] : (c.name || '');
+            return '<button type="button" data-cat="' + c.id + '" class="px-3 py-1.5 rounded-full text-xs font-bold border flex items-center gap-1.5 transition-all ' + cls + '"><i class="fa-solid ' + (c.icon || 'fa-cube') + ' text-[11px]"></i><span>' + cName + '</span></button>';
+          }).join('');
+        }
+        function openModal() {
+          renderPills();
+          const si = $('catFilterSearchInput');
+          if (si) si.value = '';
+          $('catFilterOverlay').classList.add('open');
+          $('catFilterModal').classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+          $('catFilterOverlay').classList.remove('open');
+          $('catFilterModal').classList.remove('open');
+          document.body.style.overflow = '';
+        }
+        function isModalOpen() {
+          return $('catFilterModal') && $('catFilterModal').classList.contains('open');
+        }
+        function showToast(html) {
+          const t = $('toast');
+          if (!t) return;
+          t.innerHTML = html;
+          t.classList.add('show');
+          clearTimeout(t._tmr);
+          t._tmr = setTimeout(function () {
+            t.classList.remove('show');
+          }, 2200);
+        }
+        document.addEventListener('click', function (e) {
+          let s1, s2, grp, visible, catId, label, visible2;
+          const t = e.target;
+          if (!t || !t.closest) return;
+          if (t.closest('#openCatFilterModal')) {
+            e.preventDefault();
+            e.stopPropagation();
+            openModal();
+            return;
+          }
+          if (t.closest('#catFilterClose') || t.closest('#catFilterOverlay')) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeModal();
+            return;
+          }
+          if (t.closest('#resetCatFilterBtn')) {
+            e.preventDefault();
+            e.stopPropagation();
+            activeGroup = 'all';
+            activeCat = 'all';
+            resetCards();
+            s1 = $('searchInput');
+            if (s1) s1.value = '';
+            s2 = $('catFilterSearchInput');
+            if (s2) s2.value = '';
+            if (isModalOpen()) renderPills();
+            showToast('<i class="fa-solid fa-rotate-left text-[#a3e635] mr-2"></i><span>Đã bỏ lọc — Hiển thị tất cả sản phẩm</span>');
+            return;
+          }
+          const grpBtn = t.closest('#marketGroupFilterBar [data-cf-group]');
+          if (grpBtn && isModalOpen()) {
+            e.preventDefault();
+            e.stopPropagation();
+            grp = grpBtn.dataset.cfGroup;
+            if (grp === 'cinema') {
+              window.location.href = 'cinema.html';
+              return;
+            }
+            activeGroup = grp;
+            activeCat = 'all';
+            renderPills();
+            visible = filterCards(null, grp, '');
+            showToast('<i class="fa-solid fa-filter text-[#a3e635] mr-2"></i><span>Lọc lĩnh vực · ' + visible + ' sản phẩm</span>');
+            return;
+          }
+          const catBtn = t.closest('#catList [data-cat]');
+          if (catBtn && isModalOpen()) {
+            e.preventDefault();
+            e.stopPropagation();
+            catId = catBtn.dataset.cat;
+            activeCat = catId;
+            label = catBtn.textContent.trim();
+            visible2 = filterCards(catId, activeGroup, '');
+            showToast('<i class="fa-solid fa-filter text-[#a3e635] mr-2"></i><span>Lọc "' + label + '" · ' + visible2 + ' sản phẩm</span>');
+            return;
+          }
+        }, true);
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && isModalOpen()) closeModal();
+        });
+        document.addEventListener('input', function (e) {
+          const si = $('catFilterSearchInput');
+          if (!si || e.target !== si) return;
+          const q = (si.value || '').trim().toLowerCase();
+          ['marketGroupFilterBar', 'catList'].forEach(function (id) {
+            const bar = $(id);
+            if (!bar) return;
+            bar.querySelectorAll('button').forEach(function (btn) {
+              const txt = (btn.textContent || '').toLowerCase();
+              btn.style.display = !q || txt.indexOf(q) !== -1 ? '' : 'none';
+            });
+          });
+          filterCards(activeCat, activeGroup, q);
+        });
+        async function init() {
+          await loadData();
+          setTimeout(attachAttrs, 400);
+          setTimeout(attachAttrs, 1200);
+          setTimeout(attachAttrs, 2200);
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);else init();
+        document.addEventListener('dtr:lang', function () {
+          renderPills();
+        });
+        const obs = new MutationObserver(function () {
+          clearTimeout(window.__attachTimer);
+          window.__attachTimer = setTimeout(attachAttrs, 100);
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+          ['promoProductGrid', 'productGrid'].forEach(function (id) {
+            const el = $(id);
+            if (el) obs.observe(el, {
+              childList: true
+            });
+          });
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        if (window.__heroBannerInit) return;
+        window.__heroBannerInit = true;
+        function boot() {
+          const banner = document.getElementById('heroBanner');
+          const track = document.getElementById('heroTrack');
+          const dotsWrap = document.getElementById('heroDots');
+          if (!banner || !track) return;
+          const slides = track.querySelectorAll('.hero-slide');
+          if (!slides.length) return;
+          let idx = 0;
+          let startX = 0;
+          let currentX = 0;
+          let isDragging = false;
+          let movedDistance = 0;
+          function total() {
+            return slides.length;
+          }
+          function setIdx(newIdx) {
+            idx = (newIdx + total()) % total();
+            track.style.transform = 'translateX(' + -idx * 100 + '%)';
+            if (dotsWrap) dotsWrap.querySelectorAll('.hero-dot').forEach(function (d, i) {
+              d.className = i === idx ? 'hero-dot w-2.5 h-2.5 rounded-full bg-[#a3e635] shadow-[0_0_8px_#a3e635] transition-all' : 'hero-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all';
+            });
+          }
+          const prev = document.getElementById('heroPrev');
+          const next = document.getElementById('heroNext');
+          if (prev) prev.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            setIdx(idx - 1);
+          });
+          if (next) next.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            setIdx(idx + 1);
+          });
+          if (dotsWrap) dotsWrap.querySelectorAll('[data-slide]').forEach(function (d) {
+            d.addEventListener('click', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              setIdx(Number(d.dataset.slide || 0));
+            });
+          });
+          function onStart(x) {
+            isDragging = true;
+            movedDistance = 0;
+            startX = x;
+            currentX = x;
+            banner.classList.add('dragging');
+          }
+          function onMove(x) {
+            if (!isDragging) return;
+            currentX = x;
+            movedDistance = Math.abs(currentX - startX);
+            const pct = (currentX - startX) / banner.offsetWidth * 100;
+            track.style.transform = 'translateX(calc(' + -idx * 100 + '% + ' + pct + '%))';
+          }
+          function onEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            banner.classList.remove('dragging');
+            const delta = currentX - startX;
+            if (Math.abs(delta) > 60) {
+              if (delta < 0) setIdx(idx + 1);else setIdx(idx - 1);
+            } else setIdx(idx);
+          }
+          banner.addEventListener('mousedown', function (e) {
+            if (e.target.closest('#heroPrev, #heroNext, #heroDots')) return;
+            e.preventDefault();
+            onStart(e.clientX);
+          });
+          window.addEventListener('mousemove', function (e) {
+            if (isDragging) onMove(e.clientX);
+          });
+          window.addEventListener('mouseup', function () {
+            onEnd();
+          });
+          banner.addEventListener('touchstart', function (e) {
+            if (e.target.closest('#heroPrev, #heroNext, #heroDots')) return;
+            onStart(e.touches[0].clientX);
+          }, {
+            passive: true
+          });
+          banner.addEventListener('touchmove', function (e) {
+            if (isDragging) onMove(e.touches[0].clientX);
+          }, {
+            passive: true
+          });
+          banner.addEventListener('touchend', function () {
+            onEnd();
+          });
+          track.querySelectorAll('[data-slide-link]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+              if (movedDistance > 10) {
+                e.preventDefault();
+                e.stopPropagation();
+                movedDistance = 0;
+              }
+            });
+          });
+          setIdx(0);
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);else boot();
+      })();
+    </script>
+  </body>
+</html>
