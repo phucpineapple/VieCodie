@@ -1,0 +1,596 @@
+{
+  "brand": "DTR-Market",
+  "checkoutConfig": {
+    "usdtRate": 25400,
+    "vouchers": {
+      "DTRVIP10": 0.1,
+      "DTR50": 0.5
+    }
+  },
+  "tagline": "Phim Rạp · Công Nghiệp · Điện Tử · Kĩ Thuật Số",
+  "majorGroups": [
+    {
+      "id": "cinema",
+      "name": "Phim rạp",
+      "icon": "fa-film",
+      "desc": "Đặt vé phim theo vị trí, chọn ghế & combo bắp nước"
+    },
+    {
+      "id": "industrial",
+      "name": "Công Nghiệp",
+      "icon": "fa-industry",
+      "desc": "Thiết bị tự động hóa, cảm biến & phần cứng nhà máy"
+    },
+    {
+      "id": "electronics",
+      "name": "Điện tử",
+      "icon": "fa-microchip",
+      "desc": "Điện thoại, máy tính, tai nghe & thiết bị thông minh"
+    },
+    {
+      "id": "digital",
+      "name": "Kĩ thuật số",
+      "icon": "fa-compact-disc",
+      "desc": "Trò chơi, nhạc bản quyền, phần mềm & Gift Card"
+    }
+  ],
+  "categories": [
+    {
+      "id": "phone",
+      "name": "Điện thoại",
+      "group": "electronics",
+      "icon": "fa-mobile-screen-button"
+    },
+    {
+      "id": "laptop",
+      "name": "Máy tính",
+      "group": "electronics",
+      "icon": "fa-laptop"
+    },
+    {
+      "id": "accessory",
+      "name": "Phụ kiện điện tử",
+      "group": "electronics",
+      "icon": "fa-headphones"
+    },
+    {
+      "id": "game",
+      "name": "Trò chơi",
+      "group": "digital",
+      "icon": "fa-gamepad"
+    },
+    {
+      "id": "music",
+      "name": "Nhạc & Audio số",
+      "group": "digital",
+      "icon": "fa-music"
+    },
+    {
+      "id": "giftcard",
+      "name": "Gift Card",
+      "group": "digital",
+      "icon": "fa-gift"
+    },
+    {
+      "id": "automation",
+      "name": "Tự động hóa",
+      "group": "industrial",
+      "icon": "fa-robot"
+    },
+    {
+      "id": "sensor",
+      "name": "Thiết bị đo & IoT",
+      "group": "industrial",
+      "icon": "fa-gauge-high"
+    }
+  ],
+  "brands": [
+    {
+      "id": "novatech",
+      "name": "NovaTech"
+    },
+    {
+      "id": "aethercore",
+      "name": "AetherCore"
+    },
+    {
+      "id": "cybergear",
+      "name": "CyberGear"
+    },
+    {
+      "id": "mechaind",
+      "name": "MechaInd"
+    },
+    {
+      "id": "vstream",
+      "name": "V-Stream"
+    },
+    {
+      "id": "ZENOPAY",
+      "name": "ZenoPay"
+    },
+    {
+      "id": "ASTROCARD",
+      "name": "AstroCard"
+    },
+    {
+      "id": "CYBERPLAY",
+      "name": "CyberPlay"
+    },
+    {
+      "id": "VALOR",
+      "name": "Valor Arena"
+    },
+    {
+      "id": "Z-CORE",
+      "name": "Z-Core"
+    }
+  ],
+  "layout": {
+    "homeSections": [
+      "heroBanner",
+      "categories-section",
+      "promo-products",
+      "products"
+    ]
+  },
+  "promoConfig": {
+    "globalEvent": {
+      "enabled": true,
+      "name": "Đại Lễ Cyber Sale 10/10",
+      "name_en": "Grand Cyber Sale 10/10",
+      "name_ja": "グランドサイバーセール 10/10",
+      "name_zh": "网络购物狂欢盛典 10/10",
+      "startTime": "2026-10-01T00:00",
+      "endTime": "2026-12-31T23:59"
+    },
+    "brandPromos": {
+      "novatech": {
+        "brandId": "novatech",
+        "brandName": "NovaTech",
+        "startTime": "2026-10-01T00:00",
+        "endTime": "2026-11-30T23:59",
+        "isSponsored": true
+      },
+      "cybergear": {
+        "brandId": "cybergear",
+        "brandName": "CyberGear",
+        "startTime": "2026-10-01T00:00",
+        "endTime": "2026-11-15T23:59",
+        "isSponsored": false
+      }
+    },
+    "itemEarlyEnds": {
+      "p001": "2026-10-25T23:59",
+      "p003": "2026-10-20T22:00"
+    },
+    "banners": [
+      {
+        "id": "bn01",
+        "brandId": "novatech",
+        "brandName": "NovaTech",
+        "title": "Tuần Lễ Thương Hiệu NovaTech · Giảm Sâu Đến 35%",
+        "subtitle": "Đối tác Thương hiệu Book vị trí Ưu tiên · Click để xem các sản phẩm NovaTech đang ưu đãi",
+        "img": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&q=80"
+      },
+      {
+        "id": "bn02",
+        "brandId": "cybergear",
+        "brandName": "CyberGear",
+        "title": "Siêu Hội Trò Chơi & Gear Kĩ Thuật Số CyberGear",
+        "subtitle": "Ưu đãi giới hạn theo khung giờ · Click vào Banner để lọc toàn bộ sản phẩm CyberGear",
+        "img": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80"
+      },
+      {
+        "id": "bn03",
+        "brandId": "mechaind",
+        "brandName": "MechaInd",
+        "title": "Giải Pháp Công Nghiệp & IoT Thông Minh MechaInd",
+        "subtitle": "Trợ giá doanh nghiệp mùa lễ · Click để lọc ngay thiết bị Công Nghiệp ưu đãi",
+        "img": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80"
+      }
+    ]
+  },
+  "products": [
+    {
+      "id": "p001",
+      "name": "DTR-Book Pro M3 14 Inch",
+      "name_en": "DTR-Book Pro M3 14 Inch",
+      "name_ja": "DTR-Book Pro M3 14型",
+      "name_zh": "DTR-Book Pro M3 14寸",
+      "desc": "16GB RAM | 512GB NVMe | Màn hình O-Retina",
+      "desc_en": "16GB RAM | 512GB NVMe | O-Retina Display",
+      "desc_ja": "16GB RAM | 512GB NVMe | O-Retinaディスプレイ",
+      "desc_zh": "16GB 内存 | 512GB 固态 | O-Retina 屏幕",
+      "group": "electronics",
+      "category": "laptop",
+      "brand": "novatech",
+      "price": 21990000,
+      "priceOld": 27990000,
+      "badge": "sale",
+      "isPromo": true,
+      "img": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=80",
+      "rating": 4.9,
+      "sold": 1850
+    },
+    {
+      "id": "p002",
+      "name": "AeroPhone Z1 5G",
+      "name_en": "AeroPhone Z1 5G",
+      "name_ja": "AeroPhone Z1 5G",
+      "name_zh": "AeroPhone Z1 5G",
+      "desc": "256GB | Khung Titan | Camera AI 200MP",
+      "desc_en": "256GB | Titanium Frame | 200MP AI Camera",
+      "desc_ja": "256GB | チタンフレーム | 200MP AIカメラ",
+      "desc_zh": "256GB | 钛金属边框 | 200MP AI相机",
+      "group": "electronics",
+      "category": "phone",
+      "brand": "novatech",
+      "price": 24990000,
+      "priceOld": 29990000,
+      "badge": "bestseller",
+      "isPromo": true,
+      "img": "https://images.unsplash.com/photo-1592286927505-1def25115558?w=600&q=80",
+      "rating": 4.9,
+      "sold": 3420
+    },
+    {
+      "id": "p003",
+      "name": "Tai nghe AetherPods Pro ANC",
+      "name_en": "AetherPods Pro ANC Earphones",
+      "name_ja": "AetherPods Pro ANC ヘッドホン",
+      "name_zh": "AetherPods Pro ANC 降噪耳机",
+      "desc": "Chống ồn chủ động | Âm thanh vòm 360",
+      "desc_en": "Active Noise Cancelling | 360 Spatial Audio",
+      "desc_ja": "アクティブノイズキャンセリング | 360空間オーディオ",
+      "desc_zh": "主动降噪 | 360度环绕空间音频",
+      "group": "electronics",
+      "category": "accessory",
+      "brand": "aethercore",
+      "price": 3290000,
+      "priceOld": 4990000,
+      "badge": "hot",
+      "isPromo": true,
+      "img": "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=600&q=80",
+      "rating": 4.8,
+      "sold": 4120
+    },
+    {
+      "id": "p004",
+      "name": "Đĩa Game NeonQuest 2088 Deluxe",
+      "name_en": "NeonQuest 2088 Deluxe Edition",
+      "name_ja": "NeonQuest 2088 デラックス版",
+      "name_zh": "霓虹探索 2088 豪华版游戏",
+      "desc": "Bản quyền Kĩ thuật số + DLC Mở rộng",
+      "desc_en": "Digital License + Expansion DLC",
+      "desc_ja": "デジタル正規品ライセンス + 拡張DLC",
+      "desc_zh": "数字正版授权 + 扩展DLC礼包",
+      "group": "digital",
+      "category": "game",
+      "brand": "cybergear",
+      "price": 790000,
+      "priceOld": 1290000,
+      "badge": "sale",
+      "isPromo": true,
+      "img": "https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=600&q=80",
+      "rating": 4.9,
+      "sold": 5210
+    },
+    {
+      "id": "p005",
+      "name": "Cánh Tay Robot MechaArm X2",
+      "name_en": "MechaArm X2 Robotic Arm",
+      "name_ja": "MechaArm X2 ロボットアーム",
+      "name_zh": "MechaArm X2 工业机械臂",
+      "desc": "Tải trọng 15kg | Tự động hóa dây chuyền",
+      "desc_en": "15kg Payload | Production Line Automation",
+      "desc_ja": "可搬重量15kg | 工場ライン自動化",
+      "desc_zh": "负载15kg | 生产流水线自动化",
+      "group": "industrial",
+      "category": "automation",
+      "brand": "mechaind",
+      "price": 68000000,
+      "priceOld": 79000000,
+      "badge": "hot",
+      "isPromo": true,
+      "img": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
+      "rating": 5,
+      "sold": 310
+    },
+    {
+      "id": "gc01",
+      "name": "Thẻ Nạp ZenoPay Network",
+      "name_en": "ZenoPay Network Card",
+      "name_ja": "ZenoPay ネットワークカード",
+      "name_zh": "ZenoPay 网络充值卡",
+      "desc": "50.000đ - 2.000.000đ · Nạp tức thì",
+      "desc_en": "$2.00 - $80.00 · Instant Top-up",
+      "desc_ja": "即時チャージ対応 · ギフトカード",
+      "desc_zh": "即时到账 · 游戏礼品卡",
+      "group": "digital",
+      "category": "giftcard",
+      "brand": "ZENOPAY",
+      "price": 200000,
+      "priceOld": 250000,
+      "badge": "hot",
+      "isPromo": true,
+      "isGiftcard": true,
+      "img": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80",
+      "rating": 4.9,
+      "sold": 1280
+    }
+  ],
+  "giftcards": [
+    {
+      "id": "gc-1",
+      "name": "ZenoPay Network",
+      "brand": "ZENOPAY",
+      "priceRange": "50K - 2TR",
+      "defaultPrice": 200000,
+      "desc": "Nạp tiền tức thì",
+      "name_en": "ZenoPay Network Pass",
+      "name_ja": "ZenoPay ネットワークパス",
+      "name_zh": "ZenoPay 网络通行证"
+    },
+    {
+      "id": "gc-2",
+      "name": "AstroCard Wallet",
+      "brand": "ASTROCARD",
+      "priceRange": "50K - 2TR",
+      "defaultPrice": 200000,
+      "desc": "Ví điện tử toàn cầu",
+      "name_en": "AstroCard Global Wallet",
+      "name_ja": "AstroCard グローバルウォレット",
+      "name_zh": "AstroCard 全球电子钱包"
+    }
+  ],
+  "cinemaData": {
+    "locations": {
+      "Việt Nam": {
+        "TP. Hồ Chí Minh": {
+          "Quận 1": [
+            "Đường Nguyễn Huệ",
+            "Đường Lê Lợi",
+            "Đường Đồng Khởi"
+          ],
+          "Quận 3": [
+            "Đường Võ Văn Tần",
+            "Đường Nam Kỳ Khởi Nghĩa"
+          ],
+          "TP. Thủ Đức": [
+            "Đường Võ Văn Ngân",
+            "Đại lộ Mai Chí Thọ"
+          ]
+        },
+        "Cần Thơ": {
+          "Quận Ninh Kiều": [
+            "Đường 30 Tháng 4",
+            "Đường Nguyễn Văn Cừ",
+            "Đường Mậu Thân"
+          ],
+          "Quận Cái Răng": [
+            "Đường Võ Nguyên Giáp",
+            "Khu đô thị Nam Cần Thơ"
+          ]
+        },
+        "Hà Nội": {
+          "Quận Cầu Giấy": [
+            "Đường Xuân Thủy",
+            "Đường Cầu Giấy"
+          ],
+          "Quận Hoàn Kiếm": [
+            "Đường Tràng Tiền",
+            "Đường Hàng Bài"
+          ]
+        }
+      },
+      "Nhật Bản": {
+        "Tokyo": {
+          "Shibuya": [
+            "Shibuya Crossing",
+            "Center-Gai Street"
+          ],
+          "Shinjuku": [
+            "Kabukicho Avenue",
+            "Yasukuni-dori"
+          ]
+        }
+      }
+    },
+    "movies": [
+      {
+        "id": "mv01",
+        "title": "Chiến Binh Mạng: Kỷ Nguyên AI",
+        "genre": "Khoa học viễn tưởng · Hành động",
+        "duration": "132 phút",
+        "age": "T16",
+        "rating": 4.9,
+        "basePrice": 95000,
+        "img": "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&q=80",
+        "desc": "Cuộc chiến bảo vệ lõi dữ liệu trung tâm trước sự trỗi dậy của mạng lưới trí tuệ nhân tạo tự nhận thức.",
+        "title_en": "Cyber Warrior: AI Era",
+        "desc_en": "The epic battle to defend the core data center.",
+        "genre_en": "Sci-Fi · Action",
+        "title_ja": "サイバー戦士：AI時代",
+        "desc_ja": "セントラルデータコアを守る壮絶な戦い。",
+        "genre_ja": "SF・アクション",
+        "title_zh": "网络战士：AI纪元",
+        "desc_zh": "捍卫核心数据中心的终极之战。",
+        "genre_zh": "科幻 · 动作"
+      },
+      {
+        "id": "mv02",
+        "title": "Bóng Đêm Đại Dương Sâu",
+        "genre": "Phiêu lưu · Giả tưởng",
+        "duration": "118 phút",
+        "age": "P",
+        "rating": 4.8,
+        "basePrice": 90000,
+        "img": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80",
+        "desc": "Hành trình khám phá thành phố cổ đại ẩn sâu dưới rãnh đại dương với công nghệ tàu ngầm lượng tử.",
+        "title_en": "Shadow of the Deep Ocean",
+        "desc_en": "A breathtaking journey to discover the lost sunken city.",
+        "genre_en": "Adventure · Fantasy",
+        "title_ja": "深海の影",
+        "desc_ja": "失われた古代海底都市を巡る冒険。",
+        "genre_ja": "アドベンチャー・ファンタジー",
+        "title_zh": "深海暗影",
+        "desc_zh": "探索失落古代海底城市的奇幻征程。",
+        "genre_zh": "冒险 · 奇幻"
+      },
+      {
+        "id": "mv03",
+        "title": "Đường Đua Tốc Độ Ánh Sáng",
+        "genre": "Hành động · Thể thao",
+        "duration": "125 phút",
+        "age": "T13",
+        "rating": 4.7,
+        "basePrice": 100000,
+        "img": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=80",
+        "desc": "Giải đua xe phản trọng lực xuyên lục địa quy tụ những tay đua xuất sắc nhất thế giới năm 2088.",
+        "title_en": "Light Speed Circuit",
+        "desc_en": "Intercontinental anti-gravity racing tournament.",
+        "genre_en": "Action · Racing",
+        "title_ja": "光速サーキット",
+        "desc_ja": "大陸横断反重力レーシング大会。",
+        "genre_ja": "アクション・スポーツ",
+        "title_zh": "光速极速赛道",
+        "desc_zh": "跨洲际反重力悬浮赛车锦标赛。",
+        "genre_zh": "动作 · 竞速"
+      },
+      {
+        "id": "mv04",
+        "title": "Giai Điệu Mùa Thu Cuối",
+        "genre": "Tâm lý · Âm nhạc",
+        "duration": "110 phút",
+        "age": "P",
+        "rating": 4.9,
+        "basePrice": 85000,
+        "img": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&q=80",
+        "desc": "Câu chuyện đầy cảm xúc về hai nghệ sĩ trẻ tìm thấy sự đồng điệu qua những bản giao hưởng vượt thời gian.",
+        "title_en": "Last Autumn Melody",
+        "desc_en": "An emotional and touching journey of two young artists.",
+        "genre_en": "Drama · Music",
+        "title_ja": "最後の秋の調べ",
+        "desc_ja": "二人の若きアーティストの感動の物語。",
+        "genre_ja": "ドラマ・音楽",
+        "title_zh": "最后的秋天旋律",
+        "desc_zh": "两位年轻艺术家感人至深的动人故事。",
+        "genre_zh": "剧情 · 音乐"
+      }
+    ],
+    "theaters": [
+      {
+        "id": "th01",
+        "brandName": "CineNova Grand Multiplex",
+        "badge": "Âm thanh AetherSound 3D · NeoLaser",
+        "surcharge": 0,
+        "showtimes": [
+          "10:30",
+          "13:15",
+          "16:00",
+          "19:30",
+          "21:45"
+        ],
+        "occupiedSeats": [
+          "B3",
+          "B4",
+          "C5",
+          "C6",
+          "D4"
+        ]
+      },
+      {
+        "id": "th02",
+        "brandName": "StarPlex Cyber Cinema",
+        "badge": "Ghế ngả Sofa cao cấp · Màn hình cong",
+        "surcharge": 15000,
+        "showtimes": [
+          "11:00",
+          "14:30",
+          "18:00",
+          "20:15",
+          "22:30"
+        ],
+        "occupiedSeats": [
+          "A2",
+          "C3",
+          "C4",
+          "E5",
+          "E6"
+        ]
+      },
+      {
+        "id": "th03",
+        "brandName": "AetherBox Gold Theater",
+        "badge": "Phòng chiếu MotionX hiệu ứng chuyển động",
+        "surcharge": 25000,
+        "showtimes": [
+          "12:00",
+          "15:30",
+          "19:00",
+          "21:15"
+        ],
+        "occupiedSeats": [
+          "B5",
+          "D2",
+          "D3",
+          "E4"
+        ]
+      }
+    ],
+    "combos": [
+      {
+        "id": "cb01",
+        "name": "Combo Bắp Ngọt Lớn + 2 Nước Ngọt",
+        "desc": "1 Bắp Caramel 64oz + 2 Ly CyberCola 32oz",
+        "price": 89000,
+        "img": "https://images.unsplash.com/photo-1585647347483-22b66260dfff?w=400&q=80"
+      },
+      {
+        "id": "cb02",
+        "name": "Combo Bắp Phô Mai + 1 Nước + Snack",
+        "desc": "1 Bắp Phô Mai + 1 Nước Lớn + 1 Khoai tây lắc",
+        "price": 75000,
+        "img": "https://images.unsplash.com/photo-1578849278619-e73505e9610f?w=400&q=80"
+      },
+      {
+        "id": "cb03",
+        "name": "Quà Lưu Niệm Ly Giữ Nhiệt LED Phim",
+        "desc": "Ly giữ nhiệt phát sáng phiên bản giới hạn kèm nước",
+        "price": 129000,
+        "img": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80"
+      }
+    ]
+  },
+  "heroBanners": [
+    {
+      "link": "category.html?group=electronics",
+      "title": "Thiết Bị Điện Tử & Công Nghệ Số",
+      "img": "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1600&q=80",
+      "id": "hb_01",
+      "subtitle": "Flagship, Laptop & Phụ Kiện Đỉnh Cao"
+    },
+    {
+      "link": "cinema.html",
+      "title": "Rạp Chiếu Phim Đỉnh Cao Cyber Cinema",
+      "img": "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1600&q=80",
+      "id": "hb_02",
+      "subtitle": "Trải nghiệm âm thanh AetherSound 3D sống động"
+    },
+    {
+      "link": "category.html?group=digital",
+      "title": "Kỹ Thuật Số & Bản Quyền Game",
+      "img": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1600&q=80",
+      "id": "hb_03",
+      "subtitle": "Trò chơi bom tấn & Thẻ nạp quà tặng Gift Card"
+    },
+    {
+      "link": "category.html?group=industrial",
+      "title": "Tự Động Hóa & Thiết Bị Công Nghiệp",
+      "img": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80",
+      "id": "hb_04",
+      "subtitle": "Giải pháp IoT và cánh tay Robot nhà máy"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "products": {
+    "p001": {
+      "vi": {
+        "name": "DTR-Book Pro M3 14 Inch",
+        "desc": "16GB RAM | 512GB NVMe | Màn hình O-Retina"
+      },
+      "en": {
+        "name": "DTR-Book Pro M3 14 Inch",
+        "desc": "16GB RAM | 512GB NVMe | O-Retina Display"
+      },
+      "ja": {
+        "name": "DTR-Book Pro M3 14型",
+        "desc": "16GB RAM | 512GB NVMe | O-Retinaディスプレイ"
+      },
+      "zh": {
+        "name": "DTR-Book Pro M3 14寸",
+        "desc": "16GB 内存 | 512GB 固态 | O-Retina 屏幕"
+      }
+    },
+    "p002": {
+      "vi": {
+        "name": "AeroPhone Z1 5G",
+        "desc": "256GB | Khung Titan | Camera AI 200MP"
+      },
+      "en": {
+        "name": "AeroPhone Z1 5G",
+        "desc": "256GB | Titanium Frame | 200MP AI Camera"
+      },
+      "ja": {
+        "name": "AeroPhone Z1 5G",
+        "desc": "256GB | チタンフレーム | 200MP AIカメラ"
+      },
+      "zh": {
+        "name": "AeroPhone Z1 5G",
+        "desc": "256GB | 钛金属边框 | 200MP AI相机"
+      }
+    },
+    "p003": {
+      "vi": {
+        "name": "Tai nghe AetherPods Pro ANC",
+        "desc": "Chống ồn chủ động | Âm thanh vòm 360"
+      },
+      "en": {
+        "name": "AetherPods Pro ANC Earphones",
+        "desc": "Active Noise Cancelling | 360 Spatial Audio"
+      },
+      "ja": {
+        "name": "AetherPods Pro ANC ヘッドホン",
+        "desc": "アクティブノイズキャンセリング | 360空間オーディオ"
+      },
+      "zh": {
+        "name": "AetherPods Pro ANC 降噪耳机",
+        "desc": "主动降噪 | 360度环绕空间音频"
+      }
+    },
+    "p004": {
+      "vi": {
+        "name": "Đĩa Game NeonQuest 2088 Deluxe",
+        "desc": "Bản quyền Kĩ thuật số + DLC Mở rộng"
+      },
+      "en": {
+        "name": "NeonQuest 2088 Deluxe Edition",
+        "desc": "Digital License + Expansion DLC"
+      },
+      "ja": {
+        "name": "NeonQuest 2088 デラックス版",
+        "desc": "デジタル正規品ライセンス + 拡張DLC"
+      },
+      "zh": {
+        "name": "霓虹探索 2088 豪华版游戏",
+        "desc": "数字正版授权 + 扩展DLC礼包"
+      }
+    },
+    "p005": {
+      "vi": {
+        "name": "Cánh Tay Robot MechaArm X2",
+        "desc": "Tải trọng 15kg | Tự động hóa dây chuyền"
+      },
+      "en": {
+        "name": "MechaArm X2 Robotic Arm",
+        "desc": "15kg Payload | Production Line Automation"
+      },
+      "ja": {
+        "name": "MechaArm X2 ロボットアーム",
+        "desc": "可搬重量15kg | 工場ライン自動化"
+      },
+      "zh": {
+        "name": "MechaArm X2 工业机械臂",
+        "desc": "负载15kg | 生产流水线自动化"
+      }
+    },
+    "gc01": {
+      "vi": {
+        "name": "Thẻ Nạp ZenoPay Network",
+        "desc": "50.000đ - 2.000.000đ · Nạp tức thì"
+      },
+      "en": {
+        "name": "ZenoPay Network Card",
+        "desc": "$2.00 - $80.00 · Instant Top-up"
+      },
+      "ja": {
+        "name": "ZenoPay ネットワークカード",
+        "desc": "即時チャージ対応 · ギフトカード"
+      },
+      "zh": {
+        "name": "ZenoPay 网络充值卡",
+        "desc": "即时到账 · 游戏礼品卡"
+      }
+    }
+  },
+  "giftcards": {
+    "gc-1": {
+      "vi": {
+        "name": "ZenoPay Network",
+        "desc": "Nạp tiền tức thì"
+      },
+      "en": {
+        "name": "ZenoPay Network Pass",
+        "desc": "Instant top-up"
+      },
+      "ja": {
+        "name": "ZenoPay ネットワークパス",
+        "desc": "即時チャージ"
+      },
+      "zh": {
+        "name": "ZenoPay 网络通行证",
+        "desc": "即时充值"
+      }
+    },
+    "gc-2": {
+      "vi": {
+        "name": "AstroCard Wallet",
+        "desc": "Ví điện tử toàn cầu"
+      },
+      "en": {
+        "name": "AstroCard Global Wallet",
+        "desc": "Global e-wallet"
+      },
+      "ja": {
+        "name": "AstroCard グローバルウォレット",
+        "desc": "グローバルウォレット"
+      },
+      "zh": {
+        "name": "AstroCard 全球电子钱包",
+        "desc": "全球电子钱包"
+      }
+    }
+  }
+}

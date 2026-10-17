@@ -1,0 +1,125 @@
+.campaign-tabs,
+.campaign-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 16px;
+}
+
+.campaign-tabs .btn[aria-pressed="true"] {
+  border-color: var(--lime);
+  color: var(--lime);
+  background: var(--panel-2);
+}
+
+.campaign-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+
+.campaign-status {
+  font-size: 12px;
+  color: var(--fg-soft);
+}
+
+.campaign-status[data-active="true"] {
+  color: var(--green);
+}
+
+.campaign-date {
+  grid-column: 1 / -1;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--fg-soft);
+}
+
+.campaign-banner-preview {
+  display: block;
+  width: 100%;
+  max-height: 240px;
+  margin-bottom: 20px;
+  border-radius: var(--radius);
+  object-fit: contain;
+  background: var(--bg-2);
+}
+
+.campaign-banner-preview[hidden] {
+  display: none;
+}
+
+.campaign-page-link {
+  margin: 8px 8px 0 0;
+}
+
+.manager-data-tools {
+  margin-block: 16px 24px;
+  padding-block: 16px;
+  border-block: 1px solid var(--line);
+}
+
+.manager-data-tools > summary {
+  padding-block: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.manager-data-tools > summary:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 4px;
+}
+
+.manager-data-tools > .sub {
+  max-width: 70ch;
+  margin-top: 8px;
+  line-height: 1.7;
+  color: var(--fg-soft);
+}
+
+.manager-data-tools > .field {
+  max-width: 280px;
+}
+
+.manager-data-tools > .btn {
+  min-height: 44px;
+  margin: 8px 8px 0 0;
+}
+
+.manager-product-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  align-items: start;
+  gap: 16px;
+  margin-block: 16px;
+}
+
+.manager-product-tools .field {
+  min-width: 0;
+}
+
+.campaign-tabs .btn,
+.campaign-actions .btn,
+.campaign-page-link {
+  min-height: 44px;
+}
+
+.btn:focus-visible,
+.sb-item:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .campaign-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .campaign-date {
+    grid-column: 1;
+  }
+}
